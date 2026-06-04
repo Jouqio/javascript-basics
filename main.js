@@ -19,31 +19,36 @@ let alamat = {
 };
 let isStudent = true; //boolean, tipe data yang hanya memiliki dua nilai: true atau false
 
-//if (pacar == null) {
-//if digunakan untuk memberikan kondisi, jika pacar null maka akan menjalankan kode dibawahnya (jika pacar null maka pacar akan diisi dengan "Belum punya pacar")
-//  pacar = "Belum punya pacar";
-//} else {
-//else digunakan untuk memberikan kondisi lain jika kondisi pertama tidak terpenuhi (jika pacar tidak null)
-//  pacar = "Ada pacar";
-//}
+if (pacar == null) {
+  //if digunakan untuk memberikan kondisi, jika pacar null maka akan menjalankan kode dibawahnya (jika pacar null maka pacar akan diisi dengan "Belum punya pacar")
+  pacar = "Belum punya pacar";
+} else {
+  //else digunakan untuk memberikan kondisi lain jika kondisi pertama tidak terpenuhi (jika pacar tidak null)
+  pacar = "Ada pacar";
+}
+
+let saldoAwal = 1000000; //saldo awal
+let saldoTambahan = 500000; //saldo tambahan
+let saldoAkhir = saldoAwal + saldoTambahan; //saldo akhir setelah ditambah saldo tambahan
 
 //switch case digunakan untuk memberikan kondisi yang lebih banyak, jika pacar null maka akan menjalankan kode dibawahnya
 //(jika pacar null maka pacar akan diisi dengan "Belum punya pacar", jika pacar tidak null maka pacar akan diisi dengan "Ada pacar")
-//switch case lebih efisien daripada if else jika kita memiliki banyak kondisi, karena switch case hanya akan mengecek satu kondisi saja, 
+//switch case lebih efisien daripada if else jika kita memiliki banyak kondisi, karena switch case hanya akan mengecek satu kondisi saja,
 // sedangkan if else akan mengecek semua kondisi
-switch (pacar) {
-  case 1:
-    pacar = "Punya 1 pacar";
-    break;
-  case 2:
-    pacar = "Punya 2 pacar, aku Ganteng";
-    break;
-  default:
-    pacar = "Belum ada pacar";
-}
+//switch (pacar) {
+//  case 1:
+//    pacar = "Punya 1 pacar";
+//    break;
+//  case 2:
+//    pacar = "Punya 2 pacar, aku Ganteng";
+//    break;
+//  default:
+//    pacar = "Belum ada pacar";
+//}
 
 //menampilkan data dengan alert
 //alert digunakan paling akhir untuk menampilkan data yang sudah kita buat, karena alert akan menghentikan eksekusi program sampai user menutup alert tersebut
+//alert awal 
 alert(
   "Nama: " +
     nama +
@@ -65,4 +70,14 @@ alert(
     alamat.negara +
     "\nApakah saya seorang mahasiswa? " +
     isStudent,
+);
+
+//alert akhir
+alert(
+  "Saldo Awal: Rp " +
+    saldoAwal +
+    "\nSaldo Tambahan: Rp " +
+    saldoTambahan +
+    "\nSaldo Akhir: Rp " +
+    saldoAkhir,
 );
