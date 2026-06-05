@@ -32,6 +32,13 @@ let saldoTambahan = 500000; //saldo tambahan
 const hutang = 200000; //hutang, menggunakan const karena hutang tidak akan berubah lagi
 const saldoAkhir = saldoAwal + saldoTambahan - hutang; //saldo akhir setelah ditambah saldo tambahan dan dikurangi hutang, menggunakan const karena saldo akhir tidak akan berubah lagi
 
+const x = 10; //variabel x dengan nilai 10
+const y = 5; //variabel y dengan nilai 5
+const z = x * y; //variabel z dengan nilai 50, menggunakan operator perkalian (*), menggunakan const karena nilai z tidak akan berubah lagi
+
+alert(`nilai x = ${x} * nilai y = ${y}, maka nilai z = ${z}`); //menampilkan nilai x, y, dan z dengan template literal
+
+
 //switch case digunakan untuk memberikan kondisi yang lebih banyak, jika pacar null maka akan menjalankan kode dibawahnya
 //(jika pacar null maka pacar akan diisi dengan "Belum punya pacar", jika pacar tidak null maka pacar akan diisi dengan "Ada pacar")
 //switch case lebih efisien daripada if else jika kita memiliki banyak kondisi, karena switch case hanya akan mengecek satu kondisi saja,
