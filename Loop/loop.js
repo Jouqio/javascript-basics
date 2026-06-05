@@ -30,4 +30,18 @@ for (let i = 0; i < namaSiswa.length; i++) {
   console.log(namaSiswa[i]); //menampilkan nilai i pada console, nilai i akan berubah setiap kali perulangan selesai
 }
 
-//w
+//contoh for loop dengan array dan if else
+const namaKelas = ["X IPA 1", "X IPA 2", "X IPS 1", "X IPS 2"]; //array nama kelas, menggunakan array karena kita memiliki banyak nama kelas
+for (let i = 0; i < namaKelas.length; i++) {
+  //i++ digunakan untuk memberikan nilai tambah pada variabel i, i++ akan menambahkan nilai i dengan 1 setiap kali perulangan selesai, i++ sama dengan i = i + 1
+  //inisialisasi i dengan nilai 0, kondisi i kurang dari panjang array namaKelas, increment i dengan nilai 1
+  if (namaKelas[i].includes("IPA")) {
+    //includes digunakan untuk mengecek apakah sebuah string mengandung kata tertentu, includes akan mengembalikan nilai berupa true jika string mengandung kata tersebut, dan false jika string tidak mengandung kata tersebut
+    //if digunakan untuk memberikan kondisi, jika nama kelas mengandung kata "IPA" maka akan menjalankan kode dibawahnya
+    console.log(namaKelas[i] + " adalah kelas IPA"); //menampilkan nama kelas dan keterangan pada console, menggunakan console.log untuk menampilkan data pada console
+  } else {
+    //else digunakan untuk memberikan kondisi lain jika kondisi pertama tidak terpenuhi, jika nama kelas tidak mengandung kata "IPA" maka akan menjalankan kode dibawahnya
+    console.log(namaKelas[i] + " adalah kelas IPS"); //menampilkan nama kelas dan keterangan pada console, menggunakan
+    //console.log untuk menampilkan data pada console
+  }
+}
