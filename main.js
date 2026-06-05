@@ -29,7 +29,8 @@ if (pacar == null) {
 
 let saldoAwal = 1000000; //saldo awal
 let saldoTambahan = 500000; //saldo tambahan
-let saldoAkhir = saldoAwal + saldoTambahan; //saldo akhir setelah ditambah saldo tambahan
+const hutang = 200000; //hutang, menggunakan const karena hutang tidak akan berubah lagi
+const saldoAkhir = saldoAwal + saldoTambahan - hutang; //saldo akhir setelah ditambah saldo tambahan dan dikurangi hutang, menggunakan const karena saldo akhir tidak akan berubah lagi
 
 //switch case digunakan untuk memberikan kondisi yang lebih banyak, jika pacar null maka akan menjalankan kode dibawahnya
 //(jika pacar null maka pacar akan diisi dengan "Belum punya pacar", jika pacar tidak null maka pacar akan diisi dengan "Ada pacar")
@@ -48,7 +49,7 @@ let saldoAkhir = saldoAwal + saldoTambahan; //saldo akhir setelah ditambah saldo
 
 //menampilkan data dengan alert
 //alert digunakan paling akhir untuk menampilkan data yang sudah kita buat, karena alert akan menghentikan eksekusi program sampai user menutup alert tersebut
-//alert awal 
+//alert awal
 alert(
   "Nama: " +
     nama +
@@ -74,10 +75,12 @@ alert(
 
 //alert akhir
 alert(
-  "Saldo Awal: Rp " +
+  "Saldo Awal saya sebesar Rp " +
     saldoAwal +
-    "\nSaldo Tambahan: Rp " +
+    " & Saldo Tambahan yang saya dapatkan sebesar Rp " +
     saldoTambahan +
-    "\nSaldo Akhir: Rp " +
+    "& Hutang yang saya miliki sebesar Rp " +
+    hutang +
+    "\njadi Saldo Akhir yang saya miliki sebesar Rp " +  //tanda \n digunakan untuk membuat baris baru pada alert
     saldoAkhir,
 );
