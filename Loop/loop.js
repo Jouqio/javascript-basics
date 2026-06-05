@@ -30,3 +30,4 @@ for (let i = 0; i < namaSiswa.length; i++) {
   console.log(namaSiswa[i]); //menampilkan nilai i pada console, nilai i akan berubah setiap kali perulangan selesai
 }
 
+//w
