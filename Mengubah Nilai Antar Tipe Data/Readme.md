@@ -74,3 +74,21 @@ const floatFromPX = parseFloat(px);
 
 console.log(floatFromCM); // output: 20.55
 console.log(floatFromPX); // output: 64.23
+
+## Mengubah ke Boolean
+
+Untuk mengubah suatu nilai ke tipe data boolean, kita bisa gunakan fungsi Boolean(). Sama seperti fungsi sebelumnya, kita cukup memberikan nilai yang akan diubah di antara tanda kurung. Berikut adalah contoh penggunaan fungsi Boolean().
+
+*main.js*
+
+const number = 123;
+const string = 'Dicoding';
+const empty = null;
+
+const boolFromNumber = Boolean(number);
+const boolFromString = Boolean(string);
+const boolFromNull = Boolean(empty);
+
+console.log(boolFromNumber); // output: true
+console.log(boolFromString); // output: true
+console.log(boolFromNull); // output: false
