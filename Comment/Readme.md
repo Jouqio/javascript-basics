@@ -1,0 +1,3 @@
+Kita sudah mengetahui bahwa kode yang kita tulis dianggap sebagai instruksi dan interpreter akan menjalankan instruksi tersebut. Namun, dalam menulis kode, kita sering sekali menyisipkan sebuah catatan. Kita tidak ingin catatan tersebut ikut tereksekusi oleh interpreter. Pada kondisi ini, kita bisa menyisipkan catatan dalam bentuk komentar.
+
+Komentar adalah teks bersifat penjelasan yang dapat dibaca oleh programmer dan ditulis dalam berkas kode. Pada JavaScript, untuk menuliskan teks komentar, ada dua cara, yaitu menggunakan tanda // dan /* */. Teks yang ditulis dengan tanda tersebut dianggap bukan instruksi dan tidak akan dijalankan oleh interpreter.
