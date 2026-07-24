@@ -92,3 +92,40 @@ const boolFromNull = Boolean(empty);
 console.log(boolFromNumber); // output: true
 console.log(boolFromString); // output: true
 console.log(boolFromNull); // output: false
+
+Sebagaimana yang sudah kita ketahui bahwa boolean hanya memiliki dua nilai, yaitu true dan false. Jadi seluruh nilai jika dikonversikan dalam boolean kemungkinan nilainya hanya ada dua, yaitu true dan false. Seluruh nilai yang dikonversi dalam boolean menghasilkan true disebut nilai truthy, sedangkan sebaliknya disebut dengan falsy.
+
+Hampir seluruh nilai yang ada sifatnya truthy, hanya segelintir nilai yang sifatnya falsy. Berikut adalah daftar nilai falsy dalam JavaScript.
+
+## Konversi Implisit
+
+Konversi implisit terjadi ketika JavaScript secara otomatis mengubah tipe data tanpa instruksi eksplisit dari programmer. Ini biasanya terjadi dalam konteks tertentu, seperti operasi aritmetika, perbandingan, dan konteks logika. Meskipun konversi implisit bisa sangat berguna dan menghemat penulisan kode, penting untuk memahami alasan hal ini terjadi untuk menghindari bug dan perilaku yang tidak terduga dalam kode.
+
+Berikut adalah beberapa contoh konversi implisit yang sering terjadi dalam berbagai konteks.
+
+*main.js*
+
+const age = 20;
+const message = 'Umurku: ' + age;
+
+console.log(message); // output: Umurku: 20
+
+Dalam contoh ini, tipe data number (age) secara otomatis dikonversi menjadi string karena operator + digunakan untuk penggabungan string.
+
+*main.js*
+
+const strNumber = '123';
+const result = strNumber * 2;
+
+console.log(result); // output: 246
+
+Dalam contoh ini, strNumber (yang merupakan string) dikonversi menjadi number karena operator * digunakan untuk operasi aritmetika.
+
+Contoh lain dalam penggunaan operasi aritmetika yang mengubah nilai boolean menjadi number.
+
+*main.js*
+
+const bool = true;
+const result = 1 + bool;
+
+console.log(result); // output: 2
