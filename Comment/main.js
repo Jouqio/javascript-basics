@@ -19,5 +19,5 @@ yang dapat digunakan untuk menjelaskan kode yang kompleks.
  * 2. Cetak nilai variabel PI di terminal menggunakan console.log
  */
 
-const PI = '3.14';
+const PI = 3.14;
 console.log(PI);
