@@ -58,3 +58,26 @@ const result = Number('Dicoding');
 console.log(result); // output: NaN
 
 Kita akan membahas lebih detail tentang konversi antar tipe data setelah mengenal seluruh tipe data yang ada.
+
+## Boolean 
+
+Boolean adalah tipe data yang hanya memiliki dua nilai: true dan false. Boolean umumnya digunakan untuk merepresentasikan “ya” atau “tidak”, “ya” adalah true dan “tidak” adalah false.
+
+Untuk membuat nilai boolean, kita bisa menuliskan true atau false secara langsung. Contohnya seperti kode di bawah ini.
+
+main.js
+
+const completed = true;
+const passed = false;
+
+console.log(completed, passed); // output: true false
+
+Nilai boolean juga biasa diperoleh dari hasil penggunaan operator perbandingan.
+
+main.js
+
+const isGreater = 5 > 2;
+
+console.log(isGreater); // output: true (5 lebih besar dari 2)
+
+Dengan memahami cara kerja boolean, kita dapat menggunakan tipe data ini untuk membuat logika pemrograman yang lebih efektif dan efisien.
