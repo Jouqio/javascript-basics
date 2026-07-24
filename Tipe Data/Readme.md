@@ -37,3 +37,24 @@ Dengan memahami penggunaan string serta template literals, Anda dapat mengelola 
 ## Number
 
 Semua data berupa angka direpresentasikan dalam tipe data number, baik itu bilangan bulat maupun pecahan. Untuk membuat nilai number, kita cukup menuliskan angkanya secara langsung tanpa menggunakan tanda khusus. Berikut adalah contoh nilai number dalam JavaScript.
+
+40
+3.14
+5
+3.333
+
+Selain angka normal, tipe data number juga memiliki nilai spesial, yaitu Infinity dan NaN. Nilai Infinity dihasilkan ketika kita melakukan operasi aritmetika yang tidak terdefinisi, seperti membagi sebuah nilai dengan nol. Contohnya kode di bawah ini.
+
+main.js
+
+const result = 50 / 0;
+console.log(result); // output: Infinity
+
+Adapun nilai NaN (Not-a-Number) dihasilkan ketika nilai non-numerik diubah ke tipe data number. Contohnya ketika kita mencoba mengonversi string yang bukan angka menjadi number.
+
+main.js 
+
+const result = Number('Dicoding');
+console.log(result); // output: NaN
+
+Kita akan membahas lebih detail tentang konversi antar tipe data setelah mengenal seluruh tipe data yang ada.
