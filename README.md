@@ -21,10 +21,10 @@ Repository ini berisi kumpulan catatan, latihan, dan mini proyek yang dibuat sel
 
 Dibuat untuk:
 
-- 📝 Mendokumentasikan progres belajar secara terstruktur
-- 💻 Menyimpan latihan kode dan mini proyek dalam satu tempat
-- 🔁 Jadi referensi cepat saat lupa suatu konsep
-- 🌱 Membantu siapa pun yang juga sedang belajar JavaScript dari nol
+-  Mendokumentasikan progres belajar secara terstruktur
+-  Menyimpan latihan kode dan mini proyek dalam satu tempat
+-  Jadi referensi cepat saat lupa suatu konsep
+-  Membantu siapa pun yang juga sedang belajar JavaScript dari nol
 
 <br>
 
@@ -107,7 +107,7 @@ belajar-javascript/
 
 <br>
 
-## 🚀 Cara Memulai
+##  Cara Memulai
 
 **Prasyarat:** browser modern, [Node.js](https://nodejs.org/) (opsional, untuk menjalankan file di terminal), dan code editor seperti [VS Code](https://code.visualstudio.com/).
 
@@ -167,17 +167,17 @@ Saran, koreksi, dan kontribusi sangat terbuka.
 
 <br>
 
-## 📝 Lisensi
+##  Lisensi
 
 Didistribusikan dengan lisensi [MIT](LICENSE). Bebas digunakan untuk belajar maupun referensi pribadi.
 
 <br>
 
-## 📬 Kontak
+##  Kontak
 
 <div align="center">
 
-Dibuat dengan ❤️ oleh **[Nama Kamu]**
+Dibuat oleh **Syauqi Nuzul Abdi**
 
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/username)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/username)
