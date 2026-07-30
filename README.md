@@ -1,6 +1,6 @@
 <div align="center">
 
-# 📘 Belajar JavaScript
+#  Belajar JavaScript
 
 **Dokumentasi & latihan perjalanan belajar JavaScript — dari dasar sampai mahir.**
 
@@ -15,7 +15,7 @@
 
 <br>
 
-## 📖 Tentang
+##  Tentang
 
 Repository ini berisi kumpulan catatan, latihan, dan mini proyek yang dibuat selama proses belajar **JavaScript** — mulai dari sintaks dasar hingga konsep yang lebih kompleks seperti asynchronous programming dan DOM manipulation.
 
@@ -28,7 +28,7 @@ Dibuat untuk:
 
 <br>
 
-## 🗂️ Daftar Isi
+##  Daftar Isi
 
 - [Tentang](#-tentang)
 - [Materi Pembelajaran](#-materi-pembelajaran)
@@ -42,7 +42,7 @@ Dibuat untuk:
 
 <br>
 
-## 📚 Materi Pembelajaran
+##  Materi Pembelajaran
 
 <details open>
 <summary><b>🟢 Dasar</b></summary>
@@ -85,7 +85,7 @@ Dibuat untuk:
 
 <br>
 
-## 📁 Struktur Folder
+##  Struktur Folder
 
 ```
 belajar-javascript/
@@ -146,7 +146,7 @@ belajar-javascript/
 
 <br>
 
-## 📖 Sumber Belajar
+##  Sumber Belajar
 
 - [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript) — dokumentasi resmi paling lengkap
 - [JavaScript.info](https://javascript.info/) — tutorial modern dan mendalam
