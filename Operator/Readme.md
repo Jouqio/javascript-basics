@@ -53,3 +53,85 @@ location = 'Jakarta';
 _________________________________________________
 
 ## Arithmetic Operator
+
+Operator aritmetika adalah operator standar yang digunakan untuk proses aritmetika, seperti penambahan (+), pengurangan (-), pengalian (*), ataupun pembagian (/). Selain operasi standar yang kami sebutkan, JavaScript juga mendukung beberapa operasi aritmetik yang bisa Anda lihat pada tabel di bawah ini.
+
+Berikut adalah contoh kode yang menunjukkan berbagai penggunaan operator aritmetika dalam JavaScript.
+
+_________________________________________________
+
+6 + 5; // mengembalikan 11
+7 - 2; // mengembalikan 5
+8 * 5; // mengembalikan 40
+10 / 3; // mengembalikan 3.33
+10 % 2; // mengembalikan 0
+2 *(10 + 2); // mengembalikan 24
+
+_________________________________________________
+
+*Catatan*
+Tanda kurung dalam operasi aritmetika menentukan urutan operasi yang dijalankan. Operasi yang diberi tanda kurung akan dikalkulasi terlebih dulu. Hal ini juga merupakan aturan umum dalam bidang matematika.
+
+## Comparison Operator
+
+Operator perbandingan adalah operator yang digunakan untuk membandingkan dua nilai dan mengembalikan nilai boolean (true atau false) sebagai hasil perbandingan. Salah satu penggunaan operator perbandingan adalah ketika kita berhadapan dengan skenario “Apakah x lebih besar dari y?” dan mendapatkan hasil dalam bentuk “Ya” atau “Tidak”.
+
+Berikut adalah contoh kode yang menunjukkan berbagai penggunaan operator perbandingan dalam JavaScript.
+
+_________________________________________________
+
+const a = 10;
+const b = 12;
+ 
+console.log(a < b); // output: true
+console.log(a > b); // output: false
+
+_________________________________________________
+
+## Logical Operator
+
+Operator logika digunakan untuk menetapkan logika dari dua nilai operan boolean. Dengan operator logika, kita bisa melakukan operasi gerbang logika, seperti AND dan OR. Operator logika dapat digunakan untuk menetapkan logika yang lebih kompleks.
+
+Berikut adalah contoh kode yang menunjukkan berbagai penggunaan operator logika dalam JavaScript.
+
+_________________________________________________
+
+// AND
+console.log(true && true); // true
+console.log(false && true); // false
+console.log(true && false); // false
+console.log(false && false); // false
+console.log((5 === 5) && (3 < 5)); // true
+ 
+// OR
+console.log(true || true); // true
+console.log(false || true); // true
+console.log(true || false); // true
+console.log(false || false); // false
+console.log((5 === 5) || (3 > 5)); // true
+ 
+// NOT
+console.log(!true); // false
+console.log(!false); // true
+
+_________________________________________________
+
+## String Operator
+
+Operator string adalah operator yang digunakan untuk menggabungkan dua nilai string. Operator ini menggunakan simbol + dan termasuk dalam kategori binary operator.
+
+Berikut adalah contoh penggunaan operator string untuk menggabungkan dua nilai string.
+
+_________________________________________________
+
+const first = 'bekerja';
+const second = 'sama';
+const merged = first + second;
+ 
+console.log(merged); // Output: bekerjasama
+
+_________________________________________________
+
+Perlu diperhatikan bahwa simbol + memiliki fungsi ganda tergantung pada jenis operannya. Jika salah satu operan adalah string, simbol + akan berfungsi sebagai operator string untuk menggabungkan nilai string tersebut. Sebaliknya, jika kedua operand adalah angka, simbol + akan berfungsi sebagai operator aritmetika untuk melakukan penjumlahan.
+
+Meskipun terlihat sederhana, penggunaan simbol + ini bisa sedikit membingungkan. Contohnya, pada operasi "2" + 2, hasilnya bukan 4, melainkan "22". Hal ini terjadi karena salah satu operannya adalah string sehingga simbol + berfungsi sebagai operator string.
