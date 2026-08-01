@@ -1,115 +1,129 @@
-## Tipe Data
+#  Tipe Data di JavaScript
 
-Nilai yang dihasilkan dari sebuah expression dapat disebut juga sebagai data. Dalam pemrograman, data adalah elemen dasar yang sering kita simpan dan olah untuk membuat instruksi atau statement. Agar kita dapat menggunakan dan mengelola data dengan baik, penting untuk memahami berbagai tipe data yang ada, terutama pada JavaScript.
+Ringkasan materi tentang tipe data primitif dasar di JavaScript, yaitu **String**, **Number**, dan **Boolean**.
 
-Pada materi ini, kita akan membahas tipe data dasar atau yang lebih dikenal sebagai tipe data primitif. Dalam JavaScript, ada tipe data primitif yang penting untuk diketahui, yaitu string, number, boolean dan nilai kosong (null dan undefined).
+---
 
-Mari kita bahas satu per satu tipe data tersebut.
+##  Daftar Isi
 
-## String
+- [Apa Itu Tipe Data](#-apa-itu-tipe-data)
+- [String](#-string)
+- [Number](#-number)
+- [Boolean](#-boolean)
+- [Kesimpulan](#-kesimpulan)
 
-String adalah tipe data yang merepresentasikan teks. Data seperti nama, alamat, atau email adalah contoh data yang dikelola dalam bentuk string. Dalam JavaScript, nilai string diapit oleh tanda kutip. Ada tiga jenis tanda kutip yang dapat digunakan untuk membuat nilai string, yaitu petik tunggal (single quote), petik ganda (double quote), dan backticks (tanda backtick).
+---
 
-_________________________________________________
+##  Apa Itu Tipe Data
 
+Nilai yang dihasilkan dari sebuah *expression* disebut juga **data**. Data adalah elemen dasar yang disimpan dan diolah untuk membuat instruksi atau statement dalam pemrograman.
+
+JavaScript memiliki beberapa **tipe data primitif**, di antaranya:
+
+| Tipe Data | Keterangan |
+|---|---|
+| `string` | merepresentasikan teks |
+| `number` | merepresentasikan angka (bulat maupun pecahan) |
+| `boolean` | merepresentasikan nilai benar/salah (`true`/`false`) |
+| `null` & `undefined` | merepresentasikan nilai kosong |
+
+---
+
+##  String
+
+**String** adalah tipe data yang merepresentasikan teks, seperti nama, alamat, atau email. Nilai string diapit oleh tanda kutip, dan JavaScript mendukung tiga jenis tanda kutip:
+
+- petik tunggal (`'...'`)
+- petik ganda (`"..."`)
+- backticks (`` `...` ``)
+
+```js
 "Ini merupakan contoh string di JavaScript"
 'Ini merupakan contoh string di JavaScript'
 `Ini merupakan contoh string di JavaScript`
+```
 
-_________________________________________________
+> 📝 Tanda kutip pembuka dan penutup harus **sama**.
 
-Anda bisa menggunakan salah satu dari ketiga tanda kutip tersebut untuk membuat nilai string, asalkan tanda kutip pembuka dan penutupnya sama.
+### Baris Baru dalam String
 
-Hampir semua karakter dapat ditulis langsung di antara tanda kutip. Namun, ada beberapa karakter yang memerlukan penanganan khusus, seperti baris baru (karakter yang terbentuk ketika Anda menekan tombol Enter). Baris baru hanya bisa dituliskan secara langsung ketika Anda menggunakan backticks. Untuk tanda kutip tunggal atau ganda, kita harus menggunakan notasi \n.
+Untuk petik tunggal/ganda, baris baru harus ditulis dengan notasi `\n`. Sementara backticks mendukung baris baru secara langsung.
 
-_________________________________________________
-
+```js
 "Baris pertama.\nBaris kedua."
 'Baris pertama.\nBaris kedua.'
 `Baris pertama.
 Baris kedua.`
+```
 
-_________________________________________________
+### Template Literals
 
-Backticks sering disebut juga sebagai template literals karena memungkinkan kita menyisipkan JavaScript expressions untuk membentuk nilai string menggunakan notasi ${}.
+Backticks juga disebut **template literals** karena memungkinkan kita menyisipkan JavaScript expression ke dalam string menggunakan notasi `${}`.
 
-_________________________________________________
-
-main.js
-
+```js
 const currentYear = new Date().getFullYear();
 const text = `Sekarang adalah tahun ${currentYear}.`;
 
 console.log(text);
+```
 
-_________________________________________________
+---
 
-Dengan memahami penggunaan string serta template literals, Anda dapat mengelola teks dalam JavaScript lebih efektif dan fleksibel.
+##  Number
 
-## Number
+**Number** merepresentasikan semua data berupa angka, baik bilangan bulat maupun pecahan. Nilai number ditulis langsung tanpa tanda kutip.
 
-Semua data berupa angka direpresentasikan dalam tipe data number, baik itu bilangan bulat maupun pecahan. Untuk membuat nilai number, kita cukup menuliskan angkanya secara langsung tanpa menggunakan tanda khusus. Berikut adalah contoh nilai number dalam JavaScript.
-
-_________________________________________________
-
+```js
 40
 3.14
 5
 3.333
+```
 
-_________________________________________________
+### Nilai Spesial: `Infinity` dan `NaN`
 
-Selain angka normal, tipe data number juga memiliki nilai spesial, yaitu Infinity dan NaN. Nilai Infinity dihasilkan ketika kita melakukan operasi aritmetika yang tidak terdefinisi, seperti membagi sebuah nilai dengan nol. Contohnya kode di bawah ini.
+- **`Infinity`** muncul saat melakukan operasi aritmetika yang tidak terdefinisi, misalnya membagi dengan nol.
 
-_________________________________________________
-
-main.js
-
+```js
 const result = 50 / 0;
 console.log(result); // output: Infinity
+```
 
-_________________________________________________
+- **`NaN`** (*Not-a-Number*) muncul saat nilai non-numerik dikonversi ke tipe number, misalnya mengonversi string yang bukan angka.
 
-Adapun nilai NaN (Not-a-Number) dihasilkan ketika nilai non-numerik diubah ke tipe data number. Contohnya ketika kita mencoba mengonversi string yang bukan angka menjadi number.
-
-_________________________________________________
-
-main.js 
-
+```js
 const result = Number('Dicoding');
 console.log(result); // output: NaN
+```
 
-_________________________________________________
+> 📝 Konversi antar tipe data akan dibahas lebih lanjut setelah mengenal seluruh tipe data.
 
-Kita akan membahas lebih detail tentang konversi antar tipe data setelah mengenal seluruh tipe data yang ada.
+---
 
-## Boolean 
+##  Boolean
 
-Boolean adalah tipe data yang hanya memiliki dua nilai: true dan false. Boolean umumnya digunakan untuk merepresentasikan “ya” atau “tidak”, “ya” adalah true dan “tidak” adalah false.
+**Boolean** adalah tipe data yang hanya memiliki dua kemungkinan nilai: `true` dan `false`. Umumnya digunakan untuk merepresentasikan kondisi "ya" (`true`) atau "tidak" (`false`).
 
-Untuk membuat nilai boolean, kita bisa menuliskan true atau false secara langsung. Contohnya seperti kode di bawah ini.
-
-_________________________________________________
-
-main.js
-
+```js
 const completed = true;
 const passed = false;
 
 console.log(completed, passed); // output: true false
+```
 
-_________________________________________________
+Nilai boolean juga sering dihasilkan dari operator perbandingan.
 
-Nilai boolean juga biasa diperoleh dari hasil penggunaan operator perbandingan.
-
-_________________________________________________
-
-main.js
-
+```js
 const isGreater = 5 > 2;
 
 console.log(isGreater); // output: true (5 lebih besar dari 2)
+```
 
-_________________________________________________
+---
 
-Dengan memahami cara kerja boolean, kita dapat menggunakan tipe data ini untuk membuat logika pemrograman yang lebih efektif dan efisien.
+##  Kesimpulan
+
+- **String** merepresentasikan teks, bisa dibuat dengan petik tunggal, petik ganda, atau backticks (*template literals*).
+- **Number** merepresentasikan angka, termasuk nilai spesial `Infinity` dan `NaN`.
+- **Boolean** hanya memiliki dua nilai: `true` dan `false`, sering dihasilkan dari operator perbandingan.
+- Memahami tipe data primitif ini penting sebagai dasar untuk mengelola dan mengolah data di JavaScript.
