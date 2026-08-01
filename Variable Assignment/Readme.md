@@ -14,6 +14,8 @@ Nama variabel haruslah unik dalam cakupannya. Anda tidak bisa menggunakan nama y
 
 Berikut adalah contoh kode yang akan menghasilkan error karena memberikan nama variabel yang sudah terdefinisi sebelumnya.
 
+_________________________________________________
+
 // Company data
 const name = 'Dicoding';
 const legal = 'LLC';
@@ -22,10 +24,14 @@ const legal = 'LLC';
 const name = 'John'; // SyntaxError: Identifier 'name' has already been declared
 const division = 'IT';
 
+_________________________________________________
+
 Anda boleh menggunakan nama variabel yang sama selama cakupannya berbeda, contohnya variabel yang berada dalam sebuah fungsi berbeda.
 
+_________________________________________________
+
 function printCompanyInfo() {
-  const name = 'Dicoding'; // <- nama variabel sama
+  const name = 'Lion'; // <- nama variabel sama
   const legal = 'LLC';
   
   console.log('Company name:', name);
@@ -43,12 +49,16 @@ function printEmployeeInfo() {
 printCompanyInfo();
 printEmployeeInfo();
 
+_________________________________________________
+
 *Catatan :*
 Kita akan membahas tentang cakupan dan fungsi pada modul terpisah.
 
 *Nama Variabel Hanya terdiri dari Karakter Tertentu*
 
 Nama variabel tidak boleh mengandung karakter selain huruf, angka, garis bawah (underscore), dan tanda dolar. Berikut adalah contoh penamaan variabel yang benar dan salah.
+
+_________________________________________________
 
 // nama variabel yang benar
 const firstName = 'Fulan';
@@ -64,9 +74,13 @@ const @message = 'Hello, World!'; // tidak boleh mengandung karakter @
  
 // ..dan lain-lain
 
+_________________________________________________
+
 *Nama Variabel Tidak Boleh Diawali dengan Angka*
 
 Walau angka boleh digunakan dalam penamaan variabel, tetapi jika nama variabel diawali dengan angka, nama tersebut dianggap salah. Berikut contohnya.
+
+_________________________________________________
 
 // nama variabel yang benar
 const firstName = 'Fulan';
@@ -75,3 +89,5 @@ const _secondName = 'Fulana';
 // nama variabel yang salah karena diawali dengan angka
 const 1stName = 'Fulan';
 const 2ndName = 'Fulana';
+
+_________________________________________________
