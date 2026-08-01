@@ -15,14 +15,41 @@ Operator aritmetika, seperti + termasuk dalam kelompok operator binary karena me
 Berikut adalah contoh kode yang menunjukkan penggunaan unary, binary, dan ternary operator.
 
 let age = 25;
- 
+
 // Unary operator
 typeof age;
- 
+
 // Binary operator
 5 + 4;
 10 / 2;
 age = 30;
- 
+
 // Ternary operator (conditional operator)
-(age < 18) ? 'You are too young!' : 'Welcome onboard!'; 
+(age < 18) ? 'You are too young!' : 'Welcome onboard!';
+
+Sudah jelas mengenai istilah operator dan operan beserta pengelompokan operator unary, binary, dan ternary? Jika sudah, mari kita mengenal berbagai operator yang ada dalam JavaScript.
+
+## Assignment Operator
+
+Operator penugasan atau assignment operator adalah operator yang digunakan untuk memberikan nilai kepada sebuah variabel, baik inisiasi nilai baru maupun mengubah nilai yang sudah ada. Operator ini ditulis dengan simbol sama dengan (=). Operator penugasan termasuk dalam kategori binary operator karena membutuhkan dua operan, yaitu variabel di sisi kiri dan nilai yang akan diberikan di sisi kanan. Operator ini ditulis di antara kedua operan.
+
+Inilah contoh penggunaan untuk inisiasi nilai.
+
+_________________________________________________
+
+// Digunakan untuk menginisiasi nilai
+const name = 'Jouqio';
+let location = 'Bontang';
+
+_________________________________________________
+
+Adapun berikut adalah contoh penggunaan untuk mengubah nilai.
+
+_________________________________________________
+
+// Digunakan untuk mengubah nilai
+location = 'Jakarta';
+
+_________________________________________________
+
+## Arithmetic Operator
