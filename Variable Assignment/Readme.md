@@ -1,93 +1,120 @@
-## Variable Assignment
+# 📘 Variable Assignment di JavaScript
 
-Variabel adalah wadah untuk menampung sebuah nilai. Nilai yang ditampung dapat berupa angka, teks, atau apa pun yang menghasilkan nilai (expression). Pada JavaScript, kita bisa membuat variabel melalui dua cara, yakni dengan sintaksis const dan let.
+Ringkasan materi tentang apa itu variabel, cara membuatnya, dan aturan-aturan penamaan variabel yang berlaku di JavaScript.
 
-Berikut adalah contoh cara membuat variabel dengan menggunakan const dan let.
+---
 
-## Aturan Penamaan Variabel
+##  Daftar Isi
 
-Dalam membuat variabel, kita tidak bisa memberikan nama secara sembarang. Ada aturan yang perlu kita taati. Berikut adalah beberapa aturan dalam penamaan variabel pada JavaScript.
+- [Apa Itu Variabel](#-apa-itu-variabel)
+- [Aturan Penamaan Variabel](#-aturan-penamaan-variabel)
+  - [1. Tidak Boleh Ada Nama yang Sama dalam Cakupan yang Sama](#1-tidak-boleh-ada-nama-yang-sama-dalam-cakupan-yang-sama)
+  - [2. Hanya Boleh Terdiri dari Karakter Tertentu](#2-hanya-boleh-terdiri-dari-karakter-tertentu)
+  - [3. Tidak Boleh Diawali dengan Angka](#3-tidak-boleh-diawali-dengan-angka)
+- [Kesimpulan](#-kesimpulan)
 
-*Tidak Boleh memberikan Nama yang Sama dalam cakupan yang sama*
+---
 
-Nama variabel haruslah unik dalam cakupannya. Anda tidak bisa menggunakan nama yang sama dengan variabel yang sudah terdefinisi sebelumnya.
+##  Apa Itu Variabel
 
-Berikut adalah contoh kode yang akan menghasilkan error karena memberikan nama variabel yang sudah terdefinisi sebelumnya.
+**Variabel** adalah wadah untuk menampung sebuah nilai. Nilai yang ditampung dapat berupa angka, teks, atau apa pun yang menghasilkan nilai (*expression*).
 
-_________________________________________________
+Di JavaScript, ada dua sintaksis utama untuk membuat variabel:
 
+| Keyword | Keterangan |
+|---|---|
+| `const` | nilai variabel tidak bisa diubah setelah didefinisikan |
+| `let` | nilai variabel bisa diubah/di-assign ulang |
+
+```js
+const companyName = 'Dicoding';
+let employeeCount = 10;
+```
+
+---
+
+##  Aturan Penamaan Variabel
+
+Penamaan variabel di JavaScript tidak boleh sembarangan — ada beberapa aturan yang wajib ditaati.
+
+### 1. Tidak Boleh Ada Nama yang Sama dalam Cakupan yang Sama
+
+Nama variabel harus **unik** dalam cakupannya (*scope*). Kita tidak bisa mendeklarasikan ulang variabel dengan nama yang sudah ada di cakupan yang sama.
+
+```js
 // Company data
 const name = 'Dicoding';
 const legal = 'LLC';
- 
+
 // Employee data
 const name = 'John'; // SyntaxError: Identifier 'name' has already been declared
 const division = 'IT';
+```
 
-_________________________________________________
+Namun, nama yang sama **diperbolehkan** jika cakupannya berbeda — misalnya berada di dalam fungsi yang berbeda.
 
-Anda boleh menggunakan nama variabel yang sama selama cakupannya berbeda, contohnya variabel yang berada dalam sebuah fungsi berbeda.
-
-_________________________________________________
-
+```js
 function printCompanyInfo() {
   const name = 'Lion'; // <- nama variabel sama
   const legal = 'LLC';
-  
+
   console.log('Company name:', name);
   console.log('Legal type:', legal);
 }
- 
+
 function printEmployeeInfo() {
   const name = 'John'; // <- nama variabel sama
   const division = 'IT';
-  
+
   console.log('Employee name:', name);
   console.log('Division:', division);
 }
- 
+
 printCompanyInfo();
 printEmployeeInfo();
+```
 
-_________________________________________________
+> 📝 **Catatan:** Konsep cakupan (*scope*) dan fungsi akan dibahas lebih lanjut pada modul terpisah.
 
-*Catatan :*
-Kita akan membahas tentang cakupan dan fungsi pada modul terpisah.
+### 2. Hanya Boleh Terdiri dari Karakter Tertentu
 
-*Nama Variabel Hanya terdiri dari Karakter Tertentu*
+Nama variabel hanya boleh mengandung: **huruf**, **angka**, **garis bawah** (`_`), dan **tanda dolar** (`$`).
 
-Nama variabel tidak boleh mengandung karakter selain huruf, angka, garis bawah (underscore), dan tanda dolar. Berikut adalah contoh penamaan variabel yang benar dan salah.
-
-_________________________________________________
-
-// nama variabel yang benar
+```js
+// ✅ nama variabel yang benar
 const firstName = 'Fulan';
 const last_name = 'Lestari';
 const $message = 'Hello, World!';
 const userId1 = 123;
 const userId2 = 456;
- 
-// nama variabel yang salah
-const first-name = 'Fulan'; // tidak boleh mengandung karakter -
-const last name = 'Lestari'; // tidak boleh mengandung spasi
+
+// ❌ nama variabel yang salah
+const first-name = 'Fulan';   // tidak boleh mengandung karakter -
+const last name = 'Lestari';  // tidak boleh mengandung spasi
 const @message = 'Hello, World!'; // tidak boleh mengandung karakter @
- 
+
 // ..dan lain-lain
+```
 
-_________________________________________________
+### 3. Tidak Boleh Diawali dengan Angka
 
-*Nama Variabel Tidak Boleh Diawali dengan Angka*
+Angka boleh digunakan dalam nama variabel, tetapi **tidak boleh berada di awal**.
 
-Walau angka boleh digunakan dalam penamaan variabel, tetapi jika nama variabel diawali dengan angka, nama tersebut dianggap salah. Berikut contohnya.
-
-_________________________________________________
-
-// nama variabel yang benar
+```js
+// ✅ nama variabel yang benar
 const firstName = 'Fulan';
 const _secondName = 'Fulana';
- 
-// nama variabel yang salah karena diawali dengan angka
+
+// ❌ nama variabel yang salah karena diawali dengan angka
 const 1stName = 'Fulan';
 const 2ndName = 'Fulana';
+```
 
-_________________________________________________
+---
+
+##  Kesimpulan
+
+- Variabel adalah wadah untuk menyimpan nilai, dibuat dengan `const` atau `let`.
+- Nama variabel harus **unik** dalam cakupan yang sama, tapi boleh sama jika berbeda cakupan (misalnya di fungsi berbeda).
+- Nama variabel hanya boleh berisi **huruf, angka, underscore (`_`), dan tanda dolar (`$`)** — tanpa spasi atau karakter khusus lain.
+- Nama variabel **tidak boleh diawali dengan angka**.
