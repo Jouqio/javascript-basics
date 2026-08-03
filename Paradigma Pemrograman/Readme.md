@@ -1,29 +1,125 @@
-## Paradigma
+# Paradigma Pemrograman
 
-Paradigma pemrograman adalah gaya atau pendekatan yang dilakukan oleh programmer dalam menulis program. Paradigma dapat menjadi pedoman dalam menulis program. Selain itu, paradigma juga memberikan pandangan yang unik dalam menyelesaikan masalah. Misalkan, paradigma object-oriented programming (OOP) memberikan pandangan bahwa menyelesaikan masalah dapat dilakukan dengan pendekatan berbasis objek.
+## Daftar Isi
+- [Apa itu Paradigma Pemrograman?](#apa-itu-paradigma-pemrograman)
+- [Paradigma Berbasis Objek (OOP)](#paradigma-berbasis-objek-oop)
+- [Empat Pilar OOP](#empat-pilar-oop)
+  - [1. Inheritance](#1-inheritance)
+  - [2. Encapsulation](#2-encapsulation)
+  - [3. Polymorphism](#3-polymorphism)
+  - [4. Abstraction](#4-abstraction)
 
-Untuk menyelesaikan masalah dengan solusi yang optimal, kita harus memiliki berbagai macam pendekatan atau pandangan. Oleh karena itu, memahami paradigma pemrograman sangat penting karena setiap paradigma menawarkan pendekatan unik yang dapat menghasilkan solusi yang optimal. Dengan menulis kode sesuai paradigma yang ada, kode akan lebih bersih, dapat digunakan kembali (reuse), dan memudahkan berkolaborasi dengan orang lain. 
+---
 
-Kolaborasi akan lebih mudah dan minim masalah karena kita memiliki pemahaman dan pedoman yang sama. Misalnya, ketika menggunakan paradigma OOP, setiap orang yang terlibat di projek tersebut akan menggunakan pendekatan OOP dalam menyelesaikan masalah sehingga miskomunikasi dapat dihindari. Perlu diingat bahwa paradigma bukanlah rule yang wajib diikuti tetapi pedoman yang dapat memudahkan kita dalam menulis program.
+## Apa itu Paradigma Pemrograman?
 
-Ada berbagai jenis paradigma pemrograman seperti imperative, object-oriented, procedural, dan functional. Namun, dalam modul ini, kita hanya akan berfokus ke paradigma object-oriented. Bagaimana, sudah penasaran dengan paradigma tersebut?
+Paradigma pemrograman adalah **gaya atau pendekatan** yang digunakan programmer dalam menulis program. Paradigma berfungsi sebagai:
 
-## Paradigma Berbasis Objek
+- Pedoman dalam menulis kode
+- Pandangan unik dalam menyelesaikan masalah
 
-Sesuai dengan namanya, di paradigma ini kita akan banyak berhubungan dengan objek. Object-oriented programming (OOP) adalah paradigma pemrograman yang memiliki pendekatan berbasis object. Object akan berinteraksi satu sama lain untuk menyelesaikan tugas sehingga membentuk keseluruhan program. Selain itu, object merupakan representasi dari entitas.
+Contoh: paradigma **Object-Oriented Programming (OOP)** memandang penyelesaian masalah melalui pendekatan berbasis objek.
 
-Object terdiri dari atribut informasi (property) dan perilaku (method). Property adalah informasi tentang objek tersebut seperti nama, warna, dan jenis, sedangkan method adalah aksi atau perilaku yang dapat dilakukan oleh objek seperti berjalan, berlari, dan terbang. Kita ambil contoh pada kehidupan sehari-hari, misalnya entitas kucing direpresentasikan menjadi object kucing dengan memiliki properti dan atribut. Property pada kucing adalah warna, jenis ras, nama, dan umur. Method pada kucing adalah berlari, tidur, makan, dan mencakar. 
+### Kenapa Penting?
+Memahami paradigma pemrograman penting karena:
 
-Misalkan, Anda memiliki dua ekor kucing dengan nama Ziggy dan Garfield. Untuk setiap kucing, kita perlu untuk menentukan nama, warna, berat badan, dan perilakunya. 
+| Manfaat | Penjelasan |
+|---|---|
+| Kode lebih bersih | Mengikuti pola/struktur yang konsisten |
+| Reusable | Kode dapat digunakan kembali |
+| Kolaborasi mudah | Tim memiliki pemahaman & pedoman yang sama, sehingga miskomunikasi berkurang |
 
-Kucing pertama, kita mendefinisikan namanya adalah Ziggy, warnanya hitam putih, berat badannya 3 kg, dan perilakunya adalah suka tidur. Kemudian, kita melakukan hal yang sama untuk kucing kedua, Garfield. Kita mendefinisikan namanya Garfield, warnanya oranye, berat badannya 2 kg, dan perilakunya adalah suka bermain. Setiap memiliki kucing baru, kita akan melakukan hal ini secara berulang.
+> **Catatan:** Paradigma bukan aturan wajib (rule), melainkan pedoman yang memudahkan penulisan program.
 
-Jika memiliki lima kucing, bayangkan betapa repotnya kita untuk mendefinisikan setiap ciri-cirinya. Begitu pula dengan pemrograman, bila kita memiliki 5 objek yang berbeda, tentunya akan memakan waktu yang lama untuk mendefinisikan properti dan methodnya satu per satu. Lalu, apa solusinya? Solusinya adalah menggunakan object dan class. Selama menggunakan paradigma OOP, kita akan sering berhubungan dengan object dan class.
+---
 
-Object adalah bentuk nyata dari suatu entitas, sedangkan class adalah cetak biru (blueprint), cetakan atau template yang dapat kita gunakan berulang kali untuk membuat object. Object dan class mempermudah ketika ingin membuat entitas yang kompleks dengan cepat dan efektif. Anda perlu untuk mencermati kedua hal ini agar bisa menguasai paradigma OOP.
+## Paradigma Berbasis Objek (OOP)
 
-## Tonggak Utama dari OOP
+OOP adalah paradigma yang berpusat pada **objek**, di mana objek-objek saling berinteraksi untuk menyelesaikan tugas dan membentuk keseluruhan program.
 
-OOP sangat cocok digunakan pada program yang kompleks karena dapat mengelompokkan kode menjadi object dan class. Selain itu, kode yang kompleks akan menjadi lebih bersih dan ringkas karena bisa digunakan kembali melalui konsep inheritance (class dan inheritance akan dibahas lebih detail di materi berikutnya). OOP memiliki empat pilar yang membentuknya yaitu encapsulation, inheritance, polymorphism, dan abstraction.
+### Konsep Dasar
+- **Object** → representasi nyata dari suatu entitas
+- **Property** → atribut/informasi tentang objek (contoh: nama, warna, jenis)
+- **Method** → aksi/perilaku yang dapat dilakukan objek (contoh: berjalan, berlari, terbang)
+- **Class** → cetak biru (blueprint) untuk membuat object secara berulang
 
-Empat prinsip ini menjadi panduan dalam menulis program untuk memastikan bahwa kompleksitas selama pengembangan perangkat lunak berkurang. Di bahasa pemrograman yang kental dengan praktik OOP seperti Java, keempat konsep didukung dan dapat diterapkan dengan baik. Namun, beberapa praktik yang ada di JavaScript, seperti abstraction, tidak dapat diterapkan secara maksimal karena keterbatasan fitur yang tersedia. JavaScript sendiri sampai saat ini belum memiliki cara untuk membuat abstract class secara standar yang dibutuhkan dalam menerapkan konsep abstraction.
+### Kenapa OOP Cocok untuk Program Kompleks?
+OOP mengelompokkan kode menjadi object dan class, sehingga:
+- Kode lebih ringkas & bersih
+- Kode dapat digunakan kembali melalui **inheritance**
+
+---
+
+## Empat Pilar OOP
+
+OOP dibangun di atas empat pilar utama:
+
+1. **Encapsulation**
+2. **Inheritance**
+3. **Polymorphism**
+4. **Abstraction**
+
+> ⚠️ Tidak semua bahasa pemrograman mendukung keempat pilar secara maksimal. Contohnya **JavaScript** belum memiliki cara standar untuk membuat *abstract class*, sehingga penerapan **abstraction** menjadi terbatas — berbeda dengan bahasa seperti **Java** yang mendukung penuh keempat konsep ini.
+
+---
+
+### 1. Inheritance
+
+**Inheritance (pewarisan)** memungkinkan sebuah class mewariskan property dan method-nya ke class lain.
+
+- **SuperClass** (Induk/Base/Parent Class) → class yang mewariskan
+- **SubClass** (Anak/Children Class) → class yang mewarisi
+
+**Manfaat:** mengurangi penulisan kode berulang (redundancy).
+
+```javascript
+class SuperClass { }
+
+class SubClass extends SuperClass { }
+```
+
+---
+
+### 2. Encapsulation
+
+**Encapsulation** adalah proses membungkus data di dalam sebuah wadah (class), dengan tujuan **menyembunyikan data** dari akses luar.
+
+- Object hanya menampilkan data yang dibutuhkan oleh object lain
+- Data lainnya bersifat **private** dan tidak dapat diakses langsung
+
+**Analogi dunia nyata:** Mesin kopi memiliki data & method private (pengatur suhu, pemanas, method memanaskan air) yang tidak bisa diakses langsung oleh pengguna.
+
+---
+
+### 3. Polymorphism
+
+**Polymorphism** berasal dari bahasa Yunani yang berarti **"memiliki banyak bentuk"**.
+
+Konsep ini memungkinkan SubClass **mengubah implementasi** method yang diwariskan dari SuperClass — mirip seperti seorang anak yang mengubah suatu sifat/perilaku yang diwarisi dari orang tuanya.
+
+**Fungsi utama:** memberi fleksibilitas pada SubClass untuk memiliki implementasi method sendiri, meski method tersebut awalnya berasal dari SuperClass yang sama.
+
+---
+
+### 4. Abstraction
+
+*(Materi lanjutan belum tercakup penuh dalam dokumen sumber — namun disebutkan sebagai salah satu dari empat pilar OOP.)*
+
+Abstraction pada dasarnya bertujuan untuk **menyembunyikan detail implementasi yang kompleks** dan hanya menampilkan fungsionalitas penting kepada pengguna.
+
+> Catatan: Di JavaScript, penerapan abstraction terbatas karena belum ada fitur standar untuk *abstract class*.
+
+---
+
+## Ringkasan
+
+| Pilar | Inti Konsep |
+|---|---|
+| Inheritance | Pewarisan property & method dari SuperClass ke SubClass |
+| Encapsulation | Menyembunyikan data (private) dalam class |
+| Polymorphism | Satu method, banyak bentuk implementasi |
+| Abstraction | Menyembunyikan detail implementasi yang kompleks |
+
+---
+
+*README ini dirangkum dari materi pembelajaran "Paradigma Pemrograman" untuk keperluan belajar/referensi pribadi.*
