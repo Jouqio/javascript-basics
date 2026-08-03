@@ -21,3 +21,9 @@ Kucing pertama, kita mendefinisikan namanya adalah Ziggy, warnanya hitam putih, 
 Jika memiliki lima kucing, bayangkan betapa repotnya kita untuk mendefinisikan setiap ciri-cirinya. Begitu pula dengan pemrograman, bila kita memiliki 5 objek yang berbeda, tentunya akan memakan waktu yang lama untuk mendefinisikan properti dan methodnya satu per satu. Lalu, apa solusinya? Solusinya adalah menggunakan object dan class. Selama menggunakan paradigma OOP, kita akan sering berhubungan dengan object dan class.
 
 Object adalah bentuk nyata dari suatu entitas, sedangkan class adalah cetak biru (blueprint), cetakan atau template yang dapat kita gunakan berulang kali untuk membuat object. Object dan class mempermudah ketika ingin membuat entitas yang kompleks dengan cepat dan efektif. Anda perlu untuk mencermati kedua hal ini agar bisa menguasai paradigma OOP.
+
+## Tonggak Utama dari OOP
+
+OOP sangat cocok digunakan pada program yang kompleks karena dapat mengelompokkan kode menjadi object dan class. Selain itu, kode yang kompleks akan menjadi lebih bersih dan ringkas karena bisa digunakan kembali melalui konsep inheritance (class dan inheritance akan dibahas lebih detail di materi berikutnya). OOP memiliki empat pilar yang membentuknya yaitu encapsulation, inheritance, polymorphism, dan abstraction.
+
+Empat prinsip ini menjadi panduan dalam menulis program untuk memastikan bahwa kompleksitas selama pengembangan perangkat lunak berkurang. Di bahasa pemrograman yang kental dengan praktik OOP seperti Java, keempat konsep didukung dan dapat diterapkan dengan baik. Namun, beberapa praktik yang ada di JavaScript, seperti abstraction, tidak dapat diterapkan secara maksimal karena keterbatasan fitur yang tersedia. JavaScript sendiri sampai saat ini belum memiliki cara untuk membuat abstract class secara standar yang dibutuhkan dalam menerapkan konsep abstraction.
