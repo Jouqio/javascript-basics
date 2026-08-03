@@ -23,8 +23,8 @@ Di berkas `module.mjs`, variable dapat langsung diekspor menggunakan keyword `ex
 
 ```js
 // module.mjs
-export const name = 'Dicoding';
-export const favoriteFood = ['pizza', 'pasta', 'sushi'];
+export const name = "Dicoding";
+export const favoriteFood = ["pizza", "pasta", "sushi"];
 ```
 
 ## Mengekspor Function
@@ -33,8 +33,8 @@ Cara mengekspor function tidak jauh berbeda dengan variable.
 
 ```js
 // module.mjs
-export const name = 'John';
-export const favoriteFood = ['pizza', 'pasta', 'sushi'];
+export const name = "John";
+export const favoriteFood = ["pizza", "pasta", "sushi"];
 
 export function sayHi(name) {
   console.log(`Hi, ${name}!`);
@@ -45,8 +45,8 @@ Agar tidak perlu menuliskan `export` di setiap nilai, kita bisa mengekspornya se
 
 ```js
 // module.mjs
-const name = 'John';
-const favoriteFood = ['pizza', 'pasta', 'sushi'];
+const name = "John";
+const favoriteFood = ["pizza", "pasta", "sushi"];
 
 function sayHi(name) {
   console.log(`Hi, ${name}!`);
@@ -61,7 +61,7 @@ Buat berkas baru, misalnya `index.mjs`, untuk mengimpor nilai dari `module.mjs`.
 
 ```js
 // index.mjs
-import { name, favoriteFood } from './module.mjs';
+import { name, favoriteFood } from "./module.mjs";
 
 console.log(name);
 console.log(favoriteFood);
@@ -70,7 +70,7 @@ console.log(favoriteFood);
 Kita juga bisa mengimpor dengan **import alias** — hasilnya tetap sama, hanya beda penamaan:
 
 ```js
-import { name, favoriteFood as food } from './module.mjs';
+import { name, favoriteFood as food } from "./module.mjs";
 
 console.log(name);
 console.log(food);
@@ -81,7 +81,7 @@ console.log(food);
 Function diimpor dengan cara yang sama seperti variable (named import):
 
 ```js
-import { name, favoriteFood as food, sayHi } from './module.mjs';
+import { name, favoriteFood as food, sayHi } from "./module.mjs";
 
 console.log(name);
 console.log(food);
@@ -91,7 +91,7 @@ sayHi(name);
 Jika ingin mengimpor **seluruh nilai** dari suatu module, gunakan `import *` agar lebih ringkas:
 
 ```js
-import * as user from './module.mjs';
+import * as user from "./module.mjs";
 
 console.log(user.name);
 console.log(user.favoriteFood);
@@ -153,17 +153,17 @@ Atribut `nomodule` memberitahu browser untuk memuat `fallback.js` jika ESM tidak
 
 ## Ringkasan Perbandingan
 
-| Konteks | Cara Mengaktifkan ESM | Catatan |
-|---|---|---|
-| Node.js — per berkas | Ubah ekstensi menjadi `.mjs` | Sederhana, tapi kurang efisien untuk banyak berkas |
-| Node.js — level project | Tambahkan `"type": "module"` di `package.json` | Direkomendasikan untuk project dengan banyak berkas |
-| Browser — berkas terpisah | `<script src="..." type="module">` | Perlu fallback `nomodule` untuk browser lama |
-| Browser — inline | `<script type="module"> ... </script>` | Tidak perlu berkas terpisah |
+| Konteks                   | Cara Mengaktifkan ESM                          | Catatan                                             |
+| ------------------------- | ---------------------------------------------- | --------------------------------------------------- |
+| Node.js — per berkas      | Ubah ekstensi menjadi `.mjs`                   | Sederhana, tapi kurang efisien untuk banyak berkas  |
+| Node.js — level project   | Tambahkan `"type": "module"` di `package.json` | Direkomendasikan untuk project dengan banyak berkas |
+| Browser — berkas terpisah | `<script src="..." type="module">`             | Perlu fallback `nomodule` untuk browser lama        |
+| Browser — inline          | `<script type="module"> ... </script>`         | Tidak perlu berkas terpisah                         |
 
 **Poin penting terkait import:**
 
-| Teknik | Sintaks | Kegunaan |
-|---|---|---|
-| Named import | `import { x } from '...'` | Mengimpor nilai spesifik berdasarkan nama |
-| Import alias | `import { x as y } from '...'` | Mengubah nama saat import, hasil tetap sama |
-| Import * | `import * as obj from '...'` | Mengimpor semua nilai sekaligus sebagai satu objek |
+| Teknik       | Sintaks                        | Kegunaan                                           |
+| ------------ | ------------------------------ | -------------------------------------------------- |
+| Named import | `import { x } from '...'`      | Mengimpor nilai spesifik berdasarkan nama          |
+| Import alias | `import { x as y } from '...'` | Mengubah nama saat import, hasil tetap sama        |
+| Import \*    | `import * as obj from '...'`   | Mengimpor semua nilai sekaligus sebagai satu objek |
