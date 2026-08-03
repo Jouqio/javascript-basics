@@ -1,7 +1,7 @@
 const employees = [
   {
-    name: 'Fulan',
-    email: 'fulan@dicoding.com',
+    name: "Fulan",
+    email: "fulan@dicoding.com",
     joinYear: 2020,
   },
 ];
@@ -12,13 +12,12 @@ function addEmployee(name, email, joinYear) {
    * lengkapi fungsi ini agar dapat menambahkan objek employee baru
    * berdasarkan nilai argumen fungsi dan simpan ke dalam array `employees`
    */
-   
 }
 
 const employees = [
   {
-    name: 'Fulan',
-    email: 'fulan@dicoding.com',
+    name: "Fulan",
+    email: "fulan@dicoding.com",
     joinYear: 2020,
   },
 ];
@@ -39,7 +38,7 @@ function addEmployee(name, email, joinYear) {
 }
 
 // Contoh pemanggilan
-addEmployee('Indra', 'indra@dicoding.com', 2022);
+addEmployee("Indra", "indra@dicoding.com", 2022);
 
 console.log(employees);
 /* Output:
