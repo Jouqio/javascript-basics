@@ -1,6 +1,7 @@
 # Paradigma Pemrograman
 
 ## Daftar Isi
+
 - [Apa itu Paradigma Pemrograman?](#apa-itu-paradigma-pemrograman)
 - [Paradigma Berbasis Objek (OOP)](#paradigma-berbasis-objek-oop)
 - [Empat Pilar OOP](#empat-pilar-oop)
@@ -21,13 +22,14 @@ Paradigma pemrograman adalah **gaya atau pendekatan** yang digunakan programmer 
 Contoh: paradigma **Object-Oriented Programming (OOP)** memandang penyelesaian masalah melalui pendekatan berbasis objek.
 
 ### Kenapa Penting?
+
 Memahami paradigma pemrograman penting karena:
 
-| Manfaat | Penjelasan |
-|---|---|
-| Kode lebih bersih | Mengikuti pola/struktur yang konsisten |
-| Reusable | Kode dapat digunakan kembali |
-| Kolaborasi mudah | Tim memiliki pemahaman & pedoman yang sama, sehingga miskomunikasi berkurang |
+| Manfaat           | Penjelasan                                                                   |
+| ----------------- | ---------------------------------------------------------------------------- |
+| Kode lebih bersih | Mengikuti pola/struktur yang konsisten                                       |
+| Reusable          | Kode dapat digunakan kembali                                                 |
+| Kolaborasi mudah  | Tim memiliki pemahaman & pedoman yang sama, sehingga miskomunikasi berkurang |
 
 > **Catatan:** Paradigma bukan aturan wajib (rule), melainkan pedoman yang memudahkan penulisan program.
 
@@ -38,13 +40,16 @@ Memahami paradigma pemrograman penting karena:
 OOP adalah paradigma yang berpusat pada **objek**, di mana objek-objek saling berinteraksi untuk menyelesaikan tugas dan membentuk keseluruhan program.
 
 ### Konsep Dasar
+
 - **Object** → representasi nyata dari suatu entitas
 - **Property** → atribut/informasi tentang objek (contoh: nama, warna, jenis)
 - **Method** → aksi/perilaku yang dapat dilakukan objek (contoh: berjalan, berlari, terbang)
 - **Class** → cetak biru (blueprint) untuk membuat object secara berulang
 
 ### Kenapa OOP Cocok untuk Program Kompleks?
+
 OOP mengelompokkan kode menjadi object dan class, sehingga:
+
 - Kode lebih ringkas & bersih
 - Kode dapat digunakan kembali melalui **inheritance**
 
@@ -59,7 +64,7 @@ OOP dibangun di atas empat pilar utama:
 3. **Polymorphism**
 4. **Abstraction**
 
-> ⚠️ Tidak semua bahasa pemrograman mendukung keempat pilar secara maksimal. Contohnya **JavaScript** belum memiliki cara standar untuk membuat *abstract class*, sehingga penerapan **abstraction** menjadi terbatas — berbeda dengan bahasa seperti **Java** yang mendukung penuh keempat konsep ini.
+> ⚠️ Tidak semua bahasa pemrograman mendukung keempat pilar secara maksimal. Contohnya **JavaScript** belum memiliki cara standar untuk membuat _abstract class_, sehingga penerapan **abstraction** menjadi terbatas — berbeda dengan bahasa seperti **Java** yang mendukung penuh keempat konsep ini.
 
 ---
 
@@ -73,9 +78,9 @@ OOP dibangun di atas empat pilar utama:
 **Manfaat:** mengurangi penulisan kode berulang (redundancy).
 
 ```javascript
-class SuperClass { }
+class SuperClass {}
 
-class SubClass extends SuperClass { }
+class SubClass extends SuperClass {}
 ```
 
 ---
@@ -103,23 +108,23 @@ Konsep ini memungkinkan SubClass **mengubah implementasi** method yang diwariska
 
 ### 4. Abstraction
 
-*(Materi lanjutan belum tercakup penuh dalam dokumen sumber — namun disebutkan sebagai salah satu dari empat pilar OOP.)*
+_(Materi lanjutan belum tercakup penuh dalam dokumen sumber — namun disebutkan sebagai salah satu dari empat pilar OOP.)_
 
 Abstraction pada dasarnya bertujuan untuk **menyembunyikan detail implementasi yang kompleks** dan hanya menampilkan fungsionalitas penting kepada pengguna.
 
-> Catatan: Di JavaScript, penerapan abstraction terbatas karena belum ada fitur standar untuk *abstract class*.
+> Catatan: Di JavaScript, penerapan abstraction terbatas karena belum ada fitur standar untuk _abstract class_.
 
 ---
 
 ## Ringkasan
 
-| Pilar | Inti Konsep |
-|---|---|
-| Inheritance | Pewarisan property & method dari SuperClass ke SubClass |
-| Encapsulation | Menyembunyikan data (private) dalam class |
-| Polymorphism | Satu method, banyak bentuk implementasi |
-| Abstraction | Menyembunyikan detail implementasi yang kompleks |
+| Pilar         | Inti Konsep                                             |
+| ------------- | ------------------------------------------------------- |
+| Inheritance   | Pewarisan property & method dari SuperClass ke SubClass |
+| Encapsulation | Menyembunyikan data (private) dalam class               |
+| Polymorphism  | Satu method, banyak bentuk implementasi                 |
+| Abstraction   | Menyembunyikan detail implementasi yang kompleks        |
 
 ---
 
-*README ini dirangkum dari materi pembelajaran "Paradigma Pemrograman" untuk keperluan belajar/referensi pribadi.*
+_README ini dirangkum dari materi pembelajaran "Paradigma Pemrograman" untuk keperluan belajar/referensi pribadi._
