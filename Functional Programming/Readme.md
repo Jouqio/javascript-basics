@@ -1,0 +1,3 @@
+## Functional Programming
+
+FP adalah paradigma pemrograman yang didasarkan pada fungsi matematika murni, yakni fungsi harus menghindari perubahan data sehingga selalu menghasilkan nilai sama ketika diberikan argumen sama. Dalam FP, fungsi adalah elemen utama yang digunakan untuk memecah kode dan membangun keseluruhan program. Dengan menerapkan konsep-konsep dalam FP, kita dapat membangun aplikasi menggunakan kode yang deklaratif (lebih simpel, tegas, dan terprediksi).
