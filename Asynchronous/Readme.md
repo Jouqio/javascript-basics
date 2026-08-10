@@ -1,5 +1,7 @@
 ## Asynchronous
 
+Asynchronous atau asinkron adalah sebuah operasi yang memungkinkan dijalankan oleh mesin dan kemudian dapat beralih fokus untuk menjalankan tugas-tugas (operasi) berikutnya sembari menunggu operasi sebelumnya selesai. Keuntungannya, proses ini tidak akan menimbulkan blocking terhadap proses-proses berikutnya yang sedang mengantre.
+
 Dalam pengembangan aplikasi web atau Node.js, menangani proses yang berjalan secara asynchronous menjadi topik yang cukup menantang. Lalu, apa sih proses asynchronous atau asinkron itu?
 
 Dalam KBBI, asinkron berarti tidak dalam waktu atau kecepatan yang sama atau tidak serentak. Jika dimaknai dalam konteks pemrograman, proses atau operasi asinkron adalah sebuah operasi yang memungkinkan dijalankan oleh mesin dan kemudian dapat beralih fokus untuk menjalankan tugas-tugas (operasi) berikutnya sembari menunggu operasi sebelumnya selesai. Apa alasan adanya proses seperti ini?
