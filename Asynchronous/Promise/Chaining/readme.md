@@ -1,0 +1,1 @@
+Pada main.mjs, pemanggilan then terjadi dua kali karena masih ada proses berikutnya, yaitu mengirimkan kopi, setelah pembuatan kopi sukses. Penanganan ini disebut dengan chaining method. Ini bisa dilakukan karena method then juga mengembalikan nilai Promise sebetulnya sehingga proses asinkron bisa kita teruskan.

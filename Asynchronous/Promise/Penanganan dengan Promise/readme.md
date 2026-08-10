@@ -1,0 +1,1 @@
+Jika ada yang menebak bahwa kita masih pakai callback, yap, memang hal itu benar. Namun, Promise dapat terhindar dari callback hell dengan melakukan chaining method then.
