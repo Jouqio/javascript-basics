@@ -17,7 +17,7 @@
 
 ##  Tentang
 
-Repository ini berisi kumpulan catatan dan latihan kode yang dibuat selama proses belajar **dasar pemrograman JavaScript** — mulai dari sintaks paling dasar seperti variabel dan tipe data, hingga konsep yang lebih kompleks seperti asynchronous programming dan modularisasi.
+Repository ini berisi kumpulan catatan dan latihan kode yang dibuat selama proses belajar **dasar pemrograman JavaScript** — mulai dari sintaks paling dasar seperti variabel dan tipe data, hingga konsep yang lebih kompleks seperti asynchronous programming, OOP, dan modularisasi.
 
 Dibuat untuk:
 
@@ -28,7 +28,7 @@ Dibuat untuk:
 
 <br>
 
-##  Daftar Isi
+## 📋 Daftar Isi
 
 - [Tentang](#-tentang)
 - [Materi Pembelajaran](#-materi-pembelajaran)
@@ -66,6 +66,9 @@ Dibuat untuk:
 - Object
 - Internal & External JS
 - Code Quality
+- Dom Manipulation
+- Event Handling
+- ES6+ (Arrow Function, Destructuring, Modules)
 
 </details>
 
@@ -73,8 +76,12 @@ Dibuat untuk:
 <summary><b>🔴 Lanjutan</b></summary>
 
 - Asynchronous
+- AsyncAwait
+- Fetch API
+- Local Storage
 - Functional Programming
 - Modularisasi
+- OOP JavaScript
 - Paradigma Pemrograman
 
 </details>
@@ -98,10 +105,18 @@ Belajar-Dasar-Pemrograman-JavaScript/
 ├── Object/
 ├── Internal & External js/
 ├── Code Quality/
+├── Dom Manipulation/
+├── Event Handling/
+├── ES6+ (Arrow Function, Destructuring, Modules)/
 ├── Asynchronous/
+├── AsyncAwait/
+├── Fetch API/
+├── Local Storage/
 ├── Functional Programming/
 ├── Modularisasi/
+├── OOP JavaScript/
 ├── Paradigma Pemrograman/
+├── LICENSE
 └── README.md
 ```
 
@@ -150,9 +165,16 @@ Belajar-Dasar-Pemrograman-JavaScript/
 | Object | ✅ Selesai |
 | Internal & External JS | ✅ Selesai |
 | Code Quality | ✅ Selesai |
+| Dom Manipulation | ✅ Selesai |
+| Event Handling | ✅ Selesai |
+| ES6+ (Arrow Function, Destructuring, Modules) | ✅ Selesai |
 | Asynchronous | ✅ Selesai |
+| AsyncAwait | ✅ Selesai |
+| Fetch API | ✅ Selesai |
+| Local Storage | ✅ Selesai |
 | Functional Programming | ✅ Selesai |
 | Modularisasi | ✅ Selesai |
+| OOP JavaScript | ✅ Selesai |
 | Paradigma Pemrograman | ✅ Selesai |
 
 > Keterangan: ✅ Selesai · 🔄 Sedang dipelajari · ⬜ Belum dimulai — perbarui tabel ini sesuai progresmu sendiri.
@@ -168,7 +190,7 @@ Belajar-Dasar-Pemrograman-JavaScript/
 
 <br>
 
-##  Kontribusi
+## 🤝 Kontribusi
 
 Saran, koreksi, dan kontribusi sangat terbuka.
 
