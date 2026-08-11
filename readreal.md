@@ -1,14 +1,10 @@
 Rangkuman Gerbang Dunia JavaScript
 Kita telah belajar banyak hal dalam materi JavaScript sebagai bahasa pemrograman. Kami siapkan rangkuman materi terhadap hal yang telah Anda pelajari selama ini. Harapannya, Anda dapat mengingat kembali setiap materi yang disampaikan.
 
-
-
 Apa Itu Pemrograman
 Pemrograman adalah proses atau kegiatan membuat instruksi yang sistematis untuk berinteraksi dengan komputer dalam memecahkan permasalahan. Manusia membuat beberapa instruksi yang harus dieksekusi oleh komputer dalam bahasa yang dimengertinya, yakni bahasa pemrograman.
 
 Masih ada banyak hal lainnya yang bisa dilakukan oleh komputer melalui programming. Tingkat kompleksitas program berbanding lurus dengan jumlah instruksi. Artinya, makin besar tugas komputer maka makin banyak instruksi yang akan disusun. Bahkan tidak hanya ratusan, ribuan atau jutaan instruksi terstruktur dapat dibangun dalam sebuah program.
-
-
 
 Scripting dan Compiled Language
 Komputer memerlukan bahasa khusus sehingga perintah-perintah tersebut dapat terlaksana dengan baik. Serangkaian perintah komputer ditulis oleh developer dalam bentuk kode. Kode-kode ini hanya dipahami oleh manusia atau disebut dengan bahasa tingkat tinggi. Ada sangat beragam bahasa pemrograman di luar sana dan memiliki penulisan kode atau sintaksis yang bermacam-macam. Beberapa contohnya adalah JavaScript, Java, C, C++, Python, Matlab, dsb.
@@ -22,13 +18,10 @@ Ada beberapa bahasa pemrograman akan membutuhkan satu tahapan sebelum instruksin
 Scripting Language
 Tidak seperti compiled language, sebuah program atau source code yang ditulis dengan scripting language tidak memerlukan compiler. Source code dapat langsung diberikan, diterjemahkan, dan dijalankan oleh mesin. Mesin ini menggunakan interpreter dalam melakukannya. Contoh yang sangat dekat dengan kita adalah browser.
 
-
 Pengenalan JavaScript
 JavaScript termasuk dalam salah satu bahasa pemrograman yang menggunakan interpreter (scripting language). Artinya, kita dapat menulis kode dengan bahasa ini dan langsung diserahkan ke mesin. Baris per baris kode akan diterjemahkan dan dieksekusi oleh mesin. Jika ada kode yang salah, error akan langsung ditampilkan pada saat runtime (program berjalan).
 
 Pesatnya perkembangan teknologi menuntun JavaScript berkembang. Saat ini, JavaScript sudah merambah ke berbagai platform. Selain aplikasi browser, banyak juga aplikasi server, desktop, dan lainnya yang dapat dibangun dengan JavaScript. Ini tercapai berkat runtime JavaScript, seperti Node.js dan Bun. Bahkan, beberapa database management system (DBMS), seperti MongoDB, juga menggunakan JavaScript sebagai bahasa scripting dan kuerinya.
-
-
 
 Sejarah JavaScript
 Berdasarkan survei dari Statista pada tahun 2023, JavaScript menjadi bahasa pemrograman dalam posisi peringkat teratas yang paling banyak digunakan oleh para developer. Pada mulanya, JavaScript atau sering disingkat dengan JS dikembangkan hanya untuk membuat website lebih “hidup”. Ia dilahirkan sekitar tahun 1995 oleh programmer dari perusahaan Netscape, yaitu Brendan Eich.
@@ -37,7 +30,7 @@ Sebelum bernama JavaScript, ia sempat dinamai LiveScript. Namun, karena berharap
 
 Beberapa waktu kemudian, JavaScript distandardisasi oleh organisasi bernama ECMA. Mereka menyusun standar agar setiap platform yang mendukung bahasa ini memiliki kesamaan standar, cara kerja, serta spesifikasi-spesifikasinya. Hal ini dinamai standar ECMAScript. Mulai sejak itu, ECMAScript melakukan peningkatan dari tahun ke tahun.
 
-Tahun	Keterangan
+Tahun Keterangan
 2000–2010
 
 ECMAScript 3 adalah versi yang banyak digunakan ketika JavaScript sedang mendominasi. Selama waktu tersebut, sebuah pengerjaan yang ambisius terjadi untuk membentuk ECMAScript 4. Namun, pengerjaan ini akhirnya dihentikan pada tahun 2008.
@@ -54,19 +47,16 @@ ECMAScript kembali melakukan peningkatan pada versi keenam. Versi ini membawa pe
 
 ECMAScript terus melakukan peningkatan-peningkatan yang kecil setiap tahunnya.
 
-
-
 JavaScript Runtime Environment
 Runtime environment adalah tempat sebuah program akan dieksekusi. Ia akan menentukan global object yang dapat diakses oleh program JavaScript. Lalu, apa yang dimaksud dengan global object? Nah, kita akan memahaminya ketika mempelajari masing-masing runtime environment.
 
 Ada tiga macam yang akan kita bahas dalam materi ini, yaitu Browser, Node.js, dan Bun.
 
-
-
 Browser
 Kebanyakan program JavaScript dijalankan melalui lingkungan browser. Contohnya, kita memiliki satu buah proyek aplikasi web yang berisi berkas index.html dan index.js dengan isi berikut.
 
 index.html
+
 <!DOCTYPE html>
 <html>
   <body>
@@ -83,14 +73,13 @@ dos-190eab40abff4946a2cbda9d35ad652c20240730152127.jpeg
 
 Cara di atas adalah embedded JavaScript. Ada cara lain untuk menjalankan kode dalam browser, yaitu berkas eksternal JavaScript dan Read-Eval-Print-Loop (REPL) versi browser.
 
-
-
 External JavaScript
 
 Kode program dalam cara ini ditulis secara terpisah dari berkas HTML. Berkas JavaScript ditulis dengan berkas berekstensi “js”. Kita pindah contoh kode di atas dalam berkas index.js berikut.
 
 index.html
 index.js
+
 <!DOCTYPE html>
 <html>
   <body>
@@ -101,15 +90,11 @@ index.js
 </html>
 Pemisahan ini membuat program JavaScript tidak lagi terhubung dengan HTML. Oleh karena itu, kita gunakan <script> untuk mengimpornya.
 
-
-
 REPL versi Browser
 
 Cara ketiga adalah menjalankannya secara langsung melalui browser atau REPL. Read-Eval-Print-Loop atau disingkat REPL dimiliki juga oleh browser. Caranya sangatlah mudah.
 
 Buka browser kesukaan Anda dan Developer Tools di dalamnya. Developer Tools adalah fitur browser untuk mendukung proses pengembangan aplikasi web. Salah satu fitur yang dimiliki adalah REPL. Ini dapat kita akses dengan membuka tab Console dan mulai menuliskan kode JavaScript.
-
-
 
 Node.js
 Node.js adalah runtime environment untuk JavaScript yang berbeda dari Browser. Meskipun berbeda, seluruh fitur JavaScript, yakni membuat variabel, melakukan operasi aritmetika, dsb., dapat dilakukan juga di sana. Hanya saja kita tidak memiliki akses lagi terhadap global object milik browser, seperti alert. Sebagai gantinya, Node.js memberikan akses kepada developer untuk mengakses file system, mengatur database, dan lainnya.
@@ -129,7 +114,6 @@ jalankan perintah node;
 tulis kode programnya; dan
 tekan tombol Enter.
 
-
 Bun
 Ada alternatif yang dapat digunakan untuk menjalankan program dalam sistem komputer selain Node.js, yaitu Bun. Ia adalah JavaScript runtime baru yang menyajikan ekosistem JavaScript terkini dan berbagai fitur yang mengedepankan kecepatan. Jika mengacu ke halaman resminya, ia dibangun agar tetap kompatibel dengan berbagai fitur dari Node.js.
 
@@ -145,7 +129,6 @@ Untuk REPL, cukup jalankan perintah berikut.
 bun repl
 Rangkuman Mengarungi Lautan Sintaksis
 
-
 Expression dan Statement
 Pemrograman pada dasarnya adalah cara kita berkomunikasi dengan komputer. Komunikasi ini melibatkan pemberian instruksi kepada komputer agar menjalankan tugas-tugas tertentu dengan benar. Tentu saja, kita perlu mengikuti aturan tertentu untuk memberikan instruksi kepada komputer.
 
@@ -159,10 +142,8 @@ Berikut adalah ilustrasi yang bisa Anda lihat untuk memudahkan pemahaman mengena
 
 dos-60c549460c4dea059a6f7513bab4057420240731124451.jpeg
 
-
-
 Comment
-Komentar adalah teks bersifat penjelasan yang dapat dibaca oleh programmer dan ditulis dalam berkas kode. Pada JavaScript, untuk menuliskan teks komentar, ada dua cara, yaitu menggunakan tanda // dan /* */. Teks yang ditulis dengan tanda tersebut dianggap bukan instruksi dan tidak akan dijalankan oleh interpreter.
+Komentar adalah teks bersifat penjelasan yang dapat dibaca oleh programmer dan ditulis dalam berkas kode. Pada JavaScript, untuk menuliskan teks komentar, ada dua cara, yaitu menggunakan tanda // dan /\* \*/. Teks yang ditulis dengan tanda tersebut dianggap bukan instruksi dan tidak akan dijalankan oleh interpreter.
 
 Berikut adalah contoh komentar yang ditulis dengan tanda //.
 
@@ -170,17 +151,17 @@ Berikut adalah contoh komentar yang ditulis dengan tanda //.
 console.log('Hai, Readers!');
 console.log('Hai, JavaScript!');
 // console.log('Hai, Dicoding!');
-Berikut adalah contoh dari komentar yang ditulis dengan tanda /* */. 
+Berikut adalah contoh dari komentar yang ditulis dengan tanda /\* \*/.
 
-/*
- TODO
-  1. Buatlah variabel bernama PI dan isikan dengan nilai 3.14
- 2. Cetak nilai variabel PI di terminal menggunakan console.log
- /
- 
+/\*
+TODO
+
+1. Buatlah variabel bernama PI dan isikan dengan nilai 3.14
+2. Cetak nilai variabel PI di terminal menggunakan console.log
+   /
+
 const PI = '3.14';
- console.log(PI);
-
+console.log(PI);
 
 Variabel
 Variabel adalah wadah untuk menampung sebuah nilai. Nilai yang ditampung dapat berupa angka, teks, atau apa pun yang menghasilkan nilai (expression). Pada JavaScript, kita bisa membuat variabel melalui dua cara, yakni dengan sintaksis const dan let.
@@ -198,62 +179,56 @@ Nama Variabel Tidak Boleh Diawali dengan Angka.
 Mengubah Nilai Antar Tipe Data
 JavaScript adalah bahasa pemrograman yang dinamis dan fleksibel, ia menyediakan berbagai cara untuk mengonversi tipe data. Konversi tipe data dapat dilakukan secara eksplisit oleh developer atau secara implisit oleh interpreter.
 
-
-
 Konversi Eksplisit
 Konversi eksplisit adalah cara yang paling dapat diandalkan untuk mengubah tipe data karena dilakukan dengan instruksi yang jelas, alias eksplisit dari programmer. Berikut adalah beberapa metode umum yang digunakan untuk konversi tipe data secara eksplisit.
 
 const number = 123;
 const boolean = true;
- 
+
 const strNumber = String(number);
 const strBoolean = boolean.toString();
- 
+
 console.log(strNumber); // output: "123"
 console.log(strBoolean); // output: "true"
- 
- 
+
 const strNumber = '123';
 const strFloat = '3.14';
 const boolean = true;
- 
+
 const numFromString = Number(strNumber);
 const floatFromString = Number(strFloat);
 const numFromBoolean = Number(boolean);
- 
+
 console.log(numFromString); // output: 123
 console.log(floatFromString); // output: 3.14
 console.log(numFromBoolean); // output: 1
- 
- 
+
 const cm = '20cm';
 const px = '64px';
- 
+
 const intFromCM = parseInt(cm);
 const intFromPX = parseInt(px);
- 
+
 console.log(intFromCM); // output: 20
 console.log(intFromPX); // output: 64
- 
- 
+
 const fCm = '20.55cm';
 const fPx = '64.23px';
- 
+
 const floatFromCM = parseFloat(fCm);
 const floatFromPX = parseFloat(fPx);
- 
+
 console.log(floatFromCM); // output: 20.55
 console.log(floatFromPX); // output: 64.23
- 
- 
+
 const number = 123;
 const string = 'Dicoding';
 const empty = null;
- 
+
 const boolFromNumber = Boolean(123);
 const boolFromString = Boolean(string);
 const boolFromNull = Boolean(empty);
- 
+
 console.log(boolFromNumber); // output: true
 console.log(boolFromString); // output: true
 console.log(boolFromNull); // output: false
@@ -268,27 +243,23 @@ null
 undefined
 NaN
 
-
 Konversi Implisit
 Konversi implisit terjadi ketika JavaScript secara otomatis mengubah tipe data tanpa instruksi eksplisit dari programmer. Ini biasanya terjadi dalam konteks tertentu, seperti operasi aritmetika, perbandingan, dan konteks logika.
 
 const age = 20;
 const message = 'Umurku: ' + age;
- 
+
 console.log(message); // output: Umurku: 20
- 
- 
+
 const strNumber = '123';
-const result = strNumber * 2;
- 
+const result = strNumber \* 2;
+
 console.log(result); // output: 246
- 
- 
+
 const bool = true;
 const result = 1 + bool;
- 
-console.log(result); // output: 2
 
+console.log(result); // output: 2
 
 Operator
 Dua istilah penting dalam melakukan sebuah operasi, yakni operator dan operand (operan).
@@ -304,15 +275,15 @@ Secara umum, operator dalam JavaScript terbagi menjadi tiga kelompok: unary, bin
 Berikut adalah contoh kode yang menunjukkan penggunaan unary, binary, dan ternary operator.
 
 let age = 25;
- 
+
 // Unary operator
 typeof age;
- 
+
 // Binary operator
 5 + 4;
 10 / 2;
 age = 30;
- 
+
 // Ternary operator (conditional operator)
 (age < 18) ? 'You are too young!' : 'Welcome onboard!';
 Sudah jelas mengenai istilah operator dan operan beserta pengelompokan operator unary, binary, dan ternary? Jika sudah, mari kita mengenal berbagai operator yang ada dalam JavaScript.
@@ -320,28 +291,25 @@ Sudah jelas mengenai istilah operator dan operan beserta pengelompokan operator 
 Berbagai macam operator yang tersedia di JavaScript:
 
 Assignment: operator yang digunakan untuk memberikan nilai kepada sebuah variabel, baik inisiasi nilai baru maupun mengubah nilai yang sudah ada.
-Arithmetic: operator standar yang digunakan untuk proses aritmetika, seperti penambahan (+), pengurangan (-), pengalian (*), ataupun pembagian (/).
+Arithmetic: operator standar yang digunakan untuk proses aritmetika, seperti penambahan (+), pengurangan (-), pengalian (\*), ataupun pembagian (/).
 Comparison: operator yang digunakan untuk membandingkan dua nilai dan mengembalikan nilai boolean (true atau false) sebagai hasil perbandingan.
 Logical: menetapkan logika dari dua nilai operan boolean.
 String operator: operator yang digunakan untuk menggabungkan dua nilai string.
 Rangkuman Bermain dengan Function
 Kita telah belajar banyak hal dalam materi Function dalam JavaScript. Kami siapkan rangkuman materi terhadap hal yang telah Anda pelajari selama ini. Harapannya, Anda dapat mengingat kembali setiap materi yang disampaikan.
 
-
-
 Pengertian Function
 Function adalah program kecil berisi sekumpulan perintah sehingga bisa dijalankan saat dibutuhkan. Hal tersebut sangat kita perlukan untuk mencegah aktivitas redundan dalam mencapai penyelesaian masalah.
 
 Misalnya, daripada menuliskan formula konversi suhu sebanyak lima kali, kita dapat membungkus formula tersebut dalam function dan menjalankannya sebanyak lima kali. Ini lebih mudah ditulis dan dibaca oleh manusia.
 
-console.log(9 / 5 * 50 + 32);
-console.log(9 / 5 * 70 + 32);
-console.log(9 / 5 * 100 + 32);
- 
+console.log(9 / 5 _ 50 + 32);
+console.log(9 / 5 _ 70 + 32);
+console.log(9 / 5 \* 100 + 32);
+
 convertCelsiusToFahrenheit(50); // 122
 convertCelsiusToFahrenheit(90); // 158
 convertCelsiusToFahrenheit(100); // 212
-
 
 Deklarasi Function
 Ada tiga istilah yang perlu dipahami dalam mendefinisikan function, yakni function keyword, identified, dan function body.
@@ -352,24 +320,22 @@ Function body: block of code yang membungkus banyak perintah.
 Berikut adalah contoh dari pembuatan function.
 
 function convertCelsiusToFahrenheit(temperature) {
-  const temperatureInFahrenheit = 9 / 5 * temperature + 32;
- 
-  console.log('Hasil konversi:', temperatureInFahrenheit);
-}
+const temperatureInFahrenheit = 9 / 5 \* temperature + 32;
 
+console.log('Hasil konversi:', temperatureInFahrenheit);
+}
 
 Pemanggilan Function
 Sebagaimana sebuah variabel dipanggil setelah dibuat, dalam menjalankan function, kita cukup panggil identifier-nya. Namun, tambahkan sintaks “()” setelahnya tanpa diikuti dengan white-space (spasi).
 
 function convertCelsiusToFahrenheit(temperature) {
-  const temperatureInFahrenheit = (9 / 5) * temperature + 32;
- 
-  console.log('Hasil konversi:', temperatureInFahrenheit);
+const temperatureInFahrenheit = (9 / 5) \* temperature + 32;
+
+console.log('Hasil konversi:', temperatureInFahrenheit);
 }
- 
+
 const temperatureInCelsius = 90;
 convertCelsiusToFahrenheit(temperatureInCelsius);
-
 
 Parameter dan Argument
 Walaupun dapat mengeksekusi sekumpulan kode, sebuah subprogram bisa saja membutuhkan data agar tugasnya terpenuhi. Tentu ini akan meningkatkan reusability darinya. Oleh karena itu, kita membutuhkan parameter dan argumen function.
@@ -378,22 +344,20 @@ Apa perbedaan antara parameter dan argumen? Parameter function berperan sebagai 
 
 dos-52bb9e91d6b0c18cb411fe65a9caa1a420240801110310.jpeg
 
-Parameter function dalam JavaScript juga bisa ditetapkan nilai default jika tidak ada nilai yang diberi saat dijalankan. Cukup ikuti karakter sama dengan  “=” dan nilainya setelah nama parameter.
+Parameter function dalam JavaScript juga bisa ditetapkan nilai default jika tidak ada nilai yang diberi saat dijalankan. Cukup ikuti karakter sama dengan “=” dan nilainya setelah nama parameter.
 
 function convertCelsiusToFahrenheit(temperature = 50) {
-  const temperatureInFahrenheit = 9 / 5 * temperature + 32;
- 
-  console.log('Hasil konversi:', temperatureInFahrenheit);
-}
+const temperatureInFahrenheit = 9 / 5 \* temperature + 32;
 
+console.log('Hasil konversi:', temperatureInFahrenheit);
+}
 
 Return Value
 Pada dasarnya, function akan mengembalikan undefined ketika dipanggil. Ini berlaku jika function tidak mengembalikan nilai apa pun setelah dieksekusi. Ada kalanya, kita akan membutuhkan agar function bisa mengembalikan suatu nilai. Ini dicapai dengan return keyword dan diikuti nilai kembaliannya.
 
 function convertCelsiusToFahrenheit(temperature) {
-  return (9 / 5) * temperature + 32;
+return (9 / 5) \* temperature + 32;
 }
-
 
 Function Expression
 Anda masih ingat perbedaan antara statement dan expression, bukan? Cara deklarasi function yang kita pelajari sebelumnya adalah cara statement. Namun, ada juga versi expression-nya, lo. Ini dinamakan dengan function expression.
@@ -401,22 +365,21 @@ Anda masih ingat perbedaan antara statement dan expression, bukan? Cara deklaras
 Perbedaannya hanya pada penentuan identifier. Tidak ada penentuan setelah function keyword. Sebagai gantinya, nilai function bisa disimpan dalam variabel dan nama variabel menjadi identifier-nya.
 
 const convertCelsiusToFahrenheit = function (temperature) {
-  return (9 / 5) * temperature + 32;
+return (9 / 5) \* temperature + 32;
 };
 Salah satu keuntungan dari function expression adalah dapat disebut sebagai first-class citizen. Tidak hanya disimpan dalam variabel, function dapat dijadikan sebagai argumen dan bahkan dijadikan sebagai return value dari suatu function.
 
 // Dijadikan sebagai argumen dari parameter 'operation'
 function calculate(operation, numA, numB) {
-  return operation(numA, numB);
-}
- 
-// Dijadikan sebagai return value
-function multiplier(x) {
-  return function (num) {
-    return x * num;
-  };
+return operation(numA, numB);
 }
 
+// Dijadikan sebagai return value
+function multiplier(x) {
+return function (num) {
+return x \* num;
+};
+}
 
 Arrow Function
 Ada gaya lain dalam membuat function dalam JavaScript, yaitu arrow function. Arrow function hanya tersedia dengan cara expression. Perbedaannya ada pada function keyword yang hilang dan penambahan notasi fat arrow sebelum body function.
@@ -427,16 +390,14 @@ Sintaks di atas mungkin sudah cukup singkat bagi kita, tetapi belum singkat lagi
 
 // Arrow function
 const convertCelsiusToFahrenheit = (temperature) => {
-  return (9 / 5) * temperature + 32;
+return (9 / 5) \* temperature + 32;
 };
- 
+
 // Arrow function versi ringkas
 const convertCelsiusToFahrenheitInConciseSyntax =
-  (temperature) => (9 / 5) * temperature + 32;
+(temperature) => (9 / 5) \* temperature + 32;
 Rangkuman Bukan Sembarang Data
 Selamat! Anda sudah berada di penghujung modul Bukan Sembarang Data. Mari kita uraikan materi yang sudah Anda pelajari untuk menyegarkan ingatan Anda tentang materi tersebut.
-
-
 
 Menstrukturkan Data dengan Object
 Struktur data pertama yang kita bahas adalah Object. Object adalah kumpulan pasangan key-value dan merupakan tipe data yang bukan primitif.
@@ -446,9 +407,7 @@ Membuat object dengan object literals sangat mudah yaitu cukup dengan menulis ku
 
 const user = {};
 const products = { name: 'Sepatu', price: 230000 };
-Di dalam kurung kurawal tersebut dapat ditulis properti dari object. 
-
-
+Di dalam kurung kurawal tersebut dapat ditulis properti dari object.
 
 Mengakses Properti di Object
 Object yang sudah dibuat dapat diakses dengan 3 teknik.
@@ -457,51 +416,46 @@ Mengakses menggunakan dot
 Cara pertama untuk mengakses nilai properti yang ada di object adalah menggunakan dot notation (.).
 
 const user = {
-  name: 'Dicoding',
-  'last name': 'Indonesia',
-  age: 9,
+name: 'Dicoding',
+'last name': 'Indonesia',
+age: 9,
 };
- 
+
 console.log(user.name); // Output: Dicoding
-Kita dapat memanggil nama object, kemudian menuliskan tanda titik yang diikuti dengan nama propertinya. 
-
-
+Kita dapat memanggil nama object, kemudian menuliskan tanda titik yang diikuti dengan nama propertinya.
 
 Mengakses menggunakan square bracket
 Untuk menutupi kekurangan menggunakan dot notation, ada cara lain yaitu menggunakan square bracket.
 
 const user = {
-  name: 'Dicoding',
-  'last name': 'Indonesia',
-  age: 9,
+name: 'Dicoding',
+'last name': 'Indonesia',
+age: 9,
 };
- 
+
 console.log(user['last name']); // Output: Indonesia
 Tulislah nama object terlebih dahulu dan di dalam kurung siku kita menuliskan nama properti yang ingin diakses.
-
-
 
 Mengakses menggunakan object destructuring
 Selain itu nilai properti dari object dapat diakses juga dengan cara lainnya yaitu menggunakan object destructuring.
 
 const user = {
-  'name': 'Dicoding',
-  'lastName': 'Indonesia',
-  age: 9
+'name': 'Dicoding',
+'lastName': 'Indonesia',
+age: 9
 };
- 
+
 const { name, lastName } = user;
 console.log(name, lastName); // Output: Dicoding Indonesia
-
 
 Mengubah nilai di properti Object
 Memodifikasi object dapat dilakukan dengan assignment operator (=).
 
 const account = {
-  balance: 1000,
-  debt: 10,
+balance: 1000,
+debt: 10,
 };
- 
+
 account.balance = 2000;
 console.log(account.balance); // Output: 2000
 
@@ -509,14 +463,13 @@ Menghapus properti di Object
 Untuk menghapus properti pada object dapat menggunakan operator delete dengan menuliskan nama object lalu tanda titik dan diikuti nama propertinya.
 
 const user = {
-  'name': 'Dicoding',
-  'last name': 'Indonesia',
-  age: 9,
+'name': 'Dicoding',
+'last name': 'Indonesia',
+age: 9,
 };
- 
+
 delete user.age;
 console.log(user); // Output: { name: 'Dicoding', 'last name': 'Indonesia' }
-
 
 Menstrukturkan Data dengan Array
 Array adalah struktur data spesial yang dapat menyimpan kumpulan data yang terurut. Membuat Array dapat dilakukan dengan tiga cara di bawah ini.
@@ -537,13 +490,11 @@ Terakhir, cara yang paling mudah, singkat, dan disarankan untuk membuat array ad
 const array = [];
 const fruits = ['apple', 'banana', 'cherry'];
 
-
 Mengakses Element Array
 Data di dalam array terurut sehingga untuk mengaksesnya dapat dengan mudah dengan menggunakan nilai indeks-nya. Indeks merupakan angka yang digunakan untuk merujuk ke nilai di dalam array, sehingga kita bisa menambahkan, mengubah, atau menghapus nilainya.
 
 const myArray = [42, 55, 30];
 console.log(myArray[1]); // Output: 55
-
 
 Manipulasi Nilai Array
 Manipulasi nilai pada array dapat dilakukan dengan menggunakan indexing dan method push.
@@ -565,13 +516,12 @@ Untuk menambahkan nilai ke dalam array menggunakan method push, dapat dilakukan 
 
 myArray.push(6);
 
-
 Menghapus Element dan Data Array
 Data pada array dapat dihapus menggunakan keyword delete.
 
 const myArray = ['Android', 'Data Science', 'Web'];
 delete myArray[1];
- 
+
 console.log(myArray); // Output: ['Android', <1 empty item>, 'Web']
 Lalu, bagaimana cara untuk menghapus element dan datanya? Untuk melakukan hal itu dapat dilakukan dengan menggunakan method splice() seperti berikut ini.
 
@@ -583,11 +533,10 @@ Terakhir, ada cara lainnya yaitu menggunakan method shift dan pop.
 const myArray = ['Android', 'Data Science', 'Web'];
 myArray.shift();
 console.log(myArray); // Output: ['Data Science', 'Web']
- 
+
 const myArray = ['Android', 'Data Science', 'Web'];
 myArray.pop();
 console.log(myArray); // Output: ["Android", "Data Science"]
-
 
 Array Destructuring
 Destructuring cukup mudah dilakukan yaitu dengan menggunakan kurung siku yang di dalamnya adalah nama variabel yang kita assign. Kemudian diikuti dengan assignment operator sama dengan (=) dan array yang ingin diambil nilainya.
@@ -595,7 +544,6 @@ Destructuring cukup mudah dilakukan yaitu dengan menggunakan kurung siku yang di
 const introduction = ['Hello', 'Arsy'];
 const [greeting, name] = introduction;
 console.log(greeting); // Output: Hello
-
 
 Menstrukturkan Data dengan Map
 Map adalah tipe data yang mirip dengan object yaitu menyimpan data dengan key-value. Map dapat dibuat dengan mudah yaitu menggunakan object map constructor seperti berikut ini.
@@ -622,7 +570,6 @@ map.set('last name', 'opraza');
 map.delete('last name');
 console.log(map); // Map(1) { 'name' => 'aras' }
 
-
 Menstrukturkan Data dengan Set
 Set adalah struktur data yang spesial dibandingkan dengan map, array, dan object. Set dapat dibuat dengan cara menuliskan object constructor set seperti contoh berikut ini.
 
@@ -630,7 +577,6 @@ const set = new Set();
 Set juga dapat dibuat beserta dengan nilainya seperti berikut ini.
 
 const mySet = new Set([1, 2, 3]);
-
 
 Menyimpan Nilai di Set
 Untuk menambahkan nilai set setelah diinisialisasi dapat menggunakan method add.
@@ -644,30 +590,29 @@ Cara pertama adalah menggunakan keyword for seperti berikut ini.
 const set = new Set();
 set.add(1);
 set.add(2);
- 
+
 for (const number of set) {
-  console.log(number); // Output: 1, 2
+console.log(number); // Output: 1, 2
 }
 Cara lainnya adalah menggunakan keyword foreach seperti berikut ini.
 
 const set = new Set();
 set.add(1);
 set.add(2);
- 
+
 set.forEach((value) => console.log(value)); // Output: 1, 2
 Menghapus Nilai di Set
-Terakhir, untuk menghapus nilai di set, gunakanlah method delete. 
+Terakhir, untuk menghapus nilai di set, gunakanlah method delete.
 
 const set = new Set();
 set.add(1);
 set.add(2);
 set.delete(1);
- 
+
 console.log(set); // Set(1) { 2 }
 
-
 Spread Operator
-Spread operator yang ditandai dengan sintaks tiga titik  (...) adalah fitur yang menarik dan membantu dalam pengelolaan object dan array.
+Spread operator yang ditandai dengan sintaks tiga titik (...) adalah fitur yang menarik dan membantu dalam pengelolaan object dan array.
 
 Object
 Spread operator di object dapat dilakukan seperti berikut ini.
@@ -682,24 +627,20 @@ Selain di object, spread operator juga dapat digunakan di array seperti berikut 
 const array1 = ['Dicoding'];
 const array2 = ['Indonesia', 'Jl. Batik Kumeli No 50'];
 const newArray = [...array1, ...array2];
- 
-console.log(newArray); // Output: ['Dicoding', 'Indonesia', 'Jl. Batik Kumeli No 50']
 
+console.log(newArray); // Output: ['Dicoding', 'Indonesia', 'Jl. Batik Kumeli No 50']
 
 Rest Operator
 Rest operator memungkinkan function untuk menerima argument dalam bentuk array. Rest operator yang digunakan pada parameter fungsi sering disebut sebagai Rest Parameter. Cara menggunakan rest parameter adalah dengan menambahkan tiga titik (...) sebelum parameter terakhir.
 
 function myFunc(...manyMoreArgs) {
-  console.log('manyMoreArgs', manyMoreArgs);
+console.log('manyMoreArgs', manyMoreArgs);
 }
- 
-myFunc('one', 'two', 'three');
 
+myFunc('one', 'two', 'three');
 
 Rangkuman Sang Pengatur Program
 Selamat! Anda sudah berada di penghujung modul Sang Pengatur Program. Mari kita uraikan materi yang sudah Anda pelajari untuk menyegarkan ingatan Anda tentang materi tersebut.
-
-
 
 Flow Controls
 Sebuah program JavaScript akan memiliki lebih dari satu expression dan statement. Apa yang terjadi jika program memiliki lebih dari satu expression dan statement? Jawabannya adalah program akan menjalankan statement berurutan dari atas ke bawah (secara sekuensial).
@@ -712,16 +653,12 @@ dos-4d5df93212d52b95d48458ebb6471e8620240802151931.jpeg
 
 Jadi, flow control adalah urutan bagaimana expression dan statement dijalankan oleh komputer berdasarkan kondisi dan logika tertentu (yang akan kita bahas di modul ini). Flow control memungkinkan programmer untuk membuat program yang dinamis, mengeksekusi perintah yang berulang dan menangani berbagai macam kondisi berdasarkan input dari pengguna. Tak peduli Anda membangun aplikasi web sederhana, aplikasi mobile atau aplikasi kompleks, flow control penting untuk dipelajari karena ia merupakan fundamental dari bahasa pemrograman.
 
-
-
 Conditional
 Sepintas mungkin akan terpikir oleh Anda, apakah komputer selalu mengeksekusi kode dari atas ke bawah? Jawabannya adalah tidak. Tidak semua program berjalan lurus seperti jalan tol. Seperti contoh di kasus sebelumnya (memesan makanan secara daring), kode program tidak akan dieksekusi semuanya ketika dijalankan. Kode program akan menjadi dua alur atau lebih. Kode akan dieksekusi tergantung dari kondisi yang ditetapkan dan ini disebut dengan conditional flow.
 
 dos-c57b01b923a7bb8dba2a8244f58691dd20240802151929.jpeg
 
 Conditional flow adalah cara untuk menentukan apakah kode dieksekusi atau dilewatkan. Jika suatu kondisi terpenuhi, kode akan dieksekusi dan kode yang lainnya akan diabaikan. Kondisi ini ditentukan dari inputan yang diberikan oleh pengguna.
-
-
 
 Looping
 Ketika Anda memprogram, ada banyak sekali instruksi yang Anda tulis untuk dieksekusi oleh komputer. Misalnya, Anda ingin mencetak semua nama makanan yang ada di list pada terminal/console seperti berikut.
@@ -734,24 +671,19 @@ Hal tersebut memang memungkinkan, tetapi tidak praktis karena melakukan hal yang
 
 Untuk menghindari hal itu, perkenalkan inilah looping. Looping (perulangan) adalah statements yang memungkinkan kita untuk mengeksekusi kode yang sama secara berulang. Di JavaScript terdapat banyak jenis perulangan, seperti for loop, for in, for of, while, dan do-while.
 
-
-
 Error Handling
-Sepandai-pandainya tupai melompat, akan jatuh juga. Sebaik apa pun kita menulis program, suatu saat akan terjadi error. Error yang terjadi bisa berasal dari expected error (error yang terduga) dan unexpected error (error yang tidak terduga). 
+Sepandai-pandainya tupai melompat, akan jatuh juga. Sebaik apa pun kita menulis program, suatu saat akan terjadi error. Error yang terjadi bisa berasal dari expected error (error yang terduga) dan unexpected error (error yang tidak terduga).
 
 Error yang dibiarkan dan tidak ditangani akan menyebabkan crash pada program yang dibangun. JavaScript memiliki cara untuk menangani error tersebut yang disebut dengan error handling. Error handling dapat mencegah crash pada program ketika terjadi error yang disebabkan oleh kesalahan syntax atau error lainnya.
-
-
 
 Throwing Error
 Saat terjadi error, sinyal yang disebut dengan exception akan bangkit. Cara lain untuk membuat exception adalah menggunakan keyword throw untuk generate sebuah error. Sintaks dasarnya adalah seperti berikut.
 
 throw <objek error>
-JavaScript memiliki built-in constructor untuk standar error meliputi Error, SyntaxError, dan sebagainya.  Perhatikan contoh berikut ini.
+JavaScript memiliki built-in constructor untuk standar error meliputi Error, SyntaxError, dan sebagainya. Perhatikan contoh berikut ini.
 
 const error = new Error('Terjadi error');
 console.error(error);
-
 
 Try-Catch
 Try-catch merupakan cara yang dimiliki JavaScript untuk menangani error. Try-catch memiliki dua blok utama yaitu try dan catch. Try merupakan blok kode yang akan menangani error, sedangkan catch merupakan blok kode yang dibangkitkan ketika terjadi error di dalam blok try.
@@ -760,28 +692,27 @@ Finally
 Finally adalah blok kode yang berada di akhir try-catch. Bilamana catch dieksekusi hanya ketika ada error di dalam blok try, blok yang ada di finally akan selalu dieksekusi. Simak contoh di bawah ini.
 
 try {
-  console.log('Ini try block');
+console.log('Ini try block');
 } catch (err) {
-  console.log('Ini catch block');
+console.log('Ini catch block');
 } finally {
-  console.log('Ini finally block');
+console.log('Ini finally block');
 }
 
-
 Implementasi Flow Control
-Rasanya ada yang kurang ketika sudah mengetahui teori flow control “sang pengendali program” tanpa mengimplementasikan flow control. Di materi kali ini, kita akan lihat seperti apa penerapan flow control di sebuah program JavaScript sederhana.  
+Rasanya ada yang kurang ketika sudah mengetahui teori flow control “sang pengendali program” tanpa mengimplementasikan flow control. Di materi kali ini, kita akan lihat seperti apa penerapan flow control di sebuah program JavaScript sederhana.
 
 Misalnya, Anda ingin membuat program untuk mengetahui predikat berdasarkan nilai yang dimasukkan. Perhatikan kode program berikut ini.
 
 function checkGrades(grades) {
-  for (let i = 0; i < grades.length; i++) {
-    if (typeof grades[i] !== 'number') {
-      throw new Error('Invalid input. Please provide an array of numbers.');
-    }
- 
+for (let i = 0; i < grades.length; i++) {
+if (typeof grades[i] !== 'number') {
+throw new Error('Invalid input. Please provide an array of numbers.');
+}
+
     const grade = grades[i];
     let predicate;
- 
+
     if (grade >= 90) {
       predicate = 'A';
     } else if (grade >= 80) {
@@ -793,26 +724,23 @@ function checkGrades(grades) {
     } else {
       predicate = 'E';
     }
- 
+
     console.log(`Grade ${i + 1}: ${grade} (${predicate})`);
-  }
+
 }
- 
+}
+
 try {
-  const studentGrades = [95, 85, 65, 80, 70];
-  checkGrades(studentGrades);
+const studentGrades = [95, 85, 65, 80, 70];
+checkGrades(studentGrades);
 } catch (e) {
-  console.error(e);
+console.error(e);
 }
 Rangkuman Modularisasi Harmonis
 Selamat! Anda sudah berada di penghujung modul Modularisasi Harmonis. Mari kita uraikan materi yang sudah Anda pelajari untuk menyegarkan ingatan Anda tentang materi tersebut.
 
-
-
 Mengenal Modularisasi
 Modularisasi adalah cara kita untuk memecahkan kode program yang kompleks dan besar menjadi bentuk yang lebih sederhana dan ringkas. Implementasi dari modularisasi di JavaScript adalah dengan membuat berkas-berkas terpisah per bagian function/method yang disebut dengan modul. Kode yang ada di dalam Modul dapat digunakan oleh modul lainnya dengan cara export dan import.
-
-
 
 dos-d000dfb5d9a07f55eca75afa1383b0b920240801153620.jpeg
 
@@ -820,17 +748,15 @@ Manfaat dari modularisasi adalah dapat menyelesaikan masalah terkait struktur da
 
 JavaScript awalnya tidak memiliki konsep modularisasi. JavaScript hanya mengenal scope yang sama dari function/method/variable. Namun, semenjak adanya ECMAScript 2015, JavaScript bisa menggunakan konsep modularisasi dan dapat menggunakan keyword import dan export.
 
-
-
 Import
-JavaScript memungkinkan kita untuk menggunakan function/method dari modul lainnya dengan dua syarat: 
+JavaScript memungkinkan kita untuk menggunakan function/method dari modul lainnya dengan dua syarat:
 
 Harus meng-import function/method tersebut.
-Function/method tersebut sudah di-export (export akan dibahas di materi selanjutnya). 
+Function/method tersebut sudah di-export (export akan dibahas di materi selanjutnya).
 Import dapat dilakukan dengan menulis kata kunci import kemudian diikuti oleh nama function/method/variable. Perhatikan contoh berikut ini.
 
 main.mjs
-anotherfile.mjs 
+anotherfile.mjs
 
 1
 import myFunction from './anotherfile.mjs';
@@ -839,13 +765,10 @@ import myFunction from './anotherfile.mjs';
 3
 myFunction();
 
-Input 
+Input
 Reset
 
 Jalankan
-
-            
-
 
 Export
 Export adalah keyword yang kita gunakan untuk melabeli suatu function/method/variable agar dapat diakses dari luar modul saat ini. Export terdiri dari dua jenis, yaitu default export dan named export. Perhatikan contoh named export berikut ini.
@@ -858,9 +781,8 @@ Cara tersebut merupakan cara export sebelum deklarasi dilakukan. Cara lainnya ad
 const name = 'John';
 const email = 'john@gmail.com';
 const age = 25;
- 
-export { name, email, age };
 
+export { name, email, age };
 
 Mengekspor Variable
 Misalnya, ada suatu module yang ditulis di berkas module.js. Di dalam berkas tersebut, kita akan menulis satu variabel yang akan kita ekspor. Untuk mengekspornya dapat dilakukan seperti berikut.
@@ -872,42 +794,35 @@ Cara untuk mengekspor function tak berbeda jauh dengan cara mengekspor variable.
 
 export const name = 'John';
 export const favoriteFood = ['pizza', 'pasta', 'sushi'];
- 
-export function sayHi(name) {
-  console.log(`Hi, ${name}!`);
-}
 
+export function sayHi(name) {
+console.log(`Hi, ${name}!`);
+}
 
 Mengimpor Variable
 Tadi kita sudah mengekspor beberapa nilai dan function di berkas module.js. Sekarang, tambahkan berkas baru bernama index.js yang akan kita gunakan untuk mengimpor dan menggunakan variable dan function yang telah diekspor sebelumnya.
 
 import { name, favoriteFood } from './module.js';
 
-
 Mengimpor Function
 Untuk mengimpor function dapat dilakukan dengan cara berikut ini.
 
 import { name, favoriteFood as food, sayHi } from './module.js';
- 
+
 console.log(name);
 console.log(food);
 sayHi(name);
-
 
 Menggunakan Modularisasi ESM di Node.js
 Karena ESModule adalah barang baru di dunia persilatan Node.js, kita perlu menambahkan konfigurasi dalam project Node.js. Kalau Anda mengikuti latihan di modul ini pada lokal komputer, Anda akan mengalami error ketika menggunakan import dan export. Mungkin beberapa dari Anda sudah menyadari akan hal ini dan telah mencari solusi error dengan berselancar di internet.
 
 Sebenarnya, kita hanya membutuhkan konfigurasi sederhana. Berikut cara yang dapat kita terapkan jika ingin menggunakan ES Modul di Node.js.
 
-
 Mengubah ekstensi berkas
 Cara pertama yaitu mengubah ekstensi berkas dari .js menjadi mjs. Dengan mengubah format ini, kita memberitahu ke Node.js bahwa kita ingin menggunakan ESModule. Cara ini terbilang sangat sederhana. Namun, bagaimana jika berkas project Anda sangat banyak? Tidak mungkin Anda mengubahnya satu per satu karena pasti memakan waktu cukup lama dan tidak efisien.
 
-
 Menambahkan konfigurasi di package.json
 Cara berikut ini akan menyelesaikan masalah yang ada pada cara sebelumnya yaitu dengan menambahkan konfigurasi pada level package. Dengan menambahkan konfigurasi pada level package, kita tidak perlu lagi untuk mengganti ekstensi berkas menjadi .mjs dan cara inilah yang kami lakukan sepanjang modul ini.
-
-
 
 Menggunakan Modularisasi ESM di Browser
 ESModule tak hanya dapat digunakan pada Node.js, tetapi juga di browser. Hal ini merupakan kabar gembira bagi Web Developer, khususnya Front-End Developer yang banyak berkecimpung di browser. Penasaran bagaimana caranya?
@@ -918,19 +833,17 @@ Caranya adalah dengan menambahkan type pada saat memanggil tag script seperti co
 Dengan begitu, Anda dapat memuat berkas JavaScript sebagai ESModule pada berkas HTML dan dijalankan di browser. Perlu diingat bahwa tidak semua browser mendukung ESModule sehingga untuk menangani hal itu, tambahkan kode berikut ini.
 
 <script nomodule src="fallback.js"></script>
+
 Atribut nomodule akan memberitahu browser untuk memuat berkas fallback.js jika tidak mendukung ESModule.
 
 Rangkuman Materi
 
-
 Paradigma Pemrograman
 Paradigma pemrograman adalah gaya atau pendekatan yang dilakukan oleh programmer dalam menulis program. Paradigma dapat menjadi pedoman dalam menulis program. Selain itu, paradigma juga memberikan pandangan yang unik dalam menyelesaikan masalah. Misalkan, paradigma object-oriented programming (OOP) memberikan pandangan bahwa menyelesaikan masalah dapat dilakukan dengan pendekatan berbasis objek.
 
-Untuk menyelesaikan masalah dengan solusi yang optimal, kita harus memiliki berbagai macam pendekatan atau pandangan. Oleh karena itu, memahami paradigma pemrograman sangat penting karena setiap paradigma menawarkan pendekatan unik yang dapat menghasilkan solusi yang optimal. Dengan menulis kode sesuai paradigma yang ada, kode akan lebih bersih, dapat digunakan kembali (reuse), dan memudahkan berkolaborasi dengan orang lain. 
+Untuk menyelesaikan masalah dengan solusi yang optimal, kita harus memiliki berbagai macam pendekatan atau pandangan. Oleh karena itu, memahami paradigma pemrograman sangat penting karena setiap paradigma menawarkan pendekatan unik yang dapat menghasilkan solusi yang optimal. Dengan menulis kode sesuai paradigma yang ada, kode akan lebih bersih, dapat digunakan kembali (reuse), dan memudahkan berkolaborasi dengan orang lain.
 
 Kolaborasi akan lebih mudah dan minim masalah karena kita memiliki pemahaman dan pedoman yang sama. Misalnya, ketika menggunakan paradigma OOP, setiap orang yang terlibat di projek tersebut akan menggunakan pendekatan OOP dalam menyelesaikan masalah sehingga miskomunikasi dapat dihindari. Perlu diingat bahwa paradigma bukanlah rule yang wajib diikuti tetapi pedoman yang dapat memudahkan kita dalam menulis program.
-
-
 
 Paradigma Berbasis Objek
 Sesuai dengan namanya, di paradigma ini kita akan banyak berhubungan dengan objek. Object-oriented programming (OOP) adalah paradigma pemrograman yang memiliki pendekatan berbasis object. Object akan berinteraksi satu sama lain untuk menyelesaikan tugas sehingga membentuk keseluruhan program. Selain itu, object merupakan representasi dari entitas.
@@ -948,30 +861,22 @@ dos-34f5f762445b523bf6f42099fecbdc4220240801154517.jpeg
 
 Empat prinsip ini menjadi panduan dalam menulis program untuk memastikan bahwa kompleksitas selama pengembangan perangkat lunak berkurang. Di bahasa pemrograman yang kental dengan praktik OOP seperti Java, keempat konsep didukung dan dapat diterapkan dengan baik. Namun, beberapa praktik yang ada di JavaScript, seperti abstraction, tidak dapat diterapkan secara maksimal karena keterbatasan fitur yang tersedia. JavaScript sendiri sampai saat ini belum memiliki cara untuk membuat abstract class secara standar yang dibutuhkan dalam menerapkan konsep abstraction.
 
-
-
 Inheritance
 Pilar yang akan kita bahas pertama adalah inheritance. Inheritance jika diterjemahkan ke dalam bahasa Indonesia artinya adalah pewarisan. Sesuai dengan namanya, kita bisa mewariskan harta property dan method dari sebuah class ke class lain. Umumnya, properti dan method yang diwariskan berasal dari class (induk) dan digunakan oleh class baru (anak). Sama halnya di kehidupan sehari-hari, sedikit banyaknya sebagai anak, kita memperoleh sifat dan perilaku dari orang tua.
 
 Di OOP, inheritance memungkinkan class untuk mewarisi property dan method yang dimilikinya sehingga membantu mengurangi penulisan kode secara berulang (mengurangi redundancy kode). Misalnya, ketika kita membuat sebuah class dengan property dan method, keduanya dapat digunakan kembali oleh class lainnya melalui inheritance. Berikut adalah contohnya.
 
 class SuperClass { }
- 
+
 class SubClass extends SuperClass { }
 Istilah SuperClass dan SubClass akan sering kita dengar ketika bahas inheritance di OOP. Class yang mewariskan property dan method-nya disebut dengan SuperClass, Induk, Base, atau Parent Class. Class yang mewarisi property dan method dari class lain disebut dengan SubClass dan Children Class (Anak).
 
 Encapsulation
 Encapsulation adalah proses untuk membungkus data di suatu wadah yang disebut dengan class. Menyembunyikan data adalah bagian kunci dari encapsulation.
 
-
-
 Desain OOP yang baik adalah object hanya akan menampilkan data yang dibutuhkan oleh object lain. Data akan diisolasi dan tidak dapat diakses langsung dari luar. Secara sederhana, encapsulation adalah membuat data yang ada di class sebagai private.
 
-
-
 Di dunia nyata, kita bisa lihat contohnya pada mesin kopi. Mesin kopi memiliki data dan method yang bersifat private seperti pengatur suhu, pemanas, dan method memanaskan air. Data dan method tersebut tidak bisa diakses oleh pihak luar (kita sebagai pengguna).
-
-
 
 Polymorphism
 Seperti yang Anda ketahui sebelumnya bahwa kita dapat mewariskan property dan method ke class lainnya. Namun, apa yang terjadi jika SubClass ingin mengubah implementasi dari method yang diwariskan dari SuperClass? Layaknya kita sebagai anak, ingin mengubah suatu sifat atau perilaku dari orang tua yang kita mungkin tidak setuju atau butuhkan. Jangan khawatir, di OOP kita dapat mengubah implementasi method yang diturunkan dari SuperClass.
@@ -980,13 +885,10 @@ Bagaimana cara untuk mengubah implementasi yang diturunkan dari SuperClass? Cara
 
 Rangkuman Functional Programming
 
-
 Berkenalan dengan Functional Programming
 Functional programming (selanjutnya disingkat menjadi FP) adalah paradigma pemrograman yang didasarkan pada fungsi matematika murni, yakni fungsi harus menghindari perubahan data sehingga selalu menghasilkan nilai sama ketika diberikan argumen sama. Dalam FP, fungsi adalah elemen utama yang digunakan untuk memecah kode dan membangun keseluruhan program. Dengan menerapkan konsep-konsep dalam FP, kita dapat membangun aplikasi menggunakan kode yang deklaratif (lebih simpel, tegas, dan terprediksi).
 
 Konsep utama dalam FP meliputi pure function, high-order function, recursion, dan immutability.
-
-
 
 Fungsi Sejati (Pure Function)
 FP menawarkan banyak manfaat, selain membuat kode jadi lebih ringkas, kode yang Anda tulis akan lebih mudah untuk diuji. Sebab, dengan menerapkan FP, fungsi yang kita buat hasilnya selalu terprediksi. Untuk mencapai manfaat tersebut, hal dasar yang perlu kita terapkan adalah konsep pure function.
@@ -998,7 +900,6 @@ Contoh, ketika fungsi diberikan argumen X, ia harus selalu mengembalikan nilai Y
 Tidak memiliki efek samping yang dapat memengaruhi keadaan di luar fungsi tersebut.
 Dalam konteks ini, efek samping merujuk pada segala perubahan yang dilakukan oleh fungsi pada variabel atau keadaan di luar cakupannya, seperti mengubah variabel global, berinteraksi dengan input dan output.
 
-
 Potensi Tersembunyi Sebuah Fungsi (High-Order Function)
 Fungsi dalam JavaScript bersifat first-class citizen. Fungsi dapat diperlakukan sebagai expression yang dapat disimpan dalam sebuah variabel atau dikirim sebagai argumen fungsi lain. Hal ini membuka banyak potensi menarik karena kita bisa menggunakan fungsi secara leluasa.
 
@@ -1008,11 +909,8 @@ Mengabstraksi fungsi aksi dari sebuah proses asynchronous (kita akan belajar asy
 Membuat utility function, yaitu fungsi Array.map, Array.filter, Array.reduce, dan sebagainya.
 Menerapkan teknik matematika, seperti currying dan function composition.
 
-
 Aku Memanggil Diriku (Recursive)
 Rekursi (recursive) banyak digunakan dalam pemrograman fungsional karena merupakan cara yang alami dan satu-satunya untuk melakukan perulangan atau mengiterasi data. Rekursi adalah teknik sebuah fungsi memanggil dirinya sendiri sehingga operasi dalam fungsi tersebut terus berulang sampai mencapai kondisi tertentu untuk ia keluar dari perulangannya.
-
-
 
 Yang Sudah Tercipta, Tak Bisa Diubah Lagi (Immutability)
 Menghasilkan efek samping, seperti mengubah sebuah data yang bersumber dari luar bisa menyebabkan fungsi menjadi impure. Untuk selalu menjaga bahwa fungsi selalu pure, dalam FP juga terdapat sebuah konsep bahwa segala yang sudah dibuat, tidak bisa diubah nilainya. Konsep ini disebut sebagai immutability.
@@ -1027,18 +925,12 @@ Asynchronous atau asinkron adalah sebuah operasi yang memungkinkan dijalankan ol
 
 Jika digambarkan, berikut adalah kejadian sebuah program yang menunjukkan perbedaan antara synchronous dan asynchronous.
 
-
-
 dos-8f1aad38deec23372b74f8f10abd91d320240731142933.jpeg
-
-
 
 Simulasi Asynchronous Proses
 Salah satu global function JavaScript yang dapat berjalan secara asynchronous adalah setTimeout. Function ini akan menjalankan sebuah callback function setelah timeout berakhir. Meskipun timeout ditetapkan menjadi 0, setTimeout akan tetap berjalan secara asinkron. Ini sangat cocok untuk didemonstrasikan dalam pembelajaran awal agar kita memiliki gambaran lebih cepat atas efek dari proses asynchronous.
 
 dos-f205e245c802d6a596e1c14d11e5864720240731142935.jpeg
-
-
 
 Penanganan dengan Callback
 Proses asinkron memang akan mengubah cara kita berpikir dalam menyelesaikan masalah karena gaya penulisan akan berbeda. Nah, perbedaan ini menyebabkan penanganan hasil dari proses asinkron berbeda juga. Ada banyak cara dalam hal ini. Salah satu yang dipelajari adalah menggunakan teknik callback function.
@@ -1046,7 +938,7 @@ Proses asinkron memang akan mengubah cara kita berpikir dalam menyelesaikan masa
 Berikut adalah contoh penanganan asynchronous process dengan callback.
 
 main.mjs
-coffee.mjs 
+coffee.mjs
 
 1
 import { makeCoffee } from './coffee.mjs';
@@ -1059,25 +951,22 @@ console.log('Saya memesan kopi di kafe.');
 5
 makeCoffee(() => {
 6
-  console.log('Kopi berhasil dibuat.');
+console.log('Kopi berhasil dibuat.');
 7
 });
 
-Input 
+Input
 Reset
 
 Jalankan
 
-            
-
-
 Penanganan Error dengan Callback
-Proses asynchronous memiliki posibilitas hasil antara keberhasilan atau kegagalan. Kegagalan terjadi tergantung terhadap faktor apa yang menjadi penyebab. Begitu pun untuk faktor keberhasilan. Jadi, developer aplikasi JavaScript harus dapat memperhatikan dan mengantisipasi kemungkinan kegagalan atau keberhasilan pada proses asinkron. 
+Proses asynchronous memiliki posibilitas hasil antara keberhasilan atau kegagalan. Kegagalan terjadi tergantung terhadap faktor apa yang menjadi penyebab. Begitu pun untuk faktor keberhasilan. Jadi, developer aplikasi JavaScript harus dapat memperhatikan dan mengantisipasi kemungkinan kegagalan atau keberhasilan pada proses asinkron.
 
 Berikut adalah contoh penanganan error pada asynchronous process dengan callback.
 
 main.mjs
-coffee.mjs 
+coffee.mjs
 
 1
 import { makeCoffee } from './coffee.mjs';
@@ -1094,31 +983,28 @@ console.log(`Saya memesan ${order} di kafe.`);
 7
 makeCoffee(order, (makeCoffeeError, makeCoffeeData) => {
 8
-  if (makeCoffeeError) {
+if (makeCoffeeError) {
 9
-    // Do something with error
+// Do something with error
 10
-    console.error(makeCoffeeError);
+console.error(makeCoffeeError);
 11
 ​
 12
-    return;
+return;
 13
-  }
+}
 14
 ​
 15
-  console.log(`Kopi ${makeCoffeeData} berhasil dibuat.`);
+console.log(`Kopi ${makeCoffeeData} berhasil dibuat.`);
 16
 });
 
-Input 
+Input
 Reset
 
 Jalankan
-
-            
-
 
 Apa Itu Promise
 Callback menjadi cara yang sangat baik dalam menangani proses asinkron. Namun, ada peristiwa callback hell yang akan dialami sebagai risikonya. Makin panjang proses asinkron yang bergantung terhadap proses asinkron lain maka makin dalam dan sulit penulisan kodenya. Contohnya seperti kode berikut.
@@ -1129,12 +1015,11 @@ Promise adalah sebuah objek khusus yang akan menentukan keberhasilan atau kegaga
 
 Promise bekerja dengan tiga buah state atau kondisi, yaitu pending (kondisi awal), fulfilled (kondisi berhasil), dan rejected (kondisi gagal).
 
-
 Penanganan dengan Promise
 Penanganan proses asinkron dengan Promise sangat mudah, kok. Kita bisa memanfaatkan method dari objek Promise yang bernama then.
 
 main.mjs
-utils.mjs 
+utils.mjs
 
 1
 import { doSomething } from './utils.mjs';
@@ -1143,7 +1028,7 @@ import { doSomething } from './utils.mjs';
 3
 function onFulfilled(doSomethingData) {
 4
-  console.log(doSomethingData);
+console.log(doSomethingData);
 5
 }
 6
@@ -1151,7 +1036,7 @@ function onFulfilled(doSomethingData) {
 7
 function onRejected(doSomethingError) {
 8
-  console.log(doSomethingError);
+console.log(doSomethingError);
 9
 }
 10
@@ -1159,16 +1044,15 @@ function onRejected(doSomethingError) {
 11
 doSomething().then(onFulfilled, onRejected);
 
-Input 
+Input
 Reset
 
 Jalankan
 
-            
 Esensi terhindar dari risiko callback hell jatuh kepada teknik yang bernama chaining method. Teknik ini memungkinkan untuk melanjutkan proses asinkron ke proses asinkron berikutnya dengan mudah. Sebabnya, method then juga mengembalikan nilai Promise yang membawa data sukses. Untuk data gagal, hasil akan masuk ke method catch.
 
 main.mjs
-coffee.mjs 
+coffee.mjs
 
 1
 import { makeCoffee, sendCoffee } from './coffee.mjs';
@@ -1185,75 +1069,70 @@ console.log(`Saya memesan ${order} di kafe.`);
 7
 makeCoffee(order)
 8
-  .then((value) => {
+.then((value) => {
 9
-    return sendCoffee(value);
+return sendCoffee(value);
 10
-  })
+})
 11
-  .then((value) => {
+.then((value) => {
 12
-    console.log(`Pramusaji memberikan ${value} pesanan.`);
+console.log(`Pramusaji memberikan ${value} pesanan.`);
 13
-    console.log(`Saya mendapatkan ${value} dan menghabiskannya.`);
+console.log(`Saya mendapatkan ${value} dan menghabiskannya.`);
 14
-  })
+})
 15
-  .catch((error) => {
+.catch((error) => {
 16
-    console.log(error.message);
+console.log(error.message);
 17
-  });
+});
 
-Input 
+Input
 Reset
 
 Jalankan
-
-            
-
 
 Penanganan Bergaya Synchronous dengan Async-Await
 Hal yang menakjubkan dari penanganan proses asinkron dengan Promise adalah bisa ditulis dalam gaya synchronous. Kuncinya bisa menggunakan fitur async/await. Istilah ini terdiri dari dua keyword JavaScript, yaitu async dan await. Kita perlu menggunakan mereka berdua secara bersamaan dan tidak bisa mencederai salah satunya. Hal yang perlu dicatat adalah fitur ini hanya bisa dipakai jika menggunakan function.
 
 import { doSomething } from './utils.mjs';
- 
+
 function promiseExecutor(resolve, reject) {
-  setTimeout(() => {
-    resolve('You did it!');
-  }, 2000);
+setTimeout(() => {
+resolve('You did it!');
+}, 2000);
 }
- 
+
 function doSomething() {
-  return new Promise(promiseExecutor);
+return new Promise(promiseExecutor);
 }
- 
+
 async function promiseWithAsyncAwait() {
-  console.log('Start.');
- 
-  const result = await doSomething();
-  console.log(result);
- 
-  console.log('End.');
+console.log('Start.');
+
+const result = await doSomething();
+console.log(result);
+
+console.log('End.');
 }
- 
+
 promiseWithAsyncAwait();
- 
-/* Output:
+
+/_ Output:
 Start.
 You did it.
 End.
-*/
-
+_/
 
 Concurrency dengan Promise
 Kita berhasil menangani banyak tugas asinkron. Karena satu proses bergantung dengan proses lainnya, mereka harus berjalan secara sekuensial, bukan? Oleh karena itu, kita memerlukan chaining method then. Jika ingin menjalankan proses asinkron secara paralel (sekaligus), kita bisa memanfaatkan static method dari Promise.
 
-Ada dua static method yang cocok, yaitu Promise.all dan Promise.allSettled. Keduanya memiliki kemiripan. Hal yang membedakan adalah Promise.all akan memasuki kondisi rejected jika salah satu Promise saja terjadi kegagalan. Namun, ini tidak berlaku dengan Promise.allSettled. 
+Ada dua static method yang cocok, yaitu Promise.all dan Promise.allSettled. Keduanya memiliki kemiripan. Hal yang membedakan adalah Promise.all akan memasuki kondisi rejected jika salah satu Promise saja terjadi kegagalan. Namun, ini tidak berlaku dengan Promise.allSettled.
 
 Rangkuman Code Quality
 Sudah saatnya kita membaca rangkuman terhadap materi-materi yang telah dipelajari. Gunakanlah rangkuman ini sebaik-baiknya untuk menghadapi kuis nanti.
-
 
 Type System dalam JavaScript
 Sistem pengecekan tipe dalam JavaScript dikategorikan dalam dynamic type. Artinya, waktu pemeriksaan tipe terjadi pada saat program berjalan (runtime) dan memungkinkan untuk berubah dari satu tipe data ke lainnya. Ini mirip dengan interpreter, tetapi berbeda secara konsep.
@@ -1263,24 +1142,23 @@ Bahasa-bahasa pemrograman yang bertipe static akan memiliki proses pemeriksaan p
 Tidak hanya dynamic, JavaScript juga tergolong weakly-typed language. Ini disebabkan karena fitur type coercion yang memungkinkan konversi otomatis pada suatu pemrosesan dua buah nilai. Contohnya, harapan keluarnya nilai number dari hasil penjumlahan aritmetika yang ternyata berujung pada hasil string karena dilakukan penggabungan.
 
 function add(numA, numB) {
-  return numA + numB;
+return numA + numB;
 }
- 
+
 console.log(add(1, 1)); // 2
 console.log(add(3, 2)); // 5
 console.log(add('5', 4)); // "54"
 
-
 JSDoc, Alat Dokumentasi Kode
 Konsekuensi dari bahasa yang bertipe dynamic dan weakly-typed adalah menghasilkan bug. Salah satu cara untuk mengatasi masalah ini dapat dengan memanfaatkan JSDoc sebagai alat dokumentasi kode. Kita dapat mendeskripsikan kode dengan memanfaatkan fitur komentar pada JavaScript. Ini disebut dengan JSDoc comment.
 
-Setiap JSDoc comment harus dimulai dengan /**. Komentar yang menggunakan /*, /***, atau lebih dari tiga bintang (*) tidak akan diproses oleh JSDoc.
+Setiap JSDoc comment harus dimulai dengan /**. Komentar yang menggunakan /_, /_**, atau lebih dari tiga bintang (\*) tidak akan diproses oleh JSDoc.
 
 Contoh Sederhana
 Contoh Lebih Kompleks
-/** Say hello to world */
+/\*_ Say hello to world _/
 function greet() {
-  console.log('Hello, world!');
+console.log('Hello, world!');
 }
 Dokumentasi di atas dapat kita tulis langsung dalam source code. Kerennya, JSDoc dapat menghasilkan dokumentasi dalam bentuk halaman web.
 
@@ -1290,15 +1168,13 @@ Flow, Type Check Library
 Selain menggunakan fitur komentar, ada tools lain yang relatif lebih baik untuk diterapkan. Tools ini adalah Flow. Flow memungkinkan developer dapat mendefinisikan tipe data langsung dalam kode programnya. Misalnya, saat kita mendeklarasikan variabel, parameter function, return value function, dsb.
 
 const myName: string = 'Flow';
- 
+
 function greet(name: string) {
-  console.log(`Hello, ${name}. My name is ${myName}`);
+console.log(`Hello, ${name}. My name is ${myName}`);
 }
- 
+
 greet('JavaScript');
 Cukup tambahkan titik dua (:) dan diikuti dengan tipe nilainya (type) untuk mendefinisikan tipe data. Dalam Flow, ini dinamakan static type annotations. Flow seakan-akan dapat menambahkan type check layer pada JavaScript sebelum akhirnya kode dieksekusi oleh mesin. Namun, sebelum mulai dieksekusi, kita perlu menghilangkan static type annotations milik Flow karena ini bukan standar dari JavaScript tentunya.
-
-
 
 TypeScript, Superset dari JavaScript
 Jika Flow adalah sebuah library yang dapat menambahkan type check layer, ada tools lain berbentuk bahasa pemrograman yang memiliki type check layer secara bawaan, yaitu TypeScript.
@@ -1307,15 +1183,13 @@ TypeScript dikembangkan oleh Microsoft dengan memadukan seluruh fitur JavaScript
 
 greet.ts
 const myName: string = 'TypeScript';
- 
+
 function greet(name: string) {
-  console.log(`Hello, ${name}. My name is ${myName}`);
+console.log(`Hello, ${name}. My name is ${myName}`);
 }
- 
+
 greet('JavaScript');
 Penulisan kode TypeScript membutuhkan .ts sebagai ekstensi berkasnya. Selain itu, kode di atas juga perlu diproses agar menjadi kode JavaScript yang valid. Compiler yang digunakan untuk TypeScript adalah tsc. Ia akan memeriksa sekaligus menghasilkan berkas .js yang siap eksekusi.
-
-
 
 Style Guide
 Salah satu hal penting dalam sektor kegiatan menulis kode atau coding adalah seni. Dalam konteks ini, seni yang dimaksud adalah tingkat konsistensi kode yang ditulis. Meskipun sebetulnya hal tersebut tidak berpengaruh terhadap validitas sintaks kode JavaScript. Ini kita sebut sebagai style guide.
@@ -1333,7 +1207,6 @@ Kode sulit dibaca dan dipelajari oleh sesama kolega developer sehingga produktiv
 Kolaborasi menjadi sulit terjalin dengan baik, apalagi saat mengalami penggabungan dua buah perubahan kode dari developer yang berbeda.
 Jika ada developer baru, proses onboarding pun akan membutuhkan waktu lebih untuk memahami kode.
 
-
 Code Convention dengan Linter Library
 Penentuan style guide JavaScript sesegera mungkin dapat meningkatkan kualitas penulisan kode. Salah satu cara yang dapat membangun pembentukan style guide dengan baik dan cepat adalah penggunaan library, seperti ESLint. ESLint dapat memberikan feedback atas hasil analisisnya terhadap penulisan kode kita. Feedback ini akan diberi melalui Terminal/CMD.
 
@@ -1349,16 +1222,15 @@ Cara pembuatan aturan penulisan dalam ESLint dilakukan melalui konfigurasi yang 
 Contoh bentuk penulisan aturan dalam konfigurasi tampak seperti berikut.
 
 {
-  rules: {
-    "no-duplicate-imports": "off",
-    "no-use-before-define": "error",
-    "constructor-super": "error",
-    "no-var": "warn",
-    "no-unreachable": "warn",
-    "no-extra-boolean-cast": "warn"
-  }
+rules: {
+"no-duplicate-imports": "off",
+"no-use-before-define": "error",
+"constructor-super": "error",
+"no-var": "warn",
+"no-unreachable": "warn",
+"no-extra-boolean-cast": "warn"
 }
-
+}
 
 Pengujian Program
 Sebagai pembangun program, kami yakin Anda tidak asing dengan istilah testing atau pengujian. Pengujian adalah proses memastikan keberhasilan suatu sistem untuk mencegah kegagalan saat beroperasi. Ada dua metode yang bisa kita lakukan. Jika tidak secara manual, kita akan lakukan pengujian aplikasi secara otomatis.
@@ -1369,8 +1241,6 @@ Pengujian otomatis akan memberikan dua kemungkinan hasil, yaitu pass dan fail. J
 
 Kultur yang tidak akan kita dapati dengan pengujian otomatis: jalankan program → saksikan hasil → perbaiki kode jika hasil aneh.
 
-
-
 Testing dalam Node.js
 Pengujian pada Node.js membutuhkan dua buah module, yaitu node:test dan node:assert. node:test berperan sebagai test runner yang menawarkan API untuk menuliskan skenario pengujian. Adapun node:assert berperan sebagai test assertion yang menyediakan objek untuk memvalidasi nilai antara actual (nilai sesungguhnya) dan expected (nilai yang diharapkan).
 
@@ -1379,20 +1249,21 @@ Berikut adalah contoh kode testing dengan Node.js.
 import { describe, it } from 'node:test';
 import assert from 'node:assert';
 import { add } from './calculator.mjs';
- 
+
 describe('Calculator', () => {
-  it('should add correctly', () => {
-    // Arrange
-    const operandA = 1;
-    const operandB = 1;
- 
+it('should add correctly', () => {
+// Arrange
+const operandA = 1;
+const operandB = 1;
+
     // Action
     const actualValue = add(operandA, operandB);
- 
+
     // Assert
     const expectedValue = 2;
     assert.equal(actualValue, expectedValue);
-  });
+
+});
 });
 Berikut adalah beberapa penjelasan dari beberapa function di atas.
 
@@ -1400,24 +1271,21 @@ describe: membungkus banyak kasus pengujian dalam konteks yang sama.
 test: mendefinisikan kasus pengujian baru.
 assert.equal: memvalidasi nilai antara actual dan expected.
 
-
 Testing dalam Bun
 Function testing milik Bun sebetulnya tidak berbeda dengan Node.js. Namun, lokasi module-nya perlu kita sesuaikan menjadi bun:test. Contoh implementasinya seperti berikut.
 
 import { it, describe, expect } from 'bun:test';
- 
+
 describe('arithmetic', () => {
-  it('1 + 1', () => {
-    expect(2 + 2).toBe(4);
-  });
- 
-  it('3 * 2', () => {
-    expect(3 * 2).toBe(6);
-  });
+it('1 + 1', () => {
+expect(2 + 2).toBe(4);
+});
+
+it('3 _ 2', () => {
+expect(3 _ 2).toBe(6);
+});
 });
 bun:test sedikit berbeda dengan node:test. Jika Node.js menggunakan assert untuk menguji nilai, Bun menggunakan expect dan matcher. expect menerima satu parameter yang menjadi actual value dan kita membutuhkan .toBe sebagai matcher untuk mengujinya dengan expected value.
-
-
 
 Strategi Terbaik Susun Testing
 Berikut adalah tiga best practice dalam menulis kode testing otomatis.
