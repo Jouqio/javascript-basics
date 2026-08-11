@@ -1,0 +1,335 @@
+<h2 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);margin:-1px">Pelajaran interaktif Async/Await JavaScript — modul 4 dari 7</h2>
+
+<style>
+.tb{padding:6px 14px;font-size:13px;border:.5px solid var(--color-border-tertiary);background:transparent;border-radius:var(--border-radius-md);cursor:pointer;color:var(--color-text-secondary);font-family:var(--font-sans);transition:background .15s}
+.tb.on{background:var(--color-background-secondary);color:var(--color-text-primary);font-weight:500;border-color:var(--color-border-secondary)}
+.cb{background:var(--color-background-secondary);border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:12px 14px;font-family:var(--font-mono);font-size:12.5px;line-height:1.75;overflow-x:auto;white-space:pre;margin:10px 0}
+.kw{color:#7C3AED}.fn{color:#0284C7}.str{color:#16A34A}.cm{color:var(--color-text-tertiary)}.hl{color:#DC2626}
+.cd{background:var(--color-background-secondary);border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem;margin:10px 0}
+.tg{display:inline-block;font-size:11px;padding:2px 9px;border-radius:999px;font-weight:500}
+@keyframes blink{0%,100%{opacity:.3}50%{opacity:1}}
+.blink{animation:blink 1.2s ease-in-out infinite}
+</style>
+
+<div style="padding:.5rem 0">
+  <span class="tg" style="background:var(--color-background-info);color:var(--color-text-info)">Modul 4 / 7</span>
+  <h1 style="font-size:22px;font-weight:500;margin:.75rem 0 4px">Async / Await</h1>
+  <p style="font-size:14px;color:var(--color-text-secondary);margin:0">Tangani operasi yang butuh waktu — tanpa memblokir seluruh program</p>
+</div>
+
+<div style="display:flex;gap:6px;flex-wrap:wrap;padding:.75rem 0;border-bottom:.5px solid var(--color-border-tertiary);margin-bottom:1.25rem">
+  <button class="tb on" onclick="go(0,this)">Konsep</button>
+  <button class="tb" onclick="go(1,this)">Contoh kode</button>
+  <button class="tb" onclick="go(2,this)">Analogi</button>
+  <button class="tb" onclick="go(3,this)">Latihan</button>
+  <button class="tb" onclick="go(4,this)">Mini project</button>
+</div>
+
+<div class="sec" id="s0">
+<p style="font-size:14px;line-height:1.7;margin:0 0 14px">JavaScript berjalan satu baris per satu baris (single-threaded). Masalah muncul saat ada operasi lambat — fetch API, baca file, akses DB. Dulu solusinya callback, lalu Promise, kini <strong style="font-weight:500">async/await</strong> yang paling clean.</p>
+
+<p style="font-size:13px;font-weight:500;margin:0 0 8px;color:var(--color-text-secondary)">Evolusi penanganan async — kode yang sama, tiga era berbeda:</p>
+<div style="display:grid;gap:8px">
+  <div>
+    <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px"><span class="tg" style="background:var(--color-background-danger);color:var(--color-text-danger)">ES5</span><span style="font-size:13px;font-weight:500">Callback — susah dibaca</span></div>
+    <div class="cb" style="margin:0;font-size:12px"><span class="fn">ambilUser</span>(id, <span class="kw">function</span>(user) {
+  <span class="fn">ambilPost</span>(user.id, <span class="kw">function</span>(post) {
+    <span class="fn">ambilKomentar</span>(post.id, <span class="kw">function</span>(komentar) {
+      <span class="cm">// 3 level nested — "callback hell"!</span>
+    });
+  });
+});</div>
+  </div>
+  <div>
+    <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px"><span class="tg" style="background:var(--color-background-warning);color:var(--color-text-warning)">ES6</span><span style="font-size:13px;font-weight:500">Promise .then() — lebih baik</span></div>
+    <div class="cb" style="margin:0;font-size:12px"><span class="fn">ambilUser</span>(id)
+  .<span class="fn">then</span>(user =&gt; <span class="fn">ambilPost</span>(user.id))
+  .<span class="fn">then</span>(post =&gt; <span class="fn">ambilKomentar</span>(post.id))
+  .<span class="fn">catch</span>(err =&gt; <span class="fn">tampilError</span>(err));</div>
+  </div>
+  <div>
+    <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px"><span class="tg" style="background:var(--color-background-success);color:var(--color-text-success)">ES2017</span><span style="font-size:13px;font-weight:500">async/await — seperti synchronous!</span></div>
+    <div class="cb" style="margin:0;font-size:12px"><span class="kw">async function</span> <span class="fn">main</span>() {
+  <span class="kw">try</span> {
+    <span class="kw">const</span> user     = <span class="kw">await</span> <span class="fn">ambilUser</span>(id);
+    <span class="kw">const</span> post     = <span class="kw">await</span> <span class="fn">ambilPost</span>(user.id);
+    <span class="kw">const</span> komentar = <span class="kw">await</span> <span class="fn">ambilKomentar</span>(post.id);
+  } <span class="kw">catch</span> (err) {
+    <span class="fn">tampilError</span>(err);
+  }
+}</div>
+  </div>
+</div>
+
+<h3 style="font-size:16px;font-weight:500;margin:1.25rem 0 .5rem">Tiga kata kunci penting</h3>
+<div class="cd">
+  <div style="display:grid;gap:8px">
+    <div style="padding:10px 14px;border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);font-size:14px;display:flex;align-items:center;gap:10px"><code style="font-family:var(--font-mono);font-size:13px;color:#7C3AED;flex-shrink:0">async</code><span>Tandai fungsi sebagai asynchronous. Fungsi ini akan otomatis mengembalikan Promise.</span></div>
+    <div style="padding:10px 14px;border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);font-size:14px;display:flex;align-items:center;gap:10px"><code style="font-family:var(--font-mono);font-size:13px;color:#0284C7;flex-shrink:0">await</code><span>Jeda eksekusi fungsi sampai Promise selesai. Hanya boleh dipakai di dalam fungsi <code style="font-family:var(--font-mono)">async</code>.</span></div>
+    <div style="padding:10px 14px;border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);font-size:14px;display:flex;align-items:center;gap:10px"><code style="font-family:var(--font-mono);font-size:13px;color:#DC2626;flex-shrink:0">try/catch</code><span>Tangkap error dari await — jika Promise gagal (rejected), eksekusi langsung lompat ke <code style="font-family:var(--font-mono)">catch</code>.</span></div>
+  </div>
+</div>
+</div>
+
+<div class="sec" id="s1">
+<p style="font-size:14px;color:var(--color-text-secondary);margin:0 0 16px;line-height:1.6">Tiga pola async/await yang akan kamu pakai di hampir setiap proyek:</p>
+
+<h3 style="font-size:16px;font-weight:500;margin:0 0 .5rem">1. Fetch data dari API</h3>
+<p style="font-size:13px;color:var(--color-text-secondary);margin:0 0 6px">Pola standar: fetch → cek status → parse JSON → pakai data.</p>
+<div class="cb"><span class="kw">async function</span> <span class="fn">ambilPokemon</span>(nama) {
+  <span class="kw">const</span> res  = <span class="kw">await</span> <span class="fn">fetch</span>(<span class="str">`https://pokeapi.co/api/v2/pokemon/${nama}`</span>);
+
+  <span class="kw">if</span> (!res.ok) <span class="kw">throw new</span> <span class="fn">Error</span>(<span class="str">`Gagal: status ${res.status}`</span>);
+
+  <span class="kw">const</span> data = <span class="kw">await</span> res.<span class="fn">json</span>(); <span class="cm">// parse JSON juga async!</span>
+  <span class="kw">return</span> { nama: data.name, tinggi: data.height };
+}
+
+<span class="cm">// Panggil fungsinya:</span>
+<span class="kw">async function</span> <span class="fn">tampilkan</span>() {
+  <span class="kw">try</span> {
+    <span class="kw">const</span> pokemon = <span class="kw">await</span> <span class="fn">ambilPokemon</span>(<span class="str">'pikachu'</span>);
+    console.<span class="fn">log</span>(<span class="str">`${pokemon.nama}: ${pokemon.tinggi * 10}cm`</span>);
+  } <span class="kw">catch</span> (err) {
+    console.<span class="fn">error</span>(<span class="str">'Error:'</span>, err.message);
+  }
+}</div>
+
+<h3 style="font-size:16px;font-weight:500;margin:1.5rem 0 .5rem">2. Promise.all — fetch paralel</h3>
+<p style="font-size:13px;color:var(--color-text-secondary);margin:0 0 6px">Sequential = tunggu satu-satu (lambat). Paralel = semua jalan bersamaan (cepat).</p>
+<div class="cb"><span class="cm">// Sequential — total waktu = A + B + C</span>
+<span class="kw">const</span> users   = <span class="kw">await</span> <span class="fn">fetch</span>(<span class="str">'/users'</span>);   <span class="cm">// tunggu A selesai</span>
+<span class="kw">const</span> posts   = <span class="kw">await</span> <span class="fn">fetch</span>(<span class="str">'/posts'</span>);   <span class="cm">// lalu B</span>
+<span class="kw">const</span> weather = <span class="kw">await</span> <span class="fn">fetch</span>(<span class="str">'/weather'</span>); <span class="cm">// lalu C</span>
+
+<span class="cm">// Paralel — total waktu = yang paling lambat saja!</span>
+<span class="kw">const</span> [users, posts, weather] = <span class="kw">await</span> Promise.<span class="fn">all</span>([
+  <span class="fn">fetch</span>(<span class="str">'/users'</span>),    <span class="cm">// A, B, C start bersamaan</span>
+  <span class="fn">fetch</span>(<span class="str">'/posts'</span>),
+  <span class="fn">fetch</span>(<span class="str">'/weather'</span>)
+]);
+
+<span class="cm">// Catatan: jika SATU dari tiga gagal, semua gagal</span>
+<span class="cm">// Gunakan Promise.allSettled() jika ingin semuanya dicoba</span></div>
+
+<h3 style="font-size:16px;font-weight:500;margin:1.5rem 0 .5rem">3. Pola error handling yang lengkap</h3>
+<div class="cb"><span class="kw">async function</span> <span class="fn">kirimForm</span>(data) {
+  <span class="kw">try</span> {
+    <span class="kw">const</span> res = <span class="kw">await</span> <span class="fn">fetch</span>(<span class="str">'/api/submit'</span>, {
+      method: <span class="str">'POST'</span>,
+      headers: { <span class="str">'Content-Type'</span>: <span class="str">'application/json'</span> },
+      body: <span class="fn">JSON.stringify</span>(data)
+    });
+
+    <span class="kw">if</span> (!res.ok) {
+      <span class="kw">const</span> err = <span class="kw">await</span> res.<span class="fn">json</span>();
+      <span class="kw">throw new</span> <span class="fn">Error</span>(err.message);
+    }
+
+    <span class="kw">return await</span> res.<span class="fn">json</span>(); <span class="cm">// data sukses</span>
+
+  } <span class="kw">catch</span> (err) {
+    <span class="kw">if</span> (err.name === <span class="str">'TypeError'</span>) {
+      <span class="cm">// Network error (offline, DNS fail)</span>
+      tampilError(<span class="str">'Tidak ada koneksi internet'</span>);
+    } <span class="kw">else</span> {
+      tampilError(err.message); <span class="cm">// Error dari server</span>
+    }
+  }
+}</div>
+</div>
+
+<div class="sec" id="s2">
+<h2 style="font-size:18px;font-weight:500;margin:0 0 14px">Analogi: async = pesan makanan di restoran</h2>
+<div class="cd"><p style="font-size:14px;line-height:1.7;margin:0;color:var(--color-text-secondary)">Di restoran, kamu tidak perlu berdiri di dapur sambil menunggu makananmu dimasak. Kamu duduk, ngobrol, pesan minuman — dan makananmu tetap diproses. Itulah cara kerja async.</p></div>
+<div style="display:grid;gap:10px;margin-top:12px">
+  <div class="cd"><div style="display:flex;align-items:start;gap:12px"><i class="ti ti-clock" style="font-size:20px;color:var(--color-text-info);margin-top:2px;flex-shrink:0" aria-hidden="true"></i><div><p style="font-size:14px;font-weight:500;margin:0 0 4px">async function = dapur yang tidak memblokir</p><p style="font-size:13px;color:var(--color-text-secondary);margin:0;line-height:1.6">Dapur masak pesananmu di background. Restoran tetap bisa layani tamu lain. Begitu pula async function — program tetap jalan sementara operasi lambat berjalan di balik layar.</p></div></div></div>
+  <div class="cd"><div style="display:flex;align-items:start;gap:12px"><i class="ti ti-check" style="font-size:20px;color:var(--color-text-success);margin-top:2px;flex-shrink:0" aria-hidden="true"></i><div><p style="font-size:14px;font-weight:500;margin:0 0 4px">Promise = struk nomor antrian</p><p style="font-size:13px;color:var(--color-text-secondary);margin:0;line-height:1.6">Saat memesan, kamu dapat struk (Promise) — bukan makanannya langsung. Struk itu "janji" bahwa makananmu sedang dibuat. Promise bisa fulfilled (makanan jadi) atau rejected (bahan habis).</p></div></div></div>
+  <div class="cd"><div style="display:flex;align-items:start;gap:12px"><i class="ti ti-player-pause" style="font-size:20px;color:var(--color-text-warning);margin-top:2px;flex-shrink:0" aria-hidden="true"></i><div><p style="font-size:14px;font-weight:500;margin:0 0 4px">await = duduk dan tunggu</p><p style="font-size:13px;color:var(--color-text-secondary);margin:0;line-height:1.6"><code style="font-family:var(--font-mono);font-size:12px">await</code> adalah instruksi "tunggu di sini sampai pesananmu datang, baru lanjut". Hanya fungsi async yang bisa pakai await — seperti hanya pelanggan restoran yang punya struk yang bisa ambil pesanan.</p></div></div></div>
+  <div class="cd"><div style="display:flex;align-items:start;gap:12px"><i class="ti ti-lock" style="font-size:20px;color:var(--color-text-danger);margin-top:2px;flex-shrink:0" aria-hidden="true"></i><div><p style="font-size:14px;font-weight:500;margin:0 0 4px">try/catch = antisipasi pesanan gagal</p><p style="font-size:13px;color:var(--color-text-secondary);margin:0;line-height:1.6">Kalau menu habis atau dapur error, kamu dapat kabar. <code style="font-family:var(--font-mono);font-size:12px">try/catch</code> menangkap "kabar buruk" ini — program tidak crash, tapi menangani error dengan elegan.</p></div></div></div>
+</div>
+</div>
+
+<div class="sec" id="s3">
+<p style="font-size:14px;color:var(--color-text-secondary);margin:0 0 1.25rem;line-height:1.6">Untuk latihan ini, kamu butuh environment yang mendukung async — gunakan CodePen, Node.js, atau browser console.</p>
+<div style="display:grid;gap:12px">
+
+  <div style="border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden">
+    <div style="padding:10px 16px;border-bottom:.5px solid var(--color-border-tertiary);display:flex;align-items:center;gap:8px"><span class="tg" style="background:var(--color-background-success);color:var(--color-text-success)">Mudah</span><p style="font-size:14px;font-weight:500;margin:0">Buat async function pertamamu</p></div>
+    <div style="padding:14px 16px"><p style="font-size:14px;line-height:1.7;margin:0 0 10px">Lengkapi fungsi <code style="font-family:var(--font-mono)">tundaLalu</code> yang menunggu N detik baru menampilkan pesan.</p>
+    <div class="cb" style="margin:0"><span class="cm">// Buat fungsi yang "menunggu" N ms</span>
+<span class="kw">const</span> tunggu = (ms) =&gt;
+  <span class="kw">new</span> <span class="fn">Promise</span>(resolve =&gt; <span class="fn">setTimeout</span>(resolve, ms));
+
+<span class="kw">async function</span> <span class="fn">tundaLalu</span>(pesan, detik) {
+  <span class="kw">await</span> <span class="fn">tunggu</span>(<span class="hl">???</span>); <span class="cm">// ubah detik ke ms</span>
+  console.<span class="fn">log</span>(<span class="hl">???</span>);
+}
+
+<span class="fn">tundaLalu</span>(<span class="str">'Halo!'</span>, 2); <span class="cm">// tampil setelah 2 detik</span></div></div>
+  </div>
+
+  <div style="border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden">
+    <div style="padding:10px 16px;border-bottom:.5px solid var(--color-border-tertiary);display:flex;align-items:center;gap:8px"><span class="tg" style="background:var(--color-background-warning);color:var(--color-text-warning)">Sedang</span><p style="font-size:14px;font-weight:500;margin:0">Fetch dengan try/catch</p></div>
+    <div style="padding:14px 16px"><p style="font-size:14px;line-height:1.7;margin:0 0 10px">Buat fungsi yang fetch data dari <code style="font-family:var(--font-mono)">https://jsonplaceholder.typicode.com/users/1</code>. Tangani error jika fetch gagal atau response tidak OK.</p>
+    <div class="cb" style="margin:0"><span class="kw">async function</span> <span class="fn">ambilUser</span>() {
+  <span class="kw">???</span> { <span class="cm">// kata kunci apa?</span>
+    <span class="kw">const</span> res = <span class="kw">await</span> <span class="fn">fetch</span>(<span class="str">'...'</span>);
+    <span class="kw">if</span> (!res.<span class="hl">???</span>) <span class="kw">throw new</span> <span class="fn">Error</span>(<span class="str">'Gagal!'</span>);
+    <span class="kw">const</span> data = <span class="kw">await</span> res.<span class="fn">???</span>(); <span class="cm">// parse JSON</span>
+    console.<span class="fn">log</span>(data.name);
+  } <span class="kw">catch</span> (err) {
+    console.<span class="fn">error</span>(<span class="hl">???</span>);
+  }
+}</div></div>
+  </div>
+
+  <div style="border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden">
+    <div style="padding:10px 16px;border-bottom:.5px solid var(--color-border-tertiary);display:flex;align-items:center;gap:8px"><span class="tg" style="background:var(--color-background-danger);color:var(--color-text-danger)">Menantang</span><p style="font-size:14px;font-weight:500;margin:0">Sequential ke Paralel</p></div>
+    <div style="padding:14px 16px"><p style="font-size:14px;line-height:1.7;margin:0 0 10px">Ubah kode sequential di bawah menjadi paralel menggunakan Promise.all. Gunakan destructuring untuk ambil hasilnya sekaligus.</p>
+    <div class="cb" style="margin:0"><span class="cm">// Sequential (lambat) — ubah jadi paralel:</span>
+<span class="kw">const</span> user  = <span class="kw">await</span> <span class="fn">fetch</span>(<span class="str">'/api/users/1'</span>).<span class="fn">then</span>(r =&gt; r.<span class="fn">json</span>());
+<span class="kw">const</span> post  = <span class="kw">await</span> <span class="fn">fetch</span>(<span class="str">'/api/posts/1'</span>).<span class="fn">then</span>(r =&gt; r.<span class="fn">json</span>());
+<span class="kw">const</span> photo = <span class="kw">await</span> <span class="fn">fetch</span>(<span class="str">'/api/photos/1'</span>).<span class="fn">then</span>(r =&gt; r.<span class="fn">json</span>());
+
+<span class="cm">// Versi paralel (isi ???):</span>
+<span class="kw">const</span> [user, post, photo] = <span class="kw">await</span> Promise.<span class="fn">???</span>([<span class="hl">???</span>]);</div></div>
+  </div>
+
+</div>
+<button onclick="sendPrompt('Saya sedang latihan Async/Await JavaScript. Minta review atau ada pertanyaan. Boleh bantu?')" style="margin-top:1rem;font-size:13px;padding:8px 16px;border:.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:transparent;cursor:pointer;font-family:var(--font-sans);color:var(--color-text-primary)">Minta bantuan atau review kode ↗</button>
+</div>
+
+<div class="sec" id="s4">
+<p style="font-size:14px;color:var(--color-text-secondary);margin:0 0 1rem;line-height:1.6">Bandingkan waktu <strong style="font-weight:500">sequential</strong> vs <strong style="font-weight:500">paralel</strong> secara visual. Klik salah satu tombol dan perhatikan kartu-kartu muncul!</p>
+
+<div style="display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap">
+  <button id="btn-seq" onclick="runSequential()" style="padding:7px 14px;border:.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:transparent;cursor:pointer;font-size:13px;font-family:var(--font-sans);color:var(--color-text-primary)">Sequential (satu-satu)</button>
+  <button id="btn-par" onclick="runParallel()" style="padding:7px 14px;border:.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:transparent;cursor:pointer;font-size:13px;font-family:var(--font-sans);color:var(--color-text-primary)">Paralel — Promise.all</button>
+  <button onclick="resetAll()" style="padding:7px 14px;border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);background:transparent;cursor:pointer;font-size:13px;font-family:var(--font-sans);color:var(--color-text-secondary)">Reset</button>
+</div>
+
+<div id="timer-out" style="display:none;font-size:13px;padding:8px 12px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);border:.5px solid var(--color-border-tertiary);margin-bottom:12px"></div>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px">
+  <div style="border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden">
+    <div style="padding:10px 12px;background:var(--color-background-secondary);border-bottom:.5px solid var(--color-border-tertiary);display:flex;justify-content:space-between;align-items:center">
+      <code style="font-family:var(--font-mono);font-size:12px">/users</code>
+      <span id="dot-users" style="font-size:8px;color:var(--color-text-tertiary)">⬤</span>
+    </div>
+    <div id="body-users" style="padding:10px 12px;min-height:80px;font-size:12px"><span style="color:var(--color-text-tertiary)">Belum dimuat</span></div>
+  </div>
+  <div style="border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden">
+    <div style="padding:10px 12px;background:var(--color-background-secondary);border-bottom:.5px solid var(--color-border-tertiary);display:flex;justify-content:space-between;align-items:center">
+      <code style="font-family:var(--font-mono);font-size:12px">/posts</code>
+      <span id="dot-posts" style="font-size:8px;color:var(--color-text-tertiary)">⬤</span>
+    </div>
+    <div id="body-posts" style="padding:10px 12px;min-height:80px;font-size:12px"><span style="color:var(--color-text-tertiary)">Belum dimuat</span></div>
+  </div>
+  <div style="border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden">
+    <div style="padding:10px 12px;background:var(--color-background-secondary);border-bottom:.5px solid var(--color-border-tertiary);display:flex;justify-content:space-between;align-items:center">
+      <code style="font-family:var(--font-mono);font-size:12px">/weather</code>
+      <span id="dot-weather" style="font-size:8px;color:var(--color-text-tertiary)">⬤</span>
+    </div>
+    <div id="body-weather" style="padding:10px 12px;min-height:80px;font-size:12px"><span style="color:var(--color-text-tertiary)">Belum dimuat</span></div>
+  </div>
+</div>
+
+<p style="font-size:13px;font-weight:500;margin:1.25rem 0 .5rem;color:var(--color-text-secondary)">Kode di balik layar:</p>
+<div class="cb" style="font-size:12px"><span class="cm">// SEQUENTIAL — total ~2100ms (1000+700+400)</span>
+<span class="kw">const</span> users   = <span class="kw">await</span> <span class="fn">fakeFetch</span>(<span class="str">'users'</span>, 1000);
+<span class="kw">const</span> posts   = <span class="kw">await</span> <span class="fn">fakeFetch</span>(<span class="str">'posts'</span>, 700);
+<span class="kw">const</span> weather = <span class="kw">await</span> <span class="fn">fakeFetch</span>(<span class="str">'weather'</span>, 400);
+
+<span class="cm">// PARALEL — total ~1000ms (hanya yang paling lambat)</span>
+<span class="kw">await</span> Promise.<span class="fn">all</span>([
+  <span class="fn">fakeFetch</span>(<span class="str">'users'</span>, 1000).<span class="fn">then</span>(d =&gt; <span class="fn">render</span>(<span class="str">'users'</span>, d)),
+  <span class="fn">fakeFetch</span>(<span class="str">'posts'</span>, 700).<span class="fn">then</span>(d =&gt; <span class="fn">render</span>(<span class="str">'posts'</span>, d)),
+  <span class="fn">fakeFetch</span>(<span class="str">'weather'</span>, 400).<span class="fn">then</span>(d =&gt; <span class="fn">render</span>(<span class="str">'weather'</span>, d))
+]);</div>
+
+<button onclick="sendPrompt('Saya sudah selesai belajar Async/Await dan coba demo Sequential vs Paralel. Lanjut ke Fetch API sekarang!')" style="margin-top:1rem;font-size:13px;padding:8px 16px;border:.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:transparent;cursor:pointer;font-family:var(--font-sans);color:var(--color-text-primary)">Lanjut ke Fetch API ↗</button>
+</div>
+
+<script>
+function go(idx,btn){
+  document.querySelectorAll('.sec').forEach(s=>s.style.display='none');
+  document.getElementById('s'+idx).style.display='block';
+  document.querySelectorAll('.tb').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+}
+document.querySelectorAll('.sec').forEach((s,i)=>{if(i>0)s.style.display='none'});
+
+const FAKE={
+  users:[{nama:'Budi Santoso',role:'Frontend'},{nama:'Sari Dewi',role:'Backend'},{nama:'Dani Pratama',role:'Fullstack'}],
+  posts:[{judul:'Belajar JS Modern',views:342},{judul:'React untuk Pemula',views:891},{judul:'Node.js REST API',views:567}],
+  weather:{kota:'Jakarta',suhu:29,cuaca:'Berawan',humid:72}
+};
+
+function fakeFetch(ep,delay){
+  return new Promise((res,rej)=>setTimeout(()=>{
+    if(Math.random()<0.12){rej(new Error('Network error: /'+ep));return;}
+    res(FAKE[ep]);
+  },delay));
+}
+
+function setLoading(ep){
+  document.getElementById('body-'+ep).innerHTML='<span class="blink" style="color:var(--color-text-secondary)">Memuat...</span>';
+  document.getElementById('dot-'+ep).style.color='var(--color-text-warning)';
+}
+function setError(ep,msg){
+  document.getElementById('body-'+ep).innerHTML=`<span style="font-size:12px;color:var(--color-text-danger)">${msg}</span>`;
+  document.getElementById('dot-'+ep).style.color='var(--color-text-danger)';
+}
+function renderCard(ep,data){
+  const b=document.getElementById('body-'+ep);
+  document.getElementById('dot-'+ep).style.color='var(--color-text-success)';
+  if(ep==='users'){
+    b.innerHTML=data.map(u=>`<div style="padding:3px 0;border-bottom:.5px solid var(--color-border-tertiary)"><div style="font-weight:500">${u.nama}</div><div style="font-size:11px;color:var(--color-text-secondary)">${u.role}</div></div>`).join('');
+  }else if(ep==='posts'){
+    b.innerHTML=data.map(p=>`<div style="padding:3px 0;border-bottom:.5px solid var(--color-border-tertiary)"><div style="font-weight:500">${p.judul}</div><div style="font-size:11px;color:var(--color-text-secondary)">${p.views} views</div></div>`).join('');
+  }else{
+    b.innerHTML=`<div style="text-align:center;padding:8px 0"><div style="font-size:28px;font-weight:500;line-height:1">${data.suhu}°</div><div style="font-size:12px;color:var(--color-text-secondary);margin-top:4px">${data.kota}</div><div style="font-size:11px;color:var(--color-text-secondary)">${data.cuaca} · ${data.humid}%</div></div>`;
+  }
+}
+function setBtns(dis){
+  ['btn-seq','btn-par'].forEach(id=>{document.getElementById(id).disabled=dis;});
+}
+function showTimer(mode,ms){
+  const el=document.getElementById('timer-out');
+  el.style.display='block';
+  const fast=ms<1200;
+  el.innerHTML=`<span style="font-weight:500">${mode}</span> selesai dalam <span style="font-weight:500;color:var(--color-text-${fast?'success':'warning'})">${ms}ms</span>${fast?' — ini karena paralel!':' — coba mode paralel!'}`;
+}
+function resetAll(){
+  ['users','posts','weather'].forEach(ep=>{
+    document.getElementById('body-'+ep).innerHTML='<span style="color:var(--color-text-tertiary)">Belum dimuat</span>';
+    document.getElementById('dot-'+ep).style.color='var(--color-text-tertiary)';
+  });
+  const el=document.getElementById('timer-out');
+  el.style.display='none';el.textContent='';
+  setBtns(false);
+}
+
+async function runSequential(){
+  setBtns(true);
+  ['users','posts','weather'].forEach(setLoading);
+  const t=Date.now();
+  try{const u=await fakeFetch('users',1000);renderCard('users',u);}catch(e){setError('users',e.message);}
+  try{const p=await fakeFetch('posts',700);renderCard('posts',p);}catch(e){setError('posts',e.message);}
+  try{const w=await fakeFetch('weather',400);renderCard('weather',w);}catch(e){setError('weather',e.message);}
+  showTimer('Sequential',Date.now()-t);setBtns(false);
+}
+
+async function runParallel(){
+  setBtns(true);
+  ['users','posts','weather'].forEach(setLoading);
+  const t=Date.now();
+  await Promise.all([
+    fakeFetch('users',1000).then(d=>renderCard('users',d)).catch(e=>setError('users',e.message)),
+    fakeFetch('posts',700).then(d=>renderCard('posts',d)).catch(e=>setError('posts',e.message)),
+    fakeFetch('weather',400).then(d=>renderCard('weather',d)).catch(e=>setError('weather',e.message))
+  ]);
+  showTimer('Paralel',Date.now()-t);setBtns(false);
+}
+</script>
