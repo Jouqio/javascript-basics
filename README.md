@@ -1,6 +1,6 @@
 <div align="center">
 
-#  Belajar JavaScript
+#  Belajar Dasar Pemrograman JavaScript
 
 **Dokumentasi & latihan perjalanan belajar JavaScript dari dasar sampai mahir.**
 
@@ -17,12 +17,12 @@
 
 ##  Tentang
 
-Repository ini berisi kumpulan catatan, latihan, dan mini proyek yang dibuat selama proses belajar **JavaScript** — mulai dari sintaks dasar hingga konsep yang lebih kompleks seperti asynchronous programming dan DOM manipulation.
+Repository ini berisi kumpulan catatan dan latihan kode yang dibuat selama proses belajar **dasar pemrograman JavaScript** — mulai dari sintaks paling dasar seperti variabel dan tipe data, hingga konsep yang lebih kompleks seperti asynchronous programming dan modularisasi.
 
 Dibuat untuk:
 
 -  Mendokumentasikan progres belajar secara terstruktur
--  Menyimpan latihan kode dan mini proyek dalam satu tempat
+-  Menyimpan latihan kode per topik dalam satu tempat
 -  Jadi referensi cepat saat lupa suatu konsep
 -  Membantu siapa pun yang juga sedang belajar JavaScript dari nol
 
@@ -47,39 +47,35 @@ Dibuat untuk:
 <details open>
 <summary><b>🟢 Dasar</b></summary>
 
-- Variabel — `var`, `let`, `const`
-- Tipe data & operator
-- Struktur kontrol — `if-else`, `switch`
-- Perulangan — `for`, `while`, `do...while`
-- Fungsi — declaration, expression, arrow function
-- Array & object dasar
-- String methods
+- Variable Assignment
+- Tipe Data
+- Mengubah Nilai Antar Tipe Data
+- Comment
+- Operator
+- Conditional Statement
+- Loop
+- Alert, Prompt, Log
 
 </details>
 
 <details>
 <summary><b>🟡 Menengah</b></summary>
 
-- Array methods — `map`, `filter`, `reduce`, `find`, dll.
-- Destructuring & spread/rest operator
-- Template literals
-- DOM manipulation
-- Event handling
-- Error handling — `try...catch`
-- ES6+ features
+- Array
+- Function
+- Object
+- Internal & External JS
+- Code Quality
 
 </details>
 
 <details>
 <summary><b>🔴 Lanjutan</b></summary>
 
-- Asynchronous JavaScript — callback, promise, async/await
-- Fetch API & AJAX
-- Closures & scope
-- Prototype & class
-- Module — `import` / `export`
-- Web storage — localStorage & sessionStorage
-- Dasar-dasar design pattern
+- Asynchronous
+- Functional Programming
+- Modularisasi
+- Paradigma Pemrograman
 
 </details>
 
@@ -88,21 +84,25 @@ Dibuat untuk:
 ##  Struktur Folder
 
 ```
-belajar-javascript/
-├── 01-dasar/
-│   ├── variabel.js
-│   ├── tipe-data.js
-│   └── perulangan.js
-├── 02-menengah/
-│   ├── array-methods.js
-│   └── dom-manipulation.js
-├── 03-lanjutan/
-│   ├── async-await.js
-│   └── fetch-api.js
-├── proyek/
-│   └── to-do-list/
-├── README.md
-└── LICENSE
+Belajar-Dasar-Pemrograman-JavaScript/
+├── Variable Assignment/
+├── Tipe Data/
+├── Mengubah Nilai Antar Tipe Data/
+├── Comment/
+├── Operator/
+├── Conditional Statement/
+├── Loop/
+├── Alert, Prompt, Log/
+├── Array/
+├── Function/
+├── Object/
+├── Internal & External js/
+├── Code Quality/
+├── Asynchronous/
+├── Functional Programming/
+├── Modularisasi/
+├── Paradigma Pemrograman/
+└── README.md
 ```
 
 <br>
@@ -114,19 +114,19 @@ belajar-javascript/
 1. Clone repository ini
 
    ```bash
-   git clone https://github.com/username/belajar-javascript.git
+   git clone https://github.com/Jouqio/Belajar-Dasar-Pemrograman-JavaScript.git
    ```
 
 2. Masuk ke folder proyek
 
    ```bash
-   cd belajar-javascript
+   cd Belajar-Dasar-Pemrograman-JavaScript
    ```
 
-3. Jalankan salah satu file latihan
+3. Buka salah satu folder topik, lalu jalankan file latihan
 
    ```bash
-   node 01-dasar/variabel.js
+   node "Variable Assignment/nama-file.js"
    ```
 
    atau buka file `.html` terkait langsung di browser untuk melihat hasilnya secara visual.
@@ -137,10 +137,23 @@ belajar-javascript/
 
 | Topik | Status |
 |---|---|
-| Dasar JavaScript | ⬜ Belum dimulai |
-| DOM Manipulation | ⬜ Belum dimulai |
-| Asynchronous JS | ⬜ Belum dimulai |
-| Mini Proyek | ⬜ Belum dimulai |
+| Variable Assignment | ✅ Selesai |
+| Tipe Data | ✅ Selesai |
+| Mengubah Nilai Antar Tipe Data | ✅ Selesai |
+| Comment | ✅ Selesai |
+| Operator | ✅ Selesai |
+| Conditional Statement | ✅ Selesai |
+| Loop | ✅ Selesai |
+| Alert, Prompt, Log | ✅ Selesai |
+| Array | ✅ Selesai |
+| Function | ✅ Selesai |
+| Object | ✅ Selesai |
+| Internal & External JS | ✅ Selesai |
+| Code Quality | ✅ Selesai |
+| Asynchronous | ✅ Selesai |
+| Functional Programming | ✅ Selesai |
+| Modularisasi | ✅ Selesai |
+| Paradigma Pemrograman | ✅ Selesai |
 
 > Keterangan: ✅ Selesai · 🔄 Sedang dipelajari · ⬜ Belum dimulai — perbarui tabel ini sesuai progresmu sendiri.
 
@@ -155,7 +168,7 @@ belajar-javascript/
 
 <br>
 
-## 🤝 Kontribusi
+##  Kontribusi
 
 Saran, koreksi, dan kontribusi sangat terbuka.
 
@@ -179,8 +192,7 @@ Didistribusikan dengan lisensi [MIT](LICENSE). Bebas digunakan untuk belajar mau
 
 Dibuat oleh **Syauqi Nuzul Abdi**
 
-[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/username)
-[![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/username)
+[![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Jouqio)
 
 **⭐ Beri star jika repository ini bermanfaat!**
 
