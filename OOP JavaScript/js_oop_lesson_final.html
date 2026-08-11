@@ -1,0 +1,312 @@
+<h2 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);margin:-1px">Pelajaran interaktif OOP JavaScript — modul 7 dari 7, modul terakhir</h2>
+<style>
+.tb{padding:6px 14px;font-size:13px;border:.5px solid var(--color-border-tertiary);background:transparent;border-radius:var(--border-radius-md);cursor:pointer;color:var(--color-text-secondary);font-family:var(--font-sans);transition:background .15s}
+.tb.on{background:var(--color-background-secondary);color:var(--color-text-primary);font-weight:500;border-color:var(--color-border-secondary)}
+.cb{background:var(--color-background-secondary);border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:12px 14px;font-family:var(--font-mono);font-size:12.5px;line-height:1.75;overflow-x:auto;white-space:pre;margin:10px 0}
+.kw{color:#7C3AED}.fn{color:#0284C7}.str{color:#16A34A}.cm{color:var(--color-text-tertiary)}.hl{color:#DC2626}
+.cd{background:var(--color-background-secondary);border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem;margin:10px 0}
+.tg{display:inline-block;font-size:11px;padding:2px 9px;border-radius:999px;font-weight:500}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+</style>
+
+<div style="padding:.5rem 0">
+  <span class="tg" style="background:var(--color-background-warning);color:var(--color-text-warning)">Modul 7 / 7 — Final</span>
+  <h1 style="font-size:22px;font-weight:500;margin:.75rem 0 4px">OOP JavaScript</h1>
+  <p style="font-size:14px;color:var(--color-text-secondary);margin:0">Class, constructor, method, inheritance — kode terstruktur seperti developer profesional</p>
+</div>
+
+<div style="display:flex;gap:6px;flex-wrap:wrap;padding:.75rem 0;border-bottom:.5px solid var(--color-border-tertiary);margin-bottom:1.25rem">
+  <button class="tb on" onclick="go(0,this)">Konsep</button>
+  <button class="tb" onclick="go(1,this)">Contoh kode</button>
+  <button class="tb" onclick="go(2,this)">Analogi</button>
+  <button class="tb" onclick="go(3,this)">Latihan</button>
+  <button class="tb" onclick="go(4,this)">Mini project</button>
+</div>
+
+<div class="sec" id="s0">
+<p style="font-size:14px;line-height:1.7;margin:0 0 14px">OOP (Object-Oriented Programming) adalah cara mengorganisir kode menjadi <em>class</em> — template yang mendeskripsikan data dan aksi suatu entitas. Daripada data dan fungsi berserakan, semuanya terkumpul rapi dalam satu class.</p>
+
+<div class="vs">
+  <div>
+    <p style="font-size:11px;font-weight:500;color:var(--color-text-secondary);margin:0 0 4px">Tanpa OOP — berserakan</p>
+    <div class="cb" style="margin:0;font-size:12px"><span class="kw">const</span> u1 = { nama:<span class="str">'Budi'</span>, usia:25 };
+<span class="kw">const</span> u2 = { nama:<span class="str">'Sari'</span>, usia:23 };
+<span class="kw">function</span> <span class="fn">sapa</span>(u) {
+  <span class="kw">return</span> <span class="str">`Halo ${u.nama}`</span>;
+}
+<span class="kw">function</span> <span class="fn">dewasa</span>(u) {
+  <span class="kw">return</span> u.usia &gt;= 18;
+}</div>
+  </div>
+  <div>
+    <p style="font-size:11px;font-weight:500;color:var(--color-text-success);margin:0 0 4px">Dengan class — terstruktur</p>
+    <div class="cb" style="margin:0;font-size:12px"><span class="kw">class</span> <span class="fn">User</span> {
+  <span class="fn">constructor</span>(nama, usia) {
+    <span class="kw">this</span>.nama = nama;
+    <span class="kw">this</span>.usia = usia;
+  }
+  <span class="fn">sapa</span>() { <span class="kw">return</span> <span class="str">`Halo ${this.nama}`</span>; }
+  <span class="kw">get</span> <span class="fn">dewasa</span>() { <span class="kw">return</span> <span class="kw">this</span>.usia &gt;= 18; }
+}
+<span class="kw">const</span> u = <span class="kw">new</span> <span class="fn">User</span>(<span class="str">'Budi'</span>, 25);</div>
+  </div>
+</div>
+
+<h3 style="font-size:16px;font-weight:500;margin:1.25rem 0 .5rem">Anatomi class — semua bagian penting</h3>
+<div class="cb"><span class="kw">class</span> <span class="fn">Produk</span> {            <span class="cm">// nama class selalu PascalCase</span>
+  <span class="hl">#harga</span>;               <span class="cm">// private field — tidak bisa diakses dari luar!</span>
+
+  <span class="fn">constructor</span>(nama, harga) { <span class="cm">// dipanggil saat new Produk(...)</span>
+    <span class="kw">this</span>.nama  = nama;
+    <span class="kw">this</span>.<span class="hl">#harga</span> = harga;
+  }
+
+  <span class="fn">tampil</span>() {              <span class="cm">// instance method</span>
+    <span class="kw">return</span> <span class="str">`${this.nama}: Rp${this.#harga}`</span>;
+  }
+
+  <span class="kw">get</span> <span class="fn">hargaDiskon</span>() {      <span class="cm">// getter — diakses sebagai properti (tanpa ())</span>
+    <span class="kw">return</span> <span class="kw">this</span>.<span class="hl">#harga</span> * 0.9;
+  }
+
+  <span class="kw">set</span> <span class="fn">harga</span>(val) {          <span class="cm">// setter — validasi saat assignment</span>
+    <span class="kw">if</span> (val &lt; 0) <span class="kw">throw new</span> <span class="fn">Error</span>(<span class="str">'Harga tidak boleh negatif'</span>);
+    <span class="kw">this</span>.<span class="hl">#harga</span> = val;
+  }
+
+  <span class="kw">static</span> <span class="fn">buat</span>(nama, harga) { <span class="cm">// static — dipanggil dari class, bukan instance</span>
+    <span class="kw">return new</span> <span class="fn">Produk</span>(nama, harga);
+  }
+}
+
+<span class="kw">const</span> mie = <span class="kw">new</span> <span class="fn">Produk</span>(<span class="str">'Indomie'</span>, 3500);
+mie.<span class="fn">tampil</span>();           <span class="cm">// 'Indomie: Rp3500'</span>
+mie.<span class="hl">hargaDiskon</span>;        <span class="cm">// 3150 — akses getter tanpa ()</span>
+mie.<span class="fn">harga</span> = 4000;       <span class="cm">// setter dipanggil otomatis</span>
+Produk.<span class="fn">buat</span>(<span class="str">'Kopi'</span>, 5000); <span class="cm">// static method</span></div>
+</div>
+
+<div class="sec" id="s1">
+<h3 style="font-size:16px;font-weight:500;margin:0 0 .5rem">Inheritance — extends & super</h3>
+<p style="font-size:13px;color:var(--color-text-secondary);margin:0 0 6px">Class bisa mewarisi semua properti dan method dari class lain, lalu menambahkan fitur baru.</p>
+<div class="cb"><span class="kw">class</span> <span class="fn">Animal</span> {
+  <span class="fn">constructor</span>(nama, suara) {
+    <span class="kw">this</span>.nama  = nama;
+    <span class="kw">this</span>.suara = suara;
+  }
+  <span class="fn">bicara</span>() { <span class="kw">return</span> <span class="str">`${this.nama}: ${this.suara}`</span>; }
+}
+
+<span class="kw">class</span> <span class="fn">Dog</span> <span class="kw">extends</span> <span class="fn">Animal</span> {    <span class="cm">// Dog mewarisi semua dari Animal</span>
+  <span class="fn">constructor</span>(nama) {
+    <span class="kw">super</span>(nama, <span class="str">'Guk!'</span>);       <span class="cm">// WAJIB panggil super() sebelum this</span>
+    <span class="kw">this</span>.trik = [];
+  }
+
+  <span class="fn">belajar</span>(trik) { <span class="kw">this</span>.trik.<span class="fn">push</span>(trik); }
+  <span class="fn">tampilTrik</span>() { <span class="kw">return</span> <span class="str">`${this.nama} bisa: ${this.trik.join(', ')}`</span>; }
+}
+
+<span class="kw">const</span> rex = <span class="kw">new</span> <span class="fn">Dog</span>(<span class="str">'Rex'</span>);
+rex.<span class="fn">bicara</span>();         <span class="cm">// 'Rex: Guk!' — method dari Animal</span>
+rex.<span class="fn">belajar</span>(<span class="str">'duduk'</span>);
+rex.<span class="fn">tampilTrik</span>();     <span class="cm">// 'Rex bisa: duduk' — method dari Dog</span></div>
+
+<h3 style="font-size:16px;font-weight:500;margin:1.5rem 0 .5rem">Contoh nyata — hierarki User & Admin</h3>
+<div class="cb"><span class="kw">class</span> <span class="fn">User</span> {
+  <span class="fn">constructor</span>(nama, email) {
+    <span class="kw">this</span>.nama  = nama;
+    <span class="kw">this</span>.email = email;
+    <span class="kw">this</span>.role  = <span class="str">'user'</span>;
+  }
+  <span class="fn">sapa</span>() { <span class="kw">return</span> <span class="str">`Halo, ${this.nama}!`</span>; }
+}
+
+<span class="kw">class</span> <span class="fn">Admin</span> <span class="kw">extends</span> <span class="fn">User</span> {
+  <span class="fn">constructor</span>(nama, email, level) {
+    <span class="kw">super</span>(nama, email);         <span class="cm">// ambil semua dari User</span>
+    <span class="kw">this</span>.role  = <span class="str">'admin'</span>;       <span class="cm">// override properti parent</span>
+    <span class="kw">this</span>.level = level;
+  }
+  <span class="fn">hapusUser</span>(id) { <span class="cm">/* hanya admin bisa */</span> }
+  <span class="fn">sapa</span>() {                      <span class="cm">// override method parent</span>
+    <span class="kw">return</span> <span class="str">`[Admin Lv.${this.level}] ${super.sapa()}`</span>;
+  }
+}
+
+<span class="kw">const</span> admin = <span class="kw">new</span> <span class="fn">Admin</span>(<span class="str">'Budi'</span>, <span class="str">'budi@dev.id'</span>, 3);
+admin.<span class="fn">sapa</span>(); <span class="cm">// '[Admin Lv.3] Halo, Budi!'</span></div>
+</div>
+
+<div class="sec" id="s2">
+<h2 style="font-size:18px;font-weight:500;margin:0 0 14px">Analogi: class = blueprint rumah</h2>
+<div class="cd"><p style="font-size:14px;line-height:1.7;margin:0;color:var(--color-text-secondary)">OOP bukan sekadar cara menulis kode — ini adalah cara berpikir tentang masalah. Bayangkan kamu seorang arsitek yang membuat blueprint sebelum membangun.</p></div>
+<div style="display:grid;gap:10px;margin-top:12px">
+  <div class="cd"><div style="display:flex;align-items:start;gap:12px"><i class="ti ti-file" style="font-size:20px;color:var(--color-text-info);margin-top:2px;flex-shrink:0" aria-hidden="true"></i><div><p style="font-size:14px;font-weight:500;margin:0 0 4px">Class = blueprint/cetakan</p><p style="font-size:13px;color:var(--color-text-secondary);margin:0;line-height:1.6">Blueprint rumah bukan rumah itu sendiri — ia hanya mendeskripsikan <em>seperti apa</em> rumah yang akan dibangun. Class mendefinisikan properti apa yang dimiliki dan aksi apa yang bisa dilakukan.</p></div></div></div>
+  <div class="cd"><div style="display:flex;align-items:start;gap:12px"><i class="ti ti-copy" style="font-size:20px;color:var(--color-text-success);margin-top:2px;flex-shrink:0" aria-hidden="true"></i><div><p style="font-size:14px;font-weight:500;margin:0 0 4px">Instance = rumah yang sudah jadi</p><p style="font-size:13px;color:var(--color-text-secondary);margin:0;line-height:1.6"><code style="font-family:var(--font-mono);font-size:12px">new User('Budi', 25)</code> = membangun satu rumah dari blueprint. Kamu bisa bangun ribuan rumah dari blueprint yang sama — setiap rumah independen, tidak saling memengaruhi.</p></div></div></div>
+  <div class="cd"><div style="display:flex;align-items:start;gap:12px"><i class="ti ti-star" style="font-size:20px;color:var(--color-text-warning);margin-top:2px;flex-shrink:0" aria-hidden="true"></i><div><p style="font-size:14px;font-weight:500;margin:0 0 4px">Inheritance = renovasi upgrade</p><p style="font-size:13px;color:var(--color-text-secondary);margin:0;line-height:1.6"><code style="font-family:var(--font-mono);font-size:12px">class Admin extends User</code> = ambil blueprint User yang sudah ada, tambahkan lantai baru (fitur baru), tanpa mengubah blueprint User asli. Reuse kode, kurangi duplikasi.</p></div></div></div>
+  <div class="cd"><div style="display:flex;align-items:start;gap:12px"><i class="ti ti-lock" style="font-size:20px;color:var(--color-text-danger);margin-top:2px;flex-shrink:0" aria-hidden="true"></i><div><p style="font-size:14px;font-weight:500;margin:0 0 4px">Private field (#) = ruangan terkunci</p><p style="font-size:13px;color:var(--color-text-secondary);margin:0;line-height:1.6">Ruangan yang hanya bisa diakses dari dalam rumah — tamu tidak bisa masuk langsung. <code style="font-family:var(--font-mono);font-size:12px">#password</code> tidak bisa diakses dari luar class, hanya melalui method yang disediakan.</p></div></div></div>
+</div>
+</div>
+
+<div class="sec" id="s3">
+<p style="font-size:14px;color:var(--color-text-secondary);margin:0 0 1.25rem;line-height:1.6">Kerjakan di console browser atau CodePen. Uji setiap class dengan membuat beberapa instance dan memanggil methodnya.</p>
+<div style="display:grid;gap:12px">
+  <div style="border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden">
+    <div style="padding:10px 16px;border-bottom:.5px solid var(--color-border-tertiary);display:flex;align-items:center;gap:8px"><span class="tg" style="background:var(--color-background-success);color:var(--color-text-success)">Mudah</span><p style="font-size:14px;font-weight:500;margin:0">Buat class Kendaraan</p></div>
+    <div style="padding:14px 16px"><p style="font-size:14px;line-height:1.7;margin:0 0 10px">Buat class <code style="font-family:var(--font-mono)">Kendaraan</code> dengan properti <code style="font-family:var(--font-mono)">merk</code>, <code style="font-family:var(--font-mono)">tahun</code>, <code style="font-family:var(--font-mono)">kecepatan</code> (default 0), dan method <code style="font-family:var(--font-mono)">gas(n)</code> yang menambah kecepatan.</p>
+    <div class="cb" style="margin:0"><span class="kw">class</span> <span class="fn">Kendaraan</span> {
+  <span class="fn">constructor</span>(merk, tahun) {
+    <span class="kw">this</span>.merk      = <span class="hl">???</span>;
+    <span class="kw">this</span>.tahun     = <span class="hl">???</span>;
+    <span class="kw">this</span>.kecepatan = 0;
+  }
+  <span class="fn">gas</span>(n) { <span class="kw">this</span>.kecepatan += <span class="hl">???</span>; }
+  <span class="fn">rem</span>()  { <span class="kw">this</span>.kecepatan = 0; }
+}</div></div>
+  </div>
+  <div style="border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden">
+    <div style="padding:10px 16px;border-bottom:.5px solid var(--color-border-tertiary);display:flex;align-items:center;gap:8px"><span class="tg" style="background:var(--color-background-warning);color:var(--color-text-warning)">Sedang</span><p style="font-size:14px;font-weight:500;margin:0">Tambah getter + private field</p></div>
+    <div style="padding:14px 16px"><p style="font-size:14px;line-height:1.7;margin:0 0 10px">Perluas class <code style="font-family:var(--font-mono)">Kendaraan</code>: jadikan <code style="font-family:var(--font-mono)">kecepatan</code> sebagai private field (<code style="font-family:var(--font-mono)">#kecepatan</code>), buat getter <code style="font-family:var(--font-mono)">info</code> yang return string ringkasan, dan pastikan kecepatan tidak melebihi 200.</p>
+    <div class="cb" style="margin:0"><span class="hl">#kecepatan</span> = 0;
+
+<span class="fn">gas</span>(n) {
+  <span class="kw">this</span>.<span class="hl">#kecepatan</span> = <span class="fn">Math.min</span>(200, <span class="kw">this</span>.<span class="hl">#kecepatan</span> + n);
+}
+<span class="kw">get</span> <span class="fn">info</span>() {
+  <span class="kw">return</span> <span class="str">`${this.merk} (${this.tahun}): ${this.<span class="hl">#kecepatan</span>} km/j`</span>;
+}</div></div>
+  </div>
+  <div style="border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden">
+    <div style="padding:10px 16px;border-bottom:.5px solid var(--color-border-tertiary);display:flex;align-items:center;gap:8px"><span class="tg" style="background:var(--color-background-danger);color:var(--color-text-danger)">Menantang</span><p style="font-size:14px;font-weight:500;margin:0">Turunkan ke class Mobil & Motor</p></div>
+    <div style="padding:14px 16px"><p style="font-size:14px;line-height:1.7;margin:0 0 10px">Buat <code style="font-family:var(--font-mono)">class Mobil extends Kendaraan</code> dengan tambahan properti <code style="font-family:var(--font-mono)">pintu</code> (jumlah pintu) dan method <code style="font-family:var(--font-mono)">klakson()</code>. Buat juga <code style="font-family:var(--font-mono)">class Motor</code> yang override method <code style="font-family:var(--font-mono)">klakson()</code> dengan suara berbeda.</p>
+    <div class="cb" style="margin:0"><span class="kw">class</span> <span class="fn">Mobil</span> <span class="kw">extends</span> <span class="fn">Kendaraan</span> {
+  <span class="fn">constructor</span>(merk, tahun, pintu) {
+    <span class="kw">super</span>(<span class="hl">???</span>, <span class="hl">???</span>); <span class="cm">// panggil parent constructor</span>
+    <span class="kw">this</span>.pintu = pintu;
+  }
+  <span class="fn">klakson</span>() { <span class="kw">return</span> <span class="str">'Tin tin!'</span>; }
+}
+
+<span class="kw">class</span> <span class="fn">Motor</span> <span class="kw">extends</span> <span class="fn">???</span> { <span class="cm">// isi</span>
+  <span class="fn">klakson</span>() { <span class="kw">return</span> <span class="str">'Brem brem!'</span>; }
+}</div></div>
+  </div>
+</div>
+<button onclick="sendPrompt('Saya latihan OOP JavaScript. Boleh bantu review class yang saya buat?')" style="margin-top:1rem;font-size:13px;padding:8px 16px;border:.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:transparent;cursor:pointer;font-family:var(--font-sans);color:var(--color-text-primary)">Minta bantuan atau review kode ↗</button>
+</div>
+
+<div class="sec" id="s4">
+<p style="font-size:14px;color:var(--color-text-secondary);margin:0 0 1rem;line-height:1.6">Rak buku digital menggunakan class <code style="font-family:var(--font-mono)">Book</code> — data tersimpan persisten antar sesi.</p>
+
+<div style="border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden;margin-bottom:12px">
+  <div style="padding:12px 14px;background:var(--color-background-secondary);border-bottom:.5px solid var(--color-border-tertiary)">
+    <div style="display:grid;grid-template-columns:2fr 1fr auto auto;gap:8px">
+      <input id="b-title" placeholder="Judul buku *" style="font-family:var(--font-sans)">
+      <input id="b-author" placeholder="Penulis" style="font-family:var(--font-sans)">
+      <input id="b-pages" type="number" placeholder="Hal" style="font-family:var(--font-sans);width:60px" min="1">
+      <button onclick="addBook()" style="padding:0 14px;border:.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:transparent;cursor:pointer;font-size:13px;font-family:var(--font-sans);white-space:nowrap;color:var(--color-text-primary)">Tambah</button>
+    </div>
+  </div>
+  <div id="book-list" style="padding:8px;min-height:80px"></div>
+  <div style="padding:8px 14px;border-top:.5px solid var(--color-border-tertiary);background:var(--color-background-secondary);display:flex;gap:12px">
+    <span id="stat-total" style="font-size:12px;color:var(--color-text-secondary)">0 buku</span>
+    <span id="stat-pages" style="font-size:12px;color:var(--color-text-secondary)">0 halaman</span>
+    <span id="stat-read" style="font-size:12px;color:var(--color-text-success)">0 selesai dibaca</span>
+  </div>
+</div>
+
+<p style="font-size:13px;font-weight:500;margin:.5rem 0;color:var(--color-text-secondary)">Class Book yang berjalan di balik layar:</p>
+<div class="cb" style="font-size:12px"><span class="kw">class</span> <span class="fn">Book</span> {
+  <span class="fn">constructor</span>({ title, author, pages }) {
+    <span class="kw">this</span>.id     = Date.<span class="fn">now</span>();      <span class="cm">// ID unik</span>
+    <span class="kw">this</span>.title  = title;
+    <span class="kw">this</span>.author = author || <span class="str">'Anonim'</span>;
+    <span class="kw">this</span>.pages  = <span class="fn">parseInt</span>(pages) || 0;
+    <span class="kw">this</span>.read   = <span class="kw">false</span>;
+  }
+  <span class="fn">toggleRead</span>() { <span class="kw">this</span>.read = !<span class="kw">this</span>.read; }
+  <span class="kw">get</span> <span class="fn">info</span>() { <span class="kw">return</span> <span class="str">`${this.title} — ${this.author}`</span>; }
+}</div>
+
+<div style="background:var(--color-background-secondary);border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:14px 16px;margin-top:12px">
+  <p style="font-size:13px;font-weight:500;margin:0 0 10px">Konsep dari 7 modul yang digunakan di mini project ini:</p>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:6px">
+    <div style="font-size:12px;padding:6px 10px;border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);color:var(--color-text-secondary)"><span style="color:var(--color-text-success)">✓</span> DOM Manipulation</div>
+    <div style="font-size:12px;padding:6px 10px;border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);color:var(--color-text-secondary)"><span style="color:var(--color-text-success)">✓</span> Event Handling</div>
+    <div style="font-size:12px;padding:6px 10px;border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);color:var(--color-text-secondary)"><span style="color:var(--color-text-success)">✓</span> ES6+ (class, arrow, template)</div>
+    <div style="font-size:12px;padding:6px 10px;border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);color:var(--color-text-secondary)"><span style="color:var(--color-text-success)">✓</span> Async/Await</div>
+    <div style="font-size:12px;padding:6px 10px;border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);color:var(--color-text-secondary)"><span style="color:var(--color-text-success)">✓</span> Fetch API (pattern)</div>
+    <div style="font-size:12px;padding:6px 10px;border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);color:var(--color-text-secondary)"><span style="color:var(--color-text-success)">✓</span> Local Storage</div>
+    <div style="grid-column:1/-1;font-size:12px;padding:6px 10px;background:var(--color-background-warning);border:.5px solid var(--color-border-warning);border-radius:var(--border-radius-md);color:var(--color-text-warning);font-weight:500"><span>★</span> OOP JavaScript — modul ini!</div>
+  </div>
+</div>
+
+<button onclick="sendPrompt('Saya sudah menyelesaikan semua 7 modul JavaScript fundamental! DOM, Event, ES6+, Async/Await, Fetch API, Local Storage, dan OOP. Apa langkah selanjutnya yang kamu rekomendasikan untuk saya pelajari?')" style="margin-top:1rem;font-size:13px;padding:8px 16px;border:.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:transparent;cursor:pointer;font-family:var(--font-sans);color:var(--color-text-primary)">Selesai! Apa langkah selanjutnya? ↗</button>
+</div>
+
+<script>
+function go(idx,btn){
+  document.querySelectorAll('.sec').forEach(s=>s.style.display='none');
+  document.getElementById('s'+idx).style.display='block';
+  document.querySelectorAll('.tb').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+}
+document.querySelectorAll('.sec').forEach((s,i)=>{if(i>0)s.style.display='none'});
+
+class Book {
+  constructor({title,author,pages}){
+    this.id=Date.now()+Math.floor(Math.random()*1000);
+    this.title=title;
+    this.author=author||'Anonim';
+    this.pages=parseInt(pages)||0;
+    this.read=false;
+  }
+  toggleRead(){this.read=!this.read;}
+  get info(){return `${this.title} — ${this.author}`;}
+}
+
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+async function loadBooks(){try{const r=await window.storage.get('books7');return r?JSON.parse(r.value):[];}catch(e){return[];}}
+async function saveBooks(arr){try{await window.storage.set('books7',JSON.stringify(arr));}catch(e){}}
+
+function renderBooks(arr){
+  const list=document.getElementById('book-list');
+  const total=arr.length,pages=arr.reduce((s,b)=>s+b.pages,0),read=arr.filter(b=>b.read).length;
+  document.getElementById('stat-total').textContent=total+' buku';
+  document.getElementById('stat-pages').textContent=pages.toLocaleString('id-ID')+' halaman';
+  document.getElementById('stat-read').textContent=read+' selesai dibaca';
+  if(!arr.length){list.innerHTML='<p style="text-align:center;font-size:13px;color:var(--color-text-tertiary);padding:1.5rem 0;margin:0">Belum ada buku — tambahkan sekarang!</p>';return;}
+  list.innerHTML=arr.map(b=>`<div data-id="${b.id}" style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:6px;margin:3px 0;transition:background .1s;cursor:pointer" onmouseenter="this.style.background='var(--color-background-secondary)'" onmouseleave="this.style.background='transparent'"><span class="rk" style="width:14px;height:14px;border:.5px solid var(--color-border-secondary);border-radius:3px;flex-shrink:0;background:${b.read?'var(--color-background-success)':'transparent'}"></span><div style="flex:1;min-width:0"><div style="font-size:13px;font-weight:500;${b.read?'text-decoration:line-through;color:var(--color-text-tertiary)':''};white-space:nowrap;overflow:hidden;text-overflow:ellipsis">${esc(b.title)}</div><div style="font-size:11px;color:var(--color-text-tertiary)">${esc(b.author)}${b.pages?' · '+b.pages+' hal':''}</div></div><button class="dl" style="background:none;border:none;cursor:pointer;font-size:18px;color:var(--color-text-tertiary);padding:0 4px;line-height:1;font-family:var(--font-sans)" aria-label="hapus">×</button></div>`).join('');
+}
+
+document.getElementById('book-list').addEventListener('click',async function(e){
+  const row=e.target.closest('[data-id]');
+  if(!row)return;
+  const id=parseInt(row.dataset.id);
+  const raw=await loadBooks();
+  if(e.target.classList.contains('dl')){
+    const f=raw.filter(b=>b.id!==id);await saveBooks(f);renderBooks(f);
+  } else {
+    const u=raw.map(b=>{if(b.id===id){const bk=Object.assign(new Book(b),b);bk.toggleRead();return bk;}return b;});
+    await saveBooks(u);renderBooks(u);
+  }
+});
+
+async function addBook(){
+  const t=document.getElementById('b-title').value.trim();
+  if(!t)return;
+  const book=new Book({title:t,author:document.getElementById('b-author').value.trim(),pages:document.getElementById('b-pages').value});
+  const arr=await loadBooks();
+  const updated=[...arr,book];
+  await saveBooks(updated);renderBooks(updated);
+  ['b-title','b-author','b-pages'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('b-title').focus();
+}
+
+document.getElementById('b-pages').addEventListener('keydown',e=>{if(e.key==='Enter')addBook();});
+document.getElementById('b-title').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('b-author').focus();});
+document.getElementById('b-author').addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('b-pages').focus();});
+
+(async()=>{renderBooks(await loadBooks());})();
+</script>
