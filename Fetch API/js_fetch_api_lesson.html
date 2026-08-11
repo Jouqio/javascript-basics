@@ -1,0 +1,190 @@
+<h2 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);margin:-1px">Pelajaran interaktif Fetch API — modul 5 dari 7</h2>
+<style>
+.tb{padding:6px 14px;font-size:13px;border:.5px solid var(--color-border-tertiary);background:transparent;border-radius:var(--border-radius-md);cursor:pointer;color:var(--color-text-secondary);font-family:var(--font-sans);transition:background .15s}
+.tb.on{background:var(--color-background-secondary);color:var(--color-text-primary);font-weight:500;border-color:var(--color-border-secondary)}
+.cb{background:var(--color-background-secondary);border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:12px 14px;font-family:var(--font-mono);font-size:12px;line-height:1.75;overflow-x:auto;white-space:pre;margin:10px 0}
+.kw{color:#7C3AED}.fn{color:#0284C7}.str{color:#16A34A}.cm{color:var(--color-text-tertiary)}.hl{color:#DC2626}
+.cd{background:var(--color-background-secondary);border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem;margin:10px 0}
+.tg{display:inline-block;font-size:11px;padding:2px 9px;border-radius:999px;font-weight:500}
+@keyframes blink{0%,100%{opacity:.3}50%{opacity:1}}
+.blink{animation:blink 1.2s ease-in-out infinite}
+</style>
+
+<div style="padding:.5rem 0">
+  <span class="tg" style="background:var(--color-background-info);color:var(--color-text-info)">Modul 5 / 7</span>
+  <h1 style="font-size:22px;font-weight:500;margin:.75rem 0 4px">Fetch API</h1>
+  <p style="font-size:14px;color:var(--color-text-secondary);margin:0">Komunikasi dengan server — GET, POST, PUT, DELETE</p>
+</div>
+
+<div style="display:flex;gap:6px;flex-wrap:wrap;padding:.75rem 0;border-bottom:.5px solid var(--color-border-tertiary);margin-bottom:1.25rem">
+  <button class="tb on" onclick="go(0,this)">Konsep</button>
+  <button class="tb" onclick="go(1,this)">Contoh kode</button>
+  <button class="tb" onclick="go(2,this)">Analogi</button>
+  <button class="tb" onclick="go(3,this)">Latihan</button>
+  <button class="tb" onclick="go(4,this)">Mini project</button>
+</div>
+
+<div class="sec" id="s0">
+<p style="font-size:14px;line-height:1.7;margin:0 0 14px">Fetch API adalah cara modern browser berkomunikasi dengan server. Kamu kirim <em>request</em> ke URL tertentu, server kirim <em>response</em> balik. Inilah fondasi dari semua web app yang memuat data dari internet.</p>
+
+<h3 style="font-size:16px;font-weight:500;margin:0 0 .5rem">Pola dasar — selalu dua await</h3>
+<div class="cb"><span class="cm">// await pertama: kirim request & tunggu header response</span>
+<span class="kw">const</span> res = <span class="kw">await</span> <span class="fn">fetch</span>(<span class="str">'https://api.example.com/users'</span>);
+
+<span class="cm">// Selalu cek apakah berhasil (status 200–299)</span>
+<span class="kw">if</span> (!res.<span class="hl">ok</span>) <span class="kw">throw new</span> <span class="fn">Error</span>(<span class="str">`Error ${res.status}`</span>);
+
+<span class="cm">// await kedua: parse body JSON (ini juga async!)</span>
+<span class="kw">const</span> data = <span class="kw">await</span> res.<span class="fn">json</span>();</div>
+
+<h3 style="font-size:16px;font-weight:500;margin:1.25rem 0 .5rem">Empat HTTP method — operasi CRUD</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+  <div style="padding:10px 12px;border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md)"><span class="tg" style="background:var(--color-background-success);color:var(--color-text-success);margin-bottom:4px;display:block">GET</span><p style="font-size:13px;font-weight:500;margin:0 0 2px">Ambil data</p><p style="font-size:12px;color:var(--color-text-secondary);margin:0">Tidak ada body. Paling sering dipakai.</p></div>
+  <div style="padding:10px 12px;border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md)"><span class="tg" style="background:var(--color-background-info);color:var(--color-text-info);margin-bottom:4px;display:block">POST</span><p style="font-size:13px;font-weight:500;margin:0 0 2px">Kirim data baru</p><p style="font-size:12px;color:var(--color-text-secondary);margin:0">Ada body berisi data yang dikirim.</p></div>
+  <div style="padding:10px 12px;border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md)"><span class="tg" style="background:var(--color-background-warning);color:var(--color-text-warning);margin-bottom:4px;display:block">PUT / PATCH</span><p style="font-size:13px;font-weight:500;margin:0 0 2px">Update data</p><p style="font-size:12px;color:var(--color-text-secondary);margin:0">PUT = ganti semua, PATCH = sebagian.</p></div>
+  <div style="padding:10px 12px;border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md)"><span class="tg" style="background:var(--color-background-danger);color:var(--color-text-danger);margin-bottom:4px;display:block">DELETE</span><p style="font-size:13px;font-weight:500;margin:0 0 2px">Hapus data</p><p style="font-size:12px;color:var(--color-text-secondary);margin:0">Hapus resource berdasarkan ID.</p></div>
+</div>
+</div>
+
+<div class="sec" id="s1">
+<h3 style="font-size:16px;font-weight:500;margin:0 0 .5rem">GET — ambil data</h3>
+<div class="cb"><span class="kw">async function</span> <span class="fn">getUsers</span>() {
+  <span class="kw">try</span> {
+    <span class="kw">const</span> res   = <span class="kw">await</span> <span class="fn">fetch</span>(<span class="str">'https://api.example.com/users'</span>);
+    <span class="kw">if</span> (!res.ok) <span class="kw">throw new</span> <span class="fn">Error</span>(<span class="str">`Status: ${res.status}`</span>);
+    <span class="kw">const</span> users = <span class="kw">await</span> res.<span class="fn">json</span>();
+    users.<span class="fn">forEach</span>(({ nama, email }) =&gt; console.<span class="fn">log</span>(<span class="str">`${nama} — ${email}`</span>));
+  } <span class="kw">catch</span> (err) { console.<span class="fn">error</span>(<span class="str">'Gagal:'</span>, err.message); }
+}</div>
+
+<h3 style="font-size:16px;font-weight:500;margin:1.5rem 0 .5rem">POST — kirim data baru</h3>
+<div class="cb"><span class="kw">async function</span> <span class="fn">createUser</span>(data) {
+  <span class="kw">const</span> res = <span class="kw">await</span> <span class="fn">fetch</span>(<span class="str">'/api/users'</span>, {
+    method:  <span class="str">'POST'</span>,
+    headers: { <span class="str">'Content-Type'</span>: <span class="str">'application/json'</span> },
+    body:    <span class="fn">JSON.stringify</span>(data)   <span class="cm">// objek JS → string JSON</span>
+  });
+  <span class="kw">if</span> (!res.ok) <span class="kw">throw new</span> <span class="fn">Error</span>(<span class="kw">await</span> res.<span class="fn">text</span>());
+  <span class="kw">return</span> res.<span class="fn">json</span>(); <span class="cm">// server kembalikan data yang dibuat</span>
+}
+<span class="cm">// PUT/PATCH/DELETE: pola sama, tinggal ganti method</span></div>
+
+<h3 style="font-size:16px;font-weight:500;margin:1.5rem 0 .5rem">Reusable API helper — pola profesional</h3>
+<div class="cb"><span class="kw">async function</span> <span class="fn">api</span>(path, { method = <span class="str">'GET'</span>, body } = {}) {
+  <span class="kw">const</span> res = <span class="kw">await</span> <span class="fn">fetch</span>(<span class="str">'https://api.example.com'</span> + path, {
+    method,
+    headers: { <span class="str">'Content-Type'</span>: <span class="str">'application/json'</span> },
+    body: body ? <span class="fn">JSON.stringify</span>(body) : <span class="kw">undefined</span>
+  });
+  <span class="kw">if</span> (!res.ok) <span class="kw">throw new</span> <span class="fn">Error</span>(res.status);
+  <span class="kw">return</span> res.<span class="fn">json</span>();
+}
+<span class="cm">// Satu baris per operasi:</span>
+<span class="kw">const</span> users = <span class="kw">await</span> <span class="fn">api</span>(<span class="str">'/users'</span>);
+<span class="kw">const</span> baru  = <span class="kw">await</span> <span class="fn">api</span>(<span class="str">'/users'</span>,   { method:<span class="str">'POST'</span>,   body:{nama:<span class="str">'Budi'</span>} });
+               <span class="kw">await</span> <span class="fn">api</span>(<span class="str">'/users/1'</span>, { method:<span class="str">'DELETE'</span> });</div>
+</div>
+
+<div class="sec" id="s2">
+<h2 style="font-size:18px;font-weight:500;margin:0 0 14px">Analogi: Fetch = jasa pengiriman paket</h2>
+<div class="cd"><p style="font-size:14px;line-height:1.7;margin:0;color:var(--color-text-secondary)">Setiap interaksi dengan server seperti transaksi di kantor pos — kamu siapkan paket, kurir antar, gudang proses, lalu balasan datang kembali.</p></div>
+<div style="display:grid;gap:10px;margin-top:12px">
+  <div class="cd"><div style="display:flex;align-items:start;gap:12px"><i class="ti ti-upload" style="font-size:20px;color:var(--color-text-info);margin-top:2px;flex-shrink:0" aria-hidden="true"></i><div><p style="font-size:14px;font-weight:500;margin:0 0 4px">Request = paket yang dikirim</p><p style="font-size:13px;color:var(--color-text-secondary);margin:0;line-height:1.6">GET = minta kiriman barang dari gudang (tanpa kirim apapun). POST = kamu kirim paket baru. Method menentukan <em>jenis</em> transaksi yang terjadi.</p></div></div></div>
+  <div class="cd"><div style="display:flex;align-items:start;gap:12px"><i class="ti ti-file" style="font-size:20px;color:var(--color-text-warning);margin-top:2px;flex-shrink:0" aria-hidden="true"></i><div><p style="font-size:14px;font-weight:500;margin:0 0 4px">Headers = label dan instruksi di amplop</p><p style="font-size:13px;color:var(--color-text-secondary);margin:0;line-height:1.6"><code style="font-family:var(--font-mono);font-size:12px">Content-Type: application/json</code> seperti label "ISI: Dokumen". <code style="font-family:var(--font-mono);font-size:12px">Authorization: Bearer token</code> seperti kartu identitas pengirim.</p></div></div></div>
+  <div class="cd"><div style="display:flex;align-items:start;gap:12px"><i class="ti ti-download" style="font-size:20px;color:var(--color-text-success);margin-top:2px;flex-shrink:0" aria-hidden="true"></i><div><p style="font-size:14px;font-weight:500;margin:0 0 4px">Response = tanda terima + isi balasan</p><p style="font-size:13px;color:var(--color-text-secondary);margin:0;line-height:1.6">Gudang kirim konfirmasi: <strong style="font-weight:500">200 OK</strong> (sukses), <strong style="font-weight:500">201 Created</strong> (dibuat), <strong style="font-weight:500">404 Not Found</strong>, <strong style="font-weight:500">500 Server Error</strong>. Selalu cek <code style="font-family:var(--font-mono);font-size:12px">res.ok</code> dulu!</p></div></div></div>
+</div>
+</div>
+
+<div class="sec" id="s3">
+<p style="font-size:14px;color:var(--color-text-secondary);margin:0 0 1.25rem;line-height:1.6">Gunakan <code style="font-family:var(--font-mono)">jsonplaceholder.typicode.com</code> — API gratis untuk latihan, tidak perlu autentikasi.</p>
+<div style="display:grid;gap:12px">
+  <div style="border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden">
+    <div style="padding:10px 16px;border-bottom:.5px solid var(--color-border-tertiary);display:flex;align-items:center;gap:8px"><span class="tg" style="background:var(--color-background-success);color:var(--color-text-success)">Mudah</span><p style="font-size:14px;font-weight:500;margin:0">Fetch user pertama</p></div>
+    <div style="padding:14px 16px"><p style="font-size:14px;line-height:1.7;margin:0 0 10px">Fetch <code style="font-family:var(--font-mono)">https://jsonplaceholder.typicode.com/users/1</code> dan log nama + email ke console.</p>
+    <div class="cb" style="margin:0"><span class="kw">const</span> res  = <span class="kw">await</span> <span class="fn">fetch</span>(<span class="str">'???'</span>);
+<span class="kw">if</span> (!res.<span class="hl">???</span>) <span class="kw">throw new</span> <span class="fn">Error</span>(<span class="str">'Gagal'</span>);
+<span class="kw">const</span> { name, email } = <span class="kw">await</span> res.<span class="fn">???</span>();
+console.<span class="fn">log</span>(<span class="str">`${name} — ${email}`</span>);</div></div>
+  </div>
+  <div style="border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden">
+    <div style="padding:10px 16px;border-bottom:.5px solid var(--color-border-tertiary);display:flex;align-items:center;gap:8px"><span class="tg" style="background:var(--color-background-warning);color:var(--color-text-warning)">Sedang</span><p style="font-size:14px;font-weight:500;margin:0">POST buat artikel baru</p></div>
+    <div style="padding:14px 16px"><p style="font-size:14px;line-height:1.7;margin:0 0 10px">POST ke <code style="font-family:var(--font-mono)">/posts</code> dengan body <code style="font-family:var(--font-mono)">{'{'}title, body, userId{'}'}</code>. Log ID artikel yang dibuat dari response.</p>
+    <div class="cb" style="margin:0"><span class="kw">const</span> res = <span class="kw">await</span> <span class="fn">fetch</span>(<span class="str">'https://jsonplaceholder.typicode.com/posts'</span>, {
+  method: <span class="str">'???'</span>,
+  headers: { <span class="str">'Content-Type'</span>: <span class="str">'???'</span> },
+  body: <span class="hl">???</span>.<span class="fn">stringify</span>({ title:<span class="str">'Test'</span>, body:<span class="str">'Isi'</span>, userId:1 })
+});
+<span class="kw">const</span> data = <span class="kw">await</span> res.<span class="fn">json</span>();
+console.<span class="fn">log</span>(<span class="str">`ID baru: ${data.id}`</span>);</div></div>
+  </div>
+  <div style="border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden">
+    <div style="padding:10px 16px;border-bottom:.5px solid var(--color-border-tertiary);display:flex;align-items:center;gap:8px"><span class="tg" style="background:var(--color-background-danger);color:var(--color-text-danger)">Menantang</span><p style="font-size:14px;font-weight:500;margin:0">Buat helper api() sendiri</p></div>
+    <div style="padding:14px 16px"><p style="font-size:14px;line-height:1.7;margin:0 0 10px">Buat fungsi <code style="font-family:var(--font-mono)">api(path, options)</code> dengan base URL jsonplaceholder, auto Content-Type, auto JSON.stringify body, dan throw jika !res.ok.</p>
+    <div class="cb" style="margin:0"><span class="kw">async function</span> <span class="fn">api</span>(path, { method = <span class="str">'GET'</span>, body } = {}) {
+  <span class="cm">// lengkapi — lalu test dengan:</span>
+  <span class="cm">// await api('/users?_limit=3')</span>
+  <span class="cm">// await api('/posts', { method:'POST', body:{title:'x'} })</span>
+}</div></div>
+  </div>
+</div>
+<button onclick="sendPrompt('Saya latihan Fetch API JavaScript. Boleh bantu review atau jawab pertanyaan?')" style="margin-top:1rem;font-size:13px;padding:8px 16px;border:.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:transparent;cursor:pointer;font-family:var(--font-sans);color:var(--color-text-primary)">Minta bantuan atau review kode ↗</button>
+</div>
+
+<div class="sec" id="s4">
+<p style="font-size:14px;color:var(--color-text-secondary);margin:0 0 1rem;line-height:1.6">REST API Explorer — pilih operasi, lihat request dan response secara nyata (disimulasikan dengan delay realistis).</p>
+
+<div style="border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden">
+  <div style="padding:12px 14px;background:var(--color-background-secondary);border-bottom:.5px solid var(--color-border-tertiary)">
+    <div style="display:flex;gap:6px;flex-wrap:wrap">
+      <button class="rbtn" onclick="sim(0)" style="font-size:12px;padding:4px 10px;border:.5px solid var(--color-border-success);border-radius:var(--border-radius-md);background:transparent;cursor:pointer;font-family:var(--font-sans);color:var(--color-text-success)">GET /users</button>
+      <button class="rbtn" onclick="sim(1)" style="font-size:12px;padding:4px 10px;border:.5px solid var(--color-border-success);border-radius:var(--border-radius-md);background:transparent;cursor:pointer;font-family:var(--font-sans);color:var(--color-text-success)">GET /users/1</button>
+      <button class="rbtn" onclick="sim(2)" style="font-size:12px;padding:4px 10px;border:.5px solid var(--color-border-info);border-radius:var(--border-radius-md);background:transparent;cursor:pointer;font-family:var(--font-sans);color:var(--color-text-info)">POST /users</button>
+      <button class="rbtn" onclick="sim(3)" style="font-size:12px;padding:4px 10px;border:.5px solid var(--color-border-warning);border-radius:var(--border-radius-md);background:transparent;cursor:pointer;font-family:var(--font-sans);color:var(--color-text-warning)">PUT /users/1</button>
+      <button class="rbtn" onclick="sim(4)" style="font-size:12px;padding:4px 10px;border:.5px solid var(--color-border-danger);border-radius:var(--border-radius-md);background:transparent;cursor:pointer;font-family:var(--font-sans);color:var(--color-text-danger)">DELETE /users/1</button>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:160px">
+    <div style="padding:12px;border-right:.5px solid var(--color-border-tertiary)">
+      <p style="font-size:11px;font-weight:500;color:var(--color-text-secondary);margin:0 0 6px">REQUEST</p>
+      <div id="req-p"><span style="font-size:12px;color:var(--color-text-tertiary)">Pilih operasi di atas</span></div>
+    </div>
+    <div style="padding:12px">
+      <p style="font-size:11px;font-weight:500;color:var(--color-text-secondary);margin:0 0 6px">RESPONSE</p>
+      <div id="res-p"><span style="font-size:12px;color:var(--color-text-tertiary)">Response akan muncul di sini</span></div>
+    </div>
+  </div>
+</div>
+
+<button onclick="sendPrompt('Saya sudah selesai belajar Fetch API. Lanjut ke Local Storage sekarang!')" style="margin-top:1rem;font-size:13px;padding:8px 16px;border:.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:transparent;cursor:pointer;font-family:var(--font-sans);color:var(--color-text-primary)">Lanjut ke Local Storage ↗</button>
+</div>
+
+<script>
+function go(idx,btn){
+  document.querySelectorAll('.sec').forEach(s=>s.style.display='none');
+  document.getElementById('s'+idx).style.display='block';
+  document.querySelectorAll('.tb').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+}
+document.querySelectorAll('.sec').forEach((s,i)=>{if(i>0)s.style.display='none'});
+
+const RT=[
+  {m:'GET',p:'/api/users',b:null,st:200,sx:'OK',r:[{id:1,nama:'Budi',role:'Frontend'},{id:2,nama:'Sari',role:'Backend'},{id:3,nama:'Dani',role:'Fullstack'}]},
+  {m:'GET',p:'/api/users/1',b:null,st:200,sx:'OK',r:{id:1,nama:'Budi',role:'Frontend',email:'budi@dev.id'}},
+  {m:'POST',p:'/api/users',b:{nama:'Rina',role:'Designer',email:'rina@dev.id'},st:201,sx:'Created',r:{id:4,nama:'Rina',role:'Designer',email:'rina@dev.id'}},
+  {m:'PUT',p:'/api/users/1',b:{nama:'Budi Updated',role:'Lead Frontend'},st:200,sx:'OK',r:{id:1,nama:'Budi Updated',role:'Lead Frontend'}},
+  {m:'DELETE',p:'/api/users/1',b:null,st:200,sx:'OK',r:{message:'User berhasil dihapus',id:1}}
+];
+
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+async function sim(idx){
+  const rt=RT[idx];
+  const hdrs=rt.b?'Content-Type: application/json\nAuthorization: Bearer <token>':'Authorization: Bearer <token>';
+  const bodyStr=rt.b?'\n\n'+esc(JSON.stringify(rt.b,null,2)):'';
+  document.getElementById('req-p').innerHTML=`<div class="cb" style="margin:0;font-size:11px">${rt.m} ${rt.p} HTTP/1.1\nHost: api.example.com\n${hdrs}${bodyStr}</div>`;
+  document.getElementById('res-p').innerHTML=`<div style="padding:1.5rem 0;text-align:center"><span class="blink" style="font-size:13px;color:var(--color-text-secondary)">Mengirim request...</span></div>`;
+  await new Promise(r=>setTimeout(r,650));
+  const sc=rt.st<300?'success':rt.st<500?'warning':'danger';
+  document.getElementById('res-p').innerHTML=`<div style="margin-bottom:6px"><span style="font-size:12px;font-weight:500;color:var(--color-text-${sc})">${rt.st} ${rt.sx}</span></div><div class="cb" style="margin:0;font-size:11px">${esc(JSON.stringify(rt.r,null,2))}</div>`;
+}
+</script>
