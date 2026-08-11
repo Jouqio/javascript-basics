@@ -1,0 +1,250 @@
+<h2 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);margin:-1px">Pelajaran interaktif Event Handling JavaScript — modul 2 dari 7</h2>
+
+<style>
+.tb{padding:6px 14px;font-size:13px;border:.5px solid var(--color-border-tertiary);background:transparent;border-radius:var(--border-radius-md);cursor:pointer;color:var(--color-text-secondary);font-family:var(--font-sans);transition:background .15s}
+.tb.on{background:var(--color-background-secondary);color:var(--color-text-primary);font-weight:500;border-color:var(--color-border-secondary)}
+.cb{background:var(--color-background-secondary);border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:12px 14px;font-family:var(--font-mono);font-size:12.5px;line-height:1.75;overflow-x:auto;white-space:pre;margin:10px 0}
+.kw{color:#7C3AED}.fn{color:#0284C7}.str{color:#16A34A}.cm{color:var(--color-text-tertiary)}.hl{color:#DC2626}
+.cd{background:var(--color-background-secondary);border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem;margin:10px 0}
+.tg{display:inline-block;font-size:11px;padding:2px 9px;border-radius:999px;font-weight:500}
+</style>
+
+<div style="padding:.5rem 0">
+  <span class="tg" style="background:var(--color-background-info);color:var(--color-text-info)">Modul 2 / 7</span>
+  <h1 style="font-size:22px;font-weight:500;margin:.75rem 0 4px">Event Handling</h1>
+  <p style="font-size:14px;color:var(--color-text-secondary);margin:0">Cara JavaScript "mendengarkan" dan bereaksi terhadap aksi user</p>
+</div>
+
+<div style="display:flex;gap:6px;flex-wrap:wrap;padding:.75rem 0;border-bottom:.5px solid var(--color-border-tertiary);margin-bottom:1.25rem">
+  <button class="tb on" onclick="go(0,this)">Konsep</button>
+  <button class="tb" onclick="go(1,this)">Contoh kode</button>
+  <button class="tb" onclick="go(2,this)">Analogi</button>
+  <button class="tb" onclick="go(3,this)">Latihan</button>
+  <button class="tb" onclick="go(4,this)">Mini project</button>
+</div>
+
+<div class="sec" id="s0">
+<p style="font-size:14px;line-height:1.7;margin:0 0 14px">Event adalah sesuatu yang terjadi di halaman — klik, ketik, tekan keyboard, submit form. JavaScript bisa "mendengarkan" event dengan <code style="font-family:var(--font-mono)">addEventListener</code> dan menjalankan kode sebagai respons.</p>
+
+<div style="background:var(--color-background-secondary);border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:14px 16px;margin-bottom:14px">
+  <p style="font-size:12px;color:var(--color-text-secondary);font-weight:500;margin:0 0 10px">Alur kerja event:</p>
+  <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+    <div style="padding:8px 12px;border:.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);font-size:12px;text-align:center;min-width:72px"><div style="color:var(--color-text-tertiary);font-size:10px;margin-bottom:2px">user</div><div style="font-weight:500">Aksi</div></div>
+    <i class="ti ti-arrow-right" style="color:var(--color-text-tertiary);font-size:13px" aria-hidden="true"></i>
+    <div style="padding:8px 12px;background:var(--color-background-info);border:.5px solid var(--color-border-info);border-radius:var(--border-radius-md);font-size:12px;text-align:center;min-width:72px"><div style="color:var(--color-text-info);font-size:10px;margin-bottom:2px">browser</div><div style="font-weight:500;color:var(--color-text-info)">Event</div></div>
+    <i class="ti ti-arrow-right" style="color:var(--color-text-tertiary);font-size:13px" aria-hidden="true"></i>
+    <div style="padding:8px 12px;background:var(--color-background-success);border:.5px solid var(--color-border-success);border-radius:var(--border-radius-md);font-size:12px;text-align:center;min-width:72px"><div style="color:var(--color-text-success);font-size:10px;margin-bottom:2px">listener</div><div style="font-weight:500;color:var(--color-text-success)">Mendeteksi</div></div>
+    <i class="ti ti-arrow-right" style="color:var(--color-text-tertiary);font-size:13px" aria-hidden="true"></i>
+    <div style="padding:8px 12px;background:var(--color-background-warning);border:.5px solid var(--color-border-warning);border-radius:var(--border-radius-md);font-size:12px;text-align:center;min-width:72px"><div style="color:var(--color-text-warning);font-size:10px;margin-bottom:2px">kode kamu</div><div style="font-weight:500;color:var(--color-text-warning)">Bereaksi</div></div>
+  </div>
+</div>
+
+<h3 style="font-size:16px;font-weight:500;margin:1.25rem 0 .5rem">Sintaks addEventListener</h3>
+<div class="cb"><span class="cm">// elemen.addEventListener(namaEvent, callbackFunction)</span>
+
+<span class="kw">const</span> btn = document.<span class="fn">querySelector</span>(<span class="str">'#tombol'</span>);
+
+btn.<span class="fn">addEventListener</span>(<span class="str">'click'</span>, (e) =&gt; {
+  <span class="cm">// 'e' adalah event object — berisi info tentang event ini</span>
+  console.<span class="fn">log</span>(e.<span class="hl">target</span>);   <span class="cm">// elemen yang memicu event</span>
+  console.<span class="fn">log</span>(e.<span class="hl">type</span>);    <span class="cm">// 'click'</span>
+});
+
+<span class="cm">// Satu elemen bisa punya BANYAK listener sekaligus:</span>
+btn.<span class="fn">addEventListener</span>(<span class="str">'mouseenter'</span>, () =&gt; btn.style.opacity = <span class="str">'0.7'</span>);
+btn.<span class="fn">addEventListener</span>(<span class="str">'mouseleave'</span>, () =&gt; btn.style.opacity = <span class="str">'1'</span>);</div>
+
+<h3 style="font-size:16px;font-weight:500;margin:1.25rem 0 .5rem">Event yang paling sering dipakai</h3>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+  <div style="padding:10px 12px;border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md)"><p style="font-size:13px;font-weight:500;margin:0 0 4px">Mouse</p><p style="font-size:12px;color:var(--color-text-secondary);margin:0;font-family:var(--font-mono);line-height:1.9">click, dblclick<br>mouseover, mouseout</p></div>
+  <div style="padding:10px 12px;border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md)"><p style="font-size:13px;font-weight:500;margin:0 0 4px">Keyboard</p><p style="font-size:12px;color:var(--color-text-secondary);margin:0;font-family:var(--font-mono);line-height:1.9">keydown, keyup<br>keypress (deprecated)</p></div>
+  <div style="padding:10px 12px;border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md)"><p style="font-size:13px;font-weight:500;margin:0 0 4px">Form / Input</p><p style="font-size:12px;color:var(--color-text-secondary);margin:0;font-family:var(--font-mono);line-height:1.9">input, change<br>submit, focus, blur</p></div>
+  <div style="padding:10px 12px;border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md)"><p style="font-size:13px;font-weight:500;margin:0 0 4px">Halaman</p><p style="font-size:12px;color:var(--color-text-secondary);margin:0;font-family:var(--font-mono);line-height:1.9">DOMContentLoaded<br>scroll, resize</p></div>
+</div>
+</div>
+
+<div class="sec" id="s1">
+<p style="font-size:14px;color:var(--color-text-secondary);margin:0 0 16px;line-height:1.6">Tiga pola event yang paling sering kamu temui di proyek nyata:</p>
+
+<h3 style="font-size:16px;font-weight:500;margin:0 0 .5rem">1. e.target — tahu elemen mana yang diklik</h3>
+<p style="font-size:13px;color:var(--color-text-secondary);margin:0 0 6px">Berguna saat satu listener menangani banyak elemen (event delegation).</p>
+<div class="cb"><span class="kw">const</span> btn = document.<span class="fn">querySelector</span>(<span class="str">'#btn'</span>);
+
+btn.<span class="fn">addEventListener</span>(<span class="str">'click'</span>, (e) =&gt; {
+  <span class="cm">// e.target = elemen yang BENAR-BENAR diklik</span>
+  console.<span class="fn">log</span>(e.<span class="hl">target</span>.id);          <span class="cm">// 'btn'</span>
+  console.<span class="fn">log</span>(e.<span class="hl">target</span>.textContent);  <span class="cm">// teks di tombol</span>
+
+  e.<span class="hl">target</span>.textContent = <span class="str">'Sudah diklik!'</span>;
+  e.<span class="hl">target</span>.disabled = <span class="kw">true</span>;
+});
+
+<span class="cm">// Event delegation — 1 listener untuk banyak item</span>
+list.<span class="fn">addEventListener</span>(<span class="str">'click'</span>, (e) =&gt; {
+  <span class="kw">if</span> (e.<span class="hl">target</span>.tagName === <span class="str">'LI'</span>) {
+    e.<span class="hl">target</span>.classList.<span class="fn">toggle</span>(<span class="str">'done'</span>);
+  }
+});</div>
+
+<h3 style="font-size:16px;font-weight:500;margin:1.5rem 0 .5rem">2. e.key — deteksi tombol keyboard</h3>
+<div class="cb">document.<span class="fn">addEventListener</span>(<span class="str">'keydown'</span>, (e) =&gt; {
+  console.<span class="fn">log</span>(e.<span class="hl">key</span>);      <span class="cm">// 'a', 'Enter', 'Escape', 'ArrowUp'</span>
+  console.<span class="fn">log</span>(e.<span class="hl">ctrlKey</span>);  <span class="cm">// true jika Ctrl ditekan bersamaan</span>
+
+  <span class="kw">if</span> (e.key === <span class="str">'Escape'</span>)                 closeModal();
+  <span class="kw">if</span> (e.key === <span class="str">'Enter'</span>)                  submitForm();
+  <span class="kw">if</span> (e.<span class="hl">ctrlKey</span> && e.key === <span class="str">'s'</span>) { <span class="cm">// Ctrl+S</span>
+    e.<span class="fn">preventDefault</span>(); <span class="cm">// cegah "Save Page" bawaan browser</span>
+    <span class="fn">saveFile</span>();
+  }
+});</div>
+
+<h3 style="font-size:16px;font-weight:500;margin:1.5rem 0 .5rem">3. e.preventDefault() — kontrol penuh form</h3>
+<p style="font-size:13px;color:var(--color-text-secondary);margin:0 0 6px">Secara default, form submit = halaman reload. <code style="font-family:var(--font-mono)">preventDefault()</code> mencegah itu.</p>
+<div class="cb">form.<span class="fn">addEventListener</span>(<span class="str">'submit'</span>, (e) =&gt; {
+  e.<span class="fn">preventDefault</span>(); <span class="cm">// HENTIKAN reload halaman!</span>
+
+  <span class="kw">const</span> email = document.<span class="fn">querySelector</span>(<span class="str">'#email'</span>).value;
+
+  <span class="kw">if</span> (!email.<span class="fn">includes</span>(<span class="str">'@'</span>)) {
+    errorMsg.textContent = <span class="str">'Email tidak valid!'</span>;
+    <span class="kw">return</span>;
+  }
+
+  <span class="cm">// Lanjut proses tanpa reload</span>
+  console.<span class="fn">log</span>(<span class="str">'Form berhasil:'</span>, email);
+});</div>
+
+<div class="cd" style="background:var(--color-background-info)">
+  <p style="font-size:13px;font-weight:500;margin:0 0 6px;color:var(--color-text-info)">Ringkasan kapan pakai apa:</p>
+  <ul style="margin:0;padding-left:1.2rem;font-size:13px;line-height:1.9;color:var(--color-text-secondary)">
+    <li><code style="font-family:var(--font-mono)">e.target</code> — tahu elemen mana yang memicu event, cocok untuk event delegation</li>
+    <li><code style="font-family:var(--font-mono)">e.key</code> — buat keyboard shortcut atau navigasi berbasis keyboard</li>
+    <li><code style="font-family:var(--font-mono)">e.preventDefault()</code> — ambil kontrol penuh atas form, link, atau behavior default browser</li>
+  </ul>
+</div>
+</div>
+
+<div class="sec" id="s2">
+<h2 style="font-size:18px;font-weight:500;margin:0 0 16px">Analogi: Event = bel rumah</h2>
+<div class="cd"><p style="font-size:14px;line-height:1.7;margin:0;color:var(--color-text-secondary)">Bayangkan kamu memasang bel di depan rumah. Kamu tidak perlu terus berdiri di pintu — bel akan berbunyi otomatis saat ada tamu, dan kamu langsung bereaksi.</p></div>
+<div style="display:grid;gap:10px;margin-top:12px">
+  <div class="cd"><div style="display:flex;align-items:start;gap:12px"><i class="ti ti-bell" style="font-size:20px;color:var(--color-text-info);margin-top:2px;flex-shrink:0" aria-hidden="true"></i><div><p style="font-size:14px;font-weight:500;margin:0 0 4px">Event = bel yang berbunyi</p><p style="font-size:13px;color:var(--color-text-secondary);margin:0;line-height:1.6">Ketika user beraksi (klik, ketik, dll), browser "membunyikan bel". Bel ini punya nama: <code style="font-family:var(--font-mono);font-size:12px">'click'</code>, <code style="font-family:var(--font-mono);font-size:12px">'input'</code>, <code style="font-family:var(--font-mono);font-size:12px">'keydown'</code>.</p></div></div></div>
+  <div class="cd"><div style="display:flex;align-items:start;gap:12px"><i class="ti ti-plus" style="font-size:20px;color:var(--color-text-success);margin-top:2px;flex-shrink:0" aria-hidden="true"></i><div><p style="font-size:14px;font-weight:500;margin:0 0 4px">addEventListener = memasang bel</p><p style="font-size:13px;color:var(--color-text-secondary);margin:0;line-height:1.6">Dengan <code style="font-family:var(--font-mono);font-size:12px">addEventListener('click', ...)</code>, kamu "memasang bel" di elemen tersebut. Tanpa ini, klik tidak akan terdeteksi.</p></div></div></div>
+  <div class="cd"><div style="display:flex;align-items:start;gap:12px"><i class="ti ti-player-play" style="font-size:20px;color:var(--color-text-warning);margin-top:2px;flex-shrink:0" aria-hidden="true"></i><div><p style="font-size:14px;font-weight:500;margin:0 0 4px">Callback = aksi yang kamu lakukan</p><p style="font-size:13px;color:var(--color-text-secondary);margin:0;line-height:1.6">Fungsi yang kamu berikan sebagai argumen kedua — inilah yang otomatis dijalankan setiap kali bel berbunyi.</p></div></div></div>
+  <div class="cd"><div style="display:flex;align-items:start;gap:12px"><i class="ti ti-file" style="font-size:20px;color:var(--color-text-danger);margin-top:2px;flex-shrink:0" aria-hidden="true"></i><div><p style="font-size:14px;font-weight:500;margin:0 0 4px">Event object (e) = amplop dari tamu</p><p style="font-size:13px;color:var(--color-text-secondary);margin:0;line-height:1.6">Tamu meninggalkan amplop berisi info: siapa yang mengirim (<code style="font-family:var(--font-mono);font-size:12px">e.target</code>), tombol apa yang ditekan (<code style="font-family:var(--font-mono);font-size:12px">e.key</code>), posisi kursor, dll.</p></div></div></div>
+</div>
+</div>
+
+<div class="sec" id="s3">
+<p style="font-size:14px;color:var(--color-text-secondary);margin:0 0 1.25rem;line-height:1.6">Kerjakan di CodePen atau console browser (F12). Setiap latihan butuh HTML juga ya!</p>
+<div style="display:grid;gap:12px">
+
+  <div style="border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden">
+    <div style="padding:10px 16px;border-bottom:.5px solid var(--color-border-tertiary);display:flex;align-items:center;gap:8px"><span class="tg" style="background:var(--color-background-success);color:var(--color-text-success)">Mudah</span><p style="font-size:14px;font-weight:500;margin:0">Klik counter</p></div>
+    <div style="padding:14px 16px"><p style="font-size:14px;line-height:1.7;margin:0 0 10px">Buat tombol yang menampilkan berapa kali ia diklik. Teks tombol berubah setiap klik: "Diklik 1 kali", "Diklik 2 kali", dst.</p>
+    <div class="cb" style="margin:0"><span class="kw">let</span> count = 0;
+btn.<span class="fn">addEventListener</span>(<span class="str">'???'</span>, () =&gt; {
+  count<span class="hl">???</span>; <span class="cm">// increment dengan ++</span>
+  btn.textContent = <span class="str">`Diklik ${count} kali`</span>;
+});</div></div>
+  </div>
+
+  <div style="border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden">
+    <div style="padding:10px 16px;border-bottom:.5px solid var(--color-border-tertiary);display:flex;align-items:center;gap:8px"><span class="tg" style="background:var(--color-background-warning);color:var(--color-text-warning)">Sedang</span><p style="font-size:14px;font-weight:500;margin:0">Keyboard tracker</p></div>
+    <div style="padding:14px 16px"><p style="font-size:14px;line-height:1.7;margin:0 0 10px">Buat sebuah <code style="font-family:var(--font-mono)">&lt;p id="output"&gt;</code>. Setiap kali user menekan tombol keyboard, tampilkan nama tombolnya di sana.</p>
+    <div class="cb" style="margin:0">document.<span class="fn">addEventListener</span>(<span class="str">'keydown'</span>, (e) =&gt; {
+  <span class="kw">const</span> output = document.<span class="fn">querySelector</span>(<span class="str">'#output'</span>);
+  output.textContent = <span class="str">`Tombol: ${e.<span class="hl">???</span>}`</span>; <span class="cm">// properti apa?</span>
+});</div></div>
+  </div>
+
+  <div style="border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden">
+    <div style="padding:10px 16px;border-bottom:.5px solid var(--color-border-tertiary);display:flex;align-items:center;gap:8px"><span class="tg" style="background:var(--color-background-danger);color:var(--color-text-danger)">Menantang</span><p style="font-size:14px;font-weight:500;margin:0">Form validation</p></div>
+    <div style="padding:14px 16px"><p style="font-size:14px;line-height:1.7;margin:0 0 10px">Buat form dengan input nama + email. Validasi saat submit: keduanya harus diisi, email harus mengandung "@". Tampilkan pesan error tanpa reload halaman.</p>
+    <div class="cb" style="margin:0">form.<span class="fn">addEventListener</span>(<span class="str">'submit'</span>, (e) =&gt; {
+  e.<span class="fn">???</span>(); <span class="cm">// cegah reload!</span>
+  <span class="kw">const</span> email = inp.value;
+  <span class="kw">if</span> (!email.<span class="fn">includes</span>(<span class="str">'???'</span>)) {
+    errorMsg.textContent = <span class="str">'Email tidak valid!'</span>;
+  }
+});</div></div>
+  </div>
+
+</div>
+<button onclick="sendPrompt('Saya sedang latihan Event Handling JavaScript. Minta review atau ada pertanyaan. Boleh bantu?')" style="margin-top:1rem;font-size:13px;padding:8px 16px;border:.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:transparent;cursor:pointer;font-family:var(--font-sans);color:var(--color-text-primary)">Minta bantuan atau review kode ↗</button>
+</div>
+
+<div class="sec" id="s4">
+<p style="font-size:14px;color:var(--color-text-secondary);margin:0 0 1.25rem;line-height:1.6">Live search filter — setiap keystroke memicu event <code style="font-family:var(--font-mono)">'input'</code>, DOM diperbarui real-time.</p>
+
+<div style="border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden">
+  <div style="padding:12px 14px;background:var(--color-background-secondary);border-bottom:.5px solid var(--color-border-tertiary)">
+    <div style="position:relative">
+      <i class="ti ti-search" style="position:absolute;left:10px;top:50%;transform:translateY(-50%);font-size:15px;color:var(--color-text-tertiary);pointer-events:none" aria-hidden="true"></i>
+      <input id="search-inp" type="text" placeholder="Cari bahasa pemrograman..." style="width:100%;padding-left:32px;font-family:var(--font-sans);box-sizing:border-box">
+    </div>
+  </div>
+  <div id="lang-list" style="padding:10px;display:grid;grid-template-columns:repeat(3,1fr);gap:6px;min-height:100px"></div>
+  <div style="padding:8px 14px;border-top:.5px solid var(--color-border-tertiary);background:var(--color-background-secondary)">
+    <span id="lang-count" style="font-size:12px;color:var(--color-text-secondary)">15 bahasa</span>
+  </div>
+</div>
+
+<p style="font-size:13px;font-weight:500;margin:1.25rem 0 .5rem;color:var(--color-text-secondary)">Event handling di balik layar:</p>
+<div class="cb" style="font-size:12px"><span class="cm">// Setiap huruf yang diketik → event 'input' terpanggil</span>
+input.<span class="fn">addEventListener</span>(<span class="str">'input'</span>, (e) =&gt; {
+  <span class="kw">const</span> query = e.<span class="hl">target</span>.value.<span class="fn">toLowerCase</span>(); <span class="cm">// ambil nilai</span>
+
+  items.<span class="fn">forEach</span>(item =&gt; {
+    <span class="kw">const</span> cocok = item.dataset.name.<span class="fn">includes</span>(query);
+    item.style.display = cocok ? <span class="str">''</span> : <span class="str">'none'</span>; <span class="cm">// filter DOM</span>
+  });
+});</div>
+
+<button onclick="sendPrompt('Saya sudah selesai belajar Event Handling dan coba mini project Live Search. Lanjut ke materi ES6+ sekarang!')" style="margin-top:1rem;font-size:13px;padding:8px 16px;border:.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:transparent;cursor:pointer;font-family:var(--font-sans);color:var(--color-text-primary)">Lanjut ke ES6+ ↗</button>
+</div>
+
+<script>
+function go(idx,btn){
+  document.querySelectorAll('.sec').forEach(s=>s.style.display='none');
+  document.getElementById('s'+idx).style.display='block';
+  document.querySelectorAll('.tb').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+}
+document.querySelectorAll('.sec').forEach((s,i)=>{if(i>0)s.style.display='none'});
+
+const langs=['JavaScript','Python','TypeScript','Java','Rust','Go','PHP','Swift','Kotlin','C++','Ruby','Dart','C#','R','Scala'];
+const list=document.getElementById('lang-list');
+langs.forEach(name=>{
+  const el=document.createElement('div');
+  el.dataset.name=name.toLowerCase();
+  el.dataset.orig=name;
+  el.textContent=name;
+  el.style.cssText='padding:8px 10px;border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);font-size:13px;font-weight:500;text-align:center;cursor:default';
+  list.appendChild(el);
+});
+
+document.getElementById('search-inp').addEventListener('input',function(){
+  const q=this.value.toLowerCase();
+  let count=0;
+  document.querySelectorAll('#lang-list div').forEach(el=>{
+    const match=el.dataset.name.includes(q);
+    el.style.display=match?'':'none';
+    if(match){
+      count++;
+      if(q){
+        const orig=el.dataset.orig;
+        const i=orig.toLowerCase().indexOf(q);
+        if(i>=0){
+          el.innerHTML=orig.slice(0,i)+'<mark style="background:var(--color-background-warning);color:var(--color-text-warning);border-radius:2px">'+orig.slice(i,i+q.length)+'</mark>'+orig.slice(i+q.length);
+        }
+      } else {
+        el.textContent=el.dataset.orig;
+      }
+    }
+  });
+  const q2=this.value;
+  document.getElementById('lang-count').textContent=q2?count+' ditemukan untuk "'+q2+'"':count+' bahasa';
+});
+</script>
