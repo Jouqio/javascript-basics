@@ -1,0 +1,240 @@
+<h2 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);margin:-1px">Pelajaran interaktif Local Storage — modul 6 dari 7</h2>
+<style>
+.tb{padding:6px 14px;font-size:13px;border:.5px solid var(--color-border-tertiary);background:transparent;border-radius:var(--border-radius-md);cursor:pointer;color:var(--color-text-secondary);font-family:var(--font-sans);transition:background .15s}
+.tb.on{background:var(--color-background-secondary);color:var(--color-text-primary);font-weight:500;border-color:var(--color-border-secondary)}
+.cb{background:var(--color-background-secondary);border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:12px 14px;font-family:var(--font-mono);font-size:12.5px;line-height:1.75;overflow-x:auto;white-space:pre;margin:10px 0}
+.kw{color:#7C3AED}.fn{color:#0284C7}.str{color:#16A34A}.cm{color:var(--color-text-tertiary)}.hl{color:#DC2626}
+.cd{background:var(--color-background-secondary);border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem;margin:10px 0}
+.tg{display:inline-block;font-size:11px;padding:2px 9px;border-radius:999px;font-weight:500}
+</style>
+
+<div style="padding:.5rem 0">
+  <span class="tg" style="background:var(--color-background-info);color:var(--color-text-info)">Modul 6 / 7</span>
+  <h1 style="font-size:22px;font-weight:500;margin:.75rem 0 4px">Local Storage</h1>
+  <p style="font-size:14px;color:var(--color-text-secondary);margin:0">Simpan data di browser — persisten meskipun halaman di-refresh</p>
+</div>
+
+<div style="display:flex;gap:6px;flex-wrap:wrap;padding:.75rem 0;border-bottom:.5px solid var(--color-border-tertiary);margin-bottom:1.25rem">
+  <button class="tb on" onclick="go(0,this)">Konsep</button>
+  <button class="tb" onclick="go(1,this)">Contoh kode</button>
+  <button class="tb" onclick="go(2,this)">Analogi</button>
+  <button class="tb" onclick="go(3,this)">Latihan</button>
+  <button class="tb" onclick="go(4,this)">Mini project</button>
+</div>
+
+<div class="sec" id="s0">
+<p style="font-size:14px;line-height:1.7;margin:0 0 14px">localStorage adalah tempat penyimpanan key-value di browser yang <strong style="font-weight:500">persisten</strong> — data tetap ada meskipun tab ditutup atau halaman di-refresh. Cocok untuk preferensi user, draft, keranjang belanja, dan data ringan lainnya.</p>
+
+<h3 style="font-size:16px;font-weight:500;margin:0 0 .5rem">Lima metode utama</h3>
+<div class="cb"><span class="cm">// Simpan nilai (hanya bisa string!)</span>
+localStorage.<span class="fn">setItem</span>(<span class="str">'nama'</span>, <span class="str">'Budi'</span>);
+
+<span class="cm">// Baca nilai</span>
+localStorage.<span class="fn">getItem</span>(<span class="str">'nama'</span>);       <span class="cm">// → 'Budi'</span>
+localStorage.<span class="fn">getItem</span>(<span class="str">'tidakAda'</span>);   <span class="cm">// → null</span>
+
+<span class="cm">// Hapus satu key</span>
+localStorage.<span class="fn">removeItem</span>(<span class="str">'nama'</span>);
+
+<span class="cm">// Hapus semua data</span>
+localStorage.<span class="fn">clear</span>();
+
+<span class="cm">// Jumlah item tersimpan</span>
+localStorage.<span class="hl">length</span>;</div>
+
+<h3 style="font-size:16px;font-weight:500;margin:1.25rem 0 .5rem">Keterbatasan penting</h3>
+<div class="cd">
+  <div style="display:grid;gap:8px">
+    <div style="padding:10px 14px;border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);font-size:14px;display:flex;align-items:center;gap:10px"><i class="ti ti-letter-case" style="font-size:16px;color:var(--color-text-warning);flex-shrink:0" aria-hidden="true"></i><span><strong style="font-weight:500">Hanya string</strong> — objek/array harus diubah dulu dengan <code style="font-family:var(--font-mono)">JSON.stringify()</code></span></div>
+    <div style="padding:10px 14px;border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);font-size:14px;display:flex;align-items:center;gap:10px"><i class="ti ti-database" style="font-size:16px;color:var(--color-text-info);flex-shrink:0" aria-hidden="true"></i><span><strong style="font-weight:500">~5MB</strong> per origin — bukan untuk data besar. Untuk lebih besar, gunakan IndexedDB.</span></div>
+    <div style="padding:10px 14px;border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);font-size:14px;display:flex;align-items:center;gap:10px"><i class="ti ti-lock" style="font-size:16px;color:var(--color-text-success);flex-shrink:0" aria-hidden="true"></i><span><strong style="font-weight:500">Hanya di browser</strong> — tidak dikirim ke server (beda dengan cookie). Aman untuk data lokal.</span></div>
+  </div>
+</div>
+</div>
+
+<div class="sec" id="s1">
+<h3 style="font-size:16px;font-weight:500;margin:0 0 .5rem">Simpan & baca objek dengan JSON</h3>
+<p style="font-size:13px;color:var(--color-text-secondary);margin:0 0 6px">Karena localStorage hanya bisa simpan string, objek harus di-serialize dulu.</p>
+<div class="cb"><span class="kw">const</span> user = { nama: <span class="str">'Budi'</span>, usia: 25, premium: <span class="kw">true</span> };
+
+<span class="cm">// Simpan objek → stringify dulu</span>
+localStorage.<span class="fn">setItem</span>(<span class="str">'user'</span>, <span class="fn">JSON.stringify</span>(user));
+
+<span class="cm">// Baca objek → parse kembali</span>
+<span class="kw">const</span> saved = <span class="fn">JSON.parse</span>(localStorage.<span class="fn">getItem</span>(<span class="str">'user'</span>));
+console.<span class="fn">log</span>(saved.nama); <span class="cm">// 'Budi'</span>
+
+<span class="cm">// Pola aman — handle jika belum pernah disimpan:</span>
+<span class="kw">const</span> settings = <span class="fn">JSON.parse</span>(localStorage.<span class="fn">getItem</span>(<span class="str">'settings'</span>) || <span class="str">'{}'</span>);
+<span class="kw">const</span> cart     = <span class="fn">JSON.parse</span>(localStorage.<span class="fn">getItem</span>(<span class="str">'cart'</span>)     || <span class="str">'[]'</span>);</div>
+
+<h3 style="font-size:16px;font-weight:500;margin:1.5rem 0 .5rem">Real case — tema & preferensi user</h3>
+<div class="cb"><span class="cm">// Simpan preferensi tema</span>
+<span class="kw">function</span> <span class="fn">setTema</span>(tema) {
+  localStorage.<span class="fn">setItem</span>(<span class="str">'tema'</span>, tema);
+  document.body.dataset.tema = tema; <span class="cm">// langsung terapkan</span>
+}
+
+<span class="cm">// Muat saat halaman dibuka — tema langsung aktif</span>
+<span class="kw">function</span> <span class="fn">initTema</span>() {
+  <span class="kw">const</span> tema = localStorage.<span class="fn">getItem</span>(<span class="str">'tema'</span>) || <span class="str">'terang'</span>; <span class="cm">// default terang</span>
+  document.body.dataset.tema = tema;
+}
+
+document.<span class="fn">addEventListener</span>(<span class="str">'DOMContentLoaded'</span>, initTema);</div>
+
+<h3 style="font-size:16px;font-weight:500;margin:1.5rem 0 .5rem">Real case — keranjang belanja</h3>
+<div class="cb"><span class="kw">function</span> <span class="fn">addToCart</span>(produk) {
+  <span class="kw">const</span> cart = <span class="fn">JSON.parse</span>(localStorage.<span class="fn">getItem</span>(<span class="str">'cart'</span>) || <span class="str">'[]'</span>);
+  <span class="kw">const</span> exist = cart.<span class="fn">find</span>(p =&gt; p.id === produk.id);
+
+  <span class="kw">if</span> (exist) {
+    exist.qty++;               <span class="cm">// tambah qty jika sudah ada</span>
+  } <span class="kw">else</span> {
+    cart.<span class="fn">push</span>({ ...produk, qty: 1 }); <span class="cm">// spread — ES6!</span>
+  }
+  localStorage.<span class="fn">setItem</span>(<span class="str">'cart'</span>, <span class="fn">JSON.stringify</span>(cart));
+}</div>
+</div>
+
+<div class="sec" id="s2">
+<h2 style="font-size:18px;font-weight:500;margin:0 0 14px">Analogi: localStorage = buku catatan di laci meja</h2>
+<div class="cd"><p style="font-size:14px;line-height:1.7;margin:0;color:var(--color-text-secondary)">Bayangkan kamu punya tiga cara berbeda untuk menyimpan catatan. Masing-masing punya karakteristik yang berbeda — pilih yang tepat sesuai kebutuhan.</p></div>
+<div style="display:grid;gap:10px;margin-top:12px">
+  <div class="cd"><div style="display:flex;align-items:start;gap:12px"><i class="ti ti-folder" style="font-size:20px;color:var(--color-text-success);margin-top:2px;flex-shrink:0" aria-hidden="true"></i><div><p style="font-size:14px;font-weight:500;margin:0 0 4px">localStorage = buku catatan di laci</p><p style="font-size:13px;color:var(--color-text-secondary);margin:0;line-height:1.6">Buku catatan yang selalu ada di laci mejamu — tetap ada meskipun kamu pulang, tutup laptop, atau kembali keesokan harinya. Data persisten sampai kamu sendiri yang hapus.</p></div></div></div>
+  <div class="cd"><div style="display:flex;align-items:start;gap:12px"><i class="ti ti-clock" style="font-size:20px;color:var(--color-text-warning);margin-top:2px;flex-shrink:0" aria-hidden="true"></i><div><p style="font-size:14px;font-weight:500;margin:0 0 4px">sessionStorage = sticky note di monitor</p><p style="font-size:13px;color:var(--color-text-secondary);margin:0;line-height:1.6">API-nya persis sama dengan localStorage, tapi data <strong style="font-weight:500">hilang begitu tab ditutup</strong>. Cocok untuk data sementara dalam satu sesi seperti progress form multi-step.</p></div></div></div>
+  <div class="cd"><div style="display:flex;align-items:start;gap:12px"><i class="ti ti-file" style="font-size:20px;color:var(--color-text-info);margin-top:2px;flex-shrink:0" aria-hidden="true"></i><div><p style="font-size:14px;font-weight:500;margin:0 0 4px">JSON.stringify/parse = alat terjemah</p><p style="font-size:13px;color:var(--color-text-secondary);margin:0;line-height:1.6">Buku catatan hanya bisa menerima tulisan (string). Kalau kamu mau simpan objek, kamu butuh "penerjemah" — stringify saat simpan, parse saat baca kembali.</p></div></div></div>
+</div>
+</div>
+
+<div class="sec" id="s3">
+<p style="font-size:14px;color:var(--color-text-secondary);margin:0 0 1.25rem;line-height:1.6">Kerjakan di console browser (F12). Coba refresh halaman setelah simpan — apakah data masih ada?</p>
+<div style="display:grid;gap:12px">
+  <div style="border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden">
+    <div style="padding:10px 16px;border-bottom:.5px solid var(--color-border-tertiary);display:flex;align-items:center;gap:8px"><span class="tg" style="background:var(--color-background-success);color:var(--color-text-success)">Mudah</span><p style="font-size:14px;font-weight:500;margin:0">Simpan & baca nama</p></div>
+    <div style="padding:14px 16px"><p style="font-size:14px;line-height:1.7;margin:0 0 10px">Simpan namamu ke localStorage dengan key <code style="font-family:var(--font-mono)">'user_nama'</code>. Kemudian baca dan log. Refresh halaman, baca lagi — masih ada?</p>
+    <div class="cb" style="margin:0">localStorage.<span class="fn">???</span>(<span class="str">'user_nama'</span>, <span class="str">'namamu'</span>);
+<span class="kw">const</span> nama = localStorage.<span class="fn">???</span>(<span class="str">'user_nama'</span>);
+console.<span class="fn">log</span>(nama); <span class="cm">// masih ada setelah refresh!</span></div></div>
+  </div>
+  <div style="border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden">
+    <div style="padding:10px 16px;border-bottom:.5px solid var(--color-border-tertiary);display:flex;align-items:center;gap:8px"><span class="tg" style="background:var(--color-background-warning);color:var(--color-text-warning)">Sedang</span><p style="font-size:14px;font-weight:500;margin:0">Simpan objek user</p></div>
+    <div style="padding:14px 16px"><p style="font-size:14px;line-height:1.7;margin:0 0 10px">Simpan objek <code style="font-family:var(--font-mono)">{'{'}nama, usia, kota{'}'}</code> ke localStorage. Baca kembali dan akses properti <code style="font-family:var(--font-mono)">.nama</code>-nya.</p>
+    <div class="cb" style="margin:0"><span class="kw">const</span> user = { nama:<span class="str">'Budi'</span>, usia:25, kota:<span class="str">'Jakarta'</span> };
+localStorage.<span class="fn">setItem</span>(<span class="str">'user'</span>, <span class="hl">???</span>.<span class="fn">stringify</span>(user));
+
+<span class="kw">const</span> saved = <span class="hl">???</span>.<span class="fn">parse</span>(localStorage.<span class="fn">getItem</span>(<span class="str">'user'</span>));
+console.<span class="fn">log</span>(saved.nama); <span class="cm">// 'Budi'</span></div></div>
+  </div>
+  <div style="border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden">
+    <div style="padding:10px 16px;border-bottom:.5px solid var(--color-border-tertiary);display:flex;align-items:center;gap:8px"><span class="tg" style="background:var(--color-background-danger);color:var(--color-text-danger)">Menantang</span><p style="font-size:14px;font-weight:500;margin:0">Counter yang persisten</p></div>
+    <div style="padding:14px 16px"><p style="font-size:14px;line-height:1.7;margin:0 0 10px">Buat tombol counter yang angkanya tidak reset saat di-refresh — tersimpan di localStorage. Saat halaman dimuat, baca nilai dari localStorage.</p>
+    <div class="cb" style="margin:0"><span class="kw">function</span> <span class="fn">tambah</span>() {
+  <span class="kw">const</span> count = <span class="fn">parseInt</span>(localStorage.<span class="fn">getItem</span>(<span class="str">'count'</span>) || <span class="str">'0'</span>);
+  <span class="kw">const</span> baru = count + 1;
+  localStorage.<span class="fn">???</span>(<span class="str">'count'</span>, baru);      <span class="cm">// simpan</span>
+  document.<span class="fn">querySelector</span>(<span class="str">'#angka'</span>).<span class="hl">textContent</span> = baru;
+}
+
+<span class="cm">// Init saat halaman dimuat:</span>
+document.<span class="fn">querySelector</span>(<span class="str">'#angka'</span>).<span class="hl">textContent</span> =
+  localStorage.<span class="fn">???</span>(<span class="str">'count'</span>) || <span class="str">'0'</span>;</div></div>
+  </div>
+</div>
+<button onclick="sendPrompt('Saya latihan Local Storage JavaScript. Boleh bantu review atau jawab pertanyaan?')" style="margin-top:1rem;font-size:13px;padding:8px 16px;border:.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:transparent;cursor:pointer;font-family:var(--font-sans);color:var(--color-text-primary)">Minta bantuan atau review kode ↗</button>
+</div>
+
+<div class="sec" id="s4">
+<p style="font-size:14px;color:var(--color-text-secondary);margin:0 0 1rem;line-height:1.6">Shopping list yang benar-benar persisten — data tersimpan dan tetap ada bahkan setelah di-refresh.</p>
+
+<div style="border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden">
+  <div style="padding:12px 14px;background:var(--color-background-secondary);border-bottom:.5px solid var(--color-border-tertiary)">
+    <div style="display:flex;gap:8px">
+      <input id="item-inp" type="text" placeholder="Tambah item belanja..." style="flex:1;font-family:var(--font-sans)" onkeydown="if(event.key==='Enter')addItem()">
+      <button onclick="addItem()" style="padding:0 14px;border:.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:transparent;cursor:pointer;font-size:13px;font-family:var(--font-sans);color:var(--color-text-primary);white-space:nowrap">Tambah</button>
+    </div>
+  </div>
+  <div id="item-list" style="padding:8px;min-height:100px"></div>
+  <div style="padding:8px 14px;border-top:.5px solid var(--color-border-tertiary);background:var(--color-background-secondary);display:flex;justify-content:space-between;align-items:center">
+    <span id="item-count" style="font-size:12px;color:var(--color-text-secondary)">0 item</span>
+    <button onclick="clearAll()" style="font-size:12px;padding:4px 10px;border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);background:transparent;cursor:pointer;font-family:var(--font-sans);color:var(--color-text-danger)">Hapus semua</button>
+  </div>
+</div>
+
+<p style="font-size:13px;font-weight:500;margin:1.25rem 0 .5rem;color:var(--color-text-secondary)">localStorage di balik layar (versi browser sesungguhnya):</p>
+<div class="cb" style="font-size:12px"><span class="cm">// Simpan array items</span>
+localStorage.<span class="fn">setItem</span>(<span class="str">'belanja'</span>, <span class="fn">JSON.stringify</span>(items));
+
+<span class="cm">// Baca saat halaman dimuat</span>
+<span class="kw">const</span> items = <span class="fn">JSON.parse</span>(localStorage.<span class="fn">getItem</span>(<span class="str">'belanja'</span>) || <span class="str">'[]'</span>);
+
+<span class="cm">// Setiap perubahan (tambah/hapus/toggle) → simpan ulang</span>
+<span class="kw">function</span> <span class="fn">save</span>(items) {
+  localStorage.<span class="fn">setItem</span>(<span class="str">'belanja'</span>, <span class="fn">JSON.stringify</span>(items));
+}</div>
+
+<button onclick="sendPrompt('Saya sudah selesai belajar Local Storage dan coba shopping list. Lanjut ke materi terakhir: OOP JavaScript!')" style="margin-top:1rem;font-size:13px;padding:8px 16px;border:.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:transparent;cursor:pointer;font-family:var(--font-sans);color:var(--color-text-primary)">Lanjut ke OOP JavaScript ↗</button>
+</div>
+
+<script>
+function go(idx,btn){
+  document.querySelectorAll('.sec').forEach(s=>s.style.display='none');
+  document.getElementById('s'+idx).style.display='block';
+  document.querySelectorAll('.tb').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+}
+document.querySelectorAll('.sec').forEach((s,i)=>{if(i>0)s.style.display='none'});
+
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+async function loadItems(){
+  try{const r=await window.storage.get('belanja');return r?JSON.parse(r.value):[];}
+  catch(e){return [];}
+}
+async function saveItems(items){
+  try{await window.storage.set('belanja',JSON.stringify(items));}
+  catch(e){}
+}
+
+function renderItems(items){
+  const list=document.getElementById('item-list');
+  const done=items.filter(i=>i.done).length;
+  document.getElementById('item-count').textContent=`${items.length} item${done?', '+done+' selesai':''}`;
+  if(!items.length){
+    list.innerHTML='<p style="text-align:center;font-size:13px;color:var(--color-text-tertiary);padding:2rem 0;margin:0">Belum ada item — tambahkan sesuatu!</p>';
+    return;
+  }
+  list.innerHTML=items.map(item=>`<div data-id="${item.id}" style="display:flex;align-items:center;gap:10px;padding:9px 12px;border-radius:6px;margin:3px 0;cursor:pointer;transition:background .1s" onmouseenter="this.style.background='var(--color-background-secondary)'" onmouseleave="this.style.background='transparent'"><span class="ck" style="width:14px;height:14px;border:.5px solid var(--color-border-secondary);border-radius:3px;flex-shrink:0;background:${item.done?'var(--color-background-success)':'transparent'};display:inline-block;transition:background .15s"></span><span class="tx" style="flex:1;font-size:14px;${item.done?'text-decoration:line-through;color:var(--color-text-tertiary)':''}">${esc(item.text)}</span><button class="dl" style="background:none;border:none;cursor:pointer;font-size:18px;color:var(--color-text-tertiary);padding:0 4px;line-height:1;font-family:var(--font-sans)" aria-label="hapus">×</button></div>`).join('');
+}
+
+document.getElementById('item-list').addEventListener('click',async function(e){
+  const row=e.target.closest('[data-id]');
+  if(!row)return;
+  const id=parseInt(row.dataset.id);
+  const items=await loadItems();
+  if(e.target.classList.contains('dl')){
+    const f=items.filter(i=>i.id!==id);
+    await saveItems(f);renderItems(f);
+  } else {
+    const u=items.map(i=>i.id===id?{...i,done:!i.done}:i);
+    await saveItems(u);renderItems(u);
+  }
+});
+
+async function addItem(){
+  const inp=document.getElementById('item-inp');
+  const text=(inp.value||'').trim();
+  if(!text)return;
+  const items=await loadItems();
+  const updated=[...items,{id:Date.now(),text,done:false}];
+  await saveItems(updated);
+  renderItems(updated);
+  inp.value='';inp.focus();
+}
+
+async function clearAll(){
+  await saveItems([]);renderItems([]);
+}
+
+(async()=>{renderItems(await loadItems());})();
+</script>
