@@ -9,7 +9,7 @@ const API = {
         return resolve(`Data from delay ${delay}`);
       }, delay);
     });
-  }
+  },
 };
 
 const sampleErrorData = [
