@@ -1,0 +1,313 @@
+<h2 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);margin:-1px">Pelajaran interaktif ES6+ JavaScript — modul 3 dari 7</h2>
+
+<style>
+.tb{padding:6px 14px;font-size:13px;border:.5px solid var(--color-border-tertiary);background:transparent;border-radius:var(--border-radius-md);cursor:pointer;color:var(--color-text-secondary);font-family:var(--font-sans);transition:background .15s}
+.tb.on{background:var(--color-background-secondary);color:var(--color-text-primary);font-weight:500;border-color:var(--color-border-secondary)}
+.cb{background:var(--color-background-secondary);border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-md);padding:12px 14px;font-family:var(--font-mono);font-size:12.5px;line-height:1.75;overflow-x:auto;white-space:pre;margin:10px 0}
+.kw{color:#7C3AED}.fn{color:#0284C7}.str{color:#16A34A}.cm{color:var(--color-text-tertiary)}.hl{color:#DC2626}
+.cd{background:var(--color-background-secondary);border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem;margin:10px 0}
+.tg{display:inline-block;font-size:11px;padding:2px 9px;border-radius:999px;font-weight:500}
+.vs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0}
+</style>
+
+<div style="padding:.5rem 0">
+  <span class="tg" style="background:var(--color-background-info);color:var(--color-text-info)">Modul 3 / 7</span>
+  <h1 style="font-size:22px;font-weight:500;margin:.75rem 0 4px">ES6+ Modern JavaScript</h1>
+  <p style="font-size:14px;color:var(--color-text-secondary);margin:0">Arrow function, destructuring, template literal, spread, dan lebih banyak lagi</p>
+</div>
+
+<div style="display:flex;gap:6px;flex-wrap:wrap;padding:.75rem 0;border-bottom:.5px solid var(--color-border-tertiary);margin-bottom:1.25rem">
+  <button class="tb on" onclick="go(0,this)">Konsep</button>
+  <button class="tb" onclick="go(1,this)">Contoh kode</button>
+  <button class="tb" onclick="go(2,this)">Analogi</button>
+  <button class="tb" onclick="go(3,this)">Latihan</button>
+  <button class="tb" onclick="go(4,this)">Mini project</button>
+</div>
+
+<div class="sec" id="s0">
+<p style="font-size:14px;line-height:1.7;margin:0 0 12px">ES6+ bukan bahasa baru — itu <em>upgrade</em> JavaScript (ES2015 ke atas). Kode yang sama bisa ditulis jauh lebih singkat dan expressif. Lihat perbedaannya:</p>
+
+<div class="vs">
+  <div>
+    <p style="font-size:11px;font-weight:500;color:var(--color-text-secondary);margin:0 0 4px">ES5 (lama)</p>
+    <div class="cb" style="margin:0;font-size:12px"><span class="kw">function</span> <span class="fn">sapa</span>(nama) {
+  <span class="kw">return</span> <span class="str">'Halo, '</span> + nama + <span class="str">'!'</span>;
+}
+<span class="kw">var</span> users = [{nama:<span class="str">'Budi'</span>}];
+<span class="kw">var</span> names = users.<span class="fn">map</span>(<span class="kw">function</span>(u) {
+  <span class="kw">return</span> u.nama;
+});</div>
+  </div>
+  <div>
+    <p style="font-size:11px;font-weight:500;color:var(--color-text-success);margin:0 0 4px">ES6+ (modern)</p>
+    <div class="cb" style="margin:0;font-size:12px"><span class="kw">const</span> <span class="fn">sapa</span> = nama =&gt;
+  <span class="str">`Halo, ${nama}!`</span>;
+
+<span class="kw">const</span> users = [{nama:<span class="str">'Budi'</span>}];
+<span class="kw">const</span> names = users.<span class="fn">map</span>(u =&gt; u.nama);</div>
+  </div>
+</div>
+
+<h3 style="font-size:16px;font-weight:500;margin:1.25rem 0 .5rem">Arrow function — 3 bentuk</h3>
+<div class="cb"><span class="cm">// 1. Satu baris — return implicit (tidak perlu return)</span>
+<span class="kw">const</span> kuadrat = n =&gt; n * n;
+
+<span class="cm">// 2. Beberapa parameter</span>
+<span class="kw">const</span> tambah = (a, b) =&gt; a + b;
+
+<span class="cm">// 3. Banyak baris — pakai kurung kurawal + return eksplisit</span>
+<span class="kw">const</span> greet = (nama, usia) =&gt; {
+  <span class="kw">const</span> sapaan = usia &gt; 17 ? <span class="str">'Halo'</span> : <span class="str">'Hai'</span>;
+  <span class="kw">return</span> <span class="str">`${sapaan}, ${nama}!`</span>;
+};</div>
+
+<h3 style="font-size:16px;font-weight:500;margin:1.25rem 0 .5rem">Template literal — string modern</h3>
+<div class="cb"><span class="kw">const</span> nama = <span class="str">'Sari'</span>, usia = 23, kota = <span class="str">'Jakarta'</span>;
+
+<span class="cm">// ES5 — susah dibaca</span>
+<span class="str">'Nama: '</span> + nama + <span class="str">', usia '</span> + usia + <span class="str">' tahun dari '</span> + kota;
+
+<span class="cm">// ES6+ — jauh lebih bersih</span>
+<span class="str">`Nama: ${nama}, usia ${usia} tahun dari ${kota}`</span>;
+
+<span class="cm">// Bisa berisi ekspresi JS apapun</span>
+<span class="str">`${nama} ${usia &gt;= 18 ? 'sudah' : 'belum'} dewasa`</span>;
+<span class="str">`Total: Rp${(harga * qty).<span class="fn">toLocaleString</span>('id-ID')}`</span>;</div>
+
+<h3 style="font-size:16px;font-weight:500;margin:1.25rem 0 .5rem">Destructuring — ambil langsung</h3>
+<div class="cb"><span class="cm">// Object destructuring</span>
+<span class="kw">const</span> user = { nama: <span class="str">'Budi'</span>, usia: 25, kota: <span class="str">'Bandung'</span> };
+
+<span class="cm">// ES5 cara lama:</span>
+<span class="kw">const</span> nama = user.nama; <span class="kw">const</span> usia = user.usia;
+
+<span class="cm">// ES6+ — satu baris, langsung dari objek:</span>
+<span class="kw">const</span> { nama, usia, kota } = user;
+
+<span class="cm">// Dengan default value & rename:</span>
+<span class="kw">const</span> { nama, role = <span class="str">'Developer'</span>, usia: umur } = user;
+
+<span class="cm">// Array destructuring</span>
+<span class="kw">const</span> warna = [<span class="str">'merah'</span>, <span class="str">'hijau'</span>, <span class="str">'biru'</span>];
+<span class="kw">const</span> [pertama, kedua] = warna; <span class="cm">// pertama='merah', kedua='hijau'</span></div>
+
+<h3 style="font-size:16px;font-weight:500;margin:1.25rem 0 .5rem">Spread & Rest operator</h3>
+<div class="cb"><span class="cm">// SPREAD — "tuangkan" isi array/object</span>
+<span class="kw">const</span> arr1 = [1, 2, 3];
+<span class="kw">const</span> arr2 = [4, 5, 6];
+<span class="kw">const</span> gabungan = [...arr1, ...arr2]; <span class="cm">// [1,2,3,4,5,6]</span>
+
+<span class="kw">const</span> user = { nama: <span class="str">'Budi'</span>, usia: 25 };
+<span class="kw">const</span> updated = { ...user, kota: <span class="str">'Bali'</span> }; <span class="cm">// copy + tambah properti baru</span>
+
+<span class="cm">// REST — kumpulkan sisa argumen</span>
+<span class="kw">const</span> total = (...angka) =&gt; angka.<span class="fn">reduce</span>((s, n) =&gt; s + n, 0);
+<span class="fn">total</span>(1, 2, 3, 4, 5); <span class="cm">// → 15</span></div>
+</div>
+
+<div class="sec" id="s1">
+<p style="font-size:14px;color:var(--color-text-secondary);margin:0 0 16px;line-height:1.6">Contoh ES6+ di situasi nyata — kode yang benar-benar kamu tulis di proyek:</p>
+
+<h3 style="font-size:16px;font-weight:500;margin:0 0 .5rem">Real case 1 — Proses data API</h3>
+<p style="font-size:13px;color:var(--color-text-secondary);margin:0 0 6px">Ambil, filter, dan format data dari API menggunakan chaining + arrow functions.</p>
+<div class="cb"><span class="kw">const</span> users = [
+  { nama: <span class="str">'Budi'</span>, usia: 17, aktif: <span class="kw">true</span> },
+  { nama: <span class="str">'Sari'</span>, usia: 23, aktif: <span class="kw">false</span> },
+  { nama: <span class="str">'Dani'</span>, usia: 19, aktif: <span class="kw">true</span> },
+];
+
+<span class="cm">// Filter + map + destructuring dalam satu ekspresi</span>
+<span class="kw">const</span> labelAktif = users
+  .<span class="fn">filter</span>(({ aktif }) =&gt; aktif)
+  .<span class="fn">map</span>(({ nama, usia }) =&gt; <span class="str">`${nama} (${usia} thn)`</span>);
+
+<span class="cm">// → ['Budi (17 thn)', 'Dani (19 thn)']</span></div>
+
+<h3 style="font-size:16px;font-weight:500;margin:1.5rem 0 .5rem">Real case 2 — Fungsi dengan parameter objek</h3>
+<p style="font-size:13px;color:var(--color-text-secondary);margin:0 0 6px">Destructuring langsung di parameter fungsi + default value.</p>
+<div class="cb"><span class="cm">// Tanpa destructuring (susah dibaca)</span>
+<span class="kw">function</span> <span class="fn">buatProfil</span>(options) {
+  <span class="kw">const</span> nama = options.nama;
+  <span class="kw">const</span> role = options.role || <span class="str">'Developer'</span>;
+}
+
+<span class="cm">// Dengan destructuring + default di parameter langsung</span>
+<span class="kw">const</span> <span class="fn">buatProfil</span> = ({ nama, role = <span class="str">'Developer'</span>, skills = [] }) =&gt; {
+  <span class="kw">const</span> tags = skills.<span class="fn">map</span>(s =&gt; <span class="str">`&lt;span&gt;${s}&lt;/span&gt;`</span>).<span class="fn">join</span>(<span class="str">''</span>);
+  <span class="kw">return</span> <span class="str">`&lt;h3&gt;${nama}&lt;/h3&gt;&lt;p&gt;${role}&lt;/p&gt;${tags}`</span>;
+};</div>
+
+<h3 style="font-size:16px;font-weight:500;margin:1.5rem 0 .5rem">Real case 3 — Update state tanpa mutasi (React-style)</h3>
+<p style="font-size:13px;color:var(--color-text-secondary);margin:0 0 6px">Pola immutable yang populer di React & modern JS.</p>
+<div class="cb"><span class="kw">const</span> state = { nama: <span class="str">'Budi'</span>, skor: 10, level: 2 };
+
+<span class="cm">// Spread untuk update properti tanpa ubah objek asli</span>
+<span class="kw">const</span> newState = { ...state, skor: state.skor + 5 };
+<span class="cm">// newState = { nama: 'Budi', skor: 15, level: 2 }</span>
+<span class="cm">// state asli tidak berubah!</span>
+
+<span class="cm">// Tambah item ke array tanpa mutasi</span>
+<span class="kw">const</span> items = [<span class="str">'a'</span>, <span class="str">'b'</span>];
+<span class="kw">const</span> newItems = [...items, <span class="str">'c'</span>]; <span class="cm">// ['a','b','c']</span>
+
+<span class="cm">// Hapus item berdasarkan index</span>
+<span class="kw">const</span> tanpaIndex2 = items.<span class="fn">filter</span>((_, i) =&gt; i !== 2);</div>
+</div>
+
+<div class="sec" id="s2">
+<h2 style="font-size:18px;font-weight:500;margin:0 0 14px">Analogi: ES6+ = upgrade smartphone</h2>
+<div class="cd"><p style="font-size:14px;line-height:1.7;margin:0;color:var(--color-text-secondary)">ES6+ seperti upgrade dari HP jadul ke smartphone. Kamu tetap "menelepon" (menulis JavaScript), tapi caranya jauh lebih mudah, cepat, dan powerful. Fungsinya sama, pengalamannya beda.</p></div>
+<div style="display:grid;gap:10px;margin-top:12px">
+  <div class="cd"><div style="display:flex;align-items:start;gap:12px"><i class="ti ti-bolt" style="font-size:20px;color:var(--color-text-info);margin-top:2px;flex-shrink:0" aria-hidden="true"></i><div><p style="font-size:14px;font-weight:500;margin:0 0 4px">Arrow function = touchscreen</p><p style="font-size:13px;color:var(--color-text-secondary);margin:0;line-height:1.6">Gantikan tombol fisik (function keyword panjang). Fungsinya sama persis, tapi interaksinya jauh lebih smooth dan ringkas. <code style="font-family:var(--font-mono);font-size:12px">n => n * 2</code> vs <code style="font-family:var(--font-mono);font-size:12px">function(n){ return n*2; }</code></p></div></div></div>
+  <div class="cd"><div style="display:flex;align-items:start;gap:12px"><i class="ti ti-message" style="font-size:20px;color:var(--color-text-success);margin-top:2px;flex-shrink:0" aria-hidden="true"></i><div><p style="font-size:14px;font-weight:500;margin:0 0 4px">Template literal = autocorrect + emoji keyboard</p><p style="font-size:13px;color:var(--color-text-secondary);margin:0;line-height:1.6">Dulu nulis string itu repot — sambung satu-satu pakai <code style="font-family:var(--font-mono);font-size:12px">+</code>. Sekarang tinggal tulis apa adanya dan sisipkan variabel dengan <code style="font-family:var(--font-mono);font-size:12px">${...}</code>.</p></div></div></div>
+  <div class="cd"><div style="display:flex;align-items:start;gap:12px"><i class="ti ti-packages" style="font-size:20px;color:var(--color-text-warning);margin-top:2px;flex-shrink:0" aria-hidden="true"></i><div><p style="font-size:14px;font-weight:500;margin:0 0 4px">Destructuring = split screen multitasking</p><p style="font-size:13px;color:var(--color-text-secondary);margin:0;line-height:1.6">Dulu buka satu-satu: <code style="font-family:var(--font-mono);font-size:12px">const a = x.a; const b = x.b;</code> Sekarang satu langkah ambil semuanya: <code style="font-family:var(--font-mono);font-size:12px">const {a, b} = x;</code></p></div></div></div>
+  <div class="cd"><div style="display:flex;align-items:start;gap:12px"><i class="ti ti-copy" style="font-size:20px;color:var(--color-text-danger);margin-top:2px;flex-shrink:0" aria-hidden="true"></i><div><p style="font-size:14px;font-weight:500;margin:0 0 4px">Spread = copy-paste cerdas</p><p style="font-size:13px;color:var(--color-text-secondary);margin:0;line-height:1.6">Salin dan gabungkan array/object dengan mudah: <code style="font-family:var(--font-mono);font-size:12px">[...a, ...b]</code> atau update tanpa mengubah original: <code style="font-family:var(--font-mono);font-size:12px">{...user, role: 'Admin'}</code></p></div></div></div>
+</div>
+</div>
+
+<div class="sec" id="s3">
+<p style="font-size:14px;color:var(--color-text-secondary);margin:0 0 1.25rem;line-height:1.6">Kerjakan di CodePen atau console browser. Fokus pada cara penulisan ES6+, bukan hasilnya saja.</p>
+<div style="display:grid;gap:12px">
+
+  <div style="border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden">
+    <div style="padding:10px 16px;border-bottom:.5px solid var(--color-border-tertiary);display:flex;align-items:center;gap:8px"><span class="tg" style="background:var(--color-background-success);color:var(--color-text-success)">Mudah</span><p style="font-size:14px;font-weight:500;margin:0">Ubah ke arrow function</p></div>
+    <div style="padding:14px 16px"><p style="font-size:14px;line-height:1.7;margin:0 0 10px">Ubah ketiga fungsi di bawah menjadi arrow function yang setara, termasuk yang satu baris (tanpa return).</p>
+    <div class="cb" style="margin:0"><span class="cm">// Ubah ke arrow function:</span>
+<span class="kw">function</span> <span class="fn">kali2</span>(n) { <span class="kw">return</span> n * 2; }
+<span class="kw">function</span> <span class="fn">greet</span>(nama) { <span class="kw">return</span> <span class="str">'Halo '</span> + nama; }
+<span class="kw">function</span> <span class="fn">isGenap</span>(n) { <span class="kw">return</span> n % 2 === 0; }
+
+<span class="cm">// Jawaban (isi ???):</span>
+<span class="kw">const</span> kali2 = <span class="hl">???</span>;
+<span class="kw">const</span> greet = <span class="hl">???</span>; <span class="cm">// pakai template literal!</span>
+<span class="kw">const</span> isGenap = <span class="hl">???</span>;</div></div>
+  </div>
+
+  <div style="border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden">
+    <div style="padding:10px 16px;border-bottom:.5px solid var(--color-border-tertiary);display:flex;align-items:center;gap:8px"><span class="tg" style="background:var(--color-background-warning);color:var(--color-text-warning)">Sedang</span><p style="font-size:14px;font-weight:500;margin:0">Destructuring profil user</p></div>
+    <div style="padding:14px 16px"><p style="font-size:14px;line-height:1.7;margin:0 0 10px">Gunakan destructuring untuk mengambil data dari objek <code style="font-family:var(--font-mono)">user</code>, lalu tampilkan menggunakan template literal.</p>
+    <div class="cb" style="margin:0"><span class="kw">const</span> user = {
+  nama: <span class="str">'Sari Dewi'</span>, usia: 24,
+  kota: <span class="str">'Surabaya'</span>, role: <span class="str">'Frontend Dev'</span>
+};
+
+<span class="cm">// Ambil dengan destructuring + default value:</span>
+<span class="kw">const</span> { <span class="hl">???</span>, usia, kota, role = <span class="str">'Developer'</span> } = user;
+
+console.<span class="fn">log</span>(<span class="str">`${<span class="hl">???</span>} (${<span class="hl">???</span>}) - ${<span class="hl">???</span>}, ${<span class="hl">???</span>}`</span>);</div></div>
+  </div>
+
+  <div style="border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden">
+    <div style="padding:10px 16px;border-bottom:.5px solid var(--color-border-tertiary);display:flex;align-items:center;gap:8px"><span class="tg" style="background:var(--color-background-danger);color:var(--color-text-danger)">Menantang</span><p style="font-size:14px;font-weight:500;margin:0">Gabungkan semua</p></div>
+    <div style="padding:14px 16px"><p style="font-size:14px;line-height:1.7;margin:0 0 10px">Buat fungsi <code style="font-family:var(--font-mono)">gabungTeam</code> yang menerima dua array berisi objek user, menggabungkan keduanya, memfilter yang aktif saja, dan mengembalikan array nama dalam format template literal.</p>
+    <div class="cb" style="margin:0"><span class="kw">const</span> <span class="fn">gabungTeam</span> = (team1, team2) =&gt;
+  [...<span class="hl">???</span>, ...<span class="hl">???</span>]           <span class="cm">// spread gabungkan</span>
+  .<span class="fn">filter</span>(({ aktif }) =&gt; <span class="hl">???</span>) <span class="cm">// filter yang aktif</span>
+  .<span class="fn">map</span>(({ nama, role }) =&gt;    <span class="cm">// destructuring di parameter</span>
+    <span class="str">`${<span class="hl">???</span>} — ${<span class="hl">???</span>}`</span>          <span class="cm">// template literal</span>
+  );</div></div>
+  </div>
+
+</div>
+<button onclick="sendPrompt('Saya sedang latihan ES6+ JavaScript (arrow function, destructuring, spread, template literal). Minta review atau ada pertanyaan. Boleh bantu?')" style="margin-top:1rem;font-size:13px;padding:8px 16px;border:.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:transparent;cursor:pointer;font-family:var(--font-sans);color:var(--color-text-primary)">Minta bantuan atau review kode ↗</button>
+</div>
+
+<div class="sec" id="s4">
+<p style="font-size:14px;color:var(--color-text-secondary);margin:0 0 1.25rem;line-height:1.6">Developer profile generator — semua ES6+ bekerja bersamaan. Input data → kartu tampil via template literal.</p>
+
+<div style="border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);overflow:hidden">
+  <div style="padding:14px 16px;background:var(--color-background-secondary);border-bottom:.5px solid var(--color-border-tertiary)">
+    <div style="display:grid;gap:8px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+        <input id="p-nama" placeholder="Nama *" style="font-family:var(--font-sans)">
+        <input id="p-role" placeholder="Role (default: Developer)" style="font-family:var(--font-sans)">
+      </div>
+      <input id="p-skills" placeholder="Skills (pisah koma): JS, React, Node" style="font-family:var(--font-sans)">
+      <button onclick="buatKartu()" style="padding:8px;border:.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:transparent;cursor:pointer;font-family:var(--font-sans);font-size:13px;color:var(--color-text-primary)">Buat kartu</button>
+    </div>
+    <p id="form-err" style="font-size:12px;color:var(--color-text-danger);margin:6px 0 0;display:none">Nama wajib diisi!</p>
+  </div>
+  <div id="cards-out" style="padding:10px;min-height:80px;display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px">
+    <div id="placeholder-msg" style="grid-column:1/-1;text-align:center;font-size:13px;color:var(--color-text-tertiary);padding:2rem 0">Buat kartu pertamamu!</div>
+  </div>
+</div>
+
+<p style="font-size:13px;font-weight:500;margin:1.25rem 0 .5rem;color:var(--color-text-secondary)">ES6+ yang bekerja di balik layar:</p>
+<div class="cb" style="font-size:12px"><span class="cm">// Arrow function + destructuring di parameter + default values</span>
+<span class="kw">const</span> <span class="fn">buatKartu</span> = ({ nama, role = <span class="str">'Developer'</span>, skills = [] }) =&gt; {
+
+  <span class="cm">// Template literal untuk generate HTML kartu</span>
+  <span class="kw">const</span> skillHtml = skills
+    .<span class="fn">map</span>(s =&gt; <span class="str">`&lt;span style="..."&gt;${s}&lt;/span&gt;`</span>) <span class="cm">// arrow + template</span>
+    .<span class="fn">join</span>(<span class="str">''</span>);
+
+  <span class="kw">return</span> <span class="str">`&lt;div class="kartu"&gt;
+    &lt;h3&gt;${nama}&lt;/h3&gt;
+    &lt;p&gt;${role}&lt;/p&gt;
+    &lt;div&gt;${skillHtml}&lt;/div&gt;
+  &lt;/div&gt;`</span>;
+};
+
+<span class="cm">// Spread — tambah kartu baru tanpa mutasi array lama</span>
+allCards = [...allCards, { nama, role, skills }];</div>
+
+<button onclick="sendPrompt('Saya sudah selesai belajar ES6+ JavaScript dan mencoba mini project Developer Profile Generator. Lanjut ke Async/Await sekarang!')" style="margin-top:1rem;font-size:13px;padding:8px 16px;border:.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:transparent;cursor:pointer;font-family:var(--font-sans);color:var(--color-text-primary)">Lanjut ke Async/Await ↗</button>
+</div>
+
+<script>
+function go(idx,btn){
+  document.querySelectorAll('.sec').forEach(s=>s.style.display='none');
+  document.getElementById('s'+idx).style.display='block';
+  document.querySelectorAll('.tb').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+}
+document.querySelectorAll('.sec').forEach((s,i)=>{if(i>0)s.style.display='none'});
+
+let allCards=[];
+const palette=['info','success','warning','danger'];
+
+function buatKartu(){
+  const nama=document.getElementById('p-nama').value.trim();
+  const roleRaw=document.getElementById('p-role').value.trim();
+  const skillsRaw=document.getElementById('p-skills').value;
+  const err=document.getElementById('form-err');
+
+  if(!nama){err.style.display='block';return;}
+  err.style.display='none';
+
+  // ES6+ in action: default value, split+filter+trim with arrow functions
+  const role=roleRaw||'Developer';
+  const skills=skillsRaw.split(',').map(s=>s.trim()).filter(Boolean).slice(0,4);
+
+  // Spread to add without mutation
+  allCards=[...allCards,{nama,role,skills}];
+  renderCards();
+
+  document.getElementById('p-nama').value='';
+  document.getElementById('p-role').value='';
+  document.getElementById('p-skills').value='';
+  document.getElementById('p-nama').focus();
+}
+
+function renderCards(){
+  const out=document.getElementById('cards-out');
+  const ph=document.getElementById('placeholder-msg');
+  if(ph)ph.remove();
+
+  // Template literal + destructuring in map
+  out.innerHTML=allCards.map(({nama,role,skills},idx)=>{
+    const c=palette[nama.charCodeAt(0)%4];
+    const skillHtml=skills.map(s=>`<span style="display:inline-block;font-size:10px;padding:2px 7px;border-radius:999px;background:var(--color-background-secondary);border:.5px solid var(--color-border-secondary);color:var(--color-text-secondary);margin:2px 2px 0 0">${s}</span>`).join('');
+    return `<div style="border:.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:14px 12px;text-align:center">
+      <div style="width:40px;height:40px;border-radius:50%;background:var(--color-background-${c});color:var(--color-text-${c});display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:500;margin:0 auto 10px">${nama.charAt(0).toUpperCase()}</div>
+      <p style="font-size:14px;font-weight:500;margin:0 0 3px">${nama}</p>
+      <p style="font-size:12px;color:var(--color-text-secondary);margin:0 0 8px">${role}</p>
+      <div style="display:flex;flex-wrap:wrap;justify-content:center">${skillHtml}</div>
+    </div>`;
+  }).join('');
+}
+
+document.getElementById('p-skills').addEventListener('keydown',e=>{
+  if(e.key==='Enter')buatKartu();
+});
+</script>
