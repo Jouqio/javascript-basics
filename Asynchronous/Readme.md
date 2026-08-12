@@ -1,24 +1,42 @@
-## Asynchronous
+# Belajar Asynchronous JavaScript untuk Pemula
 
-Asynchronous atau asinkron adalah sebuah operasi yang memungkinkan dijalankan oleh mesin dan kemudian dapat beralih fokus untuk menjalankan tugas-tugas (operasi) berikutnya sembari menunggu operasi sebelumnya selesai. Keuntungannya, proses ini tidak akan menimbulkan blocking terhadap proses-proses berikutnya yang sedang mengantre.
+Folder ini berisi materi pembelajaran dasar pemrograman **Asynchronous JavaScript**, disusun bertahap dari konsep paling dasar sampai simulasi proses asynchronous yang lebih nyata. Setiap folder berisi:
 
-Dalam pengembangan aplikasi web atau Node.js, menangani proses yang berjalan secara asynchronous menjadi topik yang cukup menantang. Lalu, apa sih proses asynchronous atau asinkron itu?
+- `Readme.md` → penjelasan materi (teori + kenapa penting + contoh kasus)
+- File `.mjs` → contoh kode yang bisa langsung dijalankan
 
-Dalam KBBI, asinkron berarti tidak dalam waktu atau kecepatan yang sama atau tidak serentak. Jika dimaknai dalam konteks pemrograman, proses atau operasi asinkron adalah sebuah operasi yang memungkinkan dijalankan oleh mesin dan kemudian dapat beralih fokus untuk menjalankan tugas-tugas (operasi) berikutnya sembari menunggu operasi sebelumnya selesai. Apa alasan adanya proses seperti ini?
+## Cara Menjalankan Kode
 
-Bayangkan Anda memiliki suatu tugas yang berpotensi mengonsumsi banyak waktu dan tidak seharusnya selalu ditunggu agar tugas lain bisa berjalan.
+Semua contoh memakai ekstensi `.mjs` (ES Module). Jalankan dengan Node.js:
 
-Jika dicontohkan, ada banyak proses yang berjalan secara asinkron. Bahkan, tidak terhitung angkanya. Katakanlah proses yang terjadi dalam kehidupan kita sebagai manusia. Disadari ataupun tidak, kita sering mengalami proses ini. Menjaga kebersihan di lingkungan rumah menjadi salah satu contoh nyata. Misalnya, kita dihadapkan kepada beberapa tugas berikut.
+```bash
+node namafile.mjs
+```
 
-1. Mencuci baju dengan mesin cuci.
-2. Mengelap ruangan dapur.
-3. Menjalankan dishwasher untuk piring dan gelas kotor.
-4. Menyapu dan mengepel lantai.
+Pastikan Node.js sudah terinstall di komputer kamu. Cek dengan:
 
-Untuk mengerjakan tugas pertama, berapa waktu yang dibutuhkan oleh mesin cuci agar selesai? Apakah 10, 20, atau bahkan 50 menit? Berapa pun lama waktunya, mesin cuci dapat menyita waktu bagi kita. Gambaran kita saat ini adalah tugas berikutnya tidak akan dimulai sebelum tugas sebelumnya selesai. Namun, kenyataannya tidak!
+```bash
+node -v
+```
 
-Sebab tugas telah didelegasikan kepada mesin cuci dan tinggal menunggu, kita bisa mengerjakan tugas kedua dalam waktu yang bersamaan. Begitu juga mirip dengan beberapa tugas berikutnya jika bisa dikerjakan dalam satu waktu. Inilah yang disebut dengan proses asinkron.
+## Daftar Materi
 
-Dengan konsep yang sama, pengembangan aplikasi web juga memanfaatkan operasi-operasi yang berjalan secara asinkron. Mesin dapat menjalankan tugas lainnya sembari menunggu proses asinkron selesai. Beberapa contoh operasinya seperti melakukan koneksi dengan jaringan (network request), menjalankan kueri ke basis data (querying a database), melakukan baca-tulis berkas dalam file system, dan operasi lainnya yang berpotensi mengonsumsi banyak waktu.
+| No | Folder | Topik |
+|----|--------|-------|
+| 01 | [Pengantar Asynchronous JavaScript](./01%20Pengantar%20Asynchronous%20JavaScript/Readme.md) | Apa itu synchronous vs asynchronous, kenapa JavaScript butuh asynchronous |
+| 02 | [Callback](./02%20Callback/Readme.md) | Fungsi sebagai parameter, callback dasar, callback error-first |
+| 03 | [Callback Hell](./03%20Callback%20Hell/Readme.md) | Masalah nested callback dan cara membacanya |
+| 04 | [Promise](./04%20Promise/Readme.md) | Konsep Promise, state (pending/fulfilled/rejected), `.then()` `.catch()` |
+| 05 | [Promise Chaining dan Error Handling](./05%20Promise%20Chaining%20dan%20Error%20Handling/Readme.md) | Merangkai promise, `Promise.all`, penanganan error |
+| 06 | [Async dan Await](./06%20Async%20dan%20Await/Readme.md) | Sintaks modern untuk menulis kode asynchronous seperti synchronous |
+| 07 | [Simulasi Asynchronous Proses](./07%20Simulasi%20Asynchronous%20Proses/Readme.md) | Simulasi proses nyata: loading data, antrian tugas, delay |
+| 08 | [Event Loop](./08%20Event%20Loop/Readme.md) | Cara kerja di balik layar: Call Stack, Task Queue, Microtask Queue |
+| 09 | [Tugas Latihan](./09%20Tugas%20Latihan/Readme.md) | Soal latihan untuk menguji pemahaman |
 
-Jadi, apa kesimpulan dari proses asynchronous? Proses yang tidak melakukan blocking process terhadap proses berikutnya karena tugas komputasi yang besar dan memakan banyak waktu. Lawan dari proses tersebut adalah synchronous. Jika synchronous process adalah proses yang dijalankan secara berurutan, mulai dari awal sampai akhir, asynchronous process adalah proses yang dapat dieksekusi secara paralel.
+## Urutan Belajar yang Disarankan
+
+```
+01 → 02 → 03 → 04 → 05 → 06 → 07 → 08 → 09
+```
+
+Pelajari secara berurutan karena setiap materi dibangun dari materi sebelumnya. Selamat belajar! 
