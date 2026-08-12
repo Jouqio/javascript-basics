@@ -1,0 +1,51 @@
+* { box-sizing: border-box; }
+
+body {
+  font-family: system-ui, Arial, sans-serif;
+  background: #0f172a;
+  color: #e2e8f0;
+  margin: 0;
+  padding: 40px 20px;
+}
+
+.container { max-width: 600px; margin: 0 auto; }
+h1 { color: #38bdf8; }
+h2 { color: #94a3b8; font-size: 18px; margin-top: 30px; }
+
+.kotak {
+  background: #1e293b;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 16px 0;
+}
+
+.teks-peringatan {
+  color: #facc15;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+button {
+  background: #38bdf8;
+  color: #0f172a;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  margin: 4px 8px 4px 0;
+}
+button:hover { background: #0ea5e9; }
+
+.hasil-render {
+  max-height: 200px;
+  overflow-y: auto;
+  background: #1e293b;
+  border-radius: 8px;
+  padding: 10px 16px;
+  margin-top: 10px;
+}
+
+.hasil-render p { margin: 4px 0; font-size: 13px; color: #94a3b8; }
+
+#waktu-render { color: #22c55e; font-weight: bold; }

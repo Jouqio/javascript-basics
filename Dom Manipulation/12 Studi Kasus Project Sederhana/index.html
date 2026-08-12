@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>12 - Studi Kasus: To-Do List</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="todo-app">
+    <h1>📝 To-Do List</h1>
+
+    <form id="form-todo">
+      <input type="text" id="input-todo" placeholder="Tambah tugas baru...">
+      <button type="submit">Tambah</button>
+    </form>
+    <p class="error" id="error-todo"></p>
+
+    <div class="filter">
+      <button class="filter-btn aktif" data-filter="semua">Semua</button>
+      <button class="filter-btn" data-filter="belum">Belum Selesai</button>
+      <button class="filter-btn" data-filter="selesai">Selesai</button>
+    </div>
+
+    <ul id="daftar-todo"></ul>
+
+    <p id="info-sisa">0 tugas tersisa</p>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

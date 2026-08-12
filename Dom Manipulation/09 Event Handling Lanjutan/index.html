@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>09 - Event Handling Lanjutan</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Event Handling Lanjutan</h1>
+
+    <h2>Demo: Event Bubbling</h2>
+    <div id="luar" class="box-luar">
+      Luar
+      <div id="tengah" class="box-tengah">
+        Tengah
+        <button id="dalam">Klik Saya (Dalam)</button>
+      </div>
+    </div>
+
+    <h2>Demo: preventDefault pada form</h2>
+    <form id="form-daftar">
+      <input type="text" id="nama-daftar" placeholder="Nama kamu" required>
+      <button type="submit">Daftar</button>
+    </form>
+    <p id="pesan-form"></p>
+
+    <h2>Demo: Event Delegation</h2>
+    <ul id="daftar">
+      <li class="item">Item awal 1</li>
+      <li class="item">Item awal 2</li>
+    </ul>
+    <button id="btn-tambah-item">Tambah Item Baru</button>
+    <p class="hint">Klik item manapun (termasuk item baru) untuk melihat delegation bekerja</p>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

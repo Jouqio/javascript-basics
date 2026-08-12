@@ -1,0 +1,116 @@
+* { box-sizing: border-box; }
+
+body {
+  font-family: system-ui, Arial, sans-serif;
+  background: #0f172a;
+  color: #e2e8f0;
+  margin: 0;
+  padding: 40px 20px;
+}
+
+.todo-app {
+  max-width: 480px;
+  margin: 0 auto;
+  background: #1e293b;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+h1 { color: #38bdf8; margin-top: 0; text-align: center; }
+
+#form-todo {
+  display: flex;
+  gap: 8px;
+}
+
+input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #334155;
+  background: #0f172a;
+  color: white;
+}
+
+button {
+  background: #38bdf8;
+  color: #0f172a;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+button:hover { background: #0ea5e9; }
+
+.error {
+  color: #f87171;
+  font-size: 13px;
+  min-height: 16px;
+  margin: 4px 0 0;
+}
+
+.filter {
+  display: flex;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.filter-btn {
+  background: transparent;
+  border: 1px solid #334155;
+  color: #94a3b8;
+  font-size: 13px;
+  padding: 6px 12px;
+}
+
+.filter-btn.aktif {
+  background: #38bdf8;
+  color: #0f172a;
+  border-color: #38bdf8;
+}
+
+ul#daftar-todo {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul#daftar-todo li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #0f172a;
+  padding: 10px 14px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+ul#daftar-todo li .teks-todo {
+  flex: 1;
+  cursor: pointer;
+}
+
+ul#daftar-todo li.selesai .teks-todo {
+  text-decoration: line-through;
+  color: #64748b;
+}
+
+.btn-hapus {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 4px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 12px;
+}
+.btn-hapus:hover { background: #dc2626; }
+
+#info-sisa {
+  text-align: center;
+  color: #94a3b8;
+  font-size: 14px;
+  margin-top: 16px;
+  margin-bottom: 0;
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>10 - Form Handling</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Form Handling</h1>
+
+    <form id="form-daftar">
+      <label>Username</label>
+      <input type="text" id="username">
+      <span class="error" id="error-username"></span>
+
+      <label>Password</label>
+      <input type="password" id="password">
+      <span class="error" id="error-password"></span>
+
+      <label>
+        <input type="checkbox" id="setuju"> Saya setuju dengan syarat & ketentuan
+      </label>
+      <span class="error" id="error-setuju"></span>
+
+      <label>Kota</label>
+      <select id="kota">
+        <option value="">-- Pilih Kota --</option>
+        <option value="jakarta">Jakarta</option>
+        <option value="bandung">Bandung</option>
+        <option value="surabaya">Surabaya</option>
+      </select>
+
+      <button type="submit">Daftar</button>
+    </form>
+
+    <p id="pesan-sukses"></p>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

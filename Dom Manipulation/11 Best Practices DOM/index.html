@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>11 - Best Practices DOM</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Best Practices DOM Manipulation</h1>
+
+    <div class="kotak" id="kotak">Kotak Demo</div>
+    <button id="btn-style-buruk">Cara Kurang Baik (style manual)</button>
+    <button id="btn-style-baik">Cara Lebih Baik (classList)</button>
+
+    <h2>Demo: Render banyak elemen (efisien vs tidak)</h2>
+    <button id="btn-render-buruk">Render 50 baris (cara KURANG efisien)</button>
+    <button id="btn-render-baik">Render 50 baris (cara LEBIH efisien)</button>
+    <p id="waktu-render"></p>
+    <div id="hasil" class="hasil-render"></div>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

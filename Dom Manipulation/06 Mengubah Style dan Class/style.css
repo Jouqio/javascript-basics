@@ -1,0 +1,60 @@
+* { box-sizing: border-box; }
+
+body {
+  font-family: system-ui, Arial, sans-serif;
+  background: #0f172a;
+  color: #e2e8f0;
+  margin: 0;
+  padding: 40px 20px;
+  transition: background 0.3s, color 0.3s;
+}
+
+body.dark {
+  background: #000000;
+  color: #f8fafc;
+}
+
+.container { max-width: 600px; margin: 0 auto; }
+h1 { color: #38bdf8; }
+
+.kotak {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 16px 0;
+  transition: all 0.3s;
+}
+
+.kotak.aktif {
+  background: #38bdf8;
+  color: #0f172a;
+  font-weight: bold;
+}
+
+button {
+  background: #38bdf8;
+  color: #0f172a;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  margin: 8px 8px 8px 0;
+}
+button:hover { background: #0ea5e9; }
+
+.progress-track {
+  background: #1e293b;
+  border-radius: 8px;
+  height: 20px;
+  overflow: hidden;
+  margin: 12px 0;
+}
+
+.progress-bar {
+  background: #22c55e;
+  height: 100%;
+  width: 0%;
+  transition: width 0.3s;
+}

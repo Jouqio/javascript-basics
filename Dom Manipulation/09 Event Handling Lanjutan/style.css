@@ -1,0 +1,63 @@
+* { box-sizing: border-box; }
+
+body {
+  font-family: system-ui, Arial, sans-serif;
+  background: #0f172a;
+  color: #e2e8f0;
+  margin: 0;
+  padding: 40px 20px;
+}
+
+.container { max-width: 600px; margin: 0 auto; }
+h1 { color: #38bdf8; }
+h2 { color: #94a3b8; font-size: 18px; margin-top: 30px; }
+
+.box-luar {
+  background: #1e293b;
+  padding: 24px;
+  border-radius: 10px;
+}
+.box-tengah {
+  background: #334155;
+  padding: 24px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+button {
+  background: #38bdf8;
+  color: #0f172a;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 8px;
+}
+button:hover { background: #0ea5e9; }
+
+input {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #334155;
+  background: #1e293b;
+  color: white;
+  margin-right: 8px;
+}
+
+#pesan-form { color: #22c55e; font-weight: bold; }
+
+ul#daftar {
+  list-style: none;
+  padding: 0;
+}
+ul#daftar li {
+  background: #1e293b;
+  padding: 10px 16px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  cursor: pointer;
+}
+ul#daftar li:hover { background: #334155; }
+
+.hint { color: #94a3b8; font-size: 14px; }

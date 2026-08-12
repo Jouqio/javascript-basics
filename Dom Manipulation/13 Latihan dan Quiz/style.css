@@ -1,0 +1,73 @@
+* { box-sizing: border-box; }
+
+body {
+  font-family: system-ui, Arial, sans-serif;
+  background: #0f172a;
+  color: #e2e8f0;
+  margin: 0;
+  padding: 40px 20px;
+}
+
+.container { max-width: 600px; margin: 0 auto; }
+h1 { color: #38bdf8; }
+h2 { color: #94a3b8; font-size: 16px; margin-top: 30px; border-top: 1px solid #334155; padding-top: 20px; }
+
+.soal-box {
+  background: #1e293b;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 10px 0;
+}
+
+input {
+  padding: 8px 10px;
+  border-radius: 6px;
+  border: 1px solid #334155;
+  background: #0f172a;
+  color: white;
+  margin-right: 8px;
+}
+
+button {
+  background: #38bdf8;
+  color: #0f172a;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+button:hover { background: #0ea5e9; }
+
+ul { list-style: none; padding: 0; }
+ul li {
+  background: #0f172a;
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-bottom: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-hapus-kecil {
+  background: #ef4444;
+  color: white;
+  font-size: 12px;
+  padding: 4px 8px;
+}
+.btn-hapus-kecil:hover { background: #dc2626; }
+
+#kotak-soal1 {
+  width: 100%;
+  height: 80px;
+  background: #334155;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+#kotak-soal1.biru { background: #2563eb; }
+
+.pesan { font-size: 14px; margin-top: 8px; }

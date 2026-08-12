@@ -1,0 +1,59 @@
+* { box-sizing: border-box; }
+
+body {
+  font-family: system-ui, Arial, sans-serif;
+  background: #0f172a;
+  color: #e2e8f0;
+  margin: 0;
+  padding: 40px 20px;
+}
+
+.container { max-width: 500px; margin: 0 auto; }
+h1 { color: #38bdf8; }
+
+form {
+  background: #1e293b;
+  padding: 24px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+label {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #94a3b8;
+}
+
+input[type="text"], input[type="password"], select {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #334155;
+  background: #0f172a;
+  color: white;
+}
+
+.error {
+  color: #f87171;
+  font-size: 13px;
+  min-height: 16px;
+}
+
+button {
+  margin-top: 16px;
+  background: #38bdf8;
+  color: #0f172a;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+button:hover { background: #0ea5e9; }
+
+#pesan-sukses {
+  color: #22c55e;
+  font-weight: bold;
+  margin-top: 16px;
+}
