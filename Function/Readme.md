@@ -1,374 +1,61 @@
-#  Function di JavaScript
+#  Function — Dasar Pemrograman JavaScript
 
-Ringkasan materi tentang apa itu *function*, mengapa kita membutuhkannya, dan bagaimana cara mendeklarasikan, memanggil, memberi parameter/argument, mengembalikan nilai, hingga menuliskannya dalam gaya *expression* dan *arrow function* di JavaScript.
+Modul pembelajaran ini membahas **Function** di JavaScript secara bertahap, dari konsep paling dasar hingga best practice. Materi disusun untuk **pemula**, dengan penjelasan yang jelas, lengkap, dan detail, disertai contoh kode langsung yang bisa dicoba di browser.
 
----
+##  Daftar Materi
 
-##  Daftar Isi
+| No | Folder | Topik |
+|---|---|---|
+| 01 | `01 Pengantar Function` | Apa itu function, parameter vs argument, anatomi function |
+| 02 | `02 Function Declaration` | `function nama() {}` dan konsep hoisting |
+| 03 | `03 Function Expression` | Function disimpan ke variabel, tidak hoisting |
+| 04 | `04 Anonymous Function` | Function tanpa nama, penggunaan sebagai callback |
+| 05 | `05 Arrow Function` | Sintaks modern `=>`, perbedaan `this` |
+| 06 | `06 Higher Order Function` | Function yang menerima/mengembalikan function lain |
+| 07 | `07 IIFE (Immediately Invoked Function Expression)` | Function yang langsung dijalankan, scope privat |
+| 08 | `08 Recursive Function` | Function memanggil dirinya sendiri, base case |
+| 09 | `09 Generator Function` | `function*`, `yield`, iterasi bertahap |
+| 10 | `10 Rangkuman dan Best Practice Function` | Ringkasan seluruh materi & tips penulisan function yang baik |
+| 11 | `11 Tugas (Latihan Mandiri)` | Latihan soal + kunci jawaban |
+| 12 | `12 Quiz Function` | Uji pemahaman dengan soal & kunci jawaban |
 
-- [Latar Belakang Masalah](#-latar-belakang-masalah)
-- [Deklarasi Function](#-deklarasi-function)
-- [Pemanggilan Function](#-pemanggilan-function)
-- [Parameter dan Argument](#-parameter-dan-argument)
-- [Default Parameter](#-default-parameter)
-- [Return Value](#-return-value)
-- [Function Expression](#-function-expression)
-- [Menjadi First-Class Citizen](#-menjadi-first-class-citizen)
-- [Arrow Function](#-arrow-function)
-- [Kesimpulan](#-kesimpulan)
+##  Struktur Setiap Folder
 
----
+Setiap folder materi (01-10) berisi:
 
-##  Latar Belakang Masalah
+- **`Readme.md`** → penjelasan konsep lengkap dengan bahasa yang mudah dipahami, disertai tabel perbandingan dan potongan kode
+- **`contoh.html`** → contoh kode interaktif yang bisa langsung dibuka & dicoba di browser (tinggal klik dua kali file-nya)
 
-Bayangkan kita ingin mengonversi suhu dari skala **Celsius** ke **Fahrenheit** menggunakan rumus:
+Folder **11 Tugas (Latihan Mandiri)** berisi:
+- **`Readme.md`** → daftar soal latihan
+- **`latihan.js`** → template kode untuk dikerjakan (bagian `// TODO`)
+- **`kunci-jawaban.js`** → kunci jawaban lengkap (jangan dilihat dulu sebelum mencoba sendiri!)
 
-```
-9 / 5 * celsius + 32
-```
+Folder **12 Quiz Function** berisi:
+- **`Readme.md`** → soal pilihan ganda & essay beserta kunci jawaban (collapsible)
 
-Kalau ditulis langsung di JavaScript:
+##  Cara Belajar
 
-```js
-const temperatureInCelsius = 90;
-const temperatureInFahrenheit = 9 / 5 * temperatureInCelsius + 32;
+1. Buka folder sesuai urutan nomor (01 → 12)
+2. Baca `Readme.md` di setiap folder untuk memahami konsepnya
+3. Buka `contoh.html` di browser (klik kanan → *Open with Browser*, atau drag file ke tab browser) untuk mencoba langsung
+4. Coba ubah-ubah kode di `contoh.html` menggunakan text editor untuk bereksperimen
+5. Setelah sampai materi 10, kerjakan **Tugas** di folder 11 (jangan lihat kunci jawaban dulu!)
+6. Terakhir, kerjakan **Quiz** di folder 12 untuk menguji pemahaman menyeluruh
 
-console.log('Hasil konversi:', temperatureInFahrenheit);
-// Output: Hasil konversi: 194
-```
+##  Target Pembelajaran
 
-Masalahnya muncul kalau kita perlu mengonversi **banyak nilai** (50°C, 70°C, 100°C, dst). Tanpa function, kita terpaksa copy-paste baris kode yang sama berulang kali — kode jadi panjang, berulang, dan sulit dirawat.
+Setelah menyelesaikan seluruh modul ini, kamu diharapkan mampu:
 
-👉 Di sinilah **function** berguna: membungkus logika yang berulang menjadi satu blok kode yang bisa dipanggil kapan saja.
-
----
-
-##  Deklarasi Function
-
-Struktur dasar deklarasi function:
-
-```js
-function namaFunction(parameter) {
-  // function body — kode yang akan dijalankan
-}
-```
-
-Bagian-bagiannya:
-
-| Bagian | Penjelasan |
-|---|---|
-| `function` | keyword wajib untuk mendeklarasikan function |
-| `namaFunction` | identifier, mirip nama variabel |
-| `(parameter)` | data input yang dibutuhkan function |
-| `{ ... }` | *function body*, kumpulan statement yang dieksekusi |
-
-Contoh penerapan pada kasus konversi suhu:
-
-```js
-function convertCelsiusToFahrenheit(temperature) {
-  const temperatureInFahrenheit = 9 / 5 * temperature + 32;
-  console.log('Hasil konversi:', temperatureInFahrenheit);
-}
-```
-
-> ⚠️ Mendeklarasikan function saja **tidak** membuatnya berjalan. Function baru dieksekusi ketika **dipanggil**.
+- Memahami konsep dasar function: parameter, argument, return value
+- Membedakan Function Declaration, Function Expression, dan Anonymous Function
+- Menggunakan Arrow Function dengan berbagai bentuk penulisan dan memahami perbedaan `this`
+- Memahami dan menggunakan Higher Order Function (`.map()`, `.filter()`, `.reduce()`)
+- Memahami kegunaan IIFE untuk scope privat
+- Membuat Recursive Function dengan base case yang benar
+- Memahami konsep dasar Generator Function
+- Menerapkan best practice dalam menulis function yang bersih dan mudah dirawat
 
 ---
 
-##  Pemanggilan Function
-
-Untuk menjalankan function, sebut nama function-nya diikuti tanda kurung `()`.
-
-```js
-function convertCelsiusToFahrenheit(temperature) {
-  const temperatureInFahrenheit = (9 / 5) * temperature + 32;
-  console.log('Hasil konversi:', temperatureInFahrenheit);
-}
-
-const temperatureInCelsius = 90;
-
-// Hanya menampilkan referensi function, TIDAK menjalankannya
-console.log(convertCelsiusToFahrenheit);
-// Output: [Function: convertCelsiusToFahrenheit]
-
-// Memanggil (menjalankan) function
-convertCelsiusToFahrenheit(temperatureInCelsius);
-// Output: Hasil konversi: 194
-```
-
----
-
-##  Parameter dan Argument
-
-- **Parameter** → nama variabel yang dideklarasikan di dalam tanda kurung saat *membuat* function.
-- **Argument** → nilai nyata yang dikirim ke function saat *memanggilnya*.
-
-```js
-function convertCelsiusToFahrenheit(temperature) {
-  const temperatureInFahrenheit = 9 / 5 * temperature + 32;
-  console.log('Hasil konversi:', temperatureInFahrenheit);
-}
-
-// Argument berupa nilai langsung
-convertCelsiusToFahrenheit(100);
-
-// Argument berupa nilai dari variabel
-const temperatureInCelsius = 90;
-convertCelsiusToFahrenheit(temperatureInCelsius);
-```
-
-Dengan pola ini, satu function bisa dipakai ulang untuk **berapa pun** nilai suhu yang ingin dikonversi — jauh lebih fleksibel dibanding menulis kode berulang.
-
----
-
-##  Default Parameter
-
-Jika function dipanggil **tanpa argument**, parameter akan bernilai `undefined`, yang biasanya menyebabkan hasil `NaN`:
-
-```js
-function convertCelsiusToFahrenheit(temperature) {
-  const temperatureInFahrenheit = (9 / 5) * temperature + 32;
-  console.log('Hasil konversi:', temperatureInFahrenheit);
-}
-
-convertCelsiusToFahrenheit();
-// Output: Hasil konversi: NaN
-```
-
-Solusinya, gunakan **default parameter** dengan sintaks `=`:
-
-```js
-function convertCelsiusToFahrenheit(temperature = 50) {
-  const temperatureInFahrenheit = 9 / 5 * temperature + 32;
-  console.log('Hasil konversi:', temperatureInFahrenheit);
-}
-
-// Tanpa argument -> pakai default value (50)
-convertCelsiusToFahrenheit();
-// Output: Hasil konversi: 122
-
-// Dengan argument -> menggantikan default value
-convertCelsiusToFahrenheit(90);
-// Output: Hasil konversi: 194
-```
-
----
-
-##  Return Value
-
-Selain menerima input lewat parameter, function juga bisa **mengeluarkan nilai** — inilah yang disebut **return value**.
-
-Secara bawaan (default), function akan mengembalikan `undefined` jika tidak ada `return` statement. Contohnya bisa dilihat pada `console.log`:
-
-```js
-const result = console.log('JavaScript keren!');
-console.log(result);
-
-/* Output:
-JavaScript keren!
-undefined
-*/
-```
-
-Agar function dapat mengembalikan nilai, tambahkan **`return` statement** beserta nilai yang diinginkan.
-
-```js
-function sumNumbers(a, b) {
-  const result = a + b;
-  return result;
-}
-
-const result = sumNumbers(2, 4);
-console.log('2 + 4:', result);
-
-/* Output:
-2 + 4: 6
-*/
-```
-
-### `return` Menghentikan Eksekusi Function
-
-Begitu eksekusi kode mencapai `return` statement, program dalam function **langsung berhenti**. Kode setelahnya tidak akan dijalankan.
-
-```js
-function generateGreetingWorldMessage() {
-  return 'Halo, dunia!';
-  console.log('Aku tidak akan tampil!');
-}
-
-const message = generateGreetingWorldMessage();
-console.log(message);
-
-/* Output:
-Halo, dunia!
-*/
-```
-
-Contoh lain, `return` pada function konversi suhu:
-
-```js
-function convertCelsiusToFahrenheit(temperature) {
-  const result = (9 / 5) * temperature + 32;
-  return result;
-}
-
-const temperatureInFahrenheit = convertCelsiusToFahrenheit(90);
-console.log('Hasil konversi:', temperatureInFahrenheit);
-
-/* Output:
-Hasil konversi: 194
-*/
-```
-
----
-
-##  Function Expression
-
-**Function expression** adalah cara membuat function dengan gaya *expression* — mirip seperti membuat variabel — bukan lewat *function statement* (deklarasi biasa dengan keyword `function` diikuti nama function).
-
-```js
-const result = 3 * 4;
-console.log(result);
-
-/* Output:
-12
-*/
-```
-
-Dengan pola yang sama, function bisa disimpan ke dalam sebuah variabel, dan variabel itulah yang menjadi identifier-nya:
-
-```js
-const convertCelsiusToFahrenheit = function (temperature) {
-  const result = (9 / 5) * temperature + 32;
-  return result;
-};
-
-const temperatureInFahrenheit = convertCelsiusToFahrenheit(90);
-console.log('Hasil konversi:', temperatureInFahrenheit);
-
-/* Output:
-Hasil konversi: 194
-*/
-```
-
-Cara memanggilnya sama seperti function biasa — sebut identifier-nya diikuti tanda kurung `()`.
-
-> ⚠️ **Perbedaan penting:** function expression **tidak memiliki hoisting**, sehingga tidak bisa dipanggil sebelum dideklarasikan (berbeda dengan function statement).
-
----
-
-##  Menjadi First-Class Citizen
-
-Sebuah bahasa pemrograman disebut memperlakukan function sebagai **first-class citizen** jika function dapat diperlakukan layaknya nilai/variabel biasa.
-
-Di JavaScript, function bisa:
-
-- disimpan sebagai nilai dalam variabel,
-- dijadikan nilai argumen bagi function lain,
-- dikembalikan dari function lain (`return`),
-- disimpan dalam array atau object literal,
-- memiliki *method* dan *properties* sendiri.
-
-### Function sebagai Argument
-
-```js
-function calculate(operation, numA, numB) {
-  return operation(numA, numB);
-}
-
-const result = calculate(multiply, 2, 4);
-console.log(result);
-
-/* Output:
-8
-*/
-```
-
-Function `multiply` dijadikan nilai argumen pertama untuk `calculate`, sehingga parameter `operation` bernilai function `multiply` dan bisa langsung dipanggil (*invoke*) di dalamnya.
-
-### Function yang Mengembalikan Function
-
-```js
-function multiplier(x) {
-  return function (num) {
-    return x * num;
-  };
-}
-
-const double = multiplier(2);
-const triple = multiplier(3);
-
-console.log(double(10));
-```
-
----
-
-##  Arrow Function
-
-**Arrow function** adalah sintaksis alternatif untuk membuat function yang lebih ringkas dibanding *function expression* biasa.
-
-### Deklarasi
-
-```js
-let temperatureInFahrenheit = null;
-
-// Deklarasi function dengan Regular Function
-const convertCelsiusToFahrenheitUsingRegularFunction = function (temperature) {
-  const result = (9 / 5) * temperature + 32;
-  return result;
-};
-
-temperatureInFahrenheit = convertCelsiusToFahrenheitUsingRegularFunction(90);
-console.log('Hasil konversi:', temperatureInFahrenheit);
-// Hasil ==> Hasil konversi: 194
-
-// Deklarasi Function dengan Arrow Function
-const convertCelsiusToFahrenheitUsingArrowFunction = (temperature) => {
-  const result = (9 / 5) * temperature + 32;
-  return result;
-};
-
-temperatureInFahrenheit = convertCelsiusToFahrenheitUsingArrowFunction(90);
-console.log('Hasil konversi:', temperatureInFahrenheit);
-// Hasil ==> Hasil konversi: 194
-```
-
-Perbedaan utama arrow function dari regular function:
-
-- Tidak perlu menuliskan keyword `function`.
-- Sebagai gantinya, tanda panah `=>` (disebut **fat arrow**) ditulis setelah parameter.
-- Tetap memiliki *function body* seperti regular function.
-
-### Refactor: Bentuk Lebih Ringkas
-
-Arrow function bisa disederhanakan lagi dengan menghilangkan tanda kurung kurawal `{}` — cocok untuk function yang hanya mengembalikan **satu nilai** dalam satu baris ekspresi.
-
-```js
-let temperatureInFahrenheit;
-
-// Arrow function
-const convertCelsiusToFahrenheit = (temperature) => {
-  const result = (9 / 5) * temperature + 32;
-  return result;
-};
-
-temperatureInFahrenheit = convertCelsiusToFahrenheit(90);
-console.log('Hasil konversi:', temperatureInFahrenheit);
-```
-
-> 📝 **Catatan:**
-> - Arrow function hanya tersedia dalam bentuk *expression*, sehingga nilainya selalu disimpan dalam variabel.
-> - Bentuk ringkas (tanpa `{}`) hanya mampu menampung **satu return value**. Jika butuh banyak baris kode, tetap gunakan tanda kurung kurawal buka-tutup.
-
----
-
-##  Kesimpulan
-
-- **Function** membungkus kode yang berulang menjadi satu blok yang bisa dipakai ulang.
-- Function harus **dipanggil** agar isinya dieksekusi.
-- **Parameter** adalah "wadah" input di deklarasi, **argument** adalah nilai nyata saat pemanggilan.
-- **Default parameter** mencegah hasil `NaN`/`undefined` saat function dipanggil tanpa argument.
-- **Return value** memungkinkan function mengembalikan nilai; `return` juga menghentikan eksekusi function.
-- **Function expression** membuat function dengan gaya variabel, tapi tidak memiliki hoisting.
-- Function di JavaScript adalah **first-class citizen** — bisa disimpan, dikirim, dan dikembalikan sebagai nilai.
-- **Arrow function** (`=>`) adalah sintaksis alternatif yang lebih ringkas untuk membuat function.
+*Modul pembelajaran dasar pemrograman JavaScript — fokus Function.*

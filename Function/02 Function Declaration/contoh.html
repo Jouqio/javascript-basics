@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>02 - Function Declaration</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; background: #f4f6f8; }
+    button { padding: 10px 16px; border: none; border-radius: 6px; background: #2196F3; color: white; cursor: pointer; margin-bottom: 8px; display: block; width: 100%; }
+    #hasil { margin-top: 16px; background: white; padding: 12px; border-radius: 6px; font-family: monospace; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+
+  <h1>Function Declaration & Hoisting</h1>
+  <button id="btnJariJari">Hitung Luas Lingkaran (r = 7)</button>
+  <button id="btnHoisting">Buktikan Hoisting (lihat console)</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    const hasil = document.getElementById("hasil");
+
+    document.getElementById("btnJariJari").addEventListener("click", function () {
+      hasil.textContent = "Luas lingkaran (r=7) = " + hitungLuasLingkaran(7).toFixed(2);
+    });
+
+    // Function Declaration
+    function hitungLuasLingkaran(jariJari) {
+      return Math.PI * jariJari * jariJari;
+    }
+
+    document.getElementById("btnHoisting").addEventListener("click", function () {
+      // Panggil function SEBELUM deklarasinya muncul di kode (di bawah)
+      const pesan = sapaHoisting("Pemula JavaScript");
+      hasil.textContent = pesan + "\n(Perhatikan: function 'sapaHoisting' dipanggil sebelum posisi deklarasinya di kode, tapi tetap berhasil karena HOISTING!)";
+      console.log("Hoisting berhasil! ->", pesan);
+    });
+
+    // Function ini didefinisikan di BAWAH, tapi tetap bisa dipanggil di ATAS
+    // karena Function Declaration mengalami hoisting
+    function sapaHoisting(nama) {
+      return "Halo, " + nama + "!";
+    }
+  </script>
+
+</body>
+</html>

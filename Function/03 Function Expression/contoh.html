@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>03 - Function Expression</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; background: #f4f6f8; }
+    button { padding: 10px 16px; border: none; border-radius: 6px; background: #9C27B0; color: white; cursor: pointer; margin-bottom: 8px; display: block; width: 100%; }
+    #hasil { margin-top: 16px; background: white; padding: 12px; border-radius: 6px; font-family: monospace; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+
+  <h1>Function Expression</h1>
+  <button id="btnSegitiga">Hitung Luas Segitiga (alas=10, tinggi=6)</button>
+  <button id="btnFaktorial">Hitung 5! (Faktorial) via Named Function Expression</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    const hasil = document.getElementById("hasil");
+
+    // Function Expression - disimpan ke variabel
+    const hitungLuasSegitiga = function (alas, tinggi) {
+      return 0.5 * alas * tinggi;
+    };
+
+    document.getElementById("btnSegitiga").addEventListener("click", function () {
+      hasil.textContent = "Luas segitiga (alas=10, tinggi=6) = " + hitungLuasSegitiga(10, 6);
+    });
+
+    // Named Function Expression - nama internal berguna untuk rekursi
+    const faktorial = function hitungFaktorial(n) {
+      if (n <= 1) return 1;
+      return n * hitungFaktorial(n - 1);
+    };
+
+    document.getElementById("btnFaktorial").addEventListener("click", function () {
+      hasil.textContent = "5! (faktorial) = " + faktorial(5);
+    });
+
+    // ===== Bukti Function Expression TIDAK di-hoisting =====
+    try {
+      console.log(sapaExpr("Test")); // akan gagal
+    } catch (err) {
+      console.log("Error seperti dugaan (Function Expression tidak hoisting):", err.message);
+    }
+
+    const sapaExpr = function (nama) {
+      return "Halo, " + nama + "!";
+    };
+
+    // Sedangkan Function Declaration bisa dipanggil duluan (hoisting)
+    console.log(sapaDecl("Test")); // berhasil
+    function sapaDecl(nama) {
+      return "Halo, " + nama + "! (Function Declaration)";
+    }
+  </script>
+
+</body>
+</html>

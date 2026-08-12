@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>06 - Higher Order Function</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; background: #f4f6f8; }
+    button { padding: 10px 16px; border: none; border-radius: 6px; background: #3F51B5; color: white; cursor: pointer; margin-bottom: 8px; display: block; width: 100%; }
+    #hasil { margin-top: 16px; background: white; padding: 12px; border-radius: 6px; font-family: monospace; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+
+  <h1>Higher Order Function</h1>
+  <button id="btnMap">map(): Kuadratkan [1,2,3,4,5]</button>
+  <button id="btnFilter">filter(): Ambil angka genap [1..10]</button>
+  <button id="btnReduce">reduce(): Total dari [1,2,3,4,5]</button>
+  <button id="btnPengali">Function Generator: buatPengali(3)</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    const hasil = document.getElementById("hasil");
+
+    // .map() -> mengubah setiap elemen
+    document.getElementById("btnMap").addEventListener("click", function () {
+      const angka = [1, 2, 3, 4, 5];
+      const kuadrat = angka.map((n) => n * n);
+      hasil.textContent = "Input: [" + angka + "]\nHasil map (kuadrat): [" + kuadrat + "]";
+    });
+
+    // .filter() -> menyaring elemen
+    document.getElementById("btnFilter").addEventListener("click", function () {
+      const angka = [1,2,3,4,5,6,7,8,9,10];
+      const genap = angka.filter((n) => n % 2 === 0);
+      hasil.textContent = "Input: [" + angka + "]\nHasil filter (genap): [" + genap + "]";
+    });
+
+    // .reduce() -> jadi satu nilai
+    document.getElementById("btnReduce").addEventListener("click", function () {
+      const angka = [1, 2, 3, 4, 5];
+      const total = angka.reduce((akumulator, n) => akumulator + n, 0);
+      hasil.textContent = "Input: [" + angka + "]\nHasil reduce (total): " + total;
+    });
+
+    // Higher Order Function: function yang mengembalikan function lain
+    function buatPengali(pengali) {
+      return function (angka) {
+        return angka * pengali;
+      };
+    }
+
+    document.getElementById("btnPengali").addEventListener("click", function () {
+      const kali3 = buatPengali(3); // buatPengali mengembalikan function baru
+      hasil.textContent =
+        "buatPengali(3) menghasilkan function baru bernama 'kali3'\n" +
+        "kali3(10) = " + kali3(10) + "\n" +
+        "kali3(7)  = " + kali3(7);
+    });
+  </script>
+
+</body>
+</html>

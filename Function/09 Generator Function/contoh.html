@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>09 - Generator Function</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; background: #f4f6f8; }
+    button { padding: 10px 16px; border: none; border-radius: 6px; background: #009688; color: white; cursor: pointer; margin-bottom: 8px; display: block; width: 100%; }
+    #hasil { margin-top: 16px; background: white; padding: 12px; border-radius: 6px; font-family: monospace; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+
+  <h1>Generator Function</h1>
+  <button id="btnWarna">Jalankan Generator Warna Pelangi (for...of)</button>
+  <button id="btnManual">Panggil .next() Manual Satu per Satu</button>
+  <button id="btnInfinite">Ambil 5 Angka dari Generator Tak Terbatas</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    const hasil = document.getElementById("hasil");
+
+    // Generator sederhana
+    function* warnaPelangi() {
+      yield "Merah";
+      yield "Jingga";
+      yield "Kuning";
+      yield "Hijau";
+      yield "Biru";
+    }
+
+    document.getElementById("btnWarna").addEventListener("click", function () {
+      let output = "Menggunakan for...of:\n";
+      for (const warna of warnaPelangi()) {
+        output += "-> " + warna + "\n";
+      }
+      hasil.textContent = output;
+    });
+
+    document.getElementById("btnManual").addEventListener("click", function () {
+      const gen = warnaPelangi();
+      let output = "Memanggil .next() manual:\n";
+      let hasilNext = gen.next();
+      while (!hasilNext.done) {
+        output += "value: " + hasilNext.value + ", done: " + hasilNext.done + "\n";
+        hasilNext = gen.next();
+      }
+      output += "value: " + hasilNext.value + ", done: " + hasilNext.done + " (selesai)";
+      hasil.textContent = output;
+    });
+
+    // Generator angka tak terbatas (infinite)
+    function* generatorAngka() {
+      let i = 1;
+      while (true) {
+        yield i;
+        i++;
+      }
+    }
+
+    document.getElementById("btnInfinite").addEventListener("click", function () {
+      const gen = generatorAngka();
+      let output = "Mengambil 5 angka dari generator TAK TERBATAS:\n";
+      for (let i = 0; i < 5; i++) {
+        output += gen.next().value + " ";
+      }
+      output += "\n(generator ini bisa terus dipanggil tanpa batas, karena nilai baru hanya dibuat saat dibutuhkan)";
+      hasil.textContent = output;
+    });
+  </script>
+
+</body>
+</html>

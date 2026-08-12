@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>10 - Best Practice Function</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; background: #f4f6f8; }
+    button { padding: 10px 16px; border: none; border-radius: 6px; background: #607D8B; color: white; cursor: pointer; margin-bottom: 8px; display: block; width: 100%; }
+    #hasil { margin-top: 16px; background: white; padding: 12px; border-radius: 6px; font-family: monospace; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+
+  <h1>Demo Best Practice Function</h1>
+  <button id="btnEarlyReturn">Cek Umur (Early Return Pattern)</button>
+  <button id="btnObjekParam">Buat User (Object Parameter Pattern)</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    const hasil = document.getElementById("hasil");
+
+    // Best Practice: Early Return (menghindari nested if yang dalam)
+    function cekKategoriUmur(umur) {
+      if (umur < 0) return "Umur tidak valid";
+      if (umur < 13) return "Anak-anak";
+      if (umur < 18) return "Remaja";
+      return "Dewasa";
+    }
+
+    document.getElementById("btnEarlyReturn").addEventListener("click", function () {
+      const daftarUmur = [5, 15, 25, -3];
+      let output = "Early Return Pattern:\n";
+      daftarUmur.forEach((umur) => {
+        output += "Umur " + umur + " -> " + cekKategoriUmur(umur) + "\n";
+      });
+      hasil.textContent = output;
+    });
+
+    // Best Practice: Object Parameter (untuk function dengan banyak parameter)
+    function buatUser({ nama, umur, role = "member" }) {
+      return `Nama: ${nama}, Umur: ${umur}, Role: ${role}`;
+    }
+
+    document.getElementById("btnObjekParam").addEventListener("click", function () {
+      const user1 = buatUser({ nama: "Budi", umur: 20 });
+      const user2 = buatUser({ nama: "Ani", umur: 22, role: "admin" });
+      hasil.textContent =
+        "Object Parameter Pattern:\n" +
+        user1 + "\n" +
+        user2 + "\n" +
+        "(lebih mudah dibaca dibanding buatUser('Budi', 20, 'member') yang urutannya bisa tertukar)";
+    });
+  </script>
+
+</body>
+</html>

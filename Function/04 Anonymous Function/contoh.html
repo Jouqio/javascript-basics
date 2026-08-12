@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>04 - Anonymous Function</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; background: #f4f6f8; }
+    button { padding: 10px 16px; border: none; border-radius: 6px; background: #FF5722; color: white; cursor: pointer; margin-bottom: 8px; display: block; width: 100%; }
+    #hasil { margin-top: 16px; background: white; padding: 12px; border-radius: 6px; font-family: monospace; white-space: pre-wrap; min-height: 60px; }
+  </style>
+</head>
+<body>
+
+  <h1>Anonymous Function sebagai Callback</h1>
+  <button id="btnTimeout">Jalankan setTimeout (2 detik)</button>
+  <button id="btnFilter">Filter Angka Genap dari [1,2,3,4,5,6,7,8]</button>
+  <button id="btnKlik">Klik Saya (anonymous function callback)</button>
+
+  <div id="hasil">Klik salah satu tombol di atas...</div>
+
+  <script>
+    const hasil = document.getElementById("hasil");
+
+    // Contoh 1: anonymous function di dalam setTimeout
+    document.getElementById("btnTimeout").addEventListener("click", function () {
+      hasil.textContent = "Menunggu 2 detik...";
+      setTimeout(function () {   // <-- anonymous function
+        hasil.textContent = "✅ Selesai menunggu 2 detik! (dijalankan oleh anonymous function)";
+      }, 2000);
+    });
+
+    // Contoh 2: anonymous function di dalam .filter()
+    document.getElementById("btnFilter").addEventListener("click", function () {
+      const angka = [1, 2, 3, 4, 5, 6, 7, 8];
+      const genap = angka.filter(function (n) {   // <-- anonymous function
+        return n % 2 === 0;
+      });
+      hasil.textContent = "Angka genap: " + genap.join(", ");
+    });
+
+    // Contoh 3: anonymous function langsung sebagai event handler
+    document.getElementById("btnKlik").addEventListener("click", function () {   // <-- anonymous function
+      hasil.textContent = "Tombol ini diklik menggunakan anonymous function sebagai callback!";
+    });
+  </script>
+
+</body>
+</html>

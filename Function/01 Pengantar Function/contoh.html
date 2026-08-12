@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>01 - Pengantar Function</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; background: #f4f6f8; }
+    input { padding: 8px; width: 60%; border: 1px solid #ccc; border-radius: 4px; }
+    button { padding: 8px 16px; border: none; border-radius: 6px; background: #4CAF50; color: white; cursor: pointer; }
+    #hasil { margin-top: 16px; background: white; padding: 12px; border-radius: 6px; font-family: monospace; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+
+  <h1>Pengantar Function</h1>
+  <input type="text" id="inputNama" placeholder="Masukkan nama...">
+  <button id="btnSapa">Sapa</button>
+  <button id="btnLuas">Hitung Luas Persegi Panjang (5 x 3)</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    // Function sederhana dengan parameter & return
+    function sapa(nama = "Tamu") {
+      return "Halo, " + nama + "! Selamat belajar Function.";
+    }
+
+    // Function dengan beberapa parameter untuk kalkulasi
+    function hitungLuasPersegiPanjang(panjang, lebar) {
+      return panjang * lebar;
+    }
+
+    const hasil = document.getElementById("hasil");
+
+    document.getElementById("btnSapa").addEventListener("click", function () {
+      const nama = document.getElementById("inputNama").value;
+      hasil.textContent = sapa(nama); // panggil function sapa(), argument = nama
+    });
+
+    document.getElementById("btnLuas").addEventListener("click", function () {
+      const luas = hitungLuasPersegiPanjang(5, 3); // argument = 5 dan 3
+      hasil.textContent = "Luas persegi panjang (5 x 3) = " + luas;
+    });
+
+    // Bukti: function bisa dipanggil berkali-kali dengan input berbeda
+    console.log(sapa("Ani"));
+    console.log(sapa("Budi"));
+    console.log(sapa()); // pakai default parameter
+  </script>
+
+</body>
+</html>

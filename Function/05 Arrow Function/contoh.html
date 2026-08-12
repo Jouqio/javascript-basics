@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>05 - Arrow Function</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; background: #f4f6f8; }
+    button { padding: 10px 16px; border: none; border-radius: 6px; background: #00BCD4; color: white; cursor: pointer; margin-bottom: 8px; display: block; width: 100%; }
+    #hasil { margin-top: 16px; background: white; padding: 12px; border-radius: 6px; font-family: monospace; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+
+  <h1>Arrow Function</h1>
+  <button id="btnTambah">Tambah 5 + 3 (implicit return)</button>
+  <button id="btnBMI">Hitung BMI (berat=60kg, tinggi=165cm)</button>
+  <button id="btnObjek">Buat Object User (implicit return object)</button>
+  <button id="btnThis">Bandingkan "this": Biasa vs Arrow</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    const hasil = document.getElementById("hasil");
+
+    // 1. Implicit return sederhana
+    const tambah = (a, b) => a + b;
+    document.getElementById("btnTambah").addEventListener("click", function () {
+      hasil.textContent = "5 + 3 = " + tambah(5, 3);
+    });
+
+    // 2. Banyak baris, butuh {} dan return
+    const hitungBMI = (berat, tinggi) => {
+      const tinggiMeter = tinggi / 100;
+      const bmi = berat / (tinggiMeter * tinggiMeter);
+      return bmi.toFixed(2);
+    };
+    document.getElementById("btnBMI").addEventListener("click", function () {
+      hasil.textContent = "BMI (60kg, 165cm) = " + hitungBMI(60, 165);
+    });
+
+    // 3. Mengembalikan object -> butuh kurung tambahan ()
+    const buatUser = (nama, umur) => ({ nama: nama, umur: umur });
+    document.getElementById("btnObjek").addEventListener("click", function () {
+      const user = buatUser("Budi", 20);
+      hasil.textContent = "Object dibuat: " + JSON.stringify(user);
+    });
+
+    // 4. Perbedaan "this" antara function biasa dan arrow function
+    const objek = {
+      nama: "Kelas Pemrograman",
+      anggota: ["Budi", "Ani", "Rina"],
+
+      tampilkanBiasa: function () {
+        let output = "-- Function biasa (this jadi undefined di dalam callback) --\n";
+        this.anggota.forEach(function (nama) {
+          output += (this ? this.nama : "undefined") + " - " + nama + "\n";
+        });
+        return output;
+      },
+
+      tampilkanArrow: function () {
+        let output = "-- Arrow function (this tetap merujuk ke objek) --\n";
+        this.anggota.forEach((nama) => {
+          output += this.nama + " - " + nama + "\n";
+        });
+        return output;
+      }
+    };
+
+    document.getElementById("btnThis").addEventListener("click", function () {
+      hasil.textContent = objek.tampilkanBiasa() + "\n" + objek.tampilkanArrow();
+    });
+  </script>
+
+</body>
+</html>

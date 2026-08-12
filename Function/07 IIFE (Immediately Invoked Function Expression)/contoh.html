@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>07 - IIFE</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; background: #f4f6f8; }
+    button { padding: 10px 16px; border: none; border-radius: 6px; background: #795548; color: white; cursor: pointer; margin-bottom: 8px; display: block; width: 100%; }
+    #hasil { margin-top: 16px; background: white; padding: 12px; border-radius: 6px; font-family: monospace; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+
+  <h1>IIFE (Immediately Invoked Function Expression)</h1>
+  <button id="btnKalkulator">Coba Kalkulator (Module Pattern)</button>
+  <button id="btnPrivat">Cek Variabel Privat dari IIFE</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    const hasil = document.getElementById("hasil");
+
+    // IIFE langsung dijalankan begitu halaman dimuat
+    (function () {
+      console.log("IIFE ini langsung berjalan saat halaman dimuat!");
+    })();
+
+    // Module Pattern menggunakan IIFE - membungkus variabel privat
+    const kalkulator = (function () {
+      let hasilInternal = 0; // variabel PRIVAT, tidak bisa diakses dari luar
+
+      return {
+        tambah: function (n) { hasilInternal += n; return hasilInternal; },
+        kurang: function (n) { hasilInternal -= n; return hasilInternal; },
+        getHasil: function () { return hasilInternal; }
+      };
+    })();
+
+    document.getElementById("btnKalkulator").addEventListener("click", function () {
+      kalkulator.tambah(10);
+      kalkulator.tambah(5);
+      kalkulator.kurang(3);
+      hasil.textContent =
+        "Kalkulator: tambah(10), tambah(5), kurang(3)\n" +
+        "Hasil akhir: " + kalkulator.getHasil() + "\n" +
+        "(coba akses kalkulator.hasilInternal langsung -> " + kalkulator.hasilInternal + ", tidak bisa diakses karena privat!)";
+    });
+
+    // Bukti: variabel di dalam IIFE tidak bocor ke scope global
+    (function () {
+      const dataRahasia = "Ini hanya ada di dalam IIFE";
+      console.log(dataRahasia);
+    })();
+
+    document.getElementById("btnPrivat").addEventListener("click", function () {
+      hasil.textContent =
+        "typeof dataRahasia dari luar IIFE = " + typeof dataRahasia + "\n" +
+        "(hasilnya 'undefined' karena variabel itu privat di dalam IIFE, tidak bocor ke scope global)";
+    });
+  </script>
+
+</body>
+</html>

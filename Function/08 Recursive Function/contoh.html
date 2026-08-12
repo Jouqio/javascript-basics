@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>08 - Recursive Function</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; background: #f4f6f8; }
+    input { padding: 8px; width: 30%; border: 1px solid #ccc; border-radius: 4px; }
+    button { padding: 10px 16px; border: none; border-radius: 6px; background: #E91E63; color: white; cursor: pointer; margin: 4px 0; display: block; width: 100%; }
+    #hasil { margin-top: 16px; background: white; padding: 12px; border-radius: 6px; font-family: monospace; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+
+  <h1>Recursive Function</h1>
+
+  <label>Masukkan angka (n): </label>
+  <input type="number" id="inputN" value="5" min="0" max="15">
+
+  <button id="btnFaktorial">Hitung n! (Faktorial)</button>
+  <button id="btnJumlah">Jumlahkan 1 sampai n</button>
+  <button id="btnFibonacci">Hitung Fibonacci ke-n</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    const hasil = document.getElementById("hasil");
+    const inputN = document.getElementById("inputN");
+
+    // Recursive Function: Faktorial
+    function faktorial(n) {
+      if (n <= 1) return 1;        // base case
+      return n * faktorial(n - 1); // recursive case
+    }
+
+    // Recursive Function: Jumlahkan 1 sampai n
+    function jumlahkanSampai(n) {
+      if (n <= 0) return 0;
+      return n + jumlahkanSampai(n - 1);
+    }
+
+    // Recursive Function: Fibonacci
+    function fibonacci(n) {
+      if (n <= 1) return n;
+      return fibonacci(n - 1) + fibonacci(n - 2);
+    }
+
+    document.getElementById("btnFaktorial").addEventListener("click", function () {
+      const n = parseInt(inputN.value);
+      hasil.textContent = n + "! (faktorial) = " + faktorial(n);
+    });
+
+    document.getElementById("btnJumlah").addEventListener("click", function () {
+      const n = parseInt(inputN.value);
+      hasil.textContent = "Jumlah 1 sampai " + n + " = " + jumlahkanSampai(n);
+    });
+
+    document.getElementById("btnFibonacci").addEventListener("click", function () {
+      const n = parseInt(inputN.value);
+      let deret = [];
+      for (let i = 0; i <= n; i++) deret.push(fibonacci(i));
+      hasil.textContent = "Fibonacci ke-" + n + " = " + fibonacci(n) + "\nDeret 0.." + n + ": " + deret.join(", ");
+    });
+  </script>
+
+</body>
+</html>
