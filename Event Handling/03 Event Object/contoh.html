@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>03 - Event Object</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; background: #f4f6f8; }
+    #kotak { padding: 40px; background: #FF9800; color: white; text-align: center; border-radius: 8px; cursor: pointer; }
+    #kotak span { background: #E65100; padding: 4px 10px; border-radius: 4px; }
+    #info { margin-top: 20px; background: #fff; padding: 16px; border-radius: 6px; font-family: monospace; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+
+  <h1>Eksplorasi Event Object</h1>
+  <p>Klik di area oranye (di luar maupun di dalam kotak <b>span</b>):</p>
+
+  <div id="kotak">
+    Ini adalah DIV besar (currentTarget)
+    <br><br>
+    <span>Ini SPAN di dalamnya (bisa jadi target)</span>
+  </div>
+
+  <div id="info">Informasi event akan tampil di sini...</div>
+
+  <script>
+    const kotak = document.getElementById("kotak");
+    const info = document.getElementById("info");
+
+    kotak.addEventListener("click", function (e) {
+      info.textContent =
+        "type            : " + e.type + "\n" +
+        "target          : " + e.target.tagName + "\n" +
+        "currentTarget   : " + e.currentTarget.tagName + "\n" +
+        "posisi X, Y     : " + e.clientX + ", " + e.clientY + "\n" +
+        "timeStamp       : " + Math.round(e.timeStamp) + " ms";
+    });
+  </script>
+
+</body>
+</html>

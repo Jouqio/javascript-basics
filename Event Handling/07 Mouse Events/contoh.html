@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>07 - Mouse Events</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; background: #f4f6f8; }
+    #area { height: 200px; background: #90CAF9; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold; text-align: center; user-select: none; }
+    #area.masuk { background: #66BB6A; }
+    #log { margin-top: 16px; background: white; padding: 12px; border-radius: 6px; font-family: monospace; min-height: 80px; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+
+  <h1>Mouse Events</h1>
+  <p>Coba klik, klik-dua-kali, klik kanan, dan gerakkan mouse di kotak biru.</p>
+
+  <div id="area">Gerakkan / klik di sini</div>
+  <div id="log"></div>
+
+  <script>
+    const area = document.getElementById("area");
+    const log = document.getElementById("log");
+
+    function tulis(pesan) {
+      log.textContent = pesan;
+    }
+
+    area.addEventListener("click", () => tulis("Event: click"));
+    area.addEventListener("dblclick", () => tulis("Event: dblclick (klik dua kali)"));
+
+    area.addEventListener("mouseenter", () => {
+      area.classList.add("masuk");
+      tulis("Event: mouseenter (kursor masuk area)");
+    });
+
+    area.addEventListener("mouseleave", () => {
+      area.classList.remove("masuk");
+      tulis("Event: mouseleave (kursor keluar area)");
+    });
+
+    area.addEventListener("mousemove", (e) => {
+      tulis("Event: mousemove\nPosisi X: " + e.offsetX + ", Y: " + e.offsetY);
+    });
+
+    area.addEventListener("contextmenu", (e) => {
+      e.preventDefault(); // cegah menu klik kanan bawaan browser
+      tulis("Event: contextmenu (klik kanan terdeteksi, menu default dicegah)");
+    });
+  </script>
+
+</body>
+</html>

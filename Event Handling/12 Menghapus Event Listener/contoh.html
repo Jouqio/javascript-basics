@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>12 - Menghapus Event Listener</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; background: #f4f6f8; }
+    button { padding: 10px 16px; border: none; border-radius: 6px; color: white; cursor: pointer; margin: 4px 4px 4px 0; }
+    #btnHitung { background: #2196F3; }
+    #btnHapus { background: #f44336; }
+    #btnSekali { background: #9C27B0; }
+    #hasil { margin-top: 16px; background: white; padding: 12px; border-radius: 6px; font-family: monospace; }
+  </style>
+</head>
+<body>
+
+  <h1>Menghapus Event Listener</h1>
+
+  <h3>1. Counter dengan tombol hapus listener</h3>
+  <button id="btnHitung">Klik untuk Hitung (+1)</button>
+  <button id="btnHapus">Hapus Listener Counter</button>
+  <p id="hasilHitung">Jumlah klik: 0</p>
+
+  <h3>2. Listener dengan opsi { once: true }</h3>
+  <button id="btnSekali">Klik Saya (hanya bisa sekali)</button>
+  <p id="hasilSekali"></p>
+
+  <script>
+    // ===== Bagian 1: removeEventListener =====
+    const btnHitung = document.getElementById("btnHitung");
+    const btnHapus = document.getElementById("btnHapus");
+    const hasilHitung = document.getElementById("hasilHitung");
+    let jumlahKlik = 0;
+
+    // PENTING: gunakan fungsi bernama (bukan anonim) agar bisa dihapus nanti
+    function tambahHitungan() {
+      jumlahKlik++;
+      hasilHitung.textContent = "Jumlah klik: " + jumlahKlik;
+    }
+
+    btnHitung.addEventListener("click", tambahHitungan);
+
+    btnHapus.addEventListener("click", function () {
+      btnHitung.removeEventListener("click", tambahHitungan);
+      hasilHitung.textContent += " (listener sudah dihapus, klik tombol counter tidak akan menambah lagi)";
+    });
+
+    // ===== Bagian 2: opsi { once: true } =====
+    const btnSekali = document.getElementById("btnSekali");
+    const hasilSekali = document.getElementById("hasilSekali");
+
+    btnSekali.addEventListener("click", function () {
+      hasilSekali.textContent = "✅ Diklik! Coba klik lagi, tidak akan bereaksi lagi.";
+    }, { once: true });
+  </script>
+
+</body>
+</html>

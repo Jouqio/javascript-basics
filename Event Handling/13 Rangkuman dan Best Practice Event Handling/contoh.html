@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>13 - Debounce Best Practice</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; background: #f4f6f8; }
+    input { width: 90%; padding: 10px; font-size: 15px; border: 1px solid #ccc; border-radius: 4px; }
+    #log { margin-top: 16px; background: white; padding: 12px; border-radius: 6px; font-family: monospace; min-height: 120px; white-space: pre-wrap; }
+    .biasa { color: #f44336; }
+    .debounce { color: #4CAF50; }
+  </style>
+</head>
+<body>
+
+  <h1>Demo: Debounce (Best Practice)</h1>
+  <p>Ketik di kolom ini dan lihat perbedaan jumlah event yang terpicu:</p>
+  <input type="text" id="inputCari" placeholder="Ketik sesuatu...">
+
+  <div id="log"></div>
+
+  <script>
+    const inputCari = document.getElementById("inputCari");
+    const log = document.getElementById("log");
+    let totalBiasa = 0;
+    let totalDebounce = 0;
+
+    function tampilkanLog() {
+      log.innerHTML =
+        '<span class="biasa">Tanpa debounce (event "input" biasa): ' + totalBiasa + ' kali terpicu</span>\n' +
+        '<span class="debounce">Dengan debounce (300ms setelah berhenti mengetik): ' + totalDebounce + ' kali terpicu</span>';
+    }
+
+    // Fungsi debounce sederhana
+    function debounce(fn, delay) {
+      let timer;
+      return function (...args) {
+        clearTimeout(timer);
+        timer = setTimeout(() => fn(...args), delay);
+      };
+    }
+
+    // Tanpa debounce -> terpicu SETIAP ketikan
+    inputCari.addEventListener("input", function () {
+      totalBiasa++;
+      tampilkanLog();
+    });
+
+    // Dengan debounce -> hanya terpicu setelah user BERHENTI mengetik selama 300ms
+    const pencarianDebounced = debounce(function () {
+      totalDebounce++;
+      tampilkanLog();
+      console.log("Simulasi: melakukan pencarian untuk ->", inputCari.value);
+    }, 300);
+
+    inputCari.addEventListener("input", pencarianDebounced);
+
+    tampilkanLog();
+  </script>
+
+</body>
+</html>

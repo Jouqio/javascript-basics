@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>05 - Event Delegation</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; background: #f4f6f8; }
+    ul { list-style: none; padding: 0; }
+    li { background: white; padding: 12px; margin-bottom: 8px; border-radius: 6px; cursor: pointer; transition: 0.2s; }
+    li:hover { background: #E3F2FD; }
+    .aktif { background: #4CAF50 !important; color: white; }
+    button { padding: 10px 16px; border: none; border-radius: 6px; background: #2196F3; color: white; cursor: pointer; margin-top: 10px; }
+    #log { margin-top: 20px; background: #fff; padding: 12px; border-radius: 6px; font-family: monospace; }
+  </style>
+</head>
+<body>
+
+  <h1>Event Delegation (Daftar Tugas)</h1>
+  <p>Klik item untuk menandainya "selesai" (hijau). Coba juga tambah item baru lalu klik itemnya!</p>
+
+  <ul id="daftarTugas">
+    <li>Belajar Event Handling</li>
+    <li>Mengerjakan tugas Automata</li>
+    <li>Latihan JavaScript</li>
+  </ul>
+
+  <button id="tambahItem">+ Tambah Item Baru</button>
+
+  <div id="log">Klik item di atas untuk mencoba...</div>
+
+  <script>
+    const daftarTugas = document.getElementById("daftarTugas");
+    const tombolTambah = document.getElementById("tambahItem");
+    const log = document.getElementById("log");
+    let jumlahItemBaru = 0;
+
+    // SATU listener saja dipasang di elemen induk <ul>
+    daftarTugas.addEventListener("click", function (e) {
+      const item = e.target.closest("li"); // pastikan yang diklik adalah <li>
+      if (!item) return;
+
+      item.classList.toggle("aktif");
+      log.textContent = 'Item "' + item.textContent + '" ditandai: ' +
+        (item.classList.contains("aktif") ? "SELESAI ✅" : "belum selesai");
+    });
+
+    // Menambahkan item baru secara dinamis
+    tombolTambah.addEventListener("click", function () {
+      jumlahItemBaru++;
+      const liBaru = document.createElement("li");
+      liBaru.textContent = "Tugas baru #" + jumlahItemBaru;
+      daftarTugas.appendChild(liBaru);
+      // Perhatikan: kita TIDAK perlu addEventListener lagi untuk item ini!
+    });
+  </script>
+
+</body>
+</html>

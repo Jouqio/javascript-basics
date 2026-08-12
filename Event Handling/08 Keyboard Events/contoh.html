@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>08 - Keyboard Events</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; background: #f4f6f8; }
+    input { padding: 10px; width: 90%; font-size: 15px; border: 1px solid #ccc; border-radius: 4px; margin-bottom: 10px; }
+    #info { background: white; padding: 12px; border-radius: 6px; font-family: monospace; white-space: pre-wrap; min-height: 100px; }
+    small { color: #666; }
+  </style>
+</head>
+<body>
+
+  <h1>Keyboard Events</h1>
+
+  <label>Input khusus angka (huruf akan otomatis dicegah):</label>
+  <input type="text" id="inputAngka" placeholder="Coba ketik huruf & angka...">
+  <small>Coba ketik huruf, hasilnya akan diblokir. Angka akan tetap muncul.</small>
+
+  <h3>Info Tombol Terakhir Ditekan (global, coba tekan di mana saja)</h3>
+  <div id="info">Tekan tombol apapun...</div>
+
+  <script>
+    const inputAngka = document.getElementById("inputAngka");
+    const info = document.getElementById("info");
+
+    // Validasi: hanya izinkan angka 0-9 di input
+    inputAngka.addEventListener("keydown", function (e) {
+      const tombolDiizinkan = ["Backspace", "Delete", "ArrowLeft", "ArrowRight", "Tab"];
+      const isAngka = /^[0-9]$/.test(e.key);
+
+      if (!isAngka && !tombolDiizinkan.includes(e.key)) {
+        e.preventDefault(); // cegah karakter selain angka muncul
+      }
+    });
+
+    // Tampilkan detail tombol yang ditekan di seluruh halaman
+    document.addEventListener("keydown", function (e) {
+      info.textContent =
+        "key      : " + e.key + "\n" +
+        "code     : " + e.code + "\n" +
+        "ctrlKey  : " + e.ctrlKey + "\n" +
+        "shiftKey : " + e.shiftKey + "\n" +
+        "altKey   : " + e.altKey;
+    });
+  </script>
+
+</body>
+</html>

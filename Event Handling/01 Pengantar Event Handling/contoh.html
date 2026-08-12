@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>01 - Pengantar Event Handling</title>
+  <style>
+    body { font-family: Arial, sans-serif; text-align: center; margin-top: 60px; background: #f4f6f8; }
+    button { padding: 12px 24px; font-size: 16px; cursor: pointer; border: none; border-radius: 6px; background: #4CAF50; color: white; }
+    button:hover { background: #45a049; }
+    #pesan { margin-top: 20px; font-size: 18px; color: #333; }
+  </style>
+</head>
+<body>
+
+  <h1>Contoh Event Handling Sederhana</h1>
+  <button id="tombolSapa">Klik Saya!</button>
+  <p id="pesan">Belum ada yang diklik.</p>
+
+  <script>
+    // 1. Pilih elemen yang ingin diberi event
+    const tombol = document.getElementById("tombolSapa");
+    const pesan = document.getElementById("pesan");
+
+    // 2 & 3. Tentukan jenis event ("click") dan buat fungsi handler
+    function saatDiklik() {
+      pesan.textContent = "Halo! Tombol berhasil diklik. 🎉";
+    }
+
+    // 4. Daftarkan handler ke elemen menggunakan addEventListener
+    tombol.addEventListener("click", saatDiklik);
+  </script>
+
+</body>
+</html>

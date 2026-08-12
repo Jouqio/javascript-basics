@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>04 - Event Propagation</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; background: #f4f6f8; }
+    #luar { background: #EF5350; padding: 30px; border-radius: 8px; }
+    #tengah { background: #FFA726; padding: 30px; border-radius: 8px; }
+    #dalam { background: #66BB6A; padding: 15px 20px; border: none; border-radius: 6px; color: white; cursor: pointer; font-size: 15px; }
+    p { color: white; font-weight: bold; margin: 0 0 10px; }
+    #log { margin-top: 20px; background: #fff; padding: 16px; border-radius: 6px; font-family: monospace; min-height: 100px; white-space: pre-wrap; }
+    label { display: block; margin-top: 10px; background: #fff; padding: 8px; border-radius: 6px; }
+  </style>
+</head>
+<body>
+
+  <h1>Event Propagation</h1>
+
+  <div id="luar">
+    <p>DIV luar</p>
+    <div id="tengah">
+      <p>DIV tengah</p>
+      <button id="dalam">Klik Saya (paling dalam)</button>
+    </div>
+  </div>
+
+  <label>
+    <input type="checkbox" id="stopBubble"> Aktifkan stopPropagation() di tombol dalam
+  </label>
+
+  <div id="log">Log event akan tampil di sini...</div>
+
+  <script>
+    const luar = document.getElementById("luar");
+    const tengah = document.getElementById("tengah");
+    const dalam = document.getElementById("dalam");
+    const log = document.getElementById("log");
+    const stopBubble = document.getElementById("stopBubble");
+
+    function tulisLog(pesan) {
+      log.textContent += pesan + "\n";
+    }
+
+    // Semua menggunakan bubbling (default)
+    luar.addEventListener("click", () => tulisLog("Bubbling sampai ke: DIV luar"));
+    tengah.addEventListener("click", () => tulisLog("Bubbling sampai ke: DIV tengah"));
+    dalam.addEventListener("click", (e) => {
+      log.textContent = ""; // reset log setiap klik baru
+      tulisLog("Klik dimulai dari: BUTTON dalam");
+      if (stopBubble.checked) {
+        e.stopPropagation();
+        tulisLog("--> stopPropagation() dipanggil, event dihentikan di sini!");
+      }
+    });
+  </script>
+
+</body>
+</html>

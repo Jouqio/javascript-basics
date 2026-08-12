@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>11 - Custom Events</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; background: #f4f6f8; }
+    button { padding: 12px 20px; border: none; border-radius: 6px; background: #FF9800; color: white; cursor: pointer; font-size: 15px; }
+    #keranjang { margin-top: 20px; background: white; padding: 16px; border-radius: 8px; }
+    #notifikasi { margin-top: 12px; background: #C8E6C9; color: #256029; padding: 10px; border-radius: 6px; display: none; }
+  </style>
+</head>
+<body>
+
+  <h1>Custom Event: Keranjang Belanja</h1>
+  <button id="tombolBeli">Beli "Laptop Gaming" (Rp 8.000.000)</button>
+
+  <div id="keranjang">
+    <b>Isi Keranjang:</b>
+    <p id="isiKeranjang">Kosong</p>
+    <b>Total:</b> <span id="total">Rp 0</span>
+  </div>
+
+  <div id="notifikasi"></div>
+
+  <script>
+    const tombolBeli = document.getElementById("tombolBeli");
+    const isiKeranjang = document.getElementById("isiKeranjang");
+    const totalEl = document.getElementById("total");
+    const notifikasi = document.getElementById("notifikasi");
+    let total = 0;
+
+    // Dengarkan custom event "produkDibeli" di elemen document
+    document.addEventListener("produkDibeli", function (e) {
+      const produk = e.detail; // ambil data yang dikirim lewat "detail"
+
+      isiKeranjang.textContent = produk.nama;
+      total += produk.harga;
+      totalEl.textContent = "Rp " + total.toLocaleString("id-ID");
+
+      notifikasi.style.display = "block";
+      notifikasi.textContent = "✅ " + produk.nama + " berhasil ditambahkan ke keranjang!";
+
+      setTimeout(() => notifikasi.style.display = "none", 2000);
+    });
+
+    // Saat tombol diklik, buat & picu (dispatch) custom event
+    tombolBeli.addEventListener("click", function () {
+      const eventBelanja = new CustomEvent("produkDibeli", {
+        detail: { nama: "Laptop Gaming", harga: 8000000 }
+      });
+
+      document.dispatchEvent(eventBelanja);
+    });
+  </script>
+
+</body>
+</html>

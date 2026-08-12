@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>02 - Cara Menambahkan Event Listener</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; background: #f4f6f8; }
+    button { display: block; width: 100%; margin-bottom: 12px; padding: 12px; font-size: 15px; border: none; border-radius: 6px; cursor: pointer; background: #2196F3; color: white; }
+    button:hover { opacity: 0.9; }
+    h1 { text-align: center; }
+  </style>
+</head>
+<body>
+
+  <h1>3 Cara Menambahkan Event</h1>
+
+  <!-- 1. Inline HTML attribute -->
+  <button onclick="alert('Cara 1: Inline HTML Attribute')">Cara 1: Inline Attribute</button>
+
+  <!-- 2. DOM Property -->
+  <button id="btnProperty">Cara 2: DOM Property</button>
+
+  <!-- 3. addEventListener -->
+  <button id="btnListener">Cara 3: addEventListener</button>
+  <button id="btnListener2">(handler kedua di tombol yang sama)</button>
+
+  <script>
+    // Cara 2: DOM Property
+    const btnProperty = document.getElementById("btnProperty");
+    btnProperty.onclick = function () {
+      alert("Cara 2: DOM Property (onclick)");
+    };
+
+    // Cara 3: addEventListener (bisa lebih dari satu handler)
+    const btnListener = document.getElementById("btnListener");
+
+    function handlerPertama() {
+      alert("Cara 3: Handler pertama berjalan");
+    }
+    function handlerKedua() {
+      console.log("Cara 3: Handler kedua juga berjalan (cek console)");
+    }
+
+    btnListener.addEventListener("click", handlerPertama);
+    btnListener.addEventListener("click", handlerKedua);
+
+    // Bukti: addEventListener bisa dipasang ke tombol lain juga
+    document.getElementById("btnListener2").addEventListener("click", () => {
+      alert("Ini tombol terpisah, tapi tetap pakai addEventListener");
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>09 - Form Events</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; background: #f4f6f8; }
+    form { background: white; padding: 20px; border-radius: 8px; }
+    label { display: block; margin-top: 12px; font-weight: bold; font-size: 14px; }
+    input, textarea { width: 90%; padding: 8px; margin-top: 4px; border: 1px solid #ccc; border-radius: 4px; }
+    input:focus, textarea:focus { border-color: #2196F3; outline: none; }
+    small { color: #666; display: block; margin-top: 4px; }
+    button { margin-top: 16px; padding: 10px 16px; border: none; border-radius: 6px; background: #4CAF50; color: white; cursor: pointer; }
+    #hasil { margin-top: 14px; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+  <h1>Form Events</h1>
+
+  <form id="formPendaftaran">
+    <label>Email:</label>
+    <input type="text" id="email" placeholder="nama@email.com">
+
+    <label>Pesan (live character counter):</label>
+    <textarea id="pesan" rows="3" maxlength="100"></textarea>
+    <small id="counter">0 / 100 karakter</small>
+
+    <button type="submit">Daftar</button>
+  </form>
+
+  <div id="hasil"></div>
+
+  <script>
+    const form = document.getElementById("formPendaftaran");
+    const email = document.getElementById("email");
+    const pesan = document.getElementById("pesan");
+    const counter = document.getElementById("counter");
+    const hasil = document.getElementById("hasil");
+
+    // Event "input" -> live character counter, update setiap ketikan
+    pesan.addEventListener("input", function () {
+      counter.textContent = pesan.value.length + " / 100 karakter";
+    });
+
+    // Event "focus" & "blur" -> efek visual highlight
+    email.addEventListener("focus", () => hasil.textContent = "Sedang mengisi email...");
+    email.addEventListener("blur", () => hasil.textContent = "");
+
+    // Event "change" -> terpicu setelah selesai mengisi (blur / pindah elemen)
+    email.addEventListener("change", function () {
+      console.log("Email berubah (setelah blur):", email.value);
+    });
+
+    // Event "submit" -> validasi sebelum data dikirim
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      if (!email.value.includes("@")) {
+        hasil.textContent = "⚠️ Email tidak valid!";
+        hasil.style.color = "red";
+        return;
+      }
+
+      hasil.textContent = "✅ Pendaftaran berhasil untuk: " + email.value;
+      hasil.style.color = "green";
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>06 - preventDefault</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; background: #f4f6f8; }
+    a { display: inline-block; margin-bottom: 20px; color: #2196F3; }
+    form { background: white; padding: 20px; border-radius: 8px; }
+    input { padding: 8px; width: 90%; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; }
+    button { padding: 10px 16px; border: none; border-radius: 6px; background: #4CAF50; color: white; cursor: pointer; }
+    #hasil { margin-top: 16px; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+  <h1>Contoh preventDefault()</h1>
+
+  <p>
+    <a href="https://www.google.com" id="linkContoh">Klik link ini (harusnya ke Google, tapi dicegah)</a>
+  </p>
+
+  <form id="formContoh">
+    <label>Nama kamu:</label>
+    <input type="text" id="inputNama" placeholder="Ketik nama...">
+    <button type="submit">Kirim Form</button>
+  </form>
+
+  <div id="hasil"></div>
+
+  <script>
+    const link = document.getElementById("linkContoh");
+    const form = document.getElementById("formContoh");
+    const inputNama = document.getElementById("inputNama");
+    const hasil = document.getElementById("hasil");
+
+    // Mencegah link berpindah halaman
+    link.addEventListener("click", function (e) {
+      e.preventDefault();
+      hasil.textContent = "Link diklik, tapi berhasil dicegah pindah halaman! 🚫➡️";
+    });
+
+    // Mencegah form submit default (reload halaman), lalu validasi manual
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      if (inputNama.value.trim() === "") {
+        hasil.textContent = "⚠️ Nama tidak boleh kosong!";
+        hasil.style.color = "red";
+        return;
+      }
+
+      hasil.textContent = "✅ Form valid! Halo, " + inputNama.value + ". (Halaman tidak reload)";
+      hasil.style.color = "green";
+    });
+  </script>
+
+</body>
+</html>

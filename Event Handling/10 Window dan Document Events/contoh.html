@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>10 - Window & Document Events</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; background: #f4f6f8; }
+    #header { position: sticky; top: 0; background: #2196F3; color: white; padding: 16px; text-align: center; transition: background 0.3s; z-index: 10; }
+    #header.scrolled { background: #0D47A1; }
+    .konten { max-width: 500px; margin: 20px auto; padding: 0 16px; }
+    .spacer { height: 1200px; background: linear-gradient(#f4f6f8, #e0e0e0); }
+    #info { position: fixed; bottom: 16px; right: 16px; background: white; padding: 12px; border-radius: 6px; font-family: monospace; font-size: 13px; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
+  </style>
+</head>
+<body>
+
+  <div id="header">Sticky Header (scroll ke bawah untuk lihat efeknya)</div>
+
+  <div class="konten">
+    <h1>Window & Document Events</h1>
+    <p>Scroll halaman ini ke bawah, dan coba ubah ukuran jendela browser.</p>
+  </div>
+
+  <div class="spacer"></div>
+
+  <div id="info">Memuat...</div>
+
+  <script>
+    const header = document.getElementById("header");
+    const info = document.getElementById("info");
+
+    // DOMContentLoaded -> HTML sudah siap dimanipulasi
+    document.addEventListener("DOMContentLoaded", function () {
+      console.log("DOMContentLoaded: DOM siap dipakai!");
+    });
+
+    // load -> semua resource selesai (termasuk gambar jika ada)
+    window.addEventListener("load", function () {
+      console.log("load: semua resource selesai dimuat!");
+    });
+
+    // scroll -> efek sticky header berubah warna
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > 50) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+      info.textContent = "scrollY: " + Math.round(window.scrollY) + "px | innerWidth: " + window.innerWidth + "px";
+    });
+
+    // resize -> update info ukuran jendela
+    window.addEventListener("resize", function () {
+      info.textContent = "scrollY: " + Math.round(window.scrollY) + "px | innerWidth: " + window.innerWidth + "px";
+    });
+
+    // set info awal
+    info.textContent = "scrollY: 0px | innerWidth: " + window.innerWidth + "px";
+  </script>
+
+</body>
+</html>
