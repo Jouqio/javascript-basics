@@ -7,17 +7,17 @@ console.log("Hai, JavaScript!");
 // “Hai, JavaScript!”. Kode yang ditulis pada baris pertama dan terakhir akan
 // diabaikan karena dianggap sebagai komentar.
 
-//Berikut adalah contoh dari komentar yang ditulis dengan tanda /* */. 
+//Berikut adalah contoh dari komentar yang ditulis dengan tanda /* */.
 /* 
 Ini adalah komentar multiline
 yang dapat digunakan untuk menjelaskan kode yang kompleks.
 */
 
 /*
- * TODO
- * 1. Buatlah variabel bernama `PI` dan isikan dengan nilai 3.14
- * 2. Cetak nilai variabel PI di terminal menggunakan console.log
- */
+ * TODO
+ * 1. Buatlah variabel bernama `PI` dan isikan dengan nilai 3.14
+ * 2. Cetak nilai variabel PI di terminal menggunakan console.log
+ */
 
 const PI = 3.14;
 console.log(PI);

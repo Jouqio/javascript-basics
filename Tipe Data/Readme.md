@@ -1,129 +1,46 @@
-#  Tipe Data di JavaScript
+# Belajar Tipe Data JavaScript untuk Pemula
 
-Ringkasan materi tentang tipe data primitif dasar di JavaScript, yaitu **String**, **Number**, dan **Boolean**.
+Folder ini berisi materi pembelajaran dasar pemrograman **Tipe Data (Data Types) dalam JavaScript**, disusun bertahap dari konsep paling dasar sampai konversi tipe data. Setiap folder berisi:
 
----
+- `Readme.md` → penjelasan materi (teori + kenapa penting + contoh kasus)
+- File `.js` → contoh kode yang bisa langsung dijalankan
 
-##  Daftar Isi
+## Cara Menjalankan Kode
 
-- [Apa Itu Tipe Data](#-apa-itu-tipe-data)
-- [String](#-string)
-- [Number](#-number)
-- [Boolean](#-boolean)
-- [Kesimpulan](#-kesimpulan)
+Jalankan setiap file `.js` dengan Node.js:
 
----
-
-##  Apa Itu Tipe Data
-
-Nilai yang dihasilkan dari sebuah *expression* disebut juga **data**. Data adalah elemen dasar yang disimpan dan diolah untuk membuat instruksi atau statement dalam pemrograman.
-
-JavaScript memiliki beberapa **tipe data primitif**, di antaranya:
-
-| Tipe Data | Keterangan |
-|---|---|
-| `string` | merepresentasikan teks |
-| `number` | merepresentasikan angka (bulat maupun pecahan) |
-| `boolean` | merepresentasikan nilai benar/salah (`true`/`false`) |
-| `null` & `undefined` | merepresentasikan nilai kosong |
-
----
-
-##  String
-
-**String** adalah tipe data yang merepresentasikan teks, seperti nama, alamat, atau email. Nilai string diapit oleh tanda kutip, dan JavaScript mendukung tiga jenis tanda kutip:
-
-- petik tunggal (`'...'`)
-- petik ganda (`"..."`)
-- backticks (`` `...` ``)
-
-```js
-"Ini merupakan contoh string di JavaScript"
-'Ini merupakan contoh string di JavaScript'
-`Ini merupakan contoh string di JavaScript`
+```bash
+node contoh.js
 ```
 
-> 📝 Tanda kutip pembuka dan penutup harus **sama**.
+Pastikan Node.js sudah terinstall di komputer kamu. Cek dengan:
 
-### Baris Baru dalam String
-
-Untuk petik tunggal/ganda, baris baru harus ditulis dengan notasi `\n`. Sementara backticks mendukung baris baru secara langsung.
-
-```js
-"Baris pertama.\nBaris kedua."
-'Baris pertama.\nBaris kedua.'
-`Baris pertama.
-Baris kedua.`
+```bash
+node -v
 ```
 
-### Template Literals
+Atau, kamu juga bisa membuka Console di browser (klik kanan → Inspect → tab Console) lalu copy-paste isi file `.js` ke sana.
 
-Backticks juga disebut **template literals** karena memungkinkan kita menyisipkan JavaScript expression ke dalam string menggunakan notasi `${}`.
+## Daftar Materi
 
-```js
-const currentYear = new Date().getFullYear();
-const text = `Sekarang adalah tahun ${currentYear}.`;
+| No | Folder | Topik |
+|----|--------|-------|
+| 01 | [Pengantar Tipe Data](./01%20Pengantar%20Tipe%20Data/Readme.md) | Apa itu tipe data, kenapa penting, primitive vs non-primitive |
+| 02 | [Number](./02%20Number/Readme.md) | Angka, operasi matematika, `NaN`, `Infinity` |
+| 03 | [String](./03%20String/Readme.md) | Teks, penulisan string, template literal, method string dasar |
+| 04 | [Boolean](./04%20Boolean/Readme.md) | Nilai true/false, penggunaan dalam kondisi |
+| 05 | [Null dan Undefined](./05%20Null%20dan%20Undefined/Readme.md) | Perbedaan "tidak ada nilai" vs "belum diisi" |
+| 06 | [Array](./06%20Array/Readme.md) | Kumpulan data berurutan, index, method array dasar |
+| 07 | [Object](./07%20Object/Readme.md) | Data berbentuk key-value, cara mengakses dan mengubah properti |
+| 08 | [Tipe Data Khusus (Symbol dan BigInt)](./08%20Tipe%20Data%20Khusus%20(Symbol%20dan%20BigInt)/Readme.md) | Tipe data yang jarang dipakai tapi penting diketahui |
+| 09 | [Type Conversion dan Coercion](./09%20Type%20Conversion%20dan%20Coercion/Readme.md) | Mengubah tipe data secara sengaja vs otomatis |
+| 10 | [Operator typeof](./10%20Operator%20typeof/Readme.md) | Cara mengecek tipe data suatu nilai |
+| 11 | [Tugas Latihan](./11%20Tugas%20Latihan/Readme.md) | Soal latihan untuk menguji pemahaman |
 
-console.log(text);
+## Urutan Belajar yang Disarankan
+
+```
+01 → 02 → 03 → 04 → 05 → 06 → 07 → 08 → 09 → 10 → 11
 ```
 
----
-
-##  Number
-
-**Number** merepresentasikan semua data berupa angka, baik bilangan bulat maupun pecahan. Nilai number ditulis langsung tanpa tanda kutip.
-
-```js
-40
-3.14
-5
-3.333
-```
-
-### Nilai Spesial: `Infinity` dan `NaN`
-
-- **`Infinity`** muncul saat melakukan operasi aritmetika yang tidak terdefinisi, misalnya membagi dengan nol.
-
-```js
-const result = 50 / 0;
-console.log(result); // output: Infinity
-```
-
-- **`NaN`** (*Not-a-Number*) muncul saat nilai non-numerik dikonversi ke tipe number, misalnya mengonversi string yang bukan angka.
-
-```js
-const result = Number('Dicoding');
-console.log(result); // output: NaN
-```
-
-> 📝 Konversi antar tipe data akan dibahas lebih lanjut setelah mengenal seluruh tipe data.
-
----
-
-##  Boolean
-
-**Boolean** adalah tipe data yang hanya memiliki dua kemungkinan nilai: `true` dan `false`. Umumnya digunakan untuk merepresentasikan kondisi "ya" (`true`) atau "tidak" (`false`).
-
-```js
-const completed = true;
-const passed = false;
-
-console.log(completed, passed); // output: true false
-```
-
-Nilai boolean juga sering dihasilkan dari operator perbandingan.
-
-```js
-const isGreater = 5 > 2;
-
-console.log(isGreater); // output: true (5 lebih besar dari 2)
-```
-
----
-
-##  Kesimpulan
-
-- **String** merepresentasikan teks, bisa dibuat dengan petik tunggal, petik ganda, atau backticks (*template literals*).
-- **Number** merepresentasikan angka, termasuk nilai spesial `Infinity` dan `NaN`.
-- **Boolean** hanya memiliki dua nilai: `true` dan `false`, sering dihasilkan dari operator perbandingan.
-- Memahami tipe data primitif ini penting sebagai dasar untuk mengelola dan mengolah data di JavaScript.
+Pelajari secara berurutan karena setiap materi dibangun dari materi sebelumnya. Selamat belajar! 
