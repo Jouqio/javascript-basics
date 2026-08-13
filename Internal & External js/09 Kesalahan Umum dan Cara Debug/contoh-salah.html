@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<title>Contoh Salah (Berisi Bug)</title>
+<script>
+  // Bug: mengakses elemen sebelum body dibaca
+  console.log("Mencoba mengubah judul...");
+  document.getElementById("judul").textContent = "Sudah Diubah";
+</script>
+</head>
+<body>
+  <h1 id="judul">Judul Asli</h1>
+  <p style="color:#888">
+    Buka Console (F12) — akan muncul error "Cannot read properties
+    of null". Bandingkan dengan contoh-benar.html.
+  </p>
+</body>
+</html>

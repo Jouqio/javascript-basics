@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<title>Contoh Internal JavaScript</title>
+</head>
+<body>
+  <h1>Contoh Internal JavaScript</h1>
+  <p id="output">Menunggu script dijalankan...</p>
+
+  <script>
+    // Script internal pertama
+    console.log("Script internal dimulai");
+
+    let nama = "Pelajar";
+    document.getElementById("output").textContent =
+      "Halo, " + nama + "! Ini ditulis dari script internal.";
+  </script>
+
+  <p>Isi paragraf di atas diubah otomatis lewat JavaScript internal.</p>
+
+  <script>
+    // Boleh ada lebih dari satu tag <script>, dijalankan berurutan
+    console.log("Ini script internal KEDUA, jalan setelah yang pertama");
+  </script>
+</body>
+</html>

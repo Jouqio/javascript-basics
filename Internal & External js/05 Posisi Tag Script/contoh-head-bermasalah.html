@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<title>Contoh Bermasalah: Script di Head</title>
+<script>
+  // Coba buka file ini di browser, lalu cek Console (F12).
+  // Akan muncul error karena <p id="output"> belum ada
+  // saat baris di bawah ini dijalankan.
+  console.log("Script di head mulai jalan...");
+  document.getElementById("output").textContent = "Ini akan error!";
+</script>
+</head>
+<body>
+  <h1>Contoh Bermasalah</h1>
+  <p id="output">Teks asli (harusnya berubah, tapi errornya duluan)</p>
+  <p style="color:#888">
+    Buka Console (F12) buat lihat error-nya, kira-kira bunyinya:
+    "Cannot read properties of null (reading 'textContent')"
+  </p>
+</body>
+</html>

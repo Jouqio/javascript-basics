@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<title>Contoh Inline JavaScript</title>
+</head>
+<body>
+  <h1>Contoh Inline JavaScript</h1>
+
+  <!-- Contoh 1: onclick sederhana -->
+  <button onclick="alert('Kamu klik tombol pertama!')">Tombol 1</button>
+
+  <!-- Contoh 2: beberapa perintah dipisah titik koma -->
+  <button onclick="console.log('Tombol 2 diklik'); alert('Cek Console juga ya!')">Tombol 2</button>
+
+  <!-- Contoh 3: onmouseover / onmouseout -->
+  <p onmouseover="this.style.color = 'red'" onmouseout="this.style.color = 'black'">
+    Arahkan mouse ke teks ini, perhatikan warnanya berubah.
+  </p>
+
+  <!-- Contoh 4: kenapa ini jadi berantakan kalau logic-nya kompleks -->
+  <button onclick="let x = prompt('Masukkan angka:'); let hasil = Number(x) * 2; alert('Hasil dikali 2: ' + hasil)">
+    Tombol Kalkulator (contoh kode yang mulai berantakan)
+  </button>
+
+  <p style="color:#888;font-family:sans-serif;font-size:14px;">
+    Perhatikan tombol terakhir: begitu logic-nya nambah dikit aja,
+    atribut onclick-nya udah mulai susah dibaca. Ini salah satu
+    alasan utama kenapa inline JavaScript sebaiknya dihindari.
+  </p>
+</body>
+</html>

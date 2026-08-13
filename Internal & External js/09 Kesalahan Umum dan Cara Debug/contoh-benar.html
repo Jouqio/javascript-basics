@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<title>Contoh Benar (Sudah Diperbaiki)</title>
+</head>
+<body>
+  <h1 id="judul">Judul Asli</h1>
+  <p style="color:#888">
+    Buka Console (F12) — kali ini gak ada error, karena elemen
+    #judul sudah ada duluan sebelum script dijalankan.
+  </p>
+
+  <!-- Perbaikan: script dipindah ke akhir body -->
+  <script>
+    console.log("Mencoba mengubah judul...");
+    document.getElementById("judul").textContent = "Sudah Diubah";
+  </script>
+</body>
+</html>

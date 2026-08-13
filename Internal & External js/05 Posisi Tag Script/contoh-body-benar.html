@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+<title>Contoh Benar: Script di Akhir Body</title>
+</head>
+<body>
+  <h1>Contoh yang Benar</h1>
+  <p id="output">Teks asli (akan berubah)</p>
+
+  <!-- Script ditaruh di paling akhir, setelah semua elemen HTML -->
+  <script>
+    console.log("Script di akhir body mulai jalan...");
+    document.getElementById("output").textContent =
+      "Berhasil diubah! Elemen HTML sudah ada duluan.";
+  </script>
+</body>
+</html>
