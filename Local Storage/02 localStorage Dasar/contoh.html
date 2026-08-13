@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>02 - localStorage Dasar</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; background: #f4f6f8; }
+    input { padding: 8px; width: 90%; border: 1px solid #ccc; border-radius: 4px; margin-bottom: 8px; }
+    button { padding: 10px 16px; border: none; border-radius: 6px; background: #2196F3; color: white; cursor: pointer; margin-bottom: 8px; display: block; width: 100%; }
+    #hasil { margin-top: 16px; background: white; padding: 12px; border-radius: 6px; font-family: monospace; white-space: pre-wrap; min-height: 100px; }
+  </style>
+</head>
+<body>
+
+  <h1>localStorage Dasar</h1>
+
+  <input type="text" id="inputNama" placeholder="Masukkan nama...">
+  <button id="btnSet">setItem() - Simpan Nama</button>
+  <button id="btnGet">getItem() - Ambil Nama</button>
+  <button id="btnRemove">removeItem() - Hapus Nama</button>
+  <button id="btnClear">clear() - Hapus SEMUA Data</button>
+  <button id="btnTipeData">Bukti: Semua Data Jadi STRING</button>
+
+  <div id="hasil">Coba tombol di atas...</div>
+
+  <script>
+    const hasil = document.getElementById("hasil");
+    const inputNama = document.getElementById("inputNama");
+
+    document.getElementById("btnSet").addEventListener("click", function () {
+      const nilai = inputNama.value || "Tanpa Nama";
+      localStorage.setItem("nama", nilai);
+      hasil.textContent = "✅ Data disimpan!\nKey: nama\nValue: " + nilai;
+    });
+
+    document.getElementById("btnGet").addEventListener("click", function () {
+      const nama = localStorage.getItem("nama");
+      if (nama !== null) {
+        hasil.textContent = "Data ditemukan!\nnama = " + nama;
+      } else {
+        hasil.textContent = "Data 'nama' belum ada (hasilnya null). Coba setItem dulu.";
+      }
+    });
+
+    document.getElementById("btnRemove").addEventListener("click", function () {
+      localStorage.removeItem("nama");
+      hasil.textContent = "🗑️ Data 'nama' sudah dihapus.\ngetItem('nama') sekarang = " + localStorage.getItem("nama");
+    });
+
+    document.getElementById("btnClear").addEventListener("click", function () {
+      localStorage.clear();
+      hasil.textContent = "🗑️🗑️ SEMUA data localStorage sudah dihapus!\nlocalStorage.length = " + localStorage.length;
+    });
+
+    document.getElementById("btnTipeData").addEventListener("click", function () {
+      localStorage.setItem("umur", 20); // angka
+      const umur = localStorage.getItem("umur");
+      hasil.textContent =
+        "Menyimpan angka 20 ke localStorage...\n" +
+        "typeof hasil getItem = " + typeof umur + " (BUKAN 'number'!)\n" +
+        "umur + 5 = " + (umur + 5) + " <- ini PENGGABUNGAN STRING, bukan penjumlahan!\n" +
+        "Number(umur) + 5 = " + (Number(umur) + 5) + " <- ini baru penjumlahan yang benar";
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>07 - To-Do List dengan localStorage</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; background: #f4f6f8; }
+    .form-tambah { display: flex; gap: 8px; margin-bottom: 16px; }
+    input { flex: 1; padding: 10px; border: 1px solid #ccc; border-radius: 4px; }
+    button { padding: 10px 16px; border: none; border-radius: 6px; background: #4CAF50; color: white; cursor: pointer; }
+    ul { list-style: none; padding: 0; }
+    li { background: white; padding: 12px; margin-bottom: 8px; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; }
+    .selesai .teks { text-decoration: line-through; color: #999; }
+    .teks { cursor: pointer; flex: 1; }
+    .btn-hapus { background: #f44336; padding: 6px 10px; font-size: 12px; }
+    .info { margin-top: 16px; font-size: 13px; color: #666; }
+  </style>
+</head>
+<body>
+
+  <h1>📋 To-Do List (localStorage)</h1>
+
+  <div class="form-tambah">
+    <input type="text" id="inputTugas" placeholder="Tugas baru...">
+    <button id="btnTambah">Tambah</button>
+  </div>
+
+  <ul id="daftarTugasHTML"></ul>
+
+  <p class="info">💡 Klik teks tugas untuk menandai selesai/belum. Data tersimpan otomatis — coba refresh halaman ini!</p>
+
+  <script>
+    const KEY_STORAGE = "daftarTugas";
+    const inputTugas = document.getElementById("inputTugas");
+    const container = document.getElementById("daftarTugasHTML");
+
+    // ===== Fungsi dasar localStorage =====
+    function muatTugas() {
+      const data = localStorage.getItem(KEY_STORAGE);
+      return data ? JSON.parse(data) : [];
+    }
+
+    function simpanTugas(tugas) {
+      localStorage.setItem(KEY_STORAGE, JSON.stringify(tugas));
+    }
+
+    // ===== Operasi CRUD =====
+    function tambahTugas(teks) {
+      const daftarTugas = muatTugas();
+      daftarTugas.push({ id: Date.now(), teks: teks, selesai: false });
+      simpanTugas(daftarTugas);
+      renderTugas();
+    }
+
+    function toggleTugas(id) {
+      const daftarTugas = muatTugas();
+      const tugas = daftarTugas.find((t) => t.id === id);
+      if (tugas) tugas.selesai = !tugas.selesai;
+      simpanTugas(daftarTugas);
+      renderTugas();
+    }
+
+    function hapusTugas(id) {
+      let daftarTugas = muatTugas();
+      daftarTugas = daftarTugas.filter((t) => t.id !== id);
+      simpanTugas(daftarTugas);
+      renderTugas();
+    }
+
+    // ===== Render ke HTML (menggunakan event delegation) =====
+    function renderTugas() {
+      const daftarTugas = muatTugas();
+      container.innerHTML = "";
+
+      if (daftarTugas.length === 0) {
+        container.innerHTML = "<li style='justify-content:center;color:#999;'>Belum ada tugas. Tambahkan di atas!</li>";
+        return;
+      }
+
+      daftarTugas.forEach((tugas) => {
+        const li = document.createElement("li");
+        li.dataset.id = tugas.id; // simpan id di dataset elemen
+        if (tugas.selesai) li.classList.add("selesai");
+
+        li.innerHTML =
+          '<span class="teks">' + tugas.teks + '</span>' +
+          '<button class="btn-hapus">Hapus</button>';
+
+        container.appendChild(li);
+      });
+    }
+
+    // Event delegation - satu listener untuk semua item (termasuk yang baru ditambahkan)
+    container.addEventListener("click", function (e) {
+      const li = e.target.closest("li");
+      if (!li || !li.dataset.id) return;
+      const id = Number(li.dataset.id);
+
+      if (e.target.classList.contains("teks")) {
+        toggleTugas(id);
+      } else if (e.target.classList.contains("btn-hapus")) {
+        hapusTugas(id);
+      }
+    });
+
+    document.getElementById("btnTambah").addEventListener("click", function () {
+      const teks = inputTugas.value.trim();
+      if (teks === "") return;
+      tambahTugas(teks);
+      inputTugas.value = "";
+      inputTugas.focus();
+    });
+
+    inputTugas.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") document.getElementById("btnTambah").click();
+    });
+
+    // Muat data saat halaman pertama kali dibuka (data tetap ada setelah refresh!)
+    renderTugas();
+  </script>
+
+</body>
+</html>

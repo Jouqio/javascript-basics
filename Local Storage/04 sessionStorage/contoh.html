@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>04 - sessionStorage</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; background: #f4f6f8; }
+    button { padding: 10px 16px; border: none; border-radius: 6px; color: white; cursor: pointer; margin-bottom: 8px; display: block; width: 100%; }
+    #btnLocal { background: #4CAF50; }
+    #btnSession { background: #FF9800; }
+    #btnBandingkan { background: #607D8B; }
+    #hasil { margin-top: 16px; background: white; padding: 12px; border-radius: 6px; font-family: monospace; white-space: pre-wrap; min-height: 100px; }
+    small { color: #666; display: block; margin-top: 10px; }
+  </style>
+</head>
+<body>
+
+  <h1>sessionStorage vs localStorage</h1>
+
+  <button id="btnLocal">Simpan ke localStorage (permanen)</button>
+  <button id="btnSession">Simpan ke sessionStorage (per-tab)</button>
+  <button id="btnBandingkan">Bandingkan Isi Keduanya</button>
+
+  <div id="hasil">Coba tombol di atas, lalu buka halaman ini di TAB BARU untuk membandingkan.</div>
+  <small>💡 Setelah menyimpan data, coba buka file ini lagi di tab baru browser (drag file ke tab baru), lalu klik "Bandingkan" di tab baru tersebut.</small>
+
+  <script>
+    const hasil = document.getElementById("hasil");
+
+    document.getElementById("btnLocal").addEventListener("click", function () {
+      localStorage.setItem("dataPermanen", "Saya tersimpan di localStorage - " + new Date().toLocaleTimeString());
+      hasil.textContent = "✅ Data disimpan ke localStorage:\n" + localStorage.getItem("dataPermanen");
+    });
+
+    document.getElementById("btnSession").addEventListener("click", function () {
+      sessionStorage.setItem("dataSementara", "Saya tersimpan di sessionStorage - " + new Date().toLocaleTimeString());
+      hasil.textContent = "✅ Data disimpan ke sessionStorage:\n" + sessionStorage.getItem("dataSementara");
+    });
+
+    document.getElementById("btnBandingkan").addEventListener("click", function () {
+      const dataLocal = localStorage.getItem("dataPermanen");
+      const dataSession = sessionStorage.getItem("dataSementara");
+
+      hasil.textContent =
+        "localStorage.getItem('dataPermanen')   : " + (dataLocal || "null (belum ada di tab ini)") + "\n" +
+        "sessionStorage.getItem('dataSementara') : " + (dataSession || "null (belum ada di tab ini)") + "\n\n" +
+        "Jika ini tab BARU: localStorage seharusnya TETAP ADA (dibagikan antar tab),\n" +
+        "sedangkan sessionStorage seharusnya 'null' (tidak dibagikan antar tab).";
+    });
+  </script>
+
+</body>
+</html>

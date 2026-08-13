@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>06 - Storage Event</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; background: #f4f6f8; }
+    input { padding: 8px; width: 90%; border: 1px solid #ccc; border-radius: 4px; margin-bottom: 8px; }
+    button { padding: 10px 16px; border: none; border-radius: 6px; background: #FF5722; color: white; cursor: pointer; margin-bottom: 8px; display: block; width: 100%; }
+    #hasil { margin-top: 16px; background: white; padding: 12px; border-radius: 6px; font-family: monospace; white-space: pre-wrap; min-height: 150px; }
+    .instruksi { background: #FFF3CD; padding: 12px; border-radius: 6px; margin-bottom: 16px; font-size: 14px; }
+  </style>
+</head>
+<body>
+
+  <h1>Storage Event</h1>
+
+  <div class="instruksi">
+    💡 <b>Cara mencoba:</b> Buka file <code>contoh.html</code> ini di <b>DUA TAB</b> browser sekaligus (drag file ke tab baru), lalu ubah data di salah satu tab dan lihat perubahannya muncul otomatis di tab lainnya!
+  </div>
+
+  <input type="text" id="inputPesan" placeholder="Ketik pesan untuk dikirim ke tab lain...">
+  <button id="btnKirim">Kirim Pesan ke Tab Lain</button>
+
+  <div id="hasil">Menunggu perubahan localStorage dari tab lain...</div>
+
+  <script>
+    const hasil = document.getElementById("hasil");
+    const inputPesan = document.getElementById("inputPesan");
+
+    document.getElementById("btnKirim").addEventListener("click", function () {
+      const pesan = inputPesan.value || "Halo dari tab ini!";
+      localStorage.setItem("pesanAntarTab", JSON.stringify({
+        pesan: pesan,
+        waktu: new Date().toLocaleTimeString()
+      }));
+      hasil.textContent = "✅ Pesan dikirim: \"" + pesan + "\"\n(Tab ini TIDAK menerima event storage-nya sendiri. Cek tab LAIN untuk melihat pesan muncul otomatis!)";
+    });
+
+    // Storage event - hanya terpicu di tab LAIN, bukan tab yang melakukan perubahan
+    window.addEventListener("storage", function (e) {
+      if (e.key === "pesanAntarTab") {
+        const data = JSON.parse(e.newValue);
+        hasil.textContent =
+          "📩 Pesan diterima dari TAB LAIN!\n" +
+          "Pesan  : " + data.pesan + "\n" +
+          "Waktu  : " + data.waktu + "\n" +
+          "oldValue: " + e.oldValue + "\n" +
+          "newValue: " + e.newValue;
+      }
+    });
+  </script>
+
+</body>
+</html>

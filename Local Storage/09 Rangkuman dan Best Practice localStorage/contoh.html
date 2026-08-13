@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>09 - Best Practice localStorage</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; background: #f4f6f8; }
+    button { padding: 10px 16px; border: none; border-radius: 6px; background: #607D8B; color: white; cursor: pointer; margin-bottom: 8px; display: block; width: 100%; }
+    #hasil { margin-top: 16px; background: white; padding: 12px; border-radius: 6px; font-family: monospace; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+
+  <h1>Demo Best Practice localStorage</h1>
+  <button id="btnHelper">Coba StorageHelper (Best Practice Lengkap)</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    const hasil = document.getElementById("hasil");
+
+    // ===== Best Practice: Storage Helper Module =====
+    const StorageHelper = {
+      PREFIX: "todoApp_", // best practice: prefix untuk hindari konflik
+
+      simpan(key, data) {
+        try {
+          localStorage.setItem(this.PREFIX + key, JSON.stringify(data));
+          return true;
+        } catch (error) {
+          console.error("StorageHelper: Gagal menyimpan ->", error.message);
+          return false;
+        }
+      },
+
+      ambil(key, nilaiDefault = null) {
+        const data = localStorage.getItem(this.PREFIX + key);
+        if (data === null) return nilaiDefault;
+        try {
+          return JSON.parse(data);
+        } catch (error) {
+          console.error("StorageHelper: Data rusak ->", error.message);
+          return nilaiDefault;
+        }
+      },
+
+      hapus(key) {
+        localStorage.removeItem(this.PREFIX + key);
+      }
+    };
+
+    document.getElementById("btnHelper").addEventListener("click", function () {
+      // Simpan preferensi tema
+      StorageHelper.simpan("tema", "gelap");
+
+      // Simpan data user
+      StorageHelper.simpan("user", { nama: "Budi", umur: 20 });
+
+      // Ambil kembali dengan aman + nilai default
+      const tema = StorageHelper.ambil("tema", "terang");
+      const user = StorageHelper.ambil("user", {});
+      const dataTidakAda = StorageHelper.ambil("dataTidakAda", "nilai default");
+
+      hasil.textContent =
+        "✅ Menggunakan StorageHelper dengan prefix 'todoApp_':\n\n" +
+        "Key asli di localStorage: " + JSON.stringify(Object.keys(localStorage)) + "\n\n" +
+        "tema = " + tema + "\n" +
+        "user = " + JSON.stringify(user) + "\n" +
+        "dataTidakAda (fallback ke default) = " + dataTidakAda;
+
+      // Bersihkan setelah demo
+      StorageHelper.hapus("tema");
+      StorageHelper.hapus("user");
+    });
+  </script>
+
+</body>
+</html>

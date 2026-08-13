@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>01 - Pengantar Web Storage</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; background: #f4f6f8; }
+    button { padding: 10px 16px; border: none; border-radius: 6px; background: #4CAF50; color: white; cursor: pointer; margin-bottom: 8px; display: block; width: 100%; }
+    #hasil { margin-top: 16px; background: white; padding: 12px; border-radius: 6px; font-family: monospace; white-space: pre-wrap; }
+    small { color: #666; }
+  </style>
+</head>
+<body>
+
+  <h1>Pengantar Web Storage</h1>
+  <p>Buka DevTools browser (F12) → tab <b>Application</b> → <b>Local Storage</b> untuk melihat data secara visual.</p>
+
+  <button id="btnCekObjek">Cek Objek localStorage</button>
+  <button id="btnSimpanContoh">Simpan Data Contoh</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    const hasil = document.getElementById("hasil");
+
+    document.getElementById("btnCekObjek").addEventListener("click", function () {
+      hasil.textContent =
+        "typeof localStorage: " + typeof localStorage + "\n" +
+        "Jumlah data tersimpan (length): " + localStorage.length + "\n" +
+        "localStorage adalah object global bawaan browser, tidak perlu import apapun.";
+      console.log(localStorage);
+    });
+
+    document.getElementById("btnSimpanContoh").addEventListener("click", function () {
+      // Contoh sederhana: menyimpan data ke localStorage
+      localStorage.setItem("contohKey", "Halo dari localStorage!");
+      hasil.textContent =
+        "Data berhasil disimpan!\n" +
+        "Key: contohKey\n" +
+        "Value: " + localStorage.getItem("contohKey") + "\n\n" +
+        "Coba refresh halaman ini, data akan tetap ada karena localStorage bersifat PERMANEN.";
+    });
+  </script>
+
+</body>
+</html>

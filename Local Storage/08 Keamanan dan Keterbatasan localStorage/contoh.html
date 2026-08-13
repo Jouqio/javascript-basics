@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>08 - Keamanan & Keterbatasan</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; background: #f4f6f8; }
+    button { padding: 10px 16px; border: none; border-radius: 6px; background: #F44336; color: white; cursor: pointer; margin-bottom: 8px; display: block; width: 100%; }
+    #hasil { margin-top: 16px; background: white; padding: 12px; border-radius: 6px; font-family: monospace; white-space: pre-wrap; min-height: 100px; }
+  </style>
+</head>
+<body>
+
+  <h1>Keamanan & Keterbatasan localStorage</h1>
+
+  <button id="btnQuota">Simulasi Quota Exceeded (try...catch)</button>
+  <button id="btnCorrupt">Simulasi Data Rusak (JSON.parse aman)</button>
+  <button id="btnXSS">Ilustrasi Risiko XSS (Simulasi)</button>
+
+  <div id="hasil">Coba tombol di atas...</div>
+
+  <script>
+    const hasil = document.getElementById("hasil");
+
+    // Simulasi penanganan quota exceeded
+    document.getElementById("btnQuota").addEventListener("click", function () {
+      try {
+        // Mencoba menyimpan data yang sangat besar untuk memicu error kapasitas
+        const dataBesar = "x".repeat(50 * 1024 * 1024); // 50MB
+        localStorage.setItem("dataUjiBesar", dataBesar);
+        hasil.textContent = "Berhasil menyimpan (browser ini mengizinkan kapasitas besar).";
+      } catch (error) {
+        hasil.textContent =
+          "❌ Gagal menyimpan (seperti dugaan)!\n" +
+          "Nama error: " + error.name + "\n" +
+          "Pesan: " + error.message + "\n\n" +
+          "Inilah kenapa kita HARUS selalu membungkus setItem() dengan try...catch!";
+      } finally {
+        localStorage.removeItem("dataUjiBesar"); // bersihkan
+      }
+    });
+
+    // Simulasi data rusak/corrupt
+    document.getElementById("btnCorrupt").addEventListener("click", function () {
+      // Sengaja menyimpan string yang BUKAN JSON valid (misal diedit manual oleh user)
+      localStorage.setItem("dataRusak", "{ ini bukan json valid ][");
+
+      function ambilDataAman(key, nilaiDefault) {
+        const data = localStorage.getItem(key);
+        if (data === null) return nilaiDefault;
+        try {
+          return JSON.parse(data);
+        } catch (error) {
+          console.error("Data rusak, mengembalikan nilai default:", error.message);
+          return nilaiDefault;
+        }
+      }
+
+      const hasilAman = ambilDataAman("dataRusak", { pesan: "nilai default aman" });
+      hasil.textContent =
+        "Data di localStorage sengaja dirusak: " + localStorage.getItem("dataRusak") + "\n\n" +
+        "Dengan try...catch saat JSON.parse(), program TIDAK crash:\n" +
+        "Hasil: " + JSON.stringify(hasilAman);
+
+      localStorage.removeItem("dataRusak"); // bersihkan
+    });
+
+    // Ilustrasi (bukan serangan sungguhan) risiko XSS
+    document.getElementById("btnXSS").addEventListener("click", function () {
+      localStorage.setItem("tokenContoh", "abc123-token-sensitif-JANGAN-simpan-di-sini");
+
+      hasil.textContent =
+        "⚠️ ILUSTRASI (bukan serangan sungguhan):\n\n" +
+        "Data 'sensitif' tersimpan di localStorage:\n" +
+        "-> " + localStorage.getItem("tokenContoh") + "\n\n" +
+        "Jika ada celah XSS di halaman ini, SIAPAPUN skrip yang berjalan\n" +
+        "(termasuk skrip berbahaya) bisa membaca data ini dengan mudah:\n" +
+        "localStorage.getItem('tokenContoh')\n\n" +
+        "Inilah kenapa token/data sensitif SEBAIKNYA TIDAK disimpan di localStorage!";
+
+      localStorage.removeItem("tokenContoh"); // bersihkan
+    });
+  </script>
+
+</body>
+</html>

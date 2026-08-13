@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>03 - JSON dengan localStorage</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; background: #f4f6f8; }
+    button { padding: 10px 16px; border: none; border-radius: 6px; background: #9C27B0; color: white; cursor: pointer; margin-bottom: 8px; display: block; width: 100%; }
+    #hasil { margin-top: 16px; background: white; padding: 12px; border-radius: 6px; font-family: monospace; white-space: pre-wrap; min-height: 100px; }
+  </style>
+</head>
+<body>
+
+  <h1>Menyimpan Object & Array (JSON)</h1>
+
+  <button id="btnSalah">Coba Simpan Object TANPA JSON (Salah)</button>
+  <button id="btnUser">Simpan & Ambil Object User (Benar)</button>
+  <button id="btnTugas">Simpan & Ambil Array of Object (Tugas)</button>
+
+  <div id="hasil">Coba tombol di atas...</div>
+
+  <script>
+    const hasil = document.getElementById("hasil");
+
+    // Function helper (best practice)
+    function simpanData(key, data) {
+      localStorage.setItem(key, JSON.stringify(data));
+    }
+
+    function ambilData(key, nilaiDefault = null) {
+      const data = localStorage.getItem(key);
+      if (data === null) return nilaiDefault;
+      try {
+        return JSON.parse(data);
+      } catch (error) {
+        console.error("Gagal parse data:", error);
+        return nilaiDefault;
+      }
+    }
+
+    document.getElementById("btnSalah").addEventListener("click", function () {
+      const user = { nama: "Budi", umur: 20 };
+      localStorage.setItem("userSalah", user); // TANPA JSON.stringify
+      hasil.textContent =
+        "❌ Menyimpan object TANPA JSON.stringify():\n" +
+        "localStorage.getItem('userSalah') = '" + localStorage.getItem("userSalah") + "'\n" +
+        "(Data aslinya HILANG, hanya jadi teks '[object Object]')";
+    });
+
+    document.getElementById("btnUser").addEventListener("click", function () {
+      const user = { nama: "Budi", umur: 20, aktif: true };
+
+      simpanData("user", user); // pakai helper
+
+      const userTersimpan = ambilData("user", {});
+
+      hasil.textContent =
+        "✅ Object berhasil disimpan & diambil kembali!\n" +
+        "String JSON di localStorage: " + localStorage.getItem("user") + "\n\n" +
+        "Setelah JSON.parse():\n" +
+        "nama  : " + userTersimpan.nama + "\n" +
+        "umur  : " + userTersimpan.umur + " (tipe: " + typeof userTersimpan.umur + ")\n" +
+        "aktif : " + userTersimpan.aktif;
+    });
+
+    document.getElementById("btnTugas").addEventListener("click", function () {
+      const daftarTugas = [
+        { id: 1, judul: "Belajar JavaScript", selesai: false },
+        { id: 2, judul: "Mengerjakan tugas", selesai: true },
+        { id: 3, judul: "Latihan localStorage", selesai: false }
+      ];
+
+      simpanData("tugas", daftarTugas);
+
+      const tugasTersimpan = ambilData("tugas", []);
+
+      let output = "✅ Array of Object berhasil disimpan!\n\n";
+      tugasTersimpan.forEach((tugas) => {
+        output += "#" + tugas.id + " " + tugas.judul + " -> " + (tugas.selesai ? "Selesai ✅" : "Belum selesai ⏳") + "\n";
+      });
+
+      hasil.textContent = output;
+    });
+  </script>
+
+</body>
+</html>

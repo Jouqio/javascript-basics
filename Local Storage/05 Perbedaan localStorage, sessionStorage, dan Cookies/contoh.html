@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>05 - localStorage vs Cookies</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; background: #f4f6f8; }
+    button { padding: 10px 16px; border: none; border-radius: 6px; color: white; cursor: pointer; margin-bottom: 8px; display: block; width: 100%; }
+    #btnLocal { background: #4CAF50; }
+    #btnCookie { background: #E91E63; }
+    #btnBandingkan { background: #607D8B; }
+    #hasil { margin-top: 16px; background: white; padding: 12px; border-radius: 6px; font-family: monospace; white-space: pre-wrap; min-height: 120px; }
+  </style>
+</head>
+<body>
+
+  <h1>localStorage vs Cookies</h1>
+
+  <button id="btnLocal">Simpan "nama" via localStorage</button>
+  <button id="btnCookie">Simpan "nama" via document.cookie</button>
+  <button id="btnBandingkan">Bandingkan Cara Membaca Keduanya</button>
+
+  <div id="hasil">Coba tombol di atas...</div>
+
+  <script>
+    const hasil = document.getElementById("hasil");
+
+    document.getElementById("btnLocal").addEventListener("click", function () {
+      localStorage.setItem("nama", "Budi (via localStorage)");
+      hasil.textContent =
+        "✅ localStorage - CARANYA SIMPEL:\n" +
+        'localStorage.setItem("nama", "Budi");\n\n' +
+        "Hasil getItem: " + localStorage.getItem("nama");
+    });
+
+    document.getElementById("btnCookie").addEventListener("click", function () {
+      document.cookie = "nama=Budi (via cookie); max-age=3600; path=/";
+      hasil.textContent =
+        "✅ Cookie - CARANYA LEBIH RUMIT:\n" +
+        'document.cookie = "nama=Budi; max-age=3600; path=/";\n\n' +
+        "Hasil document.cookie (semua cookie jadi 1 string): " + document.cookie;
+    });
+
+    document.getElementById("btnBandingkan").addEventListener("click", function () {
+      // Membaca localStorage - simpel
+      const dariLocalStorage = localStorage.getItem("nama");
+
+      // Membaca cookie - harus di-parsing manual (tidak ada getItem bawaan!)
+      function ambilCookie(namaCookie) {
+        const semuaCookie = document.cookie.split("; ");
+        for (const c of semuaCookie) {
+          const [key, value] = c.split("=");
+          if (key === namaCookie) return value;
+        }
+        return null;
+      }
+      const dariCookie = ambilCookie("nama");
+
+      hasil.textContent =
+        "Membaca dari localStorage (1 baris kode):\n" +
+        "-> " + dariLocalStorage + "\n\n" +
+        "Membaca dari cookie (harus parsing manual, tidak ada getItem):\n" +
+        "-> " + dariCookie + "\n\n" +
+        "Kesimpulan: localStorage jauh lebih mudah dipakai untuk penyimpanan sisi client!";
+    });
+  </script>
+
+</body>
+</html>
