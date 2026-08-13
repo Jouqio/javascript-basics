@@ -1,8 +1,8 @@
-# 📘 Belajar OOP (Object-Oriented Programming) di JavaScript
+#  Belajar OOP (Object-Oriented Programming) di JavaScript
 
 Repository ini berisi materi belajar **OOP (Pemrograman Berorientasi Objek)** dalam JavaScript, disusun khusus untuk **pemula** yang sudah memahami dasar JavaScript (variabel, fungsi, conditional statement) dan siap melangkah ke konsep yang lebih terstruktur.
 
-## 🎯 Apa itu OOP?
+##  Apa itu OOP?
 
 **OOP (Object-Oriented Programming)** adalah **paradigma pemrograman** yang mengorganisir kode di sekitar **objek** — yaitu "sesuatu" yang punya **data (properti)** dan **perilaku (method)**, mirip seperti benda-benda di dunia nyata.
 
@@ -20,7 +20,7 @@ const mobil = {
 mobil.jalan(); // Toyota sedang berjalan
 ```
 
-## 🎯 Tujuan Belajar
+##  Tujuan Belajar
 
 Setelah menyelesaikan materi ini, kamu diharapkan mampu:
 - Memahami konsep dasar OOP dan 4 pilar utamanya
