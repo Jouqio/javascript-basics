@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>09 - Operator Modern</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; background: #f4f6f8; }
+    button { padding: 10px 16px; border: none; border-radius: 6px; background: #009688; color: white; cursor: pointer; margin-bottom: 8px; display: block; width: 100%; }
+    #hasil { margin-top: 16px; background: white; padding: 12px; border-radius: 6px; font-family: monospace; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+
+  <h1>Operator Modern (?? dan ?.)</h1>
+
+  <button id="btnNullish">Bandingkan || vs ?? (Kasus Stok=0)</button>
+  <button id="btnOptional">Optional Chaining (?.) - Akses Aman</button>
+  <button id="btnKombinasi">Kombinasi ?. dan ??</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    const hasil = document.getElementById("hasil");
+
+    document.getElementById("btnNullish").addEventListener("click", function () {
+      const jumlahStok = 0; // stok memang 0, bukan kosong!
+
+      const salahDenganOR = jumlahStok || 10;
+      const benarDenganNullish = jumlahStok ?? 10;
+
+      hasil.textContent =
+        "jumlahStok = 0 (stok BENAR-BENAR 0, bukan kosong)\n\n" +
+        "jumlahStok || 10  -> " + salahDenganOR + " ❌ (SALAH, 0 dianggap kosong oleh ||)\n" +
+        "jumlahStok ?? 10  -> " + benarDenganNullish + " ✅ (BENAR, 0 tetap dihargai oleh ??)";
+    });
+
+    document.getElementById("btnOptional").addEventListener("click", function () {
+      const user = { nama: "Budi", alamat: null };
+
+      let hasilAman;
+      try {
+        hasilAman = "user.alamat?.kota -> " + user.alamat?.kota;
+      } catch (e) {
+        hasilAman = "Error: " + e.message;
+      }
+
+      let hasilError;
+      try {
+        hasilError = "user.alamat.kota (tanpa ?.) -> " + user.alamat.kota;
+      } catch (e) {
+        hasilError = "user.alamat.kota (tanpa ?.) -> ❌ ERROR: " + e.message;
+      }
+
+      hasil.textContent =
+        "user = { nama: 'Budi', alamat: null }\n\n" +
+        hasilAman + " (aman, tidak error)\n\n" +
+        hasilError;
+    });
+
+    document.getElementById("btnKombinasi").addEventListener("click", function () {
+      const userTanpaAlamat = { nama: "Budi", alamat: null };
+      const userDenganAlamat = { nama: "Ani", alamat: { kota: "Jakarta" } };
+
+      const kota1 = userTanpaAlamat.alamat?.kota ?? "Kota tidak diketahui";
+      const kota2 = userDenganAlamat.alamat?.kota ?? "Kota tidak diketahui";
+
+      hasil.textContent =
+        "Kombinasi ?. (akses aman) + ?? (nilai default):\n\n" +
+        "userTanpaAlamat.alamat?.kota ?? 'default' -> " + kota1 + "\n" +
+        "userDenganAlamat.alamat?.kota ?? 'default' -> " + kota2;
+    });
+  </script>
+
+</body>
+</html>

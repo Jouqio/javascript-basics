@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>01 - Pengantar Operator</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; background: #f4f6f8; }
+    button { padding: 10px 16px; border: none; border-radius: 6px; background: #4CAF50; color: white; cursor: pointer; margin-bottom: 8px; display: block; width: 100%; }
+    #hasil { margin-top: 16px; background: white; padding: 12px; border-radius: 6px; font-family: monospace; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+
+  <h1>Pengantar Operator</h1>
+  <button id="btnCoba">Coba Berbagai Kategori Operator</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    const hasil = document.getElementById("hasil");
+
+    document.getElementById("btnCoba").addEventListener("click", function () {
+      // Unary
+      const unaryMinus = -5;
+      const unaryNot = !true;
+
+      // Binary
+      const binaryTambah = 5 + 3;
+
+      // Ternary
+      const ternaryContoh = (5 > 3) ? "besar" : "kecil";
+
+      hasil.textContent =
+        "== UNARY (1 operand) ==\n" +
+        "-5       -> " + unaryMinus + "\n" +
+        "!true    -> " + unaryNot + "\n\n" +
+        "== BINARY (2 operand) ==\n" +
+        "5 + 3    -> " + binaryTambah + "\n\n" +
+        "== TERNARY (3 operand) ==\n" +
+        "(5>3) ? 'besar' : 'kecil'  -> " + ternaryContoh + "\n\n" +
+        "== CONTOH TIAP KATEGORI ==\n" +
+        "Aritmatika  : 10 + 5       = " + (10 + 5) + "\n" +
+        "Perbandingan: 10 > 5       = " + (10 > 5) + "\n" +
+        "Logika      : true && false = " + (true && false) + "\n" +
+        "String      : 'Halo' + ' Dunia' = " + ("Halo" + " Dunia");
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>06 - Operator String</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; background: #f4f6f8; }
+    input { padding: 8px; width: 90%; border: 1px solid #ccc; border-radius: 4px; margin-bottom: 8px; }
+    button { padding: 10px 16px; border: none; border-radius: 6px; background: #3F51B5; color: white; cursor: pointer; margin-bottom: 8px; display: block; width: 100%; }
+    #hasil { margin-top: 16px; background: white; padding: 12px; border-radius: 6px; font-family: monospace; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+
+  <h1>Operator String</h1>
+
+  <input type="text" id="inputNama" placeholder="Nama..." value="Budi">
+  <input type="number" id="inputUmur" placeholder="Umur..." value="20">
+
+  <button id="btnConcatLama">Gabungkan dengan Operator + (Cara Lama)</button>
+  <button id="btnTemplateLiteral">Gabungkan dengan Template Literals (Modern)</button>
+  <button id="btnMultiline">Contoh Multi-line String</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    const hasil = document.getElementById("hasil");
+
+    document.getElementById("btnConcatLama").addEventListener("click", function () {
+      const nama = document.getElementById("inputNama").value;
+      const umur = document.getElementById("inputUmur").value;
+
+      const pesan = "Halo, nama saya " + nama + " dan umur saya " + umur + " tahun.";
+      hasil.textContent = "Menggunakan operator + :\n" + pesan;
+    });
+
+    document.getElementById("btnTemplateLiteral").addEventListener("click", function () {
+      const nama = document.getElementById("inputNama").value;
+      const umur = Number(document.getElementById("inputUmur").value);
+
+      const pesan = `Halo, nama saya ${nama} dan umur saya ${umur} tahun. Tahun depan saya akan berumur ${umur + 1} tahun.`;
+      hasil.textContent = "Menggunakan Template Literals (lebih mudah dibaca, bisa berisi ekspresi):\n" + pesan;
+    });
+
+    document.getElementById("btnMultiline").addEventListener("click", function () {
+      const puisi = `Baris pertama
+Baris kedua
+Baris ketiga`;
+      hasil.textContent = "Multi-line string dengan Template Literals:\n\n" + puisi;
+    });
+  </script>
+
+</body>
+</html>

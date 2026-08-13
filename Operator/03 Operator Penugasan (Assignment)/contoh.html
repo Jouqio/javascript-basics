@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>03 - Operator Penugasan</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; background: #f4f6f8; }
+    button { padding: 10px 16px; border: none; border-radius: 6px; background: #9C27B0; color: white; cursor: pointer; margin-bottom: 8px; display: block; width: 100%; }
+    #hasil { margin-top: 16px; background: white; padding: 12px; border-radius: 6px; font-family: monospace; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+
+  <h1>Operator Penugasan</h1>
+  <button id="btnGabungan">Demo Operator Gabungan (+=, -=, dll)</button>
+  <button id="btnModern">Demo Operator Modern (||=, ??=, &&=)</button>
+  <button id="btnTotal">Hitung Total Belanja (pakai +=)</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    const hasil = document.getElementById("hasil");
+
+    document.getElementById("btnGabungan").addEventListener("click", function () {
+      let nilai = 10;
+      let log = "nilai awal = " + nilai + "\n";
+
+      nilai += 5;  log += "nilai += 5  -> " + nilai + "\n";
+      nilai -= 3;  log += "nilai -= 3  -> " + nilai + "\n";
+      nilai *= 2;  log += "nilai *= 2  -> " + nilai + "\n";
+      nilai /= 4;  log += "nilai /= 4  -> " + nilai + "\n";
+      nilai %= 4;  log += "nilai %= 4  -> " + nilai + "\n";
+      nilai **= 3; log += "nilai **= 3 -> " + nilai;
+
+      hasil.textContent = log;
+    });
+
+    document.getElementById("btnModern").addEventListener("click", function () {
+      let nama = "";
+      nama ||= "Tamu"; // string kosong itu falsy, jadi diisi
+
+      let umur = 0;
+      umur ??= 18; // 0 BUKAN null/undefined, jadi TIDAK diubah
+
+      let kota;
+      kota ??= "Jakarta"; // undefined, jadi diisi
+
+      let statusLogin = true;
+      statusLogin &&= "Selamat datang!"; // truthy, jadi diganti
+
+      hasil.textContent =
+        "nama ||= 'Tamu' (nama awalnya '')   -> " + nama + "\n" +
+        "umur ??= 18 (umur awalnya 0)         -> " + umur + " (TETAP 0, karena 0 bukan null/undefined!)\n" +
+        "kota ??= 'Jakarta' (kota awalnya undefined) -> " + kota + "\n" +
+        "statusLogin &&= '...' (awalnya true) -> " + statusLogin;
+    });
+
+    document.getElementById("btnTotal").addEventListener("click", function () {
+      let total = 0;
+      const harga = [10000, 20000, 15000];
+
+      let log = "Daftar harga: " + harga.join(", ") + "\n\n";
+      harga.forEach((h, i) => {
+        total += h;
+        log += "Langkah " + (i + 1) + ": total += " + h + " -> total sekarang = " + total + "\n";
+      });
+
+      hasil.textContent = log;
+    });
+  </script>
+
+</body>
+</html>

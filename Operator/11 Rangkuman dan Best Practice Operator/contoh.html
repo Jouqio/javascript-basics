@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>11 - Best Practice Operator</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; background: #f4f6f8; }
+    button { padding: 10px 16px; border: none; border-radius: 6px; background: #607D8B; color: white; cursor: pointer; margin-bottom: 8px; display: block; width: 100%; }
+    #hasil { margin-top: 16px; background: white; padding: 12px; border-radius: 6px; font-family: monospace; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+
+  <h1>Demo Best Practice Operator</h1>
+  <button id="btnValidasi">Validasi Form (Gabungan Best Practice)</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    const hasil = document.getElementById("hasil");
+
+    // Contoh gabungan best practice: validasi sederhana pendaftaran
+    function validasiPendaftaran(data) {
+      const nama = data.nama?.trim() ?? ""; // optional chaining + nullish coalescing
+      const umur = Number(data.umur); // pastikan tipe angka benar
+      const email = data.email ?? "";
+
+      const errors = [];
+
+      if (nama === "") errors.push("Nama tidak boleh kosong"); // === bukan ==
+      if (!(umur >= 17)) errors.push("Umur minimal 17 tahun");
+      if (!email.includes("@")) errors.push("Email tidak valid");
+
+      const status = errors.length === 0 ? "LULUS VALIDASI ✅" : "GAGAL VALIDASI ❌";
+
+      return `${status}\n${errors.length > 0 ? "- " + errors.join("\n- ") : "Semua data valid!"}`;
+    }
+
+    document.getElementById("btnValidasi").addEventListener("click", function () {
+      const dataUji1 = { nama: "Budi", umur: "20", email: "budi@mail.com" };
+      const dataUji2 = { nama: "", umur: "15", email: "salah-format" };
+      const dataUji3 = {}; // data kosong, uji optional chaining
+
+      hasil.textContent =
+        "Data 1 (valid):\n" + validasiPendaftaran(dataUji1) + "\n\n" +
+        "Data 2 (tidak valid):\n" + validasiPendaftaran(dataUji2) + "\n\n" +
+        "Data 3 (kosong, uji ?. dan ??):\n" + validasiPendaftaran(dataUji3);
+    });
+  </script>
+
+</body>
+</html>

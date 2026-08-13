@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>02 - Operator Aritmatika</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; background: #f4f6f8; }
+    input { padding: 8px; width: 30%; border: 1px solid #ccc; border-radius: 4px; }
+    button { padding: 10px 16px; border: none; border-radius: 6px; background: #2196F3; color: white; cursor: pointer; margin: 4px 0; display: block; width: 100%; }
+    #hasil { margin-top: 16px; background: white; padding: 12px; border-radius: 6px; font-family: monospace; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+
+  <h1>Operator Aritmatika</h1>
+
+  <label>Angka A: </label><input type="number" id="inputA" value="10">
+  <label>Angka B: </label><input type="number" id="inputB" value="3">
+
+  <button id="btnHitung">Hitung Semua Operasi</button>
+  <button id="btnIncrement">Demo Increment/Decrement</button>
+  <button id="btnStringVsAngka">Bukti: String + Angka</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    const hasil = document.getElementById("hasil");
+
+    document.getElementById("btnHitung").addEventListener("click", function () {
+      const a = Number(document.getElementById("inputA").value);
+      const b = Number(document.getElementById("inputB").value);
+
+      hasil.textContent =
+        a + " + " + b + "  = " + (a + b) + "\n" +
+        a + " - " + b + "  = " + (a - b) + "\n" +
+        a + " * " + b + "  = " + (a * b) + "\n" +
+        a + " / " + b + "  = " + (a / b) + "\n" +
+        a + " % " + b + "  = " + (a % b) + " (sisa bagi)\n" +
+        a + " ** " + b + " = " + (a ** b) + " (pangkat)";
+    });
+
+    document.getElementById("btnIncrement").addEventListener("click", function () {
+      let x = 5;
+      let hasilPostfix = x++; // nilai lama dipakai dulu
+
+      let y = 5;
+      let hasilPrefix = ++y; // bertambah dulu baru dipakai
+
+      hasil.textContent =
+        "POSTFIX (x++):\n" +
+        "x = 5, hasil dari (x++) = " + hasilPostfix + " (nilai lama)\n" +
+        "x setelahnya = " + x + "\n\n" +
+        "PREFIX (++y):\n" +
+        "y = 5, hasil dari (++y) = " + hasilPrefix + " (sudah bertambah)\n" +
+        "y setelahnya = " + y;
+    });
+
+    document.getElementById("btnStringVsAngka").addEventListener("click", function () {
+      hasil.textContent =
+        "5 + 3        = " + (5 + 3) + "   (angka + angka)\n" +
+        "'5' + 3      = " + ("5" + 3) + "  (string + angka -> digabung!)\n" +
+        "5 + '3'      = " + (5 + "3") + "  (angka + string -> digabung juga!)\n" +
+        "'5' - 3      = " + ("5" - 3) + "   (operator '-' tetap memaksa jadi angka)\n" +
+        "'10' * '2'   = " + ("10" * "2") + "  (perkalian tetap memaksa jadi angka)";
+    });
+  </script>
+
+</body>
+</html>

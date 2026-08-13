@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>07 - Operator Ternary</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; background: #f4f6f8; }
+    input { padding: 8px; width: 30%; border: 1px solid #ccc; border-radius: 4px; }
+    button { padding: 10px 16px; border: none; border-radius: 6px; background: #E91E63; color: white; cursor: pointer; margin: 4px 0; display: block; width: 100%; }
+    #hasil { margin-top: 16px; background: white; padding: 12px; border-radius: 6px; font-family: monospace; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+
+  <h1>Operator Ternary</h1>
+
+  <label>Umur: </label><input type="number" id="inputUmur" value="20">
+  <label>Nilai: </label><input type="number" id="inputNilai" value="75">
+
+  <button id="btnDasar">Cek Status Umur (Ternary Dasar)</button>
+  <button id="btnGrade">Hitung Grade (Ternary Bersarang)</button>
+  <button id="btnLampu">Toggle Status Lampu</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    const hasil = document.getElementById("hasil");
+    let statusLampu = "mati";
+
+    document.getElementById("btnDasar").addEventListener("click", function () {
+      const umur = Number(document.getElementById("inputUmur").value);
+      const status = umur >= 18 ? "Dewasa" : "Anak-anak";
+      hasil.textContent = `Umur: ${umur} -> Status: ${status}\n\nKode: umur >= 18 ? "Dewasa" : "Anak-anak"`;
+    });
+
+    document.getElementById("btnGrade").addEventListener("click", function () {
+      const nilai = Number(document.getElementById("inputNilai").value);
+
+      const grade = nilai >= 90 ? "A"
+                  : nilai >= 80 ? "B"
+                  : nilai >= 70 ? "C"
+                  : nilai >= 60 ? "D"
+                  : "E";
+
+      hasil.textContent =
+        `Nilai: ${nilai} -> Grade: ${grade}\n\n` +
+        "Kode (ternary bersarang):\n" +
+        'nilai >= 90 ? "A"\n' +
+        ': nilai >= 80 ? "B"\n' +
+        ': nilai >= 70 ? "C"\n' +
+        ': nilai >= 60 ? "D"\n' +
+        ': "E"';
+    });
+
+    document.getElementById("btnLampu").addEventListener("click", function () {
+      statusLampu = statusLampu === "mati" ? "menyala" : "mati";
+      hasil.textContent = "Status lampu sekarang: " + statusLampu.toUpperCase() +
+        (statusLampu === "menyala" ? " 💡" : " ⚫");
+    });
+  </script>
+
+</body>
+</html>

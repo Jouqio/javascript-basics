@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>04 - Operator Perbandingan</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; background: #f4f6f8; }
+    button { padding: 10px 16px; border: none; border-radius: 6px; background: #FF5722; color: white; cursor: pointer; margin-bottom: 8px; display: block; width: 100%; }
+    #hasil { margin-top: 16px; background: white; padding: 12px; border-radius: 6px; font-family: monospace; white-space: pre-wrap; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; background: white; }
+    td, th { border: 1px solid #ddd; padding: 6px; font-size: 13px; text-align: left; }
+  </style>
+</head>
+<body>
+
+  <h1>Operator Perbandingan</h1>
+  <button id="btnLooseVsStrict">Bandingkan == vs === (Kasus Umum)</button>
+  <button id="btnNaN">Kasus Unik: NaN</button>
+  <button id="btnObjek">Perbandingan Object/Array (Referensi)</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    const hasil = document.getElementById("hasil");
+
+    document.getElementById("btnLooseVsStrict").addEventListener("click", function () {
+      const kasus = [
+        ["5 == '5'", 5 == "5"],
+        ["5 === '5'", 5 === "5"],
+        ["0 == false", 0 == false],
+        ["0 === false", 0 === false],
+        ["null == undefined", null == undefined],
+        ["null === undefined", null === undefined],
+        ["'' == 0", "" == 0],
+        ["'' === 0", "" === 0]
+      ];
+
+      let output = "Perbandingan == (loose) vs === (strict):\n\n";
+      kasus.forEach(([teks, nilai]) => {
+        output += teks.padEnd(20) + " -> " + nilai + "\n";
+      });
+      hasil.textContent = output;
+    });
+
+    document.getElementById("btnNaN").addEventListener("click", function () {
+      const hasilBagi = 0 / "abc"; // menghasilkan NaN
+
+      hasil.textContent =
+        "0 / 'abc' = " + hasilBagi + " (NaN = Not a Number)\n\n" +
+        "NaN == NaN         -> " + (NaN == NaN) + " (selalu false!)\n" +
+        "NaN === NaN        -> " + (NaN === NaN) + " (selalu false!)\n" +
+        "Number.isNaN(NaN)  -> " + (Number.isNaN(NaN)) + " (cara yang BENAR untuk cek NaN)";
+    });
+
+    document.getElementById("btnObjek").addEventListener("click", function () {
+      const obj1 = { nama: "Budi" };
+      const obj2 = { nama: "Budi" }; // isi sama, tapi objek berbeda
+      const obj3 = obj1; // menunjuk ke objek yang SAMA dengan obj1
+
+      hasil.textContent =
+        "obj1 = { nama: 'Budi' }\n" +
+        "obj2 = { nama: 'Budi' } (objek terpisah, isi sama)\n" +
+        "obj3 = obj1 (menunjuk ke objek yang SAMA)\n\n" +
+        "obj1 === obj2  -> " + (obj1 === obj2) + " (isi sama, tapi REFERENSI beda!)\n" +
+        "obj1 === obj3  -> " + (obj1 === obj3) + " (referensi sama persis)\n" +
+        "JSON.stringify(obj1) === JSON.stringify(obj2) -> " + (JSON.stringify(obj1) === JSON.stringify(obj2)) + " (cara sederhana bandingkan ISI)";
+    });
+  </script>
+
+</body>
+</html>

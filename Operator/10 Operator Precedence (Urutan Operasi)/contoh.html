@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>10 - Operator Precedence</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; background: #f4f6f8; }
+    button { padding: 10px 16px; border: none; border-radius: 6px; background: #607D8B; color: white; cursor: pointer; margin-bottom: 8px; display: block; width: 100%; }
+    #hasil { margin-top: 16px; background: white; padding: 12px; border-radius: 6px; font-family: monospace; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+
+  <h1>Operator Precedence</h1>
+  <button id="btnDasar">Bukti: Perkalian Didahulukan</button>
+  <button id="btnLogika">Bukti: && Didahulukan dari ||</button>
+  <button id="btnAssoc">Bukti: Associativity (Kanan ke Kiri)</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    const hasil = document.getElementById("hasil");
+
+    document.getElementById("btnDasar").addEventListener("click", function () {
+      hasil.textContent =
+        "2 + 3 * 4       = " + (2 + 3 * 4) + "  (bukan 20! karena * didahulukan)\n" +
+        "(2 + 3) * 4     = " + ((2 + 3) * 4) + "  (kurung mengubah urutan)\n" +
+        "10 - 2 * 3      = " + (10 - 2 * 3) + "   (2*3=6 dulu, baru 10-6)\n" +
+        "5 + 3 > 2 * 3   = " + (5 + 3 > 2 * 3) + "  (aritmatika dulu: 8 > 6)";
+    });
+
+    document.getElementById("btnLogika").addEventListener("click", function () {
+      const hasil1 = true || false && false;
+      const hasil2 = true || (false && false);
+      const hasil3 = (true || false) && false;
+
+      hasil.textContent =
+        "true || false && false   = " + hasil1 + "\n" +
+        "true || (false && false) = " + hasil2 + " (sama! karena && didahulukan)\n" +
+        "(true || false) && false = " + hasil3 + " (BEDA jika kurung diletakkan di tempat lain!)\n\n" +
+        "Kesimpulan: && dievaluasi lebih dulu daripada ||,\n" +
+        "makanya baris 1 dan 2 hasilnya sama, tapi baris 3 beda karena kurungnya mengubah urutan.";
+    });
+
+    document.getElementById("btnAssoc").addEventListener("click", function () {
+      let a, b, c;
+      a = b = c = 5; // right-to-left
+
+      const pangkat = 2 ** 3 ** 2; // right-to-left: 3**2=9 dulu, lalu 2**9
+
+      hasil.textContent =
+        "a = b = c = 5  (dievaluasi kanan ke kiri)\n" +
+        "a=" + a + ", b=" + b + ", c=" + c + "\n\n" +
+        "2 ** 3 ** 2 = " + pangkat + "\n" +
+        "(dievaluasi kanan ke kiri: 3**2=9 dulu, lalu 2**9=512)\n" +
+        "BUKAN kiri ke kanan yang akan menghasilkan (2**3)**2 = " + ((2**3)**2);
+    });
+  </script>
+
+</body>
+</html>

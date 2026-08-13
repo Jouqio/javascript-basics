@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>05 - Operator Logika</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 40px auto; background: #f4f6f8; }
+    button { padding: 10px 16px; border: none; border-radius: 6px; background: #00BCD4; color: white; cursor: pointer; margin-bottom: 8px; display: block; width: 100%; }
+    #hasil { margin-top: 16px; background: white; padding: 12px; border-radius: 6px; font-family: monospace; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+
+  <h1>Operator Logika</h1>
+  <button id="btnDasar">Demo Dasar AND, OR, NOT</button>
+  <button id="btnTruthyFalsy">Cek Truthy / Falsy</button>
+  <button id="btnShortCircuit">Demo Short-Circuit Evaluation</button>
+
+  <div id="hasil"></div>
+
+  <script>
+    const hasil = document.getElementById("hasil");
+
+    document.getElementById("btnDasar").addEventListener("click", function () {
+      const umur = 20;
+      const punyaKTP = true;
+
+      hasil.textContent =
+        "umur = 20, punyaKTP = true\n\n" +
+        "umur >= 17 && punyaKTP -> " + (umur >= 17 && punyaKTP) + "\n" +
+        "umur >= 25 && punyaKTP -> " + (umur >= 25 && punyaKTP) + "\n" +
+        "umur >= 25 || punyaKTP -> " + (umur >= 25 || punyaKTP) + "\n" +
+        "!punyaKTP              -> " + (!punyaKTP);
+    });
+
+    document.getElementById("btnTruthyFalsy").addEventListener("click", function () {
+      const nilaiUji = [false, 0, "", null, undefined, NaN, true, 1, -1, "0", [], {}, "halo"];
+      let output = "Nilai       -> truthy/falsy (Boolean(nilai))\n\n";
+      nilaiUji.forEach((nilai) => {
+        const tampil = Array.isArray(nilai) ? "[]" : (typeof nilai === "object" && nilai !== null ? "{}" : String(nilai));
+        output += tampil.padEnd(12) + "-> " + (Boolean(nilai) ? "TRUTHY" : "FALSY") + "\n";
+      });
+      hasil.textContent = output;
+    });
+
+    document.getElementById("btnShortCircuit").addEventListener("click", function () {
+      function dicek(label, nilai) {
+        console.log("Mengevaluasi:", label);
+        return nilai;
+      }
+
+      let output = "Perhatikan console untuk melihat mana yang benar-benar dievaluasi:\n\n";
+
+      output += "false && dicek(...) -> " + (false && dicek("sisi kanan AND", "harusnya tidak muncul di console")) + "\n";
+      output += "true || dicek(...)  -> " + (true || dicek("sisi kanan OR", "harusnya tidak muncul di console")) + "\n\n";
+
+      const nama = "";
+      const namaFinal = nama || "Tamu";
+      output += "nama = '' (kosong)\n";
+      output += "namaFinal = nama || 'Tamu' -> " + namaFinal;
+
+      hasil.textContent = output;
+    });
+  </script>
+
+</body>
+</html>
