@@ -1,192 +1,47 @@
-# Looping di JavaScript
+# Belajar Loop (Perulangan) JavaScript untuk Pemula
 
-Ringkasan materi tentang perulangan (loop) di JavaScript: cara kerja, jenis-jenis loop, dan control statement.
+Folder ini berisi materi pembelajaran dasar pemrograman **Loop (Perulangan) dalam JavaScript**, disusun bertahap dan lengkap dari konsep paling dasar sampai optimasi. Setiap folder berisi:
 
-## Daftar Isi
+- `Readme.md` → penjelasan materi (teori + kenapa penting + contoh kasus)
+- File `.js` → contoh kode yang bisa langsung dijalankan
 
-- [Pengantar](#pengantar)
-- [For](#for)
-  - [For Loop](#for-loop)
-  - [For In](#for-in)
-  - [For Of](#for-of)
-- [While](#while)
-- [Do-While](#do-while)
-- [Control Statement](#control-statement)
-  - [Break](#break)
-  - [Continue](#continue)
-- [Ringkasan Perbandingan](#ringkasan-perbandingan)
+## Cara Menjalankan Kode
 
-## Pengantar
+Jalankan setiap file `.js` dengan Node.js:
 
-Ketika memprogram, sering kali kita perlu mengeksekusi instruksi yang sama berulang kali — misalnya mencetak semua item dalam sebuah list. Di sinilah looping berperan, agar kita tidak perlu menulis instruksi yang sama berkali-kali secara manual.
-
-## For
-
-`for` adalah cara looping paling umum di JavaScript. Sejak ES6, `for` terbagi menjadi tiga jenis: **for loop**, **for in**, dan **for of**.
-
-### For Loop
-
-Struktur dasar:
-
-```js
-for (variabel awal; test kondisi; increment) {
-  // do something
-}
+```bash
+node contoh.js
 ```
 
-- **Variabel awal**: nilai variabel sebelum looping dimulai
-- **Test kondisi**: dievaluasi setiap iterasi; jika `false`, loop berhenti
-- **Increment**: perubahan nilai variabel setiap iterasi
+Pastikan Node.js sudah terinstall di komputer kamu. Cek dengan:
 
-Contoh:
-
-```js
-for (let i = 0; i < 5; i++) {
-  console.log(`Angka ke-${i} adalah ${i}`);
-}
+```bash
+node -v
 ```
 
-### For In
+Atau, kamu juga bisa membuka Console di browser (klik kanan → Inspect → tab Console) lalu copy-paste isi file `.js` ke sana.
 
-Digunakan untuk melakukan iterasi pada **object**, termasuk properti inheritance-nya.
+## Daftar Materi
 
-```js
-const person = { name: 'Fulan', origin: 'Bandung', birthYear: 2024 };
+| No | Folder | Topik |
+|----|--------|-------|
+| 01 | [Pengantar Perulangan (Loop)](./01%20Pengantar%20Perulangan%20(Loop)/Readme.md) | Apa itu loop, kenapa penting, jenis-jenis loop di JavaScript |
+| 02 | [For Loop](./02%20For%20Loop/Readme.md) | Loop paling umum, struktur inisialisasi-kondisi-increment |
+| 03 | [While Loop](./03%20While%20Loop/Readme.md) | Loop berbasis kondisi, dicek di awal |
+| 04 | [Do While Loop](./04%20Do%20While%20Loop/Readme.md) | Loop yang pasti jalan minimal 1 kali, dicek di akhir |
+| 05 | [Break dan Continue](./05%20Break%20dan%20Continue/Readme.md) | Menghentikan atau melompati iterasi loop |
+| 06 | [Nested Loop (Loop Bersarang)](./06%20Nested%20Loop%20(Loop%20Bersarang)/Readme.md) | Loop di dalam loop, pola tabel/grid |
+| 07 | [For...of Loop](./07%20For...of%20Loop/Readme.md) | Loop modern untuk array, string, dan iterable lainnya |
+| 08 | [For...in Loop](./08%20For...in%20Loop/Readme.md) | Loop untuk key pada object |
+| 09 | [Looping Array dengan Method](./09%20Looping%20Array%20dengan%20Method/Readme.md) | `forEach`, `map`, `filter`, `reduce` sebagai alternatif modern |
+| 10 | [Infinite Loop dan Cara Menghindarinya](./10%20Infinite%20Loop%20dan%20Cara%20Menghindarinya/Readme.md) | Loop tak berhenti, penyebab, dan cara mencegahnya |
+| 11 | [Studi Kasus dan Optimasi Loop](./11%20Studi%20Kasus%20dan%20Optimasi%20Loop/Readme.md) | Memilih loop yang tepat, tips performa |
+| 12 | [Tugas Latihan](./12%20Tugas%20Latihan/Readme.md) | Soal latihan untuk menguji pemahaman |
 
-for (const property in person) {
-  console.log(`${property} bernilai ${person[property]}`);
-}
+## Urutan Belajar yang Disarankan
+
+```
+01 → 02 → 03 → 04 → 05 → 06 → 07 → 08 → 09 → 10 → 11 → 12
 ```
 
-### For Of
-
-Diperkenalkan di ES6, lebih sederhana karena tidak perlu memikirkan property/key — langsung mendapatkan nilai (value) dari elemen.
-
-```js
-const names = ['Bebek', 'Ayam', 'Telor', 'Tempe'];
-
-for (const item of names) {
-  console.log(item);
-}
-```
-
-Bisa digunakan pada objek yang iterable, seperti array, string, set, dan map.
-
-## While
-
-Mengeksekusi statement selama kondisi bernilai truthy. Kondisi dicek **di awal**.
-
-```js
-while (condition) {
-  statement
-}
-```
-
-Contoh:
-
-```js
-let i = 0;
-
-while (i < 5) {
-  console.log(`Angka ke-${i} adalah ${i}.`);
-  i++;
-}
-```
-
-> ⚠️ **Hati-hati infinite loop**: jika variabel kondisi tidak pernah diubah di dalam loop, kondisi akan selalu `true` dan loop tidak akan pernah berhenti.
-
-```js
-// Contoh infinite loop — i tidak pernah bertambah
-let i = 0;
-
-while (i < 5) {
-  console.log(`Angka ke-${i} adalah ${i}.`);
-}
-```
-
-## Do-While
-
-Mirip dengan `while`, namun kondisi dicek **di akhir**. Artinya, blok kode di dalam `do` pasti dijalankan **minimal satu kali**.
-
-```js
-do {
-  // Do something
-} while (condition)
-```
-
-Contoh:
-
-```js
-let i = 0;
-
-do {
-  console.log(`Angka ke-${i} adalah ${i}.`);
-  i++;
-} while (i < 5);
-```
-
-## Control Statement
-
-Digunakan untuk mengontrol alur eksekusi looping.
-
-### Break
-
-Menghentikan looping (atau switch case) sepenuhnya dan langsung keluar.
-
-```js
-for (let i = 0; i < 10; i++) {
-  if (i === 5) {
-    break;
-  }
-  console.log(i);
-}
-```
-
-Kode di atas hanya mencetak `0` sampai `4`, karena loop berhenti saat `i === 5`.
-
-Contoh lain penggunaan `break` pada `switch case`:
-
-```js
-const number = 1;
-
-switch (number) {
-  case 1:
-    console.log('Ini 1');
-    break;
-  case 2:
-    console.log('Ini 2');
-    break;
-  case 3:
-    console.log('Ini 3');
-    break;
-  default:
-    console.log('Ini default');
-}
-```
-
-### Continue
-
-Melewati iterasi saat ini dan melanjutkan ke iterasi berikutnya (tanpa menghentikan loop sepenuhnya). Hanya bisa digunakan di dalam body looping.
-
-```js
-for (let i = 0; i < 10; i++) {
-  if (i === 5) {
-    continue;
-  }
-  console.log(i);
-}
-```
-
-Kode di atas mencetak `0-9`, **kecuali** angka `5`, karena iterasi tersebut di-skip.
-
-## Ringkasan Perbandingan
-
-| Jenis | Cocok untuk | Kondisi dicek | Catatan |
-|---|---|---|---|
-| `for` loop | Iterasi dengan jumlah diketahui | Di awal | Butuh variabel awal, kondisi, increment |
-| `for in` | Iterasi properti object | - | Bisa termasuk properti inheritance |
-| `for of` | Iterasi nilai pada array/string/set/map | - | Sintaks paling ringkas |
-| `while` | Jumlah iterasi tidak diketahui di awal | Di awal | Rawan infinite loop jika kondisi tidak berubah |
-| `do-while` | Butuh eksekusi minimal 1x | Di akhir | Blok selalu jalan minimal sekali |
-| `break` | Menghentikan loop/switch | - | Keluar total dari perulangan |
-| `continue` | Skip iterasi tertentu | - | Loop tetap berlanjut ke iterasi berikutnya |
+Pelajari secara berurutan karena setiap materi dibangun dari materi sebelumnya. Selamat belajar! 
