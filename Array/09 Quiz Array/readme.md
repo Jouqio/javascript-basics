@@ -97,6 +97,6 @@ const karyawanBaru = karyawan.map((k) =>
 ```
 
 ---
-⬅️ [Rangkuman Array](../08%20Rangkuman%20Array/readme.md) | 🏠 [Kembali ke Daftar Isi](../Readme.md)
+ [Rangkuman Array](../08%20Rangkuman%20Array/readme.md) | [Kembali ke Daftar Isi](../Readme.md)
 
 🎉 Selamat! Kamu telah menyelesaikan modul pembelajaran Array (fokus Immutable Array).
