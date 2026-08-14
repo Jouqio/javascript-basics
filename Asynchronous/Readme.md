@@ -2,6 +2,14 @@
 
 Folder ini berisi materi pembelajaran dasar pemrograman **Asynchronous JavaScript**, disusun bertahap dari konsep paling dasar sampai simulasi proses asynchronous yang lebih nyata. Setiap folder berisi:
 
+Asynchronous (asinkron) adalah cara kerja program di mana suatu proses bisa berjalan tanpa harus menunggu proses sebelumnya selesai terlebih dahulu. Ini kebalikan dari synchronous (sinkron), di mana setiap baris kode dijalankan berurutan satu per satu, dan baris berikutnya harus menunggu baris sebelumnya selesai.
+
+**Kenapa penting di JavaScript?**
+
+JavaScript itu single-threaded (hanya bisa menjalankan satu hal dalam satu waktu). Kalau semua proses dibuat sinkron, maka proses yang lama (misalnya mengambil data dari server, membaca file, atau menunggu timer) akan memblokir seluruh program halaman web jadi "freeze" sampai proses itu selesai.
+
+Dengan asynchronous, JavaScript bisa "menitipkan" proses yang lama itu ke belakang layar, lalu melanjutkan mengerjakan kode lain sambil menunggu proses tadi selesai. Setelah selesai, hasilnya baru diproses.
+
 - `Readme.md` → penjelasan materi (teori + kenapa penting + contoh kasus)
 - File `.mjs` → contoh kode yang bisa langsung dijalankan
 
