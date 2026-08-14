@@ -64,4 +64,4 @@ AsyncAwait/
 
 - Seluruh contoh kode adalah **JavaScript murni (vanilla)**, tanpa dependensi eksternal — semua `contoh.js` sudah diuji berjalan bersih lewat `node contoh.js`.
 - Beberapa fungsi seperti `tampilkanLoading()`, `ambilProfil()`, dsb pada materi 11–12 adalah **fungsi simulasi (mock)** yang dibuat agar kode bisa langsung dijalankan tanpa server sungguhan.
-- File `14 Tugas Gabungan/tugas.js` sengaja dibiarkan berupa kerangka (TODO) — ini bagian dari latihan, bukan bug.
+- File `14 Tugas Gabungan/tugas.js` sengaja dibiarkan berupa kerangka (TODO) ini bagian dari latihan, bukan bug.
