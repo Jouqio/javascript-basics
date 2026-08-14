@@ -6,15 +6,15 @@
 //alert('hello Syauqi Nuzul Abdi, usia saya adalah ' + usia + ' tahun');
 
 let nama = "Syauqi Nuzul Abdi"; //string
-let usia = 20; //number
+let usia = 19; //number
 let tinggiBadan = 170.5; //tipe data number juga, tapi dengan desimal(double float)
-let beratBadan = 60.2; //tipe data number juga, tapi dengan desimal(double float)
+let beratBadan = 59.3; //tipe data number juga, tapi dengan desimal(double float)
 let pacar = null; //null, karena belum memiliki pacar
-let hobi = ["membaca", "bermain game", "berolahraga"]; //array, tipe data yang bisa menyimpan banyak nilai
+let hobi = ["membaca", "belajar", "berolahraga", "dsb.."]; //array, tipe data yang bisa menyimpan banyak nilai
 let alamat = {
   //object, tipe data yang bisa menyimpan banyak nilai dengan key dan value
   jalan: "Jl. Kapten Piere Tendean, Blok F No 6",
-  kota: "Jakarta",
+  kota: "Bontang",
   negara: "Indonesia",
 };
 let isStudent = true; //boolean, tipe data yang hanya memiliki dua nilai: true atau false
