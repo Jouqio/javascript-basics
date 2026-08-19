@@ -135,7 +135,7 @@ Belajar-Dasar-Pemrograman-JavaScript/
 2. Masuk ke folder proyek
 
    ```bash
-   cd Belajar-Dasar-Pemrograman-JavaScript
+   cd javascript-basics
    ```
 
 3. Buka salah satu folder topik, lalu jalankan file latihan
