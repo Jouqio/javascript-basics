@@ -108,7 +108,7 @@ Konsep ini memungkinkan SubClass **mengubah implementasi** method yang diwariska
 
 ### 4. Abstraction
 
-_(Materi lanjutan belum tercakup penuh dalam dokumen sumber — namun disebutkan sebagai salah satu dari empat pilar OOP.)_
+_(Materi lanjutan belum tercakup penuh dalam dokumen sumber, namun disebutkan sebagai salah satu dari empat pilar OOP.)_
 
 Abstraction pada dasarnya bertujuan untuk **menyembunyikan detail implementasi yang kompleks** dan hanya menampilkan fungsionalitas penting kepada pengguna.
 
