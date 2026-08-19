@@ -2,7 +2,7 @@
 
 #  Belajar Dasar Pemrograman JavaScript
 
-**Dokumentasi & latihan perjalanan belajar JavaScript dari dasar sampai mahir.**
+**Dokumentasi & latihan belajar dasar pemrograman JavaScript.**
 
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
@@ -17,7 +17,7 @@
 
 ##  Tentang
 
-Repository ini berisi kumpulan catatan dan latihan kode yang dibuat selama proses belajar **dasar pemrograman JavaScript** — mulai dari sintaks paling dasar seperti variabel dan tipe data, hingga konsep yang lebih kompleks seperti asynchronous programming, OOP, dan modularisasi.
+Repository ini berisi kumpulan catatan dan latihan kode yang dibuat selama proses belajar **dasar pemrograman JavaScript** mulai dari sintaks paling dasar seperti variabel dan tipe data, hingga konsep yang lebih kompleks seperti asynchronous programming, OOP, dan modularisasi.
 
 Dibuat untuk:
 
@@ -129,7 +129,7 @@ Belajar-Dasar-Pemrograman-JavaScript/
 1. Clone repository ini
 
    ```bash
-   git clone https://github.com/Jouqio/Belajar-Dasar-Pemrograman-JavaScript.git
+   git clone https://github.com/Jouqio/javascript-basics.git
    ```
 
 2. Masuk ke folder proyek
@@ -183,10 +183,10 @@ Belajar-Dasar-Pemrograman-JavaScript/
 
 ##  Sumber Belajar
 
-- [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript) — dokumentasi resmi paling lengkap
-- [JavaScript.info](https://javascript.info/) — tutorial modern dan mendalam
-- [freeCodeCamp](https://www.freecodecamp.org/) — kursus interaktif gratis
-- [W3Schools JavaScript](https://www.w3schools.com/js/) — referensi cepat & contoh sederhana
+- [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript)  dokumentasi resmi paling lengkap
+- [JavaScript.info](https://javascript.info/)  tutorial modern dan mendalam
+- [freeCodeCamp](https://www.freecodecamp.org/)  kursus interaktif gratis
+- [W3Schools JavaScript](https://www.w3schools.com/js/)  referensi cepat & contoh sederhana
 
 <br>
 
@@ -195,9 +195,9 @@ Belajar-Dasar-Pemrograman-JavaScript/
 Saran, koreksi, dan kontribusi sangat terbuka.
 
 1. Fork repository ini
-2. Buat branch baru — `git checkout -b fitur-baru`
-3. Commit perubahan — `git commit -m "Menambahkan fitur baru"`
-4. Push ke branch — `git push origin fitur-baru`
+2. Buat branch baru  `git checkout -b fitur-baru`
+3. Commit perubahan  `git commit -m "Menambahkan fitur baru"`
+4. Push ke branch  `git push origin fitur-baru`
 5. Buka Pull Request
 
 <br>
